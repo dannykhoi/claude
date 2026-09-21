@@ -6,32 +6,32 @@
 <title>PriceDrift — every price change in your competitors’ Shopify store</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Geist:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Geist:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     color-scheme: light;
 
     --cream:#F4F0E6;
-    --white:#FFFFFF;          /* machine surfaces only */
+    --paper:#FBF9F4;          /* machine surfaces: the email, the input */
     --ink:#1A1A17;
     --ink-soft:#63604F;
-    --dim:#A8A292;            /* separators and hairline glyphs, never words */
     --green:#1D4D2B;
     --green-deep:#173D22;
+    --green-pale:#A3B7A8;
     --rust:#A23A24;
 
-    /* three rule weights, and only three */
-    --hair:#DDD6C4;           /* sub-table rows */
-    --row:#C6BDA6;            /* row separators */
-    --chapter:#1A1A17;        /* chapter boundaries, 2px */
+    /* two tan rules, and one black one used exactly once */
+    --hair:#DDD6C4;
+    --row:#C6BDA6;
 
     --display:'Bodoni Moda', Georgia, 'Times New Roman', serif;
     --sans:'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
     --mono:'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 
-    --gutter:60px;
-    --rail:440px;
-    --stub:200px;
+    /* ONE grid: 12 columns, divided at 2/12 and 7/12. Zone A labels,
+       zone B argument, zone C data. Every band on the page uses it. */
+    --zA:2fr; --zB:5fr; --zC:5fr;
+    --gut:40px;
   }
   *,*::before,*::after{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
@@ -40,7 +40,7 @@
     padding:env(safe-area-inset-top,0) 0 0;
     background:var(--cream);
     color:var(--ink);
-    font:400 16px/24px var(--sans);   /* 24px is the module everything lands on */
+    font:400 16px/24px var(--sans);
     font-feature-settings:"kern" 1,"liga" 1;
     -webkit-font-smoothing:antialiased;
     -moz-osx-font-smoothing:grayscale;
@@ -51,217 +51,185 @@
   hr{border:0;margin:0}
   .r-hair{border-top:1px solid var(--hair)}
   .r-row{border-top:1px solid var(--row)}
-  .r-chapter{border-top:2px solid var(--chapter)}
+  .r-chapter{border-top:2px solid var(--ink)}   /* used once, on the whole page */
+
+  /* the three-zone band every section is built from */
+  .band{display:grid;grid-template-columns:var(--zA) var(--zB) var(--zC)}
+  .band > .a{padding-right:var(--gut)}
+  .band > .b{padding:0 var(--gut);border-left:1px solid var(--hair)}
+  .band > .c{padding-left:var(--gut);border-left:1px solid var(--hair)}
+  .band > .bc{grid-column:2/-1;padding-left:var(--gut);border-left:1px solid var(--hair)}
+
+  .label{
+    font:500 11px/22px var(--mono);letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ink);display:block;margin:0;
+  }
+  .label.soft{color:var(--ink-soft)}
 
   /* ---------- masthead ---------- */
   .mast{display:flex;align-items:baseline;gap:40px;padding:32px 0 20px}
   .wordmark{
-    font-family:var(--display);font-weight:500;font-size:25px;line-height:24px;
-    letter-spacing:-.032em;text-decoration:none;white-space:nowrap;
+    font-family:var(--display);font-weight:600;font-variation-settings:"opsz" 9;
+    font-size:25px;line-height:24px;letter-spacing:-.03em;text-decoration:none;white-space:nowrap;
   }
   .mast .links{display:flex;gap:28px;margin-left:auto;font-size:15px;line-height:24px;color:var(--ink-soft)}
-  .mast .links a{text-decoration:none;border-bottom:1px solid transparent;padding-bottom:2px}
-  .mast .links a:hover{color:var(--ink);border-bottom-color:var(--row)}
-  .login{
-    font-size:15px;line-height:24px;color:var(--ink);text-decoration:none;
-    border-bottom:1px solid var(--ink);padding-bottom:2px;white-space:nowrap;
-  }
-  .login:hover{color:var(--green);border-bottom-color:var(--green)}
+  .mast .links a{text-decoration:none}
+  .mast .links a:hover{color:var(--ink)}
+  .login{font:500 15px/24px var(--sans);color:var(--ink);text-decoration:none;white-space:nowrap}
+  .login:hover{color:var(--green)}
 
-  /* ---------- headline ---------- */
-  .headline{padding:48px 0 56px}
+  /* ---------- headline: the one full-bleed break in the grid ---------- */
+  .headline{padding:46px 0 52px}
   h1{
-    font-family:var(--display);font-weight:400;
-    font-variation-settings:"opsz" 40;
+    font-family:var(--display);font-weight:400;font-variation-settings:"opsz" 40;
     font-size:clamp(2.4rem,6.55vw,5.7rem);
-    line-height:.96;
-    letter-spacing:-.012em;
-    word-spacing:-.05em;
-    margin:0;
+    line-height:.955;letter-spacing:-.022em;word-spacing:-.09em;
+    margin:0 0 0 -2px;   /* E-stem sidebearing, measured */
   }
   h1 .l{display:block}
-  /* round and diagonal starting letters overhang the flush-left edge */
-  h1 .o{margin-left:-.04em}
+  h1 .o{margin-left:-.041em}     /* round initials overhang the stem edge */
 
   /* ---------- action strip ---------- */
-  .act{display:grid;grid-template-columns:1fr auto;align-items:end;gap:32px;padding:28px 0}
+  .act{padding:26px 0;align-items:center}
   form.snap{display:flex;margin:0}
-  .field{position:relative;flex:0 1 296px;min-width:0}
+  .field{position:relative;flex:1 1 auto;min-width:0}
   .field input{
     width:100%;font:400 15px/22px var(--mono);letter-spacing:-.01em;
-    padding:14px 14px;color:var(--ink);
-    background:var(--white);border:1px solid #B3AA91;border-right:0;border-radius:0;
+    padding:14px 15px;color:var(--ink);
+    background:var(--paper);border:1px solid var(--row);border-right:0;border-radius:0;
   }
   .field input::placeholder{color:#8A8471}
   .field input:focus{outline:2px solid var(--green);outline-offset:-2px;position:relative;z-index:1}
   button.cta{
     flex:none;font:500 15.5px/22px var(--sans);
-    color:#F7F4EC;background:var(--green);
-    border:1px solid var(--green);border-radius:0;padding:14px 24px;cursor:pointer;
+    color:#F6F2E8;background:var(--green);
+    border:1px solid var(--green);border-radius:0;padding:14px 26px;cursor:pointer;
   }
   button.cta:hover{background:var(--green-deep);border-color:var(--green-deep)}
   button.cta:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
-  .terms{
-    font:400 12px/22px var(--mono);letter-spacing:.055em;text-transform:uppercase;
-    color:var(--green);margin:0 0 15px;white-space:nowrap;
-  }
 
   /* ---------- hero band ---------- */
-  .band{display:grid;grid-template-columns:var(--rail) minmax(0,1fr)}
-  .band > :first-child{padding:41px var(--gutter) 40px 0;display:flex;flex-direction:column}
-  .band > :last-child{padding:32px 0 40px var(--gutter);border-left:1px solid var(--hair)}
+  .hero{padding:34px 0 40px}
+  .hero .b{display:flex;flex-direction:column}
+  .deck{font-size:18px;line-height:27px;color:var(--ink-soft);margin:0}
+  .anchor{font-size:18px;line-height:27px;color:var(--ink);margin:22px 0 0}
+  .notes{margin-top:auto;padding-top:20px;border-top:1px solid var(--hair)}
+  .notes p{margin:8px 0 0;font-size:14px;line-height:21px;color:var(--ink-soft)}
 
-  .deck{font-size:19px;line-height:28px;color:var(--ink-soft);margin:0}
-  .deck-out{font-size:19px;line-height:28px;color:var(--ink);margin:20px 0 0}
-
-  .notes{margin-top:auto;padding-top:22px;border-top:1px solid var(--hair)}
-  .notes p{margin:0;font-size:14.5px;line-height:22px;color:var(--ink-soft)}
-  .notes p + p{margin-top:12px}
-  .notes .tag{
-    font:500 11px/22px var(--mono);letter-spacing:.1em;text-transform:uppercase;
-    color:var(--ink);display:block;margin-bottom:6px;
-  }
-
-  /* ---------- the specimen: an actual plain-text email ---------- */
-  .mail{background:var(--white);border:1px solid #B3AA91;font-family:var(--mono)}
-  .mail-head{padding:14px 20px;border-bottom:1px solid var(--hair)}
-  .mail-head dl{display:grid;grid-template-columns:52px 1fr;margin:0;font-size:13px;line-height:22px}
-  .mail-head dt{color:var(--ink-soft);text-transform:uppercase;letter-spacing:.06em;font-size:10.5px}
+  /* ---------- the specimen: a plain-text email ---------- */
+  .mail{background:var(--paper);border:1px solid var(--row);font-family:var(--mono)}
+  .mail-head{padding:13px 18px;border-bottom:1px solid var(--hair)}
+  .mail-head dl{display:grid;grid-template-columns:48px 1fr;margin:0;font-size:12.5px;line-height:22px}
+  .mail-head dt{color:var(--ink-soft);text-transform:uppercase;letter-spacing:.06em;font-size:10px}
   .mail-head dd{margin:0;color:var(--ink-soft)}
   .mail-head dd.subj{color:var(--ink);font-weight:600;letter-spacing:-.005em}
-  .mail-body{padding:6px 0 0}
-  .mail-body .ev{
-    display:grid;grid-template-columns:108px minmax(0,1fr);
-    padding:12px 20px;border-bottom:1px solid var(--hair);
-  }
-  .mail-body .ev:last-of-type{border-bottom:0}
-  .mail-body .k{
-    font:600 10.5px/22px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink);
-  }
-  .mail-body .v{font-size:13.5px;line-height:22px;color:var(--ink)}
-  .mail-body .v .n{display:block;color:var(--ink-soft);letter-spacing:-.01em}
-  .mail-body .v .n .d{color:var(--rust)}
-  .mail-foot{
-    padding:13px 20px;border-top:1px solid var(--row);
-    font-size:11.5px;line-height:22px;color:var(--ink-soft);
-  }
+  .mail .ev{padding:11px 18px;border-bottom:1px solid var(--hair)}
+  .mail .k{font:600 10px/20px var(--mono);letter-spacing:.11em;text-transform:uppercase;color:var(--ink);display:block}
+  .mail .v{font-size:13px;line-height:21px;color:var(--ink);display:block}
+  .mail .n{display:block;font-size:13px;line-height:21px;color:var(--ink-soft);letter-spacing:-.01em}
+  .mail .n .d{color:var(--rust)}
+  .mail-foot{padding:12px 18px;font-size:11px;line-height:20px;color:var(--ink-soft)}
 
   /* ---------- section head ---------- */
-  .sect{display:grid;grid-template-columns:var(--rail) minmax(0,1fr);padding:56px 0 48px;gap:var(--gutter)}
+  .sect{padding:52px 0 46px}
   h2{
-    font-family:var(--display);font-weight:400;font-size:clamp(1.85rem,3.1vw,2.7rem);
-    line-height:1.06;letter-spacing:-.02em;margin:-.06em 0 0;
+    font-family:var(--display);font-weight:500;font-variation-settings:"opsz" 30;
+    font-size:clamp(1.8rem,2.95vw,2.5rem);line-height:1.07;letter-spacing:-.024em;
+    word-spacing:-.04em;margin:-.05em 0 0;text-wrap:balance;
   }
-  .lede{margin:0;padding-top:21.2px;color:var(--ink-soft);font-size:17px;line-height:26px;max-width:52ch}
-  .lede .tag{
-    font:500 11px/22px var(--mono);letter-spacing:.1em;text-transform:uppercase;
-    color:var(--ink);display:block;margin-bottom:8px;
-  }
+  .lede{margin:0;color:var(--ink-soft);font-size:16px;line-height:25px}
 
-  /* ---------- the event table: narrow stub, wide text ---------- */
-  .tax{margin:0}
-  .tax .row{display:grid;grid-template-columns:var(--stub) minmax(0,1fr);border-bottom:1px solid var(--row)}
-  .tax .row:last-child{border-bottom:0}
-  .tax dt{
-    font:500 11px/22px var(--mono);letter-spacing:.1em;text-transform:uppercase;
-    color:var(--ink);padding:38.5px 24px 24px 0;   /* +14.5px: label baseline = h3 baseline */
-  }
-  .tax dd{margin:0;padding:24px 0 24px var(--gutter);border-left:1px solid var(--hair)}
+  /* ---------- the event table ---------- */
+  .tax{margin:0;padding:0;list-style:none}
+  .tax .row{padding:30px 0}
   .tax h3{
-    font-family:var(--display);font-weight:400;font-size:2.15rem;line-height:1.06;
-    letter-spacing:-.022em;margin:0 0 10px;
+    font-family:var(--display);font-weight:500;font-variation-settings:"opsz" 22;
+    font-size:1.95rem;line-height:1.08;letter-spacing:-.026em;word-spacing:-.03em;
+    margin:0 0 10px;text-indent:-.012em;text-wrap:balance;
   }
-  .tax p{margin:0;color:var(--ink-soft);font-size:17px;line-height:26px;max-width:56ch}
+  .tax p{margin:0;color:var(--ink-soft);font-size:16px;line-height:25px}
 
-  /* the strongest argument is given the room */
-  .tax .row.lead dt{padding-top:58.9px;padding-bottom:36px}  /* +22.9px for the larger h3 */
-  .tax .row.lead dd{padding-top:36px;padding-bottom:36px}
-  .tax .row.lead h3{font-size:2.65rem;letter-spacing:-.026em}
-  .tax .row.lead p{color:var(--ink)}
+  .tax .row.lead{padding:38px 0 42px}
+  .tax .row.lead h3{font-size:2.6rem;letter-spacing:-.03em;margin-bottom:12px}
+  .tax .row.lead p{color:var(--ink);font-size:17px;line-height:26px}
 
-  /* the remaining five are register entries, on the lightest rule */
-  .tax .row.divide{border-top:1px solid var(--row);border-bottom:1px solid var(--hair)}
-  .tax .row.divide dt{grid-column:1/-1;padding:13px 0 12px;color:var(--ink-soft)}
-  .tax .row.divide dd{display:none}
-  .tax .row.note dt{padding-top:13px}
-  .tax .row.note{border-bottom:1px solid var(--hair)}
-  .tax .row.note dt{padding:13px 24px 13px 0}
-  .tax .row.note dd{
-    padding:13px 0 13px var(--gutter);border-left-color:var(--hair);
-    color:var(--ink-soft);font-size:15.5px;line-height:22px;
+  /* the data moment: one real delta, at scale, in the one accent colour */
+  .art{font-family:var(--mono)}
+  .art .val{display:block;font-size:14.5px;line-height:22px;color:var(--ink)}
+  .art .big{
+    display:block;font-size:3.1rem;line-height:1;letter-spacing:-.035em;
+    font-weight:500;color:var(--rust);margin:6px 0 12px;
   }
+  .art .cap{
+    display:block;font-size:10px;line-height:18px;letter-spacing:.11em;
+    text-transform:uppercase;color:var(--ink-soft);
+  }
+
+  /* the remaining five compress into a specification block: another texture */
+  .spec{display:grid;grid-template-rows:repeat(3,auto);grid-auto-flow:column;
+        grid-auto-columns:1fr;column-gap:var(--gut)}
+  .spec .i{display:grid;grid-template-columns:104px minmax(0,1fr);
+           padding:9px 0;border-bottom:1px solid var(--hair);font-family:var(--mono)}
+  .spec .i span:first-child{font:600 10px/20px var(--mono);letter-spacing:.11em;text-transform:uppercase;color:var(--ink)}
+  .spec .i span:last-child{font-size:12.5px;line-height:20px;color:var(--ink-soft)}
 
   /* ---------- reversed close ---------- */
-  .close{background:var(--green);color:#EDE8DA;margin-top:72px}
-  .close-in{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--gutter);align-items:end;padding:64px 0 66px}
-  .close .kick{
-    font:500 11px/22px var(--mono);letter-spacing:.11em;text-transform:uppercase;
-    color:#9DB3A3;margin:0 0 14px;
-  }
-  .close h2{
-    font-family:var(--display);font-weight:400;font-size:clamp(1.7rem,2.9vw,2.5rem);
-    line-height:1.08;letter-spacing:-.02em;margin:0;color:#F6F2E7;max-width:24ch;
-  }
-  .close form.snap{margin:0 0 4px}
-  .close .field input{background:var(--white);border-color:#0F2A18;color:var(--ink)}
-  .close button.cta{background:#F6F2E7;border-color:#F6F2E7;color:var(--green-deep)}
+  .close{background:var(--green);color:#EDE8DA;margin-top:64px}
+  .close .band{align-items:start}
+  .close-pad{padding:58px 0 60px}
+  .close .label{color:var(--green-pale)}
+  .close .b,.close .c{border-left-color:#2E5E3C}
+  .close h2{color:#F6F2E8;max-width:20ch;font-variation-settings:"opsz" 18;font-weight:500}
+  .close .field input{background:transparent;border-color:#82A18D;color:#F6F2E8}
+  .close .field input::placeholder{color:#8FA996}
+  .close .field input:focus{outline-color:#F6F2E8}
+  .close button.cta{background:#F6F2E8;border-color:#F6F2E8;color:var(--green-deep)}
   .close button.cta:hover{background:#fff;border-color:#fff}
-  .close button.cta:focus-visible{outline:2px solid #F6F2E7;outline-offset:2px}
-  .close .fine{
-    font:400 12px/22px var(--mono);letter-spacing:.055em;text-transform:uppercase;
-    color:#9DB3A3;margin:14px 0 0;text-align:right;
-  }
+  .close button.cta:focus-visible{outline:2px solid #F6F2E8;outline-offset:2px}
+  .close .fine{font:400 11px/20px var(--mono);letter-spacing:.1em;text-transform:uppercase;
+               color:var(--green-pale);margin:16px 0 0}
 
   /* ---------- footer ---------- */
-  footer{display:flex;align-items:baseline;gap:28px;padding:26px 0 40px}
-  footer .wordmark{font-size:19px;color:var(--ink-soft);font-weight:400}
+  footer{display:flex;align-items:baseline;gap:28px;padding:24px 0 40px}
+  footer .wordmark{font-size:18px;color:var(--ink-soft);font-weight:500}
   footer .meta{margin:0 0 0 auto;display:flex;gap:22px;font-size:14px;line-height:24px;color:var(--ink-soft)}
-  footer .meta a{text-decoration:none;border-bottom:1px solid transparent;padding-bottom:1px}
-  footer .meta a:hover{color:var(--ink);border-bottom-color:var(--row)}
+  footer .meta a{text-decoration:none}
+  footer .meta a:hover{color:var(--ink)}
 
   .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 
   @media (max-width:1080px){
-    :root{--gutter:44px;--rail:380px;--stub:176px}
+    :root{--gut:30px}
     h1 .l{display:inline}
     h1 .o{margin-left:0}
     h1{text-wrap:balance}
   }
   @media (max-width:900px){
-    .band,.sect,.close-in{grid-template-columns:1fr}
-    .band > :first-child{padding:28px 0 28px}
-    .band > :last-child{padding:0 0 36px;border-left:0}
-    .notes{margin-top:30px}
-    .sect{padding:44px 0 32px;gap:22px}
-    .act{grid-template-columns:1fr;gap:16px;align-items:start}
-    .terms{margin:0}
-    .tax .row{grid-template-columns:1fr}
-    .tax dt{padding:20px 0 0}
-    .tax .row.divide dt,.tax .row.note dt{padding-top:14px}
-    .tax dd{padding:8px 0 22px;border-left:0}
-    .tax .row.lead dt{padding-top:26px;padding-bottom:0}
-    .tax .row.lead dd{padding:10px 0 28px}
-    .tax .row.divide dt{padding:12px 0}
-    .tax .row.divide dd{display:none}
-    .tax .row.note dt{padding:14px 0 0}
-    .tax .row.note dd{padding:2px 0 14px}
-    .close-in{padding:48px 0 52px;align-items:start;gap:30px}
-    .close .fine{text-align:left}
+    .band{grid-template-columns:1fr}
+    .band > .a{padding:0 0 12px}
+    .band > .b,.band > .c,.band > .bc{grid-column:auto;padding:0;border-left:0}
+    .hero .c{padding-top:30px}
+    .sect .c{padding-top:16px}
+    .tax .row .c{padding-top:22px}
+    .notes{margin-top:28px}
+    .close .c{padding-top:26px}
+    .spec{grid-auto-flow:row;grid-template-rows:none}
   }
   @media (max-width:620px){
     .wrap{padding:0 22px}
     .mast{gap:16px;padding:24px 0 16px}
     .mast .links{display:none}
     .login{margin-left:auto}
-    .headline{padding:32px 0 34px}
+    .headline{padding:30px 0 32px}
     h1{font-size:clamp(2.1rem,9.2vw,2.75rem);line-height:1;letter-spacing:-.018em;word-spacing:normal}
-    .deck,.deck-out{font-size:17.5px;line-height:27px}
+    .deck,.anchor{font-size:17px;line-height:26px}
     form.snap{flex-direction:column}
-    .field{flex:1 1 auto}
-    .field input{border-right:1px solid #B3AA91;border-bottom:0}
-    button.cta{width:100%;padding:15px 24px}
-    .tax h3,.tax .row.lead h3{font-size:1.75rem}
-    .tax p,.tax .row.lead p{font-size:16.5px;line-height:25px}
+    .field input{border-right:1px solid var(--row);border-bottom:0}
+    button.cta{width:100%;padding:15px 26px}
+    .tax .row.lead h3{font-size:1.85rem}
+    .tax h3{font-size:1.6rem}
+    .art .big{font-size:2.4rem}
+    .spec .i{grid-template-columns:100px minmax(0,1fr)}
     footer{flex-direction:column;gap:14px;padding:24px 0 36px}
     footer .meta{margin:0}
   }
@@ -290,34 +258,35 @@
       <span class="l o">six hours after it happens.</span>
     </h1>
   </section>
-  <hr class="r-chapter">
+  <hr class="r-row">
 
-  <section class="act">
-    <!-- wire action/name to your snapshot endpoint -->
-    <form class="snap" action="/snapshot" method="get">
-      <label class="field">
-        <span class="sr">Competitor store URL</span>
-        <input type="text" name="store" inputmode="url" autocomplete="off" spellcheck="false" placeholder="competitor-store.com">
-      </label>
-      <button class="cta" type="submit">Get a free snapshot</button>
-    </form>
-    <p class="terms">Free, no signup</p>
+  <section class="band act">
+    <div class="a"><p class="label soft">Free · No signup · No card</p></div>
+    <div class="bc">
+      <!-- wire action/name to your snapshot endpoint -->
+      <form class="snap" action="/snapshot" method="get">
+        <label class="field">
+          <span class="sr">Competitor store URL</span>
+          <input type="text" name="store" inputmode="url" autocomplete="off" spellcheck="false" placeholder="competitor-store.com">
+        </label>
+        <button class="cta" type="submit">Get a free snapshot</button>
+      </form>
+    </div>
   </section>
   <hr class="r-row">
 
-  <section class="band">
-    <div>
+  <section class="band hero">
+    <div class="a"><p class="label">The alert</p></div>
+    <div class="b">
       <p class="deck">Paste a store URL and get the whole catalogue in seconds — prices, discounts, what’s sold out. Then an email every time any of it moves.</p>
-      <p class="deck-out">No SKU matching, no app to install.</p>
-
+      <p class="anchor">$9 a month, not $49 — there’s nothing to map and nobody to onboard you.</p>
       <div class="notes">
-        <span class="tag">What we touch</span>
+        <p class="label soft">What we touch</p>
         <p>Public catalogue data only. No login, no app, and no access to your own shop.</p>
-        <p>$9 a month, not $49 — there’s nothing to map and nobody to onboard you.</p>
+        <p>No SKU matching, and nothing to install.</p>
       </div>
     </div>
-
-    <div>
+    <div class="c">
       <div class="mail" aria-label="Example alert email">
         <div class="mail-head">
           <dl>
@@ -326,25 +295,20 @@
             <dt>Subj</dt><dd class="subj">3 changes at Kindred Beauty</dd>
           </dl>
         </div>
-        <div class="mail-body">
-          <div class="ev">
-            <span class="k">Price cut</span>
-            <span class="v">Matte Lip Kit — Rosewood
-              <span class="n">$29.00 → $22.00 &nbsp;<span class="d">−24.1%</span></span>
-            </span>
-          </div>
-          <div class="ev">
-            <span class="k">New product</span>
-            <span class="v">Winter Set
-              <span class="n">listed at $48.00 · 4 variants</span>
-            </span>
-          </div>
-          <div class="ev">
-            <span class="k">Sold out</span>
-            <span class="v">Eyeliner — Jet
-              <span class="n">3 of 3 variants unavailable</span>
-            </span>
-          </div>
+        <div class="ev">
+          <span class="k">Price cut</span>
+          <span class="v">Matte Lip Kit — Rosewood</span>
+          <span class="n">$29.00 → $22.00 &nbsp;<span class="d">−24.1%</span></span>
+        </div>
+        <div class="ev">
+          <span class="k">New product</span>
+          <span class="v">Winter Set</span>
+          <span class="n">listed at $48.00 · 4 variants</span>
+        </div>
+        <div class="ev">
+          <span class="k">Sold out</span>
+          <span class="v">Eyeliner — Jet</span>
+          <span class="n">3 of 3 variants unavailable</span>
         </div>
         <div class="mail-foot">kindred-beauty.com · checked 09:14, next check 15:14 · reply to unsubscribe</div>
       </div>
@@ -352,72 +316,74 @@
   </section>
   <hr class="r-chapter">
 
-  <section class="sect" id="events">
-    <h2>Three of the eight you’d otherwise find out too late.</h2>
-    <p class="lede">
-      <span class="tag">Eight change types, per variant</span>
-      Every change is tied to one variant and one price, so you get what moved and by how much — never a notification that something happened.
-    </p>
+  <section class="band sect" id="events">
+    <div class="a"><p class="label">Eight change types</p></div>
+    <div class="b"><h2>Three you’d otherwise find out too late.</h2></div>
+    <div class="c"><p class="lede">Every change is tied to one variant and one price, so you get what moved and by how much — never a notification that something happened.</p></div>
   </section>
   <hr class="r-row">
 
-  <dl class="tax">
-    <div class="row lead">
-      <dt>Price cut</dt>
-      <dd>
+  <ul class="tax">
+    <li class="band row lead">
+      <div class="a"><p class="label">Price cut</p></div>
+      <div class="b">
         <h3>You’re being undercut.</h3>
         <p>Your ROAS tells you a week later, once the ad spend is gone. This tells you the morning it happens — the old price, the new price and the variant it moved on.</p>
-      </dd>
-    </div>
-    <div class="row">
-      <dt>New product</dt>
-      <dd>
+      </div>
+      <div class="c art">
+        <span class="val">$29.00 → $22.00</span>
+        <span class="big">−24.1%</span>
+        <span class="cap">Matte Lip Kit — Rosewood, 09:14</span>
+      </div>
+    </li>
+    <hr class="r-hair">
+    <li class="band row">
+      <div class="a"><p class="label">New product</p></div>
+      <div class="b">
         <h3>They just launched.</h3>
         <p>Every new listing across the whole catalogue on day one, including the products you would never have thought to look for.</p>
-      </dd>
-    </div>
-    <div class="row">
-      <dt>Sold out</dt>
-      <dd>
+      </div>
+      <div class="c art">
+        <span class="val">Winter Set · listed at $48.00</span>
+        <span class="cap">4 variants, first seen 06:12</span>
+      </div>
+    </li>
+    <hr class="r-hair">
+    <li class="band row">
+      <div class="a"><p class="label">Sold out</p></div>
+      <div class="b">
         <h3>Demand with nowhere to go.</h3>
         <p>When a competitor runs dry their customers start looking. You have a window, and it closes the day they restock.</p>
-      </dd>
+      </div>
+      <div class="c art">
+        <span class="val">Eyeliner — Jet · 3 of 3 out</span>
+        <span class="cap">Unavailable 41 hours</span>
+      </div>
+    </li>
+  </ul>
+  <hr class="r-row">
+
+  <section class="band sect" style="padding:26px 0 30px">
+    <div class="a"><p class="label soft">Also tracked</p></div>
+    <div class="bc">
+      <div class="spec">
+        <div class="i"><span>Price up</span><span>A variant reprices upward, with the delta.</span></div>
+        <div class="i"><span>Sale started</span><span>A compare-at price appears against the list price.</span></div>
+        <div class="i"><span>Sale ended</span><span>The discount comes off and the old price returns.</span></div>
+        <div class="i"><span>Removed</span><span>A product or variant leaves the catalogue.</span></div>
+        <div class="i"><span>Back in stock</span><span>Inventory returns — and your window closes.</span></div>
+      </div>
     </div>
-    <div class="row divide">
-      <dt>Also tracked, per variant</dt>
-    </div>
-    <div class="row note">
-      <dt>Price up</dt>
-      <dd>A variant reprices upward, with the delta.</dd>
-    </div>
-    <div class="row note">
-      <dt>Sale started</dt>
-      <dd>A compare-at price appears against the list price.</dd>
-    </div>
-    <div class="row note">
-      <dt>Sale ended</dt>
-      <dd>The discount comes off and the old price returns.</dd>
-    </div>
-    <div class="row note">
-      <dt>Removed</dt>
-      <dd>A product or variant leaves the catalogue entirely.</dd>
-    </div>
-    <div class="row note">
-      <dt>Back in stock</dt>
-      <dd>Inventory returns — and your window closes.</dd>
-    </div>
-  </dl>
+  </section>
 
 </div>
 
 <section class="close">
   <div class="wrap">
-    <div class="close-in">
-      <div>
-        <p class="kick">Start with one store</p>
-        <h2>Paste a competitor’s URL and read their whole catalogue.</h2>
-      </div>
-      <div>
+    <div class="band close-pad">
+      <div class="a"><p class="label">Start with one store</p></div>
+      <div class="b"><h2>Paste a competitor’s URL and read their whole catalogue.</h2></div>
+      <div class="c">
         <form class="snap" action="/snapshot" method="get">
           <label class="field">
             <span class="sr">Competitor store URL</span>
@@ -425,7 +391,7 @@
           </label>
           <button class="cta" type="submit">Get a free snapshot</button>
         </form>
-        <p class="fine">Free · 7-day trial · No card</p>
+        <p class="fine">Free · No signup · No card</p>
       </div>
     </div>
   </div>
