@@ -3,41 +3,44 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>PriceDrift — every price change in your competitors’ Shopify stores</title>
+<title>PriceDrift — every price change in your competitors’ Shopify store</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Geist:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Geist:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     color-scheme: light;
+
     --cream:#F4F0E6;
-    --paper:#FAF7EF;
+    --white:#FFFFFF;          /* machine surfaces only */
     --ink:#1A1A17;
-    --ink-soft:#6B6758;
-    --ink-faint:#9A9482;
-    --rule:#DCD5C3;
-    --rule-firm:#C4BCA6;
+    --ink-soft:#63604F;
+    --dim:#A8A292;            /* separators and hairline glyphs, never words */
     --green:#1D4D2B;
+    --green-deep:#173D22;
     --rust:#A23A24;
+
+    /* three rule weights, and only three */
+    --hair:#DDD6C4;           /* sub-table rows */
+    --row:#C6BDA6;            /* row separators */
+    --chapter:#1A1A17;        /* chapter boundaries, 2px */
 
     --display:'Bodoni Moda', Georgia, 'Times New Roman', serif;
     --sans:'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
     --mono:'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 
-    /* one measure governs the whole left rail */
-    --measure:480px;
-    --gutter:56px;
+    --gutter:60px;
+    --rail:440px;
+    --stub:200px;
   }
   *,*::before,*::after{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
   body{
     margin:0;
-    padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0);
+    padding:env(safe-area-inset-top,0) 0 0;
     background:var(--cream);
     color:var(--ink);
-    font-family:var(--sans);
-    font-size:17px;
-    line-height:1.55;
+    font:400 16px/24px var(--sans);   /* 24px is the module everything lands on */
     font-feature-settings:"kern" 1,"liga" 1;
     -webkit-font-smoothing:antialiased;
     -moz-osx-font-smoothing:grayscale;
@@ -45,202 +48,222 @@
   a{color:inherit}
   .wrap{max-width:1200px;margin:0 auto;padding:0 40px}
 
-  /* every horizontal rule spans the container; verticals terminate on them */
-  .rule{border:0;border-top:1px solid var(--rule);margin:0}
-  .rule-firm{border-top-color:var(--rule-firm)}
+  hr{border:0;margin:0}
+  .r-hair{border-top:1px solid var(--hair)}
+  .r-row{border-top:1px solid var(--row)}
+  .r-chapter{border-top:2px solid var(--chapter)}
 
   /* ---------- masthead ---------- */
-  .mast{display:flex;align-items:baseline;gap:40px;padding:30px 0 22px}
+  .mast{display:flex;align-items:baseline;gap:40px;padding:32px 0 20px}
   .wordmark{
-    font-family:var(--display);font-weight:400;font-size:25px;
-    letter-spacing:-.015em;text-decoration:none;white-space:nowrap;
+    font-family:var(--display);font-weight:500;font-size:25px;line-height:24px;
+    letter-spacing:-.032em;text-decoration:none;white-space:nowrap;
   }
-  .mast nav{display:flex;gap:28px;margin-left:auto;font-size:15px;color:var(--ink-soft)}
-  .mast nav a{text-decoration:none;padding-bottom:1px;border-bottom:1px solid transparent}
-  .mast nav a:hover{color:var(--ink);border-bottom-color:var(--rule-firm)}
+  .mast .links{display:flex;gap:28px;margin-left:auto;font-size:15px;line-height:24px;color:var(--ink-soft)}
+  .mast .links a{text-decoration:none;border-bottom:1px solid transparent;padding-bottom:2px}
+  .mast .links a:hover{color:var(--ink);border-bottom-color:var(--row)}
   .login{
-    font-size:15px;color:var(--ink);text-decoration:none;
-    border-bottom:1px solid var(--ink);padding-bottom:1px;white-space:nowrap;
+    font-size:15px;line-height:24px;color:var(--ink);text-decoration:none;
+    border-bottom:1px solid var(--ink);padding-bottom:2px;white-space:nowrap;
   }
-  .login:hover{border-bottom-color:var(--green);color:var(--green)}
+  .login:hover{color:var(--green);border-bottom-color:var(--green)}
 
-  /* ---------- shared two-column spine ---------- */
-  .band{display:grid;grid-template-columns:minmax(0,536px) minmax(0,1fr)}
-  .band > :first-child{padding:40px var(--gutter) 42px 0;display:flex;flex-direction:column}
-  .band > :last-child{padding:40px 0 42px var(--gutter);border-left:1px solid var(--rule);display:flex;flex-direction:column}
-
-  /* ---------- hero ---------- */
-  .headline{padding:54px 0 46px}
-  h1 br,h2 br{content:none}
+  /* ---------- headline ---------- */
+  .headline{padding:48px 0 56px}
   h1{
     font-family:var(--display);font-weight:400;
-    font-variation-settings:"opsz" 44;
-    font-size:clamp(2.4rem,6.6vw,5.75rem);
-    line-height:1.02;letter-spacing:-.024em;
-    margin:-.11em 0 -.12em;
-    text-wrap:nowrap;
+    font-variation-settings:"opsz" 40;
+    font-size:clamp(2.4rem,6.55vw,5.7rem);
+    line-height:.96;
+    letter-spacing:-.012em;
+    word-spacing:-.05em;
+    margin:0;
   }
-  .deck{
-    font-size:19px;line-height:1.5;color:var(--ink-soft);
-    margin:0 0 32px;max-width:var(--measure);
-  }
-  .deck b{color:var(--ink);font-weight:500}
+  h1 .l{display:block}
+  /* round and diagonal starting letters overhang the flush-left edge */
+  h1 .o{margin-left:-.04em}
 
-  form.snap{display:flex;gap:8px;max-width:var(--measure);margin:0 0 15px}
-  .field{position:relative;flex:1 1 auto;min-width:0}
+  /* ---------- action strip ---------- */
+  .act{display:grid;grid-template-columns:1fr auto;align-items:end;gap:32px;padding:28px 0}
+  form.snap{display:flex;margin:0}
+  .field{position:relative;flex:0 1 296px;min-width:0}
   .field input{
-    width:100%;font:400 16px/1 var(--mono);letter-spacing:-.01em;
-    padding:15px 14px;color:var(--ink);
-    background:var(--paper);border:1px solid var(--rule-firm);border-radius:0;
+    width:100%;font:400 15px/22px var(--mono);letter-spacing:-.01em;
+    padding:14px 14px;color:var(--ink);
+    background:var(--white);border:1px solid #B3AA91;border-right:0;border-radius:0;
   }
-  .field input::placeholder{color:var(--ink-faint)}
-  .field input:focus{outline:2px solid var(--green);outline-offset:-1px;border-color:var(--green)}
+  .field input::placeholder{color:#8A8471}
+  .field input:focus{outline:2px solid var(--green);outline-offset:-2px;position:relative;z-index:1}
   button.cta{
-    flex:none;font:500 15.5px/1 var(--sans);letter-spacing:.005em;
-    color:#FAF7EF;background:var(--green);
-    border:1px solid var(--green);border-radius:0;padding:15px 22px;cursor:pointer;
+    flex:none;font:500 15.5px/22px var(--sans);
+    color:#F7F4EC;background:var(--green);
+    border:1px solid var(--green);border-radius:0;padding:14px 24px;cursor:pointer;
   }
-  button.cta:hover{background:#163C21;border-color:#163C21}
+  button.cta:hover{background:var(--green-deep);border-color:var(--green-deep)}
   button.cta:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
-
   .terms{
-    font:400 12px/1.5 var(--mono);letter-spacing:.055em;text-transform:uppercase;
-    color:var(--ink-faint);margin:0;max-width:var(--measure);
+    font:400 12px/22px var(--mono);letter-spacing:.055em;text-transform:uppercase;
+    color:var(--green);margin:0 0 15px;white-space:nowrap;
   }
-  .terms .lead{color:var(--green)}
 
-  /* right column: specimen + the objections it raises */
-  /* footnotes sit on the closing rule, so the rail is anchored top and bottom */
-  .notes{margin:56px 0 0;padding:20px 0 0;border-top:1px solid var(--rule);max-width:var(--measure)}
-  .rail-foot{margin-top:auto}
-  .notes p{margin:0;font-size:14.5px;line-height:1.5;color:var(--ink-soft)}
-  .notes p + p{margin-top:11px}
+  /* ---------- hero band ---------- */
+  .band{display:grid;grid-template-columns:var(--rail) minmax(0,1fr)}
+  .band > :first-child{padding:41px var(--gutter) 40px 0;display:flex;flex-direction:column}
+  .band > :last-child{padding:32px 0 40px var(--gutter);border-left:1px solid var(--hair)}
+
+  .deck{font-size:19px;line-height:28px;color:var(--ink-soft);margin:0}
+  .deck-out{font-size:19px;line-height:28px;color:var(--ink);margin:20px 0 0}
+
+  .notes{margin-top:auto;padding-top:22px;border-top:1px solid var(--hair)}
+  .notes p{margin:0;font-size:14.5px;line-height:22px;color:var(--ink-soft)}
+  .notes p + p{margin-top:12px}
   .notes .tag{
-    font:400 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;
-    color:var(--ink-faint);display:block;margin-bottom:9px;
+    font:500 11px/22px var(--mono);letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ink);display:block;margin-bottom:6px;
   }
 
-  /* ---------- alert specimen ---------- */
-  .card{background:var(--paper);border:1px solid var(--rule-firm);margin-top:0}
-  .card-top{
-    padding:13px 18px;border-bottom:1px solid var(--rule);
-    display:flex;align-items:baseline;gap:10px;
+  /* ---------- the specimen: an actual plain-text email ---------- */
+  .mail{background:var(--white);border:1px solid #B3AA91;font-family:var(--mono)}
+  .mail-head{padding:14px 20px;border-bottom:1px solid var(--hair)}
+  .mail-head dl{display:grid;grid-template-columns:52px 1fr;margin:0;font-size:13px;line-height:22px}
+  .mail-head dt{color:var(--ink-soft);text-transform:uppercase;letter-spacing:.06em;font-size:10.5px}
+  .mail-head dd{margin:0;color:var(--ink-soft)}
+  .mail-head dd.subj{color:var(--ink);font-weight:600;letter-spacing:-.005em}
+  .mail-body{padding:6px 0 0}
+  .mail-body .ev{
+    display:grid;grid-template-columns:108px minmax(0,1fr);
+    padding:12px 20px;border-bottom:1px solid var(--hair);
   }
-  .card-top .from{font-family:var(--display);font-size:16px;letter-spacing:-.01em}
-  .card-top .when{font:400 11.5px/1 var(--mono);color:var(--ink-faint);margin-left:auto}
-  .card-subj{padding:17px 18px 15px;border-bottom:1px solid var(--rule)}
-  .card-subj p{margin:0;font-family:var(--display);font-size:22px;line-height:1.22;letter-spacing:-.01em}
-  .card-subj .src{font:400 11.5px/1 var(--mono);color:var(--ink-faint);margin-top:10px;display:block}
-  .rows{list-style:none;margin:0;padding:0}
-  .rows li{padding:13px 18px;border-bottom:1px solid var(--rule)}
-  .kind{
-    font:500 10.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;
-    color:var(--ink-soft);display:block;margin-bottom:7px;
+  .mail-body .ev:last-of-type{border-bottom:0}
+  .mail-body .k{
+    font:600 10.5px/22px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink);
   }
-  .kind.cut{color:var(--rust)}
-  .kind.new{color:var(--green)}
-  .what .name{font-size:15px;font-weight:500;letter-spacing:-.005em}
-  .what .data{font:400 12.5px/1.5 var(--mono);color:var(--ink-soft);display:block;margin-top:2px}
-  .what .data .down{color:var(--rust)}
-  .card-foot{padding:12px 18px;font:400 11.5px/1.4 var(--mono);color:var(--ink-faint)}
+  .mail-body .v{font-size:13.5px;line-height:22px;color:var(--ink)}
+  .mail-body .v .n{display:block;color:var(--ink-soft);letter-spacing:-.01em}
+  .mail-body .v .n .d{color:var(--rust)}
+  .mail-foot{
+    padding:13px 20px;border-top:1px solid var(--row);
+    font-size:11.5px;line-height:22px;color:var(--ink-soft);
+  }
 
-  /* ---------- taxonomy ---------- */
+  /* ---------- section head ---------- */
+  .sect{display:grid;grid-template-columns:var(--rail) minmax(0,1fr);padding:56px 0 48px;gap:var(--gutter)}
   h2{
-    font-family:var(--display);font-weight:400;
-    font-size:clamp(1.9rem,3.2vw,2.85rem);
-    line-height:1.08;letter-spacing:-.018em;margin:-.08em 0 0;
+    font-family:var(--display);font-weight:400;font-size:clamp(1.85rem,3.1vw,2.7rem);
+    line-height:1.06;letter-spacing:-.02em;margin:-.06em 0 0;
   }
-  .lede{color:var(--ink-soft);font-size:17px;line-height:1.5;margin:auto 0 .34em;max-width:46ch}
+  .lede{margin:0;padding-top:21.2px;color:var(--ink-soft);font-size:17px;line-height:26px;max-width:52ch}
   .lede .tag{
-    font:400 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;
-    color:var(--ink-faint);display:block;margin-bottom:12px;
+    font:500 11px/22px var(--mono);letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ink);display:block;margin-bottom:8px;
   }
 
+  /* ---------- the event table: narrow stub, wide text ---------- */
   .tax{margin:0}
-  .tax .row{
-    display:grid;grid-template-columns:minmax(0,536px) minmax(0,1fr);
-    border-bottom:1px solid var(--rule);
-  }
+  .tax .row{display:grid;grid-template-columns:var(--stub) minmax(0,1fr);border-bottom:1px solid var(--row)}
   .tax .row:last-child{border-bottom:0}
-  .tax dt{padding:30px var(--gutter) 32px 0}
-  .tax dd{
-    margin:0;padding:30px 0 32px var(--gutter);border-left:1px solid var(--rule);
-    color:var(--ink-soft);font-size:16px;line-height:1.5;
+  .tax dt{
+    font:500 11px/22px var(--mono);letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ink);padding:38.5px 24px 24px 0;   /* +14.5px: label baseline = h3 baseline */
   }
-  .tax .label{
-    font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;
-    color:var(--ink-soft);display:block;margin-bottom:14px;
-  }
-  .tax .label.cut{color:var(--rust)}
-  .tax .label.new{color:var(--green)}
+  .tax dd{margin:0;padding:24px 0 24px var(--gutter);border-left:1px solid var(--hair)}
   .tax h3{
-    font-family:var(--display);font-weight:400;font-size:1.6rem;line-height:1.12;
-    letter-spacing:-.016em;margin:0;
+    font-family:var(--display);font-weight:400;font-size:2.15rem;line-height:1.06;
+    letter-spacing:-.022em;margin:0 0 10px;
+  }
+  .tax p{margin:0;color:var(--ink-soft);font-size:17px;line-height:26px;max-width:56ch}
+
+  /* the strongest argument is given the room */
+  .tax .row.lead dt{padding-top:58.9px;padding-bottom:36px}  /* +22.9px for the larger h3 */
+  .tax .row.lead dd{padding-top:36px;padding-bottom:36px}
+  .tax .row.lead h3{font-size:2.65rem;letter-spacing:-.026em}
+  .tax .row.lead p{color:var(--ink)}
+
+  /* the remaining five are register entries, on the lightest rule */
+  .tax .row.divide{border-top:1px solid var(--row);border-bottom:1px solid var(--hair)}
+  .tax .row.divide dt{grid-column:1/-1;padding:13px 0 12px;color:var(--ink-soft)}
+  .tax .row.divide dd{display:none}
+  .tax .row.note dt{padding-top:13px}
+  .tax .row.note{border-bottom:1px solid var(--hair)}
+  .tax .row.note dt{padding:13px 24px 13px 0}
+  .tax .row.note dd{
+    padding:13px 0 13px var(--gutter);border-left-color:var(--hair);
+    color:var(--ink-soft);font-size:15.5px;line-height:22px;
   }
 
-  /* the strongest argument gets the size and the room */
-  .tax .row.lead dt{padding-top:38px;padding-bottom:40px}
-  .tax .row.lead dd{padding-top:38px;padding-bottom:40px;color:var(--ink);font-size:17.5px}
-  .tax .row.lead h3{font-size:2.3rem;line-height:1.04;letter-spacing:-.022em}
-
-  /* the break between the three arguments and the five remaining events */
-  .tax .row.divide{border-top:1px solid var(--rule-firm);border-bottom:0}
-  .tax .row.divide dt{padding:13px var(--gutter) 13px 0}
-  .tax .row.divide dd{padding:13px 0 13px var(--gutter)}
-  .tax .row.divide .label{margin-bottom:0;color:var(--ink)}
-
-  /* the remaining five event types are notes, not features */
-  .tax .row.note dt{padding-top:15px;padding-bottom:15px}
-  .tax .row.note dd{padding-top:15px;padding-bottom:15px;font-size:15.5px}
-  .tax .row.note .label{margin-bottom:0;color:var(--ink-faint)}
-
-  footer{display:flex;align-items:baseline;gap:28px;padding:22px 0 60px}
-  footer .wordmark{font-size:19px;color:var(--ink-soft)}
-  footer .colophon{
-    margin:0 0 0 auto;text-align:right;
-    font:400 11.5px/1.6 var(--mono);letter-spacing:.07em;text-transform:uppercase;
-    color:var(--ink-faint);
+  /* ---------- reversed close ---------- */
+  .close{background:var(--green);color:#EDE8DA;margin-top:72px}
+  .close-in{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--gutter);align-items:end;padding:64px 0 66px}
+  .close .kick{
+    font:500 11px/22px var(--mono);letter-spacing:.11em;text-transform:uppercase;
+    color:#9DB3A3;margin:0 0 14px;
   }
-  footer .colophon span{color:var(--rule-firm);padding:0 4px}
+  .close h2{
+    font-family:var(--display);font-weight:400;font-size:clamp(1.7rem,2.9vw,2.5rem);
+    line-height:1.08;letter-spacing:-.02em;margin:0;color:#F6F2E7;max-width:24ch;
+  }
+  .close form.snap{margin:0 0 4px}
+  .close .field input{background:var(--white);border-color:#0F2A18;color:var(--ink)}
+  .close button.cta{background:#F6F2E7;border-color:#F6F2E7;color:var(--green-deep)}
+  .close button.cta:hover{background:#fff;border-color:#fff}
+  .close button.cta:focus-visible{outline:2px solid #F6F2E7;outline-offset:2px}
+  .close .fine{
+    font:400 12px/22px var(--mono);letter-spacing:.055em;text-transform:uppercase;
+    color:#9DB3A3;margin:14px 0 0;text-align:right;
+  }
+
+  /* ---------- footer ---------- */
+  footer{display:flex;align-items:baseline;gap:28px;padding:26px 0 40px}
+  footer .wordmark{font-size:19px;color:var(--ink-soft);font-weight:400}
+  footer .meta{margin:0 0 0 auto;display:flex;gap:22px;font-size:14px;line-height:24px;color:var(--ink-soft)}
+  footer .meta a{text-decoration:none;border-bottom:1px solid transparent;padding-bottom:1px}
+  footer .meta a:hover{color:var(--ink);border-bottom-color:var(--row)}
 
   .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 
-  @media (max-width:1040px){
-    :root{--gutter:40px}
-    h1,h2{text-wrap:balance}
-    h1 br,h2 br{display:none}
+  @media (max-width:1080px){
+    :root{--gutter:44px;--rail:380px;--stub:176px}
+    h1 .l{display:inline}
+    h1 .o{margin-left:0}
+    h1{text-wrap:balance}
   }
-  @media (max-width:880px){
-    .band{grid-template-columns:1fr}
-    .band > :first-child{padding:34px 0 32px}
-    .band > :last-child{padding:0 0 38px;border-left:0}
-    .card{margin-top:0}
-    .rail-foot{margin-top:34px}
-    .notes{margin-top:34px}
-    .lede{margin:22px 0 0}
+  @media (max-width:900px){
+    .band,.sect,.close-in{grid-template-columns:1fr}
+    .band > :first-child{padding:28px 0 28px}
+    .band > :last-child{padding:0 0 36px;border-left:0}
+    .notes{margin-top:30px}
+    .sect{padding:44px 0 32px;gap:22px}
+    .act{grid-template-columns:1fr;gap:16px;align-items:start}
+    .terms{margin:0}
     .tax .row{grid-template-columns:1fr}
-    .tax dt{padding:22px 0 0}
-    .tax dd{padding:10px 0 24px;border-left:0}
-    .tax .row.lead dt{padding-top:28px;padding-bottom:0}
-    .tax .row.lead dd{padding:12px 0 30px}
-    .tax .row.note dt{padding:16px 0 0}
-    .tax .row.note dd{padding:5px 0 17px}
-  }
-  @media (max-width:640px){
-    body{font-size:16px}
-    .wrap{padding:0 22px}
-    .mast{gap:18px;padding:22px 0 18px}
-    .mast nav{display:none}
-    .login{margin-left:auto}
-    footer{flex-direction:column;gap:14px;padding:20px 0 48px}
-    footer .colophon{margin:0;text-align:left}
+    .tax dt{padding:20px 0 0}
+    .tax .row.divide dt,.tax .row.note dt{padding-top:14px}
+    .tax dd{padding:8px 0 22px;border-left:0}
+    .tax .row.lead dt{padding-top:26px;padding-bottom:0}
+    .tax .row.lead dd{padding:10px 0 28px}
+    .tax .row.divide dt{padding:12px 0}
     .tax .row.divide dd{display:none}
-    h1{font-size:clamp(2.15rem,9.2vw,2.8rem);letter-spacing:-.018em}
-    .deck{font-size:17.5px}
-    form.snap{flex-direction:column;gap:9px}
-    button.cta{width:100%;padding:16px 22px}
-    .tax .row.lead h3{font-size:1.8rem}
-    .tax .row.lead p{font-size:16.5px}
+    .tax .row.note dt{padding:14px 0 0}
+    .tax .row.note dd{padding:2px 0 14px}
+    .close-in{padding:48px 0 52px;align-items:start;gap:30px}
+    .close .fine{text-align:left}
+  }
+  @media (max-width:620px){
+    .wrap{padding:0 22px}
+    .mast{gap:16px;padding:24px 0 16px}
+    .mast .links{display:none}
+    .login{margin-left:auto}
+    .headline{padding:32px 0 34px}
+    h1{font-size:clamp(2.1rem,9.2vw,2.75rem);line-height:1;letter-spacing:-.018em;word-spacing:normal}
+    .deck,.deck-out{font-size:17.5px;line-height:27px}
+    form.snap{flex-direction:column}
+    .field{flex:1 1 auto}
+    .field input{border-right:1px solid #B3AA91;border-bottom:0}
+    button.cta{width:100%;padding:15px 24px}
+    .tax h3,.tax .row.lead h3{font-size:1.75rem}
+    .tax p,.tax .row.lead p{font-size:16.5px;line-height:25px}
+    footer{flex-direction:column;gap:14px;padding:24px 0 36px}
+    footer .meta{margin:0}
   }
   @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
@@ -251,142 +274,171 @@
 
   <header class="mast">
     <a class="wordmark" href="/">PriceDrift</a>
-    <nav>
+    <div class="links">
       <a href="#how">How it works</a>
-      <a href="#events">Events</a>
-      <a href="#compare">Vs. others</a>
+      <a href="#events">Change types</a>
       <a href="#pricing">Pricing</a>
-    </nav>
+    </div>
     <a class="login" href="/dashboard.html">Log in</a>
   </header>
-  <hr class="rule rule-firm">
+  <hr class="r-hair">
 
   <section class="headline">
-    <h1>Every price change in your <br>competitors’ Shopify store, <br>six hours after it happens.</h1>
+    <h1>
+      <span class="l">Every price change in your</span>
+      <span class="l o">competitors’ Shopify store,</span>
+      <span class="l o">six hours after it happens.</span>
+    </h1>
   </section>
-  <hr class="rule">
+  <hr class="r-chapter">
+
+  <section class="act">
+    <!-- wire action/name to your snapshot endpoint -->
+    <form class="snap" action="/snapshot" method="get">
+      <label class="field">
+        <span class="sr">Competitor store URL</span>
+        <input type="text" name="store" inputmode="url" autocomplete="off" spellcheck="false" placeholder="competitor-store.com">
+      </label>
+      <button class="cta" type="submit">Get a free snapshot</button>
+    </form>
+    <p class="terms">Free, no signup</p>
+  </section>
+  <hr class="r-row">
 
   <section class="band">
     <div>
-      <p class="deck">Paste a store URL and get the whole catalogue in seconds — prices, discounts, what’s sold out. Then an email every time any of it moves. <b>No SKU matching, no app to install.</b></p>
+      <p class="deck">Paste a store URL and get the whole catalogue in seconds — prices, discounts, what’s sold out. Then an email every time any of it moves.</p>
+      <p class="deck-out">No SKU matching, no app to install.</p>
 
-      <!-- wire action/name to your snapshot endpoint -->
-      <form class="snap" action="/snapshot" method="get">
-        <label class="field">
-          <span class="sr">Competitor store URL</span>
-          <input type="text" name="store" inputmode="url" autocomplete="off" spellcheck="false" placeholder="competitor-store.com">
-        </label>
-        <button class="cta" type="submit">Get a free snapshot</button>
-      </form>
-      <p class="terms"><span class="lead">Free, no signup.</span> Alerts $9/mo · 7-day trial, no card</p>
-
-      <div class="rail-foot">
-        <div class="notes">
-          <span class="tag">What we touch</span>
-          <p>Public catalogue data only. No login, no app, and no access to your own shop.</p>
-          <p>$9 a month, not $49 — there’s nothing to map and nobody to onboard you.</p>
-        </div>
+      <div class="notes">
+        <span class="tag">What we touch</span>
+        <p>Public catalogue data only. No login, no app, and no access to your own shop.</p>
+        <p>$9 a month, not $49 — there’s nothing to map and nobody to onboard you.</p>
       </div>
     </div>
 
     <div>
-      <div class="card" aria-label="Example alert email">
-        <div class="card-top">
-          <span class="from">PriceDrift</span>
-          <span class="when">today 09:14</span>
+      <div class="mail" aria-label="Example alert email">
+        <div class="mail-head">
+          <dl>
+            <dt>From</dt><dd>PriceDrift alerts</dd>
+            <dt>Sent</dt><dd>Today 09:14</dd>
+            <dt>Subj</dt><dd class="subj">3 changes at Kindred Beauty</dd>
+          </dl>
         </div>
-        <div class="card-subj">
-          <p>3 changes at Kindred Beauty</p>
-          <span class="src">kindred-beauty.com · last 6 hours</span>
+        <div class="mail-body">
+          <div class="ev">
+            <span class="k">Price cut</span>
+            <span class="v">Matte Lip Kit — Rosewood
+              <span class="n">$29.00 → $22.00 &nbsp;<span class="d">−24.1%</span></span>
+            </span>
+          </div>
+          <div class="ev">
+            <span class="k">New product</span>
+            <span class="v">Winter Set
+              <span class="n">listed at $48.00 · 4 variants</span>
+            </span>
+          </div>
+          <div class="ev">
+            <span class="k">Sold out</span>
+            <span class="v">Eyeliner — Jet
+              <span class="n">3 of 3 variants unavailable</span>
+            </span>
+          </div>
         </div>
-        <ul class="rows">
-          <li>
-            <span class="kind cut">Price cut</span>
-            <span class="what">
-              <span class="name">Matte Lip Kit</span>
-              <span class="data">$29.00 → $22.00 <span class="down">−24.1%</span></span>
-            </span>
-          </li>
-          <li>
-            <span class="kind new">New product</span>
-            <span class="what">
-              <span class="name">Winter Set</span>
-              <span class="data">listed at $48.00 · 4 variants</span>
-            </span>
-          </li>
-          <li>
-            <span class="kind">Sold out</span>
-            <span class="what">
-              <span class="name">Eyeliner — Jet</span>
-              <span class="data">all 3 variants out of stock</span>
-            </span>
-          </li>
-        </ul>
-        <div class="card-foot">Every store checked every 6 hours · reply to unsubscribe</div>
+        <div class="mail-foot">kindred-beauty.com · checked 09:14, next check 15:14 · reply to unsubscribe</div>
       </div>
-
     </div>
   </section>
-  <hr class="rule rule-firm">
+  <hr class="r-chapter">
 
-  <section class="band" id="events">
-    <div>
-      <h2>Three things you’d <br>otherwise find out <br>a week late.</h2>
-    </div>
-    <div>
-      <p class="lede">
-        <span class="tag">Every change, per variant</span>
-        Every change is tied to one variant and one price, so you get what moved and by how much — never a notification that something happened.
-      </p>
-    </div>
+  <section class="sect" id="events">
+    <h2>Three of the eight you’d otherwise find out too late.</h2>
+    <p class="lede">
+      <span class="tag">Eight change types, per variant</span>
+      Every change is tied to one variant and one price, so you get what moved and by how much — never a notification that something happened.
+    </p>
   </section>
-  <hr class="rule">
+  <hr class="r-row">
 
   <dl class="tax">
     <div class="row lead">
-      <dt><span class="label cut">Price cut</span><h3>You’re being undercut.</h3></dt>
-      <dd>Your ROAS tells you a week later, once the ad spend is gone. This tells you the morning it happens — the old price, the new price and the variant it moved on.</dd>
+      <dt>Price cut</dt>
+      <dd>
+        <h3>You’re being undercut.</h3>
+        <p>Your ROAS tells you a week later, once the ad spend is gone. This tells you the morning it happens — the old price, the new price and the variant it moved on.</p>
+      </dd>
     </div>
     <div class="row">
-      <dt><span class="label new">New product</span><h3>They just launched.</h3></dt>
-      <dd>Every new listing across the whole catalogue on day one, including the products you would never have thought to look for.</dd>
+      <dt>New product</dt>
+      <dd>
+        <h3>They just launched.</h3>
+        <p>Every new listing across the whole catalogue on day one, including the products you would never have thought to look for.</p>
+      </dd>
     </div>
     <div class="row">
-      <dt><span class="label">Sold out</span><h3>Demand with nowhere to go.</h3></dt>
-      <dd>When a competitor runs dry their customers start looking. You have a window, and it closes the day they restock.</dd>
+      <dt>Sold out</dt>
+      <dd>
+        <h3>Demand with nowhere to go.</h3>
+        <p>When a competitor runs dry their customers start looking. You have a window, and it closes the day they restock.</p>
+      </dd>
     </div>
     <div class="row divide">
-      <dt><span class="label">Also tracked, per variant</span></dt>
-      <dd></dd>
+      <dt>Also tracked, per variant</dt>
     </div>
     <div class="row note">
-      <dt><span class="label">Price up</span></dt>
+      <dt>Price up</dt>
       <dd>A variant reprices upward, with the delta.</dd>
     </div>
     <div class="row note">
-      <dt><span class="label">Sale started</span></dt>
+      <dt>Sale started</dt>
       <dd>A compare-at price appears against the list price.</dd>
     </div>
     <div class="row note">
-      <dt><span class="label">Sale ended</span></dt>
+      <dt>Sale ended</dt>
       <dd>The discount comes off and the old price returns.</dd>
     </div>
     <div class="row note">
-      <dt><span class="label">Removed</span></dt>
+      <dt>Removed</dt>
       <dd>A product or variant leaves the catalogue entirely.</dd>
     </div>
     <div class="row note">
-      <dt><span class="label">Back in stock</span></dt>
+      <dt>Back in stock</dt>
       <dd>Inventory returns — and your window closes.</dd>
     </div>
   </dl>
-  <hr class="rule rule-firm">
 
+</div>
+
+<section class="close">
+  <div class="wrap">
+    <div class="close-in">
+      <div>
+        <p class="kick">Start with one store</p>
+        <h2>Paste a competitor’s URL and read their whole catalogue.</h2>
+      </div>
+      <div>
+        <form class="snap" action="/snapshot" method="get">
+          <label class="field">
+            <span class="sr">Competitor store URL</span>
+            <input type="text" name="store" inputmode="url" autocomplete="off" spellcheck="false" placeholder="competitor-store.com">
+          </label>
+          <button class="cta" type="submit">Get a free snapshot</button>
+        </form>
+        <p class="fine">Free · 7-day trial · No card</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
   <footer>
     <span class="wordmark">PriceDrift</span>
-    <p class="colophon">Public catalogue data <span>·</span> Checked every 6 hours <span>·</span> Plain-text email</p>
+    <p class="meta">
+      <a href="#privacy">Privacy</a>
+      <a href="#terms">Terms</a>
+    </p>
   </footer>
-
 </div>
 
 </body>
