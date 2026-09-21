@@ -12,7 +12,7 @@
     color-scheme: light;
 
     --cream:#F4F0E6;
-    --paper:#FBF9F4;          /* machine surfaces: the email, the input */
+    --paper:#FFFFFF;          /* machine surfaces: the email, the input */
     --ink:#1A1A17;
     --ink-soft:#63604F;
     --green:#1D4D2B;
@@ -51,7 +51,7 @@
   hr{border:0;margin:0}
   .r-hair{border-top:1px solid var(--hair)}
   .r-row{border-top:1px solid var(--row)}
-  .r-chapter{border-top:2px solid var(--ink)}   /* used once, on the whole page */
+  .r-chapter{border-top:2px solid var(--ink)}   /* every chapter break, and only those */
 
   /* the three-zone band every section is built from */
   .band{display:grid;grid-template-columns:var(--zA) var(--zB) var(--zC)}
@@ -65,6 +65,15 @@
     color:var(--ink);display:block;margin:0;
   }
   .label.soft{color:var(--ink-soft)}
+  .num{font:400 11px/22px var(--mono);letter-spacing:.12em;color:var(--ink-soft);
+       display:block;margin:4px 0 0}
+  .meta{font:400 11px/20px var(--mono);letter-spacing:.06em;color:var(--ink-soft);
+        display:block;margin:14px 0 0}
+  .cadence{margin:16px 0 0;border-top:1px solid var(--hair)}
+  .cadence div{display:grid;grid-template-columns:auto 1fr;gap:10px;padding:5px 0;
+               border-bottom:1px solid var(--hair);
+               font:400 11px/18px var(--mono);letter-spacing:.04em;color:var(--ink-soft)}
+  .cadence div:first-child span{color:var(--ink)}
 
   /* ---------- masthead ---------- */
   .mast{display:flex;align-items:baseline;gap:40px;padding:32px 0 20px}
@@ -72,11 +81,16 @@
     font-family:var(--display);font-weight:600;font-variation-settings:"opsz" 9;
     font-size:25px;line-height:24px;letter-spacing:-.03em;text-decoration:none;white-space:nowrap;
   }
-  .mast .links{display:flex;gap:28px;margin-left:auto;font-size:15px;line-height:24px;color:var(--ink-soft)}
+  .mast .links{display:flex;gap:26px;margin-left:auto;
+    font:400 11px/24px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
   .mast .links a{text-decoration:none}
   .mast .links a:hover{color:var(--ink)}
-  .login{font:500 15px/24px var(--sans);color:var(--ink);text-decoration:none;white-space:nowrap}
-  .login:hover{color:var(--green)}
+  .login{
+    font:500 11px/24px var(--mono);letter-spacing:.12em;text-transform:uppercase;
+    color:var(--ink);text-decoration:none;white-space:nowrap;
+    border-bottom:1.5px solid var(--ink);padding-bottom:5px;
+  }
+  .login:hover{color:var(--green);border-bottom-color:var(--green)}
 
   /* ---------- headline: the one full-bleed break in the grid ---------- */
   .headline{padding:46px 0 52px}
@@ -90,8 +104,7 @@
   h1 .o{margin-left:-.041em}     /* round initials overhang the stem edge */
 
   /* ---------- action strip ---------- */
-  .act{padding:26px 0;align-items:center}
-  form.snap{display:flex;margin:0}
+  form.snap{display:flex;margin:0;max-width:380px}
   .field{position:relative;flex:1 1 auto;min-width:0}
   .field input{
     width:100%;font:400 15px/22px var(--mono);letter-spacing:-.01em;
@@ -103,17 +116,18 @@
   button.cta{
     flex:none;font:500 15.5px/22px var(--sans);
     color:#F6F2E8;background:var(--green);
-    border:1px solid var(--green);border-radius:0;padding:14px 26px;cursor:pointer;
+    border:1px solid var(--green);border-radius:0;padding:14px 22px;cursor:pointer;white-space:nowrap;
   }
   button.cta:hover{background:var(--green-deep);border-color:var(--green-deep)}
   button.cta:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 
   /* ---------- hero band ---------- */
   .hero{padding:34px 0 40px}
-  .hero .b{display:flex;flex-direction:column}
   .deck{font-size:18px;line-height:27px;color:var(--ink-soft);margin:0}
-  .anchor{font-size:18px;line-height:27px;color:var(--ink);margin:22px 0 0}
-  .notes{margin-top:auto;padding-top:20px;border-top:1px solid var(--hair)}
+  .anchor{font-size:18px;line-height:27px;color:var(--ink);margin:20px 0 26px}
+  .offer{font:400 11px/20px var(--mono);letter-spacing:.1em;text-transform:uppercase;
+         color:var(--ink-soft);margin:14px 0 0}
+  .notes{margin-top:30px;padding-top:20px;border-top:1px solid var(--hair)}
   .notes p{margin:8px 0 0;font-size:14px;line-height:21px;color:var(--ink-soft)}
 
   /* ---------- the specimen: a plain-text email ---------- */
@@ -134,34 +148,49 @@
   .sect{padding:52px 0 46px}
   h2{
     font-family:var(--display);font-weight:500;font-variation-settings:"opsz" 30;
-    font-size:clamp(1.8rem,2.95vw,2.5rem);line-height:1.07;letter-spacing:-.024em;
+    font-size:clamp(1.9rem,3.5vw,3.05rem);line-height:1.06;letter-spacing:-.026em;
     word-spacing:-.04em;margin:-.05em 0 0;text-wrap:balance;
   }
   .lede{margin:0;color:var(--ink-soft);font-size:16px;line-height:25px}
 
   /* ---------- the event table ---------- */
   .tax{margin:0;padding:0;list-style:none}
-  .tax .row{padding:30px 0}
+  .tax .row{padding:26px 0}
   .tax h3{
     font-family:var(--display);font-weight:500;font-variation-settings:"opsz" 22;
-    font-size:1.95rem;line-height:1.08;letter-spacing:-.026em;word-spacing:-.03em;
+    font-size:1.75rem;line-height:1.1;letter-spacing:-.024em;word-spacing:-.03em;
     margin:0 0 10px;text-indent:-.012em;text-wrap:balance;
   }
   .tax p{margin:0;color:var(--ink-soft);font-size:16px;line-height:25px}
 
-  .tax .row.lead{padding:38px 0 42px}
-  .tax .row.lead h3{font-size:2.6rem;letter-spacing:-.03em;margin-bottom:12px}
+  .tax .row.lead{padding:40px 0 44px}
+  .tax .row.lead h3{font-size:2.35rem;letter-spacing:-.028em;margin-bottom:12px}
   .tax .row.lead p{color:var(--ink);font-size:17px;line-height:26px}
 
   /* the data moment: one real delta, at scale, in the one accent colour */
   .art{font-family:var(--mono)}
   .art .val{display:block;font-size:14.5px;line-height:22px;color:var(--ink)}
   .art .big{
-    display:block;font-size:3.1rem;line-height:1;letter-spacing:-.035em;
-    font-weight:500;color:var(--rust);margin:6px 0 12px;
+    display:block;font-family:var(--display);font-weight:500;
+    font-variation-settings:"opsz" 44;font-feature-settings:"tnum" 1,"lnum" 1;
+    font-size:4.4rem;line-height:.92;letter-spacing:-.028em;
+    color:var(--rust);margin:4px 0 20px;text-indent:-.441em;  /* measured: hangs the minus so the 2 sits over the $ */
   }
+  /* the last three checks, as the machine recorded them */
+  .log{border-top:1px solid var(--hair);margin:0 0 12px}
+  .log div{display:grid;grid-template-columns:56px 1fr auto;padding:6px 0;
+           border-bottom:1px solid var(--hair);font-size:12.5px;line-height:20px;color:var(--ink-soft)}
+  .log div:last-child{border-bottom:0}
+  .log .now{color:var(--ink)}
+  .log .d{color:var(--rust)}
+  .art .list{margin:0;border-top:1px solid var(--hair)}
+  .art .list div{display:grid;grid-template-columns:1fr auto;padding:6px 0;
+                 border-bottom:1px solid var(--hair);font-size:12.5px;line-height:20px;color:var(--ink)}
+  .art .list div:last-child{border-bottom:0}
+  .art .list .out{color:var(--ink-soft);text-decoration:line-through;text-decoration-color:var(--rust)}
+  .art .name{display:block;font-size:13px;line-height:22px;color:var(--ink);margin-bottom:4px}
   .art .cap{
-    display:block;font-size:10px;line-height:18px;letter-spacing:.11em;
+    display:block;font-size:10px;line-height:18px;letter-spacing:.11em;margin-top:10px;
     text-transform:uppercase;color:var(--ink-soft);
   }
 
@@ -170,8 +199,9 @@
         grid-auto-columns:1fr;column-gap:var(--gut)}
   .spec .i{display:grid;grid-template-columns:104px minmax(0,1fr);
            padding:9px 0;border-bottom:1px solid var(--hair);font-family:var(--mono)}
+  .spec .i.last{border-bottom:0}
   .spec .i span:first-child{font:600 10px/20px var(--mono);letter-spacing:.11em;text-transform:uppercase;color:var(--ink)}
-  .spec .i span:last-child{font-size:12.5px;line-height:20px;color:var(--ink-soft)}
+  .spec .i span:last-child{font-family:var(--sans);font-size:14px;line-height:21px;color:var(--ink-soft)}
 
   /* ---------- reversed close ---------- */
   .close{background:var(--green);color:#EDE8DA;margin-top:64px}
@@ -179,22 +209,37 @@
   .close-pad{padding:58px 0 60px}
   .close .label{color:var(--green-pale)}
   .close .b,.close .c{border-left-color:#2E5E3C}
-  .close h2{color:#F6F2E8;max-width:20ch;font-variation-settings:"opsz" 18;font-weight:500}
+  .close h2{color:#F6F2E8;max-width:26ch;text-wrap:initial;font-weight:500;
+            font-variation-settings:"opsz" 22;font-size:clamp(1.6rem,2.5vw,2.2rem);letter-spacing:-.022em}
   .close .field input{background:transparent;border-color:#82A18D;color:#F6F2E8}
   .close .field input::placeholder{color:#8FA996}
   .close .field input:focus{outline-color:#F6F2E8}
   .close button.cta{background:#F6F2E8;border-color:#F6F2E8;color:var(--green-deep)}
   .close button.cta:hover{background:#fff;border-color:#fff}
   .close button.cta:focus-visible{outline:2px solid #F6F2E8;outline-offset:2px}
+  .close .offer{color:var(--green-pale)}
   .close .fine{font:400 11px/20px var(--mono);letter-spacing:.1em;text-transform:uppercase;
                color:var(--green-pale);margin:16px 0 0}
 
   /* ---------- footer ---------- */
   footer{display:flex;align-items:baseline;gap:28px;padding:24px 0 40px}
-  footer .wordmark{font-size:18px;color:var(--ink-soft);font-weight:500}
+  footer .wordmark{font-size:25px;color:var(--ink)}
   footer .meta{margin:0 0 0 auto;display:flex;gap:22px;font-size:14px;line-height:24px;color:var(--ink-soft)}
   footer .meta a{text-decoration:none}
   footer .meta a:hover{color:var(--ink)}
+
+  /* measured first-baseline alignment: every zone in a band lands on one line */
+  .hero .a{padding-top:14px}
+  .hero .b{padding-top:9px}
+  .sect .a{padding-top:27.3px}
+  .spec-sect .a{padding-top:7px}
+  .tax .row.lead .a{padding-top:15.3px}
+  .tax .row.lead .c{padding-top:19.3px}
+  .tax .row.inv .a{padding-top:5.8px}
+  .tax .row.inv .b{padding-top:8.8px}
+  .tax .row.std .a{padding-top:5.8px}
+  .tax .row.std .c{padding-top:8.8px}
+  .close .a{padding-top:13.6px}
 
   .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 
@@ -206,7 +251,7 @@
   }
   @media (max-width:900px){
     .band{grid-template-columns:1fr}
-    .band > .a{padding:0 0 12px}
+    .band > .a{padding:0 0 12px!important}
     .band > .b,.band > .c,.band > .bc{grid-column:auto;padding:0;border-left:0}
     .hero .c{padding-top:30px}
     .sect .c{padding-top:16px}
@@ -260,26 +305,29 @@
   </section>
   <hr class="r-row">
 
-  <section class="band act">
-    <div class="a"><p class="label soft">Free · No signup · No card</p></div>
-    <div class="bc">
+  <section class="band hero">
+    <div class="a">
+      <p class="label">The alert</p>
+      <div class="cadence">
+        <div><span>09:14</span><span>checked</span></div>
+        <div><span>15:14</span><span>next</span></div>
+      </div>
+      <span class="meta">Every store,<br>every six hours</span>
+    </div>
+    <div class="b">
+      <p class="deck">Paste a store URL and get the whole catalogue in seconds — prices, discounts, what’s sold out. Then an email every time any of it moves.</p>
+      <p class="anchor">$9 a month, not $49 — there’s nothing to map and nobody to onboard you.</p>
+
       <!-- wire action/name to your snapshot endpoint -->
       <form class="snap" action="/snapshot" method="get">
         <label class="field">
           <span class="sr">Competitor store URL</span>
           <input type="text" name="store" inputmode="url" autocomplete="off" spellcheck="false" placeholder="competitor-store.com">
         </label>
-        <button class="cta" type="submit">Get a free snapshot</button>
+        <button class="cta" type="submit">Get a snapshot</button>
       </form>
-    </div>
-  </section>
-  <hr class="r-row">
+      <p class="offer">Free&nbsp;·&nbsp;No signup&nbsp;·&nbsp;No card</p>
 
-  <section class="band hero">
-    <div class="a"><p class="label">The alert</p></div>
-    <div class="b">
-      <p class="deck">Paste a store URL and get the whole catalogue in seconds — prices, discounts, what’s sold out. Then an email every time any of it moves.</p>
-      <p class="anchor">$9 a month, not $49 — there’s nothing to map and nobody to onboard you.</p>
       <div class="notes">
         <p class="label soft">What we touch</p>
         <p>Public catalogue data only. No login, no app, and no access to your own shop.</p>
@@ -303,29 +351,34 @@
         <div class="ev">
           <span class="k">New product</span>
           <span class="v">Winter Set</span>
-          <span class="n">listed at $48.00 · 4 variants</span>
+          <span class="n">listed at $48.00&nbsp;·&nbsp;4 variants</span>
         </div>
         <div class="ev">
           <span class="k">Sold out</span>
           <span class="v">Eyeliner — Jet</span>
           <span class="n">3 of 3 variants unavailable</span>
         </div>
-        <div class="mail-foot">kindred-beauty.com · checked 09:14, next check 15:14 · reply to unsubscribe</div>
+        <div class="mail-foot">kindred-beauty.com&nbsp;·&nbsp;next check 15:14&nbsp;·&nbsp;reply to unsubscribe</div>
       </div>
     </div>
   </section>
   <hr class="r-chapter">
 
   <section class="band sect" id="events">
-    <div class="a"><p class="label">Eight change types</p></div>
-    <div class="b"><h2>Three you’d otherwise find out too late.</h2></div>
-    <div class="c"><p class="lede">Every change is tied to one variant and one price, so you get what moved and by how much — never a notification that something happened.</p></div>
+    <div class="a"><p class="label">Change types</p></div>
+    <div class="bc">
+      <h2>Three you’d otherwise find out too late.</h2>
+      <p class="lede">Every change is tied to one variant and one price, so you get what moved and by how much — never a notification that something happened.</p>
+    </div>
   </section>
   <hr class="r-row">
 
   <ul class="tax">
     <li class="band row lead">
-      <div class="a"><p class="label">Price cut</p></div>
+      <div class="a">
+        <p class="label">Price cut</p>
+        <span class="num">01 / 08</span>
+      </div>
       <div class="b">
         <h3>You’re being undercut.</h3>
         <p>Your ROAS tells you a week later, once the ad spend is gone. This tells you the morning it happens — the old price, the new price and the variant it moved on.</p>
@@ -333,65 +386,93 @@
       <div class="c art">
         <span class="val">$29.00 → $22.00</span>
         <span class="big">−24.1%</span>
-        <span class="cap">Matte Lip Kit — Rosewood, 09:14</span>
+        <div class="log">
+          <div><span class="now">09:14</span><span class="now">$22.00</span><span class="d">−24.1%</span></div>
+          <div><span>03:14</span><span>$29.00</span><span>—</span></div>
+          <div><span>21:14</span><span>$29.00</span><span>—</span></div>
+        </div>
+        <span class="cap">Matte Lip Kit — Rosewood, last three checks</span>
       </div>
     </li>
     <hr class="r-hair">
-    <li class="band row">
-      <div class="a"><p class="label">New product</p></div>
-      <div class="b">
+
+    <li class="band row inv">
+      <div class="a">
+        <p class="label">New product</p>
+        <span class="num">02 / 08</span>
+      </div>
+      <div class="b art">
+        <span class="name">Winter Set · first seen 06:12</span>
+        <div class="list">
+          <div><span>Ember 40ml</span><span>$48.00</span></div>
+          <div><span>Ember 100ml</span><span>$86.00</span></div>
+          <div><span>Dusk 40ml</span><span>$48.00</span></div>
+          <div><span>Dusk 100ml</span><span>$86.00</span></div>
+        </div>
+        <span class="cap">4 variants, priced on day one</span>
+      </div>
+      <div class="c">
         <h3>They just launched.</h3>
         <p>Every new listing across the whole catalogue on day one, including the products you would never have thought to look for.</p>
       </div>
-      <div class="c art">
-        <span class="val">Winter Set · listed at $48.00</span>
-        <span class="cap">4 variants, first seen 06:12</span>
-      </div>
     </li>
     <hr class="r-hair">
-    <li class="band row">
-      <div class="a"><p class="label">Sold out</p></div>
+
+    <li class="band row std">
+      <div class="a">
+        <p class="label">Sold out</p>
+        <span class="num">03 / 08</span>
+      </div>
       <div class="b">
         <h3>Demand with nowhere to go.</h3>
         <p>When a competitor runs dry their customers start looking. You have a window, and it closes the day they restock.</p>
       </div>
       <div class="c art">
-        <span class="val">Eyeliner — Jet · 3 of 3 out</span>
-        <span class="cap">Unavailable 41 hours</span>
+        <span class="name">Eyeliner — Jet</span>
+        <div class="list">
+          <div><span class="out">Jet 01</span><span>out 41h</span></div>
+          <div><span class="out">Jet 02</span><span>out 41h</span></div>
+          <div><span class="out">Jet 03</span><span>out 16h</span></div>
+        </div>
+        <span class="cap">3 of 3 variants unavailable</span>
       </div>
     </li>
   </ul>
   <hr class="r-row">
 
-  <section class="band sect" style="padding:26px 0 30px">
-    <div class="a"><p class="label soft">Also tracked</p></div>
+  <section class="band sect spec-sect" style="padding:28px 0 32px">
+    <div class="a">
+      <p class="label soft">Also tracked</p>
+      <span class="num">04–08 / 08</span>
+    </div>
     <div class="bc">
       <div class="spec">
         <div class="i"><span>Price up</span><span>A variant reprices upward, with the delta.</span></div>
         <div class="i"><span>Sale started</span><span>A compare-at price appears against the list price.</span></div>
-        <div class="i"><span>Sale ended</span><span>The discount comes off and the old price returns.</span></div>
+        <div class="i last"><span>Sale ended</span><span>The discount comes off and the old price returns.</span></div>
         <div class="i"><span>Removed</span><span>A product or variant leaves the catalogue.</span></div>
-        <div class="i"><span>Back in stock</span><span>Inventory returns — and your window closes.</span></div>
+        <div class="i last"><span>Back in stock</span><span>Inventory returns — and your window closes.</span></div>
       </div>
     </div>
   </section>
 
+  <hr class="r-chapter">
 </div>
 
 <section class="close">
   <div class="wrap">
     <div class="band close-pad">
-      <div class="a"><p class="label">Start with one store</p></div>
-      <div class="b"><h2>Paste a competitor’s URL and read their whole catalogue.</h2></div>
+      <div class="a"><p class="label">Start here</p></div>
+      <div class="b"><h2>Paste a URL.<br>Read the whole catalogue.</h2></div>
       <div class="c">
         <form class="snap" action="/snapshot" method="get">
           <label class="field">
             <span class="sr">Competitor store URL</span>
             <input type="text" name="store" inputmode="url" autocomplete="off" spellcheck="false" placeholder="competitor-store.com">
           </label>
-          <button class="cta" type="submit">Get a free snapshot</button>
+          <button class="cta" type="submit">Get a snapshot</button>
         </form>
-        <p class="fine">Free · No signup · No card</p>
+        <p class="offer">Free&nbsp;·&nbsp;No signup&nbsp;·&nbsp;No card</p>
       </div>
     </div>
   </div>
