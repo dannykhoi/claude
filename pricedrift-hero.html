@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PriceDrift — revised hero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: light;
+    --cream:#F5F1E8;
+    --paper:#FBF9F3;
+    --ink:#1A1A17;
+    --ink-soft:#6E6A5E;
+    --ink-faint:#9A9587;
+    --rule:#DED8CA;
+    --green:#1A4D2E;
+    --rust:#A33A28;
+    --serif:'Bodoni Moda', 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --sans:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    --mono:'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    box-sizing:border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-padding-top: env(safe-area-inset-top, 0px); -webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:17px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%}
+  a{color:inherit}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 28px}
+
+  /* ---------- nav ---------- */
+  nav{padding:26px 0 0}
+  .nav-row{display:flex;align-items:center;gap:32px}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:600;font-size:19px;letter-spacing:-.01em;text-decoration:none}
+  .mark{width:29px;height:29px;border-radius:7px;background:var(--green);display:grid;place-items:center;flex:none}
+  .mark svg{display:block}
+  .nav-links{display:flex;gap:26px;margin-left:auto;font-size:15.5px;color:var(--ink-soft)}
+  .nav-links a{text-decoration:none}
+  .nav-links a:hover{color:var(--ink)}
+  .login{font-size:15.5px;text-decoration:none;border:1px solid var(--rule);border-radius:9px;padding:9px 16px;background:var(--paper)}
+  .login:hover{border-color:#c9c2b1}
+
+  /* ---------- hero ---------- */
+  header.hero{padding:76px 0 84px}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:64px;align-items:start}
+  h1{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:clamp(2.55rem,4.6vw,4rem);
+    line-height:1.03;
+    letter-spacing:-.012em;
+    margin:0 0 22px;
+    max-width:15ch;
+  }
+  .sub{font-size:19px;line-height:1.5;color:var(--ink-soft);margin:0 0 30px;max-width:46ch}
+  .sub b{color:var(--ink);font-weight:500}
+
+  /* snapshot form */
+  form.snap{display:flex;gap:10px;max-width:520px;margin:0 0 14px}
+  .field{position:relative;flex:1 1 auto;min-width:0}
+  .field input{
+    width:100%;font:400 16px/1 var(--mono);
+    padding:16px 15px;color:var(--ink);
+    background:var(--paper);border:1px solid var(--rule);border-radius:10px;
+  }
+  .field input::placeholder{color:var(--ink-faint)}
+  .field input:focus{outline:2px solid var(--green);outline-offset:1px;border-color:var(--green)}
+  button.cta{
+    flex:none;font:600 16px/1 var(--sans);color:#fff;background:var(--green);
+    border:0;border-radius:10px;padding:16px 22px;cursor:pointer;
+  }
+  button.cta:hover{background:#154026}
+  button.cta:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+  .micro{font:400 12.5px/1.5 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin:0 0 26px}
+  .micro span{color:var(--ink-faint)}
+  .assure{font-size:15px;color:var(--ink-soft);margin:0;padding-top:22px;border-top:1px solid var(--rule);max-width:44ch}
+  .assure strong{color:var(--ink);font-weight:500}
+  .anchor{font-size:15px;color:var(--ink-soft);margin:10px 0 0;max-width:44ch}
+
+  /* ---------- alert card ---------- */
+  .card{
+    background:var(--paper);border:1px solid var(--rule);border-radius:14px;
+    box-shadow:0 1px 0 #ece6d8, 0 18px 40px -28px rgba(26,26,23,.28);
+    overflow:hidden;
+  }
+  .card-top{padding:16px 20px;border-bottom:1px solid var(--rule);display:flex;align-items:baseline;gap:10px}
+  .card-top .from{font:500 13px/1 var(--mono);letter-spacing:.04em}
+  .card-top .when{font:400 12px/1 var(--mono);color:var(--ink-faint);margin-left:auto}
+  .card-subj{padding:18px 20px 4px}
+  .card-subj p{margin:0;font-family:var(--serif);font-size:23px;line-height:1.2}
+  .card-subj .store{font:400 12.5px/1 var(--mono);color:var(--ink-faint);margin-top:9px;display:block}
+  .rows{list-style:none;margin:16px 0 0;padding:0}
+  .rows li{display:grid;grid-template-columns:124px 1fr;gap:14px;align-items:baseline;padding:14px 20px;border-top:1px solid var(--rule)}
+  .kind{font:500 12px/1.3 var(--mono);letter-spacing:.03em;text-transform:uppercase;color:var(--ink-soft);display:flex;align-items:center;gap:7px;white-space:nowrap}
+  .kind .ic{flex:none;width:16px;height:16px;display:block}
+  .kind.cut{color:var(--rust)}
+  .kind.new{color:var(--green)}
+  .what{min-width:0}
+  .what .name{font-size:15.5px;font-weight:500}
+  .what .data{font:400 13px/1.5 var(--mono);color:var(--ink-soft);display:block;margin-top:3px;overflow-wrap:anywhere}
+  .down{color:var(--rust)}
+  .card-foot{padding:14px 20px;border-top:1px solid var(--rule);font:400 12.5px/1.4 var(--mono);color:var(--ink-faint)}
+
+  /* ---------- signals ---------- */
+  section.signals{padding:14px 0 90px}
+  .signals h2{
+    font-family:var(--serif);font-weight:400;font-size:clamp(1.9rem,3.1vw,2.7rem);
+    line-height:1.1;letter-spacing:-.01em;margin:0 0 8px;max-width:22ch;
+  }
+  .signals .lede{color:var(--ink-soft);font-size:18px;margin:0 0 44px;max-width:52ch}
+  .three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--rule)}
+  .three > div{padding:28px 32px 30px;border-right:1px solid var(--rule)}
+  .three > div:first-child{padding-left:0}
+  .three > div:last-child{border-right:0;padding-right:0}
+  .three h3{font-family:var(--serif);font-weight:400;font-size:1.5rem;margin:0 0 10px;line-height:1.15}
+  .three .signal{font:500 11.5px/1 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--green);display:block;margin-bottom:16px}
+  .three p{margin:0;color:var(--ink-soft);font-size:16px;line-height:1.5}
+  .rest{margin:0;padding:26px 0 0;border-top:1px solid var(--rule);color:var(--ink-soft);font-size:15.5px;max-width:62ch}
+  .rest em{font-style:normal;color:var(--ink);font-weight:500}
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:46px}
+    header.hero{padding:52px 0 60px}
+    h1{max-width:20ch}
+    .three{grid-template-columns:1fr}
+    .three > div{padding:24px 0;border-right:0;border-bottom:1px solid var(--rule)}
+    .three > div:last-child{border-bottom:0}
+  }
+  @media (max-width:620px){
+    body{font-size:16px}
+    .wrap{padding:0 20px}
+    .nav-links{display:none}
+    h1{font-size:clamp(2.1rem,9vw,2.7rem);max-width:17ch}
+    .sub{font-size:17.5px}
+    form.snap{flex-direction:column}
+    button.cta{width:100%;padding:17px 22px}
+    .rows li{grid-template-columns:1fr;gap:5px}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav>
+    <div class="nav-row">
+      <a class="brand" href="/">
+        <span class="mark" aria-hidden="true">
+          <svg width="17" height="17" viewBox="0 0 17 17" fill="none"><path d="M1.5 5.5l3.6 4.2 2.8-2.4 3 3.4 4.6-5.4" stroke="#F5F1E8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        PriceDrift
+      </a>
+      <div class="nav-links">
+        <a href="#how">How it works</a>
+        <a href="#alerts">Alerts</a>
+        <a href="#compare">Vs. others</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <a class="login" href="/dashboard.html">Log in</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-grid">
+      <div>
+        <h1>See every price change in your competitors' Shopify stores.</h1>
+        <p class="sub">Paste a store URL and get their full catalogue in seconds — prices, discounts, what's sold out. Then an email whenever any of it moves. <b>No SKU matching, no app to install.</b></p>
+
+        <!-- wire action/name to your snapshot endpoint -->
+        <form class="snap" action="/snapshot" method="get">
+          <label class="field">
+            <span class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Competitor store URL</span>
+            <input type="text" name="store" inputmode="url" autocomplete="off" placeholder="competitor-store.com">
+          </label>
+          <button class="cta" type="submit">Get a free snapshot</button>
+        </form>
+        <p class="micro">Free, no signup <span>·</span> Alerts from $9/month <span>·</span> 7-day trial, no card</p>
+
+        <p class="assure"><strong>Reads only public catalogue data.</strong> No login, no app, and no access to your own shop.</p>
+        <p class="anchor">$9/month, not $49 — because there's nothing to map and nobody to onboard you.</p>
+      </div>
+
+      <div class="card" aria-label="Example alert email">
+        <div class="card-top">
+          <span class="from">PriceDrift</span>
+          <span class="when">today, 09:14</span>
+        </div>
+        <div class="card-subj">
+          <p>3 changes at Kindred Beauty</p>
+          <span class="store">kindred-beauty.com · last 6 hours</span>
+        </div>
+        <ul class="rows">
+          <li>
+            <span class="kind cut"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4.5l4.2 4.2 2.6-2.6L13.5 11"/><path d="M13.5 7.6V11H10"/></svg>Price cut</span>
+            <span class="what">
+              <span class="name">Matte Lip Kit</span>
+              <span class="data">$29.00 → $22.00 <span class="down">(−24.1%)</span></span>
+            </span>
+          </li>
+          <li>
+            <span class="kind new"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="6.1"/><path d="M8 5.2v5.6M5.2 8h5.6"/></svg>New product</span>
+            <span class="what">
+              <span class="name">Winter Set</span>
+              <span class="data">listed at $48.00 · 4 variants</span>
+            </span>
+          </li>
+          <li>
+            <span class="kind"><svg class="ic" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="6.1"/><path d="M3.7 12.3L12.3 3.7"/></svg>Sold out</span>
+            <span class="what">
+              <span class="name">Eyeliner — Jet</span>
+              <span class="data">every variant out of stock</span>
+            </span>
+          </li>
+        </ul>
+        <div class="card-foot">Every store checked every 6 hours · reply to unsubscribe</div>
+      </div>
+    </div>
+  </header>
+
+  <section class="signals" id="alerts">
+    <h2>Three things you'd otherwise find out too late.</h2>
+    <p class="lede">Every change is tied to a variant and a price, so you get what moved and by how much — not a notification that something happened.</p>
+
+    <div class="three">
+      <div>
+        <span class="signal">Price cut</span>
+        <h3>You're being undercut.</h3>
+        <p>Your ROAS will tell you a week later, once the ad spend is gone. The alert tells you the morning it happens, with the old and new price.</p>
+      </div>
+      <div>
+        <span class="signal">New product</span>
+        <h3>They just launched.</h3>
+        <p>Every new listing across their whole catalogue, on day one — including the products you'd never have thought to look for.</p>
+      </div>
+      <div>
+        <span class="signal">Sold out</span>
+        <h3>Demand with nowhere to go.</h3>
+        <p>When a competitor runs dry, their customers start looking. You have a window, and it closes when they restock.</p>
+      </div>
+    </div>
+
+    <p class="rest">Also tracked per variant: <em>price up</em>, <em>sale started</em>, <em>sale ended</em>, <em>removed</em> and <em>back in stock</em>.</p>
+  </section>
+</div>
+
+</body>
+</html>
