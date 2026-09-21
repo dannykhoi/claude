@@ -71,6 +71,7 @@
 
   /* ---------- hero ---------- */
   .headline{padding:54px 0 46px}
+  h1 br,h2 br{content:none}
   h1{
     font-family:var(--display);font-weight:400;
     font-variation-settings:"opsz" 44;
@@ -206,8 +207,8 @@
 
   @media (max-width:1040px){
     :root{--gutter:40px}
-    h1{text-wrap:balance}
-    h1 br{display:none}
+    h1,h2{text-wrap:balance}
+    h1 br,h2 br{display:none}
   }
   @media (max-width:880px){
     .band{grid-template-columns:1fr}
@@ -228,8 +229,12 @@
   @media (max-width:640px){
     body{font-size:16px}
     .wrap{padding:0 22px}
-    .mast{gap:20px;padding:22px 0 18px}
+    .mast{gap:18px;padding:22px 0 18px}
     .mast nav{display:none}
+    .login{margin-left:auto}
+    footer{flex-direction:column;gap:14px;padding:20px 0 48px}
+    footer .colophon{margin:0;text-align:left}
+    .tax .row.divide dd{display:none}
     h1{font-size:clamp(2.15rem,9.2vw,2.8rem);letter-spacing:-.018em}
     .deck{font-size:17.5px}
     form.snap{flex-direction:column;gap:9px}
@@ -257,7 +262,7 @@
   <hr class="rule rule-firm">
 
   <section class="headline">
-    <h1>Every price change in your<br>competitors’ Shopify store,<br>six hours after it happens.</h1>
+    <h1>Every price change in your <br>competitors’ Shopify store, <br>six hours after it happens.</h1>
   </section>
   <hr class="rule">
 
@@ -326,7 +331,7 @@
 
   <section class="band" id="events">
     <div>
-      <h2>Three things you’d<br>otherwise find out<br>a week late.</h2>
+      <h2>Three things you’d <br>otherwise find out <br>a week late.</h2>
     </div>
     <div>
       <p class="lede">
