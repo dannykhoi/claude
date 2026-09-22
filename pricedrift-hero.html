@@ -27,7 +27,7 @@
     --d-text:#E8E3D6;
     --d-soft:#A8A497;
     --d-rule:#37352E;
-    --d-red:#D2624A;           /* lifted to match the accent's weight on dark */
+    --d-red:#E25132;           /* the cream accent at the same hue and saturation, value lifted: 4.52:1 on ink */           /* lifted to match the accent's weight on dark */
 
     --display:'Newsreader', Georgia, 'Times New Roman', serif;
     --text:'Newsreader', Georgia, 'Times New Roman', serif;
@@ -96,7 +96,7 @@
   .mast .links a{text-decoration:none}
   .mast .links a:hover{color:var(--red)}
   .login{font:500 10px/24px var(--mono);letter-spacing:.14em;text-transform:uppercase;
-         color:var(--red);text-decoration:none;white-space:nowrap;
+         color:var(--ink);text-decoration:none;white-space:nowrap;
          margin-left:44px}
   .login:hover{color:var(--ink)}
 
@@ -104,7 +104,7 @@
   .headline{padding:48px 0 34px}
   h1{
     font-family:var(--display);font-weight:400;font-variation-settings:"opsz" 72;
-    font-size:clamp(2.4rem,7.63vw,6.64rem);
+    font-size:clamp(2.4rem,7.28vw,6.34rem);
     line-height:.955;letter-spacing:-.025em;word-spacing:-.06em;
     margin:0 0 0 -2px;
   }
@@ -117,15 +117,16 @@
   /* ---------- hero ---------- */
   .hero{padding:32px 0 40px}
   .deck{font-size:20px;line-height:31px;margin:0 0 18px;max-width:var(--measure)}
-  .price-line{display:flex;align-items:baseline;gap:11px;margin:22px 0 0}
+  .price-line{display:flex;align-items:baseline;gap:11px;margin:26px 0 0;
+              padding-top:16px;border-top:1px solid var(--r2)}
   .price-line .n{font-family:var(--display);font-variation-settings:"opsz" 72;
                  font-weight:400;font-size:3.1rem;line-height:1;letter-spacing:-.03em}
-  .price-line .u{font-size:17px;line-height:27px;color:var(--ink-soft)}
+  .price-line .u{font-size:17px;line-height:27px;color:var(--ink-soft);position:relative;top:-.42em}
   .price-line s{font-family:var(--mono);font-size:14px;text-decoration-thickness:1px;
                 text-decoration-color:var(--red);color:var(--muted)}
   .body{font-size:17px;line-height:27px;color:var(--ink-soft);margin:6px 0 0;max-width:var(--measure)}
 
-  form.snap{display:flex;align-items:stretch;gap:0;margin:26px 0 0;width:100%}
+  form.snap{display:flex;align-items:stretch;gap:0;margin:20px 0 0;width:100%}
   .field{position:relative;flex:1 1 auto;min-width:0}
   .field input{
     width:100%;font:400 15px/22px var(--mono);height:56px;padding:0 14px;color:var(--ink);
@@ -155,7 +156,7 @@
   .spec .hd b{display:block;font-weight:600;color:var(--ink);letter-spacing:0}
   .spec .ev{padding:10px 0;border-top:1px solid var(--r2)}
   .spec .ev:first-child{border-top:0}
-  .spec .k{font:500 11px/17px var(--mono);letter-spacing:0;color:var(--ink);display:block}
+  .spec .k{font:500 10px/17px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink);display:block}
   .spec .v{font-size:12.5px;line-height:19px;color:var(--ink);display:block}
   .spec .n{display:block;font-size:12.5px;line-height:19px;color:var(--ink-soft)}
   .spec .n .d{color:var(--red)}
@@ -171,11 +172,9 @@
     font-size:clamp(1.9rem,4.6vw,4.1rem);line-height:1.02;letter-spacing:-.026em;
     margin:0;text-wrap:balance;
   }
-  .map{list-style:none;margin:0;padding:0;border-top:1px solid var(--r2)}
-  .map li{display:grid;grid-template-columns:44px 1fr;padding:9px 0;border-bottom:1px solid var(--r2);
-          font:500 11px/20px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
-  .map li span{color:var(--muted)}
-  .map li:last-child{border-bottom:0}
+  .note{margin:16px 0 0;padding-top:12px;border-top:1px solid var(--r2);
+        font:400 10px/17px var(--mono);letter-spacing:.02em;color:var(--muted)}
+  .inv .note{border-top-color:var(--d-rule);color:#8E8A7C}
   .lede{margin:18px 0 0;color:var(--ink-soft);font-size:17px;line-height:27px;max-width:var(--measure)}
 
   /* ---------- the three arguments: one lockup, one language ---------- */
@@ -191,7 +190,7 @@
   .arg.two{padding:38px 0 42px}
   .arg.three{padding:52px 0 56px}
   .two .ledger div{grid-template-columns:1fr auto}
-  .grouphd{margin:0 0 8px;font:500 10px/16px var(--mono);letter-spacing:.1em;
+  .grouphd{margin:0 0 8px;font:500 10px/16px var(--mono);letter-spacing:.14em;
            text-transform:uppercase;color:var(--muted)}
 
   .arg .a{padding-top:33.5px}
@@ -199,6 +198,8 @@
   .arg.three .a{padding-top:33px}
   .arg .c{padding-top:5px}
   .arg .figure{margin-right:-1px}
+  .arg.two .figure,.arg.three .figure{font-size:2.6rem;margin-bottom:16px}
+  .arg.two .figure .unit,.arg.three .figure .unit{font-size:.42em}
   .figure{
     display:block;font-family:var(--display);font-weight:500;
     font-variation-settings:"opsz" 72;font-feature-settings:"tnum" 1,"lnum" 1;
@@ -339,7 +340,7 @@
     <div class="links">
       <a href="#alert">The alert</a>
       <a href="#events">Change types</a>
-      <a href="#start">Start here</a>
+      <a href="#events">The other five</a>
     </div>
     <a class="login" href="/dashboard.html">Log in</a>
   </header>
@@ -366,8 +367,8 @@
     </div>
     <div class="b">
       <p class="deck">Paste any Shopify store URL and get the whole catalogue in seconds: prices, discounts, what’s sold out. Then an email every time any of it moves.</p>
-      <p class="price-line"><span class="n">$9</span><span class="u">a month, not <s>$49</s></span></p>
       <p class="body">We read only what any shopper can see, so there is nothing to map and your own store stays untouched.</p>
+      <p class="price-line"><span class="n">$9</span><span class="u">a month, not <s>$49</s></span></p>
 
       <!-- wire action/name to your snapshot endpoint -->
       <form class="snap" action="/snapshot" method="get">
@@ -384,22 +385,22 @@
         <p class="hd">From PriceDrift · kindred-beauty.com · 09:14<b>4 changes at Kindred Beauty</b></p>
         <div class="body-rows">
         <div class="ev">
-          <span class="k">price cut</span>
+          <span class="k">Price cut</span>
           <span class="v">Matte Lip Kit · Rosewood</span>
           <span class="n"><span class="old">$29.00 →</span> $22.00 &nbsp;<span class="d">−24.1%</span></span>
         </div>
         <div class="ev">
-          <span class="k">new product</span>
+          <span class="k">New product</span>
           <span class="v">Winter Set</span>
           <span class="n">listed at $48.00, 4 variants</span>
         </div>
         <div class="ev">
-          <span class="k">price up</span>
+          <span class="k">Price up</span>
           <span class="v">Brow Pencil · Ash</span>
           <span class="n"><span class="old">$18.00 →</span> $21.00 &nbsp;<span class="d">+16.7%</span></span>
         </div>
         <div class="ev">
-          <span class="k">sold out</span>
+          <span class="k">Sold out</span>
           <span class="v">Eyeliner · Jet</span>
           <span class="n">3 of 3 variants</span>
         </div>
@@ -413,16 +414,9 @@
   <div class="ruled">
   <section class="band sect" id="events">
     <div class="a"><p class="rail">Change types</p></div>
-    <div class="b">
+    <div class="bc">
       <h2>Three you’d otherwise find out too late.</h2>
       <p class="lede">Every change is tied to one variant and one price, so you get what moved and by how much, not a notification that something happened.</p>
-    </div>
-    <div class="c">
-      <ol class="map">
-        <li><span>01</span>Price cut</li>
-        <li><span>02</span>New product</li>
-        <li><span>03</span>Sold out</li>
-      </ol>
     </div>
   </section>
   <hr class="r2">
@@ -433,7 +427,8 @@
 <div class="wrap">
   <div class="ruled">
   <div class="band arg one">
-    <div class="a"><p class="rail">Price cut<span class="i">01</span></p></div>
+    <div class="a"><p class="rail">Price cut<span class="i">01</span></p>
+      <p class="note">kindred-beauty.com<br>seen 09:14</p></div>
     <div class="b">
       <h3>You’re being undercut.</h3>
       <p>Your ROAS tells you a week later, once the ad spend is already gone. This tells you the morning it happens.</p>
@@ -450,10 +445,11 @@
   <hr class="r2">
 
   <div class="band arg two">
-    <div class="a"><p class="rail">New product<span class="i">02</span></p></div>
+    <div class="a"><p class="rail">New product<span class="i">02</span></p>
+      <p class="note">kindred-beauty.com<br>seen 03:14</p></div>
     <div class="b">
       <h3>And a launch nobody announced.</h3>
-      <p>Every new listing on day one, including the products you would never have thought to look for.</p>
+      <p>Every new listing on day one.</p>
     </div>
     <div class="c fig">
       <span class="figure">4<span class="unit">new</span></span>
@@ -474,7 +470,8 @@
   <div class="wrap">
    <div class="ruled">
     <div class="band arg three">
-      <div class="a"><p class="rail">Sold out<span class="i">03</span></p></div>
+      <div class="a"><p class="rail">Sold out<span class="i">03</span></p>
+      <p class="note">kindred-beauty.com<br>seen 15:14</p></div>
       <div class="b">
         <h3>They can’t fill the orders.</h3>
         <p>When a competitor runs dry, their customers start looking elsewhere. You have a window until they restock.</p>
@@ -504,7 +501,7 @@
   <dl class="reg">
     <div class="band row">
       <dt class="a"><p class="rail">Price up</p></dt>
-      <dd class="b">A variant reprices upward, with the same delta you get on a cut.</dd>
+      <dd class="b">Upward, with the same delta.</dd>
       <dd class="c"><span class="ex">$18.00 → $21.00</span></dd>
     </div>
     <div class="band row">
@@ -531,7 +528,6 @@
   </div>
   <hr class="r1">
 
-  <div class="ruled">
   <section class="close" id="start">
     <h2>Paste a URL.&nbsp;Read the whole catalogue.</h2>
     <form class="snap" action="/snapshot" method="get">
@@ -543,7 +539,6 @@
     </form>
     <p class="offer">Your first email arrives within six hours.</p>
   </section>
-  </div>
   <hr class="r1">
 
   <footer>
