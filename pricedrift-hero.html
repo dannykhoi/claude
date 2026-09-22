@@ -19,9 +19,7 @@
 
     /* three rule weights, and only three */
     --r1:#1A1A17;              /* 2px, chapter */
-    --r2:#C6C3B5;              /* 1px, section and row */
-    --r3:#DEDCD2;              /* 1px, data rows */
-    --spine:#D2CFC4;           /* the column line, a step above the faintest */
+    --r2:#C6C3B5;              /* the hairline: every rule that is not a chapter */
 
     /* on the inverted band */
     --d-bg:#1A1A17;
@@ -35,7 +33,7 @@
     --mono:'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 
     /* one grid: 1.5 / 6 / 4.5 of twelve */
-    --zA:1.5fr; --zB:6fr; --zC:4.5fr;
+    --zA:1.2fr; --zB:6.3fr; --zC:4.5fr;
     --gut:36px;
     --measure:62ch;            /* one measure for every prose surface */
   }
@@ -53,29 +51,28 @@
   hr{border:0;margin:0}
   .r1{border-top:2px solid var(--r1)}
   .r2{border-top:1px solid var(--r2)}
-  .r3{border-top:1px solid var(--r3)}
 
   .band{display:grid;
     grid-template-columns:minmax(0,var(--zA)) minmax(0,var(--zB)) minmax(0,var(--zC))}
-  .band > .a{padding-right:var(--gut)}
+  .band > .a{padding-right:24px}
   .band > .b{padding:0 var(--gut)}
   .band > .c{padding-left:var(--gut)}
   .band > .bc{grid-column:2/-1;padding-left:var(--gut)}
   .ruled{
-    background:linear-gradient(to right,var(--spine),var(--spine)) no-repeat 12.5% 0;
+    background:linear-gradient(to right,var(--r2),var(--r2)) no-repeat 10% 0;
     background-size:1px 100%;
   }
 
   /* one rail treatment */
-  .rail{font:400 10px/16px var(--mono);letter-spacing:.14em;text-transform:uppercase;
+  .rail{font:400 10px/16px var(--mono);letter-spacing:.1em;text-transform:uppercase;
         color:var(--ink);margin:0}
   .rail .i{display:block;color:var(--ink-soft);margin-top:10px}
 
   /* the six-hour day, which is what this product actually is */
-  .sched{margin:18px 0 0;border-top:1px solid var(--r3)}
+  .sched{margin:18px 0 0;border-top:1px solid var(--r2)}
   .sched div{
     display:grid;grid-template-columns:auto 1fr;gap:10px;padding:5px 0;
-    border-bottom:1px solid var(--r3);
+    border-bottom:1px solid var(--r2);
     font:400 10px/18px var(--mono);letter-spacing:.06em;color:#918D80;
   }
   .sched div:last-child{border-bottom:0}
@@ -104,7 +101,7 @@
   .headline{padding:48px 0 34px}
   h1{
     font-family:var(--display);font-weight:400;font-variation-settings:"opsz" 72;
-    font-size:clamp(2.4rem,6.9vw,6rem);
+    font-size:clamp(2.4rem,7.55vw,6.57rem);
     line-height:.955;letter-spacing:-.025em;word-spacing:-.06em;
     margin:0 0 0 -2px;
   }
@@ -134,22 +131,23 @@
   button.cta:focus-visible{outline:2px solid var(--red);outline-offset:2px}
   .offer{font-size:16px;line-height:25px;color:var(--ink-soft);margin:13px 0 0;font-style:italic}
 
-  .notes{margin:28px 0 0;padding-top:18px;border-top:1px solid var(--r3)}
+  .notes{margin:28px 0 0;padding-top:18px;border-top:1px solid var(--r2)}
   .notes p:not(.rail){margin:9px 0 0;font-size:16px;line-height:25px;color:var(--ink-soft);max-width:var(--measure)}
 
   /* ---------- the specimen ---------- */
-  .mail{background:var(--paper);border:1px solid var(--ink);font-family:var(--mono)}
-  .mail-head{padding:13px 16px;border-bottom:1px solid var(--r2)}
-  .mail-head dl{display:grid;grid-template-columns:42px 1fr;margin:0;font-size:12px;line-height:21px}
-  .mail-head dt{color:var(--ink-soft);text-transform:uppercase;letter-spacing:.1em;font-size:9.5px}
-  .mail-head dd{margin:0;color:var(--ink-soft)}
-  .mail-head dd.subj{color:var(--ink);font-weight:600}
-  .mail .ev{padding:10px 16px;border-bottom:1px solid var(--r3)}
-  .mail .k{font:600 9.5px/18px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink);display:block}
-  .mail .v{font-size:12px;line-height:20px;color:var(--ink);display:block}
-  .mail .n{display:block;font-size:12px;line-height:20px;color:var(--ink-soft)}
-  .mail .n .d{color:var(--red)}
-  .mail-foot{padding:11px 16px;border-top:1px solid var(--r2);font-size:10.5px;line-height:18px;color:var(--ink-soft)}
+  /* the alert, set as a typographic specimen rather than a UI mockup */
+  .spec{font-family:var(--mono)}
+  .spec .hd{
+    margin:0 0 2px;font:400 11px/20px var(--mono);letter-spacing:.02em;color:var(--ink-soft);
+  }
+  .spec .hd b{display:block;font-weight:600;color:var(--ink);letter-spacing:0}
+  .spec .ev{padding:11px 0;border-top:1px solid var(--r2)}
+  .spec .k{font:600 9.5px/18px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink);display:block}
+  .spec .v{font-size:12.5px;line-height:21px;color:var(--ink);display:block}
+  .spec .n{display:block;font-size:12.5px;line-height:21px;color:var(--ink-soft)}
+  .spec .n .d{color:var(--red)}
+  .spec .ft{margin:0;padding:10px 0 0;border-top:1px solid var(--r2);
+            font-size:10.5px;line-height:18px;color:#807B6E}
 
   /* ---------- chapter head ---------- */
   .sect{padding:50px 0 42px}
@@ -169,15 +167,14 @@
   }
   .tax p:not(.rail){margin:0;color:var(--ink-soft);font-size:17px;line-height:27px;max-width:var(--measure)}
 
-  .fig{--s:1}
   .figure{
     display:block;font-family:var(--display);font-weight:500;
     font-variation-settings:"opsz" 72;font-feature-settings:"tnum" 1,"lnum" 1;
-    font-size:calc(clamp(2.3rem,9.47vw,8.52rem) * var(--s));line-height:.92;letter-spacing:-.028em;
-    color:var(--red);margin:0 0 calc(22px * var(--s));white-space:nowrap;
-    text-indent:var(--ti,0);
+    font-size:clamp(2.3rem,9.47vw,8.52rem);line-height:.92;letter-spacing:-.028em;
+    color:var(--red);margin:0 0 24px;white-space:nowrap;
+    text-align:right;margin-right:var(--tr,0);   /* one edge for all three */
   }
-  .figure .unit{font-size:.42em;letter-spacing:-.01em;margin-left:.12em}
+  .figure .unit{font-size:.28em;letter-spacing:-.005em;margin-left:.22em}
   .figure .sign{
     display:inline-block;width:.40em;height:.072em;background:currentColor;
     vertical-align:.27em;margin-right:.04em;
@@ -185,7 +182,7 @@
   .ledger{border-top:1px solid var(--r2)}
   .ledger div{
     display:grid;grid-template-columns:62px 1fr auto;gap:12px;padding:7px 0;
-    border-bottom:1px solid var(--r3);font-family:var(--mono);
+    border-bottom:1px solid var(--r2);font-family:var(--mono);
     font-size:12px;line-height:20px;color:var(--ink-soft);
   }
   .ledger div:last-child{border-bottom:0}
@@ -196,31 +193,23 @@
        color:#807B6E;margin-top:0;padding-top:9px;border-top:1px solid var(--r2);white-space:nowrap}
 
   .tax .lead{padding:46px 0 52px}
-  .tax .lead .fig{--s:1;--ti:0}
+  .tax .lead .figure{--tr:-1.5px}
   .tax .tight{padding:46px 0 52px}
-  .tax .tight .fig{--s:.72;--ti:-.085em}
+  .tax .tight .figure{--tr:-.5px}
 
   /* ---------- 03: the climax, inverted, out of the column grid ---------- */
   .inv{background:var(--d-bg);color:var(--d-text)}
   .inv .ruled{background-image:linear-gradient(to right,var(--d-rule),var(--d-rule))}
   .inv .rail{color:var(--d-text)}
   .inv .rail .i{color:var(--d-soft)}
-  .inv .sched{border-top-color:var(--d-rule)}
-  .inv .sched div{border-bottom-color:var(--d-rule);color:#7D7A6F}
-  .inv .sched .on{color:var(--d-text)}
-  .inv .sched .next{color:var(--d-soft)}
-  .inv h3{color:#F4F0E6;font-size:2.35rem}
+  .inv h3{color:#F4F0E6}
   .inv p:not(.rail){color:var(--d-soft)}
-  .inv .figure{color:var(--d-red);margin-bottom:26px}
+  .inv .figure{color:var(--d-red)}
   .inv .ledger{border-top-color:var(--d-rule)}
   .inv .ledger div{border-bottom-color:var(--d-rule);color:var(--d-soft)}
   .inv .cap{color:#8B8779;border-top-color:var(--d-rule)}
-  .climax{padding:54px 0 58px}
-  .climax .fig{--s:2;--ti:-.03em}
-  .climax .stack{max-width:var(--measure)}
-  .climax h3{margin:26px 0 10px}
-  .climax .ledger{margin-top:30px;max-width:436px}
-  .climax .cap{max-width:436px}
+  .climax{padding:46px 0 52px}
+  .climax .figure{--tr:-3.5px}
   .ledger.struck .x{position:relative;display:inline-block;justify-self:start;color:var(--d-soft)}
   .ledger.struck .x::after{
     content:"";position:absolute;left:-.06em;right:-.14em;top:50%;
@@ -228,17 +217,27 @@
   }
 
   /* ---------- the register ---------- */
-  .reg{margin:0}
+  .reg{margin:0;border-top:1px solid var(--r2);border-bottom:1px solid var(--r2)}
   .reg > div{display:grid;grid-template-columns:150px minmax(0,1fr);
-             padding:11px 0;border-bottom:1px solid var(--r3)}
+             padding:11px 0;border-bottom:1px solid var(--r2)}
   .reg > div:last-child{border-bottom:0}
   .reg dt{font:600 10px/27px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
   .reg dd{margin:0;font-size:17px;line-height:27px;color:var(--ink-soft);max-width:var(--measure)}
 
   /* ---------- the ask: cream, the form its only mass ---------- */
-  .close{padding:56px 0 60px}
-  .close h2{max-width:22ch}
-  .close form.snap{margin:30px 0 0}
+  .close{padding:52px 0 64px}
+  .close .rail{margin-bottom:26px}
+  .close h2{
+    font-size:clamp(2.2rem,6.9vw,6rem);font-variation-settings:"opsz" 72;font-weight:400;
+    line-height:.955;letter-spacing:-.025em;max-width:none;margin:0 0 0 -2px;
+  }
+  .close .go{
+    display:inline-block;margin:36px 0 0;font:500 10px/22px var(--mono);
+    letter-spacing:.14em;text-transform:uppercase;text-decoration:none;
+    color:var(--cream);background:var(--ink);border:1px solid var(--ink);
+    height:56px;padding:17px 30px;text-indent:.14em;
+  }
+  .close .go:hover{background:#000;border-color:#000}
 
   /* ---------- footer ---------- */
   footer{padding:40px 0 56px}
@@ -254,13 +253,12 @@
   .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 
   /* measured cap-height alignment, applied after layout */
-  .hero .a{padding-top:4px}         .hero .b{padding-top:2.5px}
-  .sect .a{padding-top:2.5px}       .sect .bc{padding-top:6px}
-  .tax .lead .a{padding-top:1px}    .tax .lead .b{padding-top:3px}    .tax .lead .c{padding-top:5px}
-  .tax .tight .a{padding-top:1px}   .tax .tight .b{padding-top:3.5px} .tax .tight .c{padding-top:5.5px}
-  .climax .a{padding-top:.5px}      .climax .bc{padding-top:4px}
-  .spec-sect .a{padding-top:24px}
-  .close .a{padding-top:5px}        .close .bc{padding-top:8px}
+  .hero .a{padding-top:4.5px}       .hero .b{padding-top:2.5px}      .hero .c{padding-top:2.5px}
+  .sect .a{padding-top:3px}         .sect .bc{padding-top:6px}
+  .tax .lead .a{padding-top:1.5px}  .tax .lead .b{padding-top:3.5px}  .tax .lead .c{padding-top:5px}
+  .tax .tight .a{padding-top:1.5px} .tax .tight .b{padding-top:4px}   .tax .tight .c{padding-top:5.5px}
+  .climax .a{padding-top:4.5px}     .climax .b{padding-top:6.5px}     .climax .c{padding-top:9px}
+  .spec-sect .a{padding-top:25px}
 
   @media (max-width:1080px){
     :root{--gut:28px}
@@ -327,16 +325,16 @@
     <div class="a">
       <p class="rail">The alert</p>
       <div class="sched">
-        <div><span class="t">03:14</span><span class="m"></span></div>
+        <div><span class="t">03:14</span><span class="m">done</span></div>
         <div class="on"><span class="t">09:14</span><span class="m">checked</span></div>
         <div class="next"><span class="t">15:14</span><span class="m">next</span></div>
-        <div><span class="t">21:14</span><span class="m"></span></div>
+        <div><span class="t">21:14</span><span class="m">then</span></div>
       </div>
     </div>
     <div class="b">
       <p class="deck">Paste any Shopify store URL and get the whole catalogue in seconds: prices, discounts, what’s sold out. Then an email every time any of it moves.</p>
       <p class="price-line">$9 a month, not $49.</p>
-      <p class="body">There’s nothing to map and nobody to onboard you.</p>
+      <p class="body">Nothing to map. No onboarding call, no implementation week, no account manager who needs to understand your catalogue before any of it starts working.</p>
 
       <!-- wire action/name to your snapshot endpoint -->
       <form class="snap" action="/snapshot" method="get">
@@ -354,14 +352,8 @@
       </div>
     </div>
     <div class="c">
-      <div class="mail" aria-label="Example alert email">
-        <div class="mail-head">
-          <dl>
-            <dt>From</dt><dd>PriceDrift alerts</dd>
-            <dt>Sent</dt><dd>Today 09:14</dd>
-            <dt>Subj</dt><dd class="subj">4 changes at Kindred Beauty</dd>
-          </dl>
-        </div>
+      <div class="spec" aria-label="Example alert email">
+        <p class="hd">PriceDrift alerts, today 09:14<b>4 changes at Kindred Beauty</b></p>
         <div class="ev">
           <span class="k">Price cut</span>
           <span class="v">Matte Lip Kit — Rosewood</span>
@@ -382,7 +374,7 @@
           <span class="v">Eyeliner — Jet</span>
           <span class="n">3 of 3 variants unavailable</span>
         </div>
-        <div class="mail-foot">kindred-beauty.com</div>
+        <p class="ft">kindred-beauty.com</p>
       </div>
     </div>
   </section>
@@ -403,10 +395,6 @@
     <li class="band lead">
       <div class="a">
         <p class="rail">Price cut<span class="i">01</span></p>
-        <div class="sched">
-          <div class="on"><span class="t">09:14</span><span class="m">seen</span></div>
-          <div><span class="t">03:14</span><span class="m">held</span></div>
-        </div>
       </div>
       <div class="b">
         <h3>You’re being undercut.</h3>
@@ -422,15 +410,11 @@
         <span class="cap">Matte Lip Kit — Rosewood</span>
       </div>
     </li>
-    <hr class="r3">
+    <hr class="r2">
 
     <li class="band tight">
       <div class="a">
         <p class="rail">New product<span class="i">02</span></p>
-        <div class="sched">
-          <div class="on"><span class="t">06:12</span><span class="m">listed</span></div>
-          <div><span class="t">03:14</span><span class="m">absent</span></div>
-        </div>
       </div>
       <div class="b">
         <h3>A launch you didn’t see.</h3>
@@ -439,10 +423,10 @@
       <div class="c fig">
         <span class="figure">+4<span class="unit">new</span></span>
         <div class="ledger">
-          <div><span class="now">06:12</span><span>Ember 40ml</span><span class="now">$48.00</span></div>
-          <div><span class="now">06:12</span><span>Ember 100ml</span><span class="now">$86.00</span></div>
-          <div><span class="now">06:12</span><span>Dusk 40ml</span><span class="now">$52.00</span></div>
-          <div><span class="now">06:12</span><span>Dusk 100ml</span><span class="now">$94.00</span></div>
+          <div><span class="now">03:14</span><span>Ember 40ml</span><span class="now">$48.00</span></div>
+          <div><span class="now">03:14</span><span>Ember 100ml</span><span class="now">$86.00</span></div>
+          <div><span class="now">03:14</span><span>Dusk 40ml</span><span class="now">$52.00</span></div>
+          <div><span class="now">03:14</span><span>Dusk 100ml</span><span class="now">$94.00</span></div>
         </div>
         <span class="cap">Winter Set, four variants</span>
       </div>
@@ -457,17 +441,13 @@
     <div class="band climax">
       <div class="a">
         <p class="rail">Sold out<span class="i">03</span></p>
-        <div class="sched">
-          <div class="on"><span class="t">09:14</span><span class="m">out</span></div>
-          <div><span class="t">15:14</span><span class="m">next</span></div>
-        </div>
       </div>
-      <div class="bc fig">
+      <div class="b">
+        <h3>They can’t fill the orders.</h3>
+        <p>When a competitor runs dry, their customers start looking elsewhere. You have a window until they restock.</p>
+      </div>
+      <div class="c fig">
         <span class="figure">0<span class="unit">of 3</span></span>
-        <div class="stack">
-          <h3>They can’t fill the orders.</h3>
-          <p>When a competitor runs dry their customers start looking elsewhere. You have a window, and it closes the day they restock.</p>
-        </div>
         <div class="ledger struck">
           <div><span>42h</span><span class="x">Fine tip</span><span>out</span></div>
           <div><span>24h</span><span class="x">Bold tip</span><span>out</span></div>
@@ -488,29 +468,23 @@
       <dl class="reg">
         <div><dt>Price up</dt><dd>A variant reprices upward. You get the delta, the same as a cut.</dd></div>
         <div><dt>Sale started</dt><dd>A compare-at price appears against the list price, which is usually the week they decided to chase volume.</dd></div>
-        <div><dt>Sale ended</dt><dd>The discount comes off and the old price returns.</dd></div>
+        <div><dt>Sale ended</dt><dd>The discount comes off again.</dd></div>
         <div><dt>Removed</dt><dd>A product or variant disappears from the catalogue.</dd></div>
-        <div><dt>Back in stock</dt><dd>Inventory returns, and your window closes.</dd></div>
+        <div><dt>Back in stock</dt><dd>Inventory returns. The window shuts.</dd></div>
       </dl>
     </div>
   </section>
   <hr class="r2">
 
-  <section class="band close" id="start">
-    <div class="a"><p class="rail">Start here</p></div>
-    <div class="bc">
-      <h2>Paste a URL. Read the whole catalogue.</h2>
-      <form class="snap" action="/snapshot" method="get">
-        <label class="field">
-          <span class="sr">Competitor store URL</span>
-          <input type="text" name="store" inputmode="url" autocomplete="off" spellcheck="false" placeholder="competitor-store.com">
-        </label>
-        <button class="cta" type="submit">Get a snapshot</button>
-      </form>
-      <p class="offer">One store, one email, six hours from now.</p>
-    </div>
-  </section>
   </div>
+  <hr class="r1">
+
+  <section class="close" id="start">
+    <p class="rail">Start here</p>
+    <h2>Paste a URL.<br>Read the whole catalogue.</h2>
+    <a class="go" href="#alert">Get a free snapshot</a>
+    <p class="offer">Your first email arrives within six hours.</p>
+  </section>
   <hr class="r1">
 
   <footer>
