@@ -16,7 +16,8 @@
     --ink:#1A1A17;
     --ink-soft:#2E2B24;
     --muted:#6B6759;           /* 4.97:1 on cream — the floor for any real text */        /* a tint of the heading ink, not a second hue */
-    --red:#A23A24;
+    --red:#A23A24;            /* a value that fell */
+    --green:#2F6B3A;          /* a value that rose — 5.62:1, matched to the red’s 5.83:1 */
 
     /* three rule weights, and only three */
     --r1:#1A1A17;              /* 2px, chapter */
@@ -83,8 +84,8 @@
   .mast .links a{text-decoration:none}
   .mast .links a:hover{color:var(--red)}
   .login{font:400 10px/24px var(--mono);letter-spacing:.2em;text-transform:uppercase;
-         color:var(--ink-soft);text-decoration:none;white-space:nowrap;
-         margin-left:44px}
+         color:var(--ink);text-decoration:none;white-space:nowrap;
+         margin-left:44px;padding-bottom:3px;border-bottom:1px solid var(--ink)}
   .login:hover{color:var(--ink)}
 
   /* ---------- headline ---------- */
@@ -114,7 +115,7 @@
   .price-line s{font-family:var(--mono);font-size:14px;text-decoration:none;
                 color:var(--muted);position:relative}
   .price-line s::after{content:"";position:absolute;left:.05em;right:.05em;top:52%;
-                       height:1px;background:var(--muted);transform:translateY(-50%)}
+                       height:1px;background:var(--ink-soft);transform:translateY(-50%)}
   .body{font-size:17px;line-height:27px;color:var(--ink-soft);margin:6px 0 0;max-width:var(--measure)}
 
   form.snap{display:flex;align-items:stretch;gap:0;margin:20px 0 0;width:100%}
@@ -139,11 +140,11 @@
 
   /* ---------- the specimen ---------- */
   /* the alert, set as a typographic specimen rather than a UI mockup */
-  .spec{font-family:var(--mono);background:#FFFFFF;border:1px solid var(--ink);
+  .spec{font-family:var(--mono);background:#FBF8F1;border:1px solid var(--ink);
         padding:15px 17px 13px}
   .spec .hd{margin:-15px -17px 0;padding:10px 17px 9px;border-bottom:1px solid var(--ink);
             font:400 10px/17px var(--mono);letter-spacing:.02em;color:var(--muted);
-            background:var(--paper)}
+            background:#F1EDE2}
   .spec .hd b{display:block;font-weight:600;color:var(--ink);letter-spacing:0;margin-top:2px}
   .spec .body-rows{padding:0}
   .spec .hd b{display:block;font-weight:600;color:var(--ink);letter-spacing:0}
@@ -156,6 +157,7 @@
   .spec .ev:first-child .n{font-size:13px}
   .spec .n{display:block;font-size:12.5px;line-height:19px;color:var(--ink-soft)}
   .spec .n .d{color:var(--red)}
+  .spec .n .u{color:var(--green)}
   .spec .old{color:var(--muted)}
   .spec .ft{margin:0;padding:10px 0 0;border-top:1px solid var(--r2);
             font-size:10.5px;line-height:18px;color:var(--muted)}
@@ -181,7 +183,6 @@
   .arg p:not(.rail):not(.note){margin:0;color:var(--ink-soft);font-size:17px;line-height:27px;max-width:var(--measure)}
 
   .arg{padding:44px 0 43.5px}
-  .arg.two{padding-bottom:26px}
   .two .ledger div{grid-template-columns:1fr auto}
 
   .arg .figure{margin-right:-1px}
@@ -189,7 +190,7 @@
     display:block;font-family:var(--display);font-weight:500;
     font-variation-settings:"opsz" 72;font-feature-settings:"tnum" 1,"lnum" 1;
     display:block;text-align:right;
-    font-size:clamp(2.08rem,7.8vw,7.02rem);line-height:.92;letter-spacing:-.028em;
+    font-size:clamp(2.08rem,7.8vw,7.02rem);line-height:.9;letter-spacing:-.028em;
     color:var(--red);margin:0 0 24px;white-space:nowrap;
   }
   .figure .unit{font-size:.32em;letter-spacing:-.008em;vertical-align:baseline;margin-left:.30em}
@@ -219,21 +220,14 @@
 
   .ledger .hd{font-size:10px;letter-spacing:.14em;text-transform:uppercase;
               color:var(--muted);padding:6px 0 5px}
-  /* the one place the rail is broken on purpose */
-  .ledger.wide{margin:4px 0 0;border-top:1px solid var(--r1)}
-  .ledger.wide div{grid-template-columns:minmax(0,1fr) 104px 128px;padding:10px 0;font-size:13px}
-  .ledger.wide .t{text-align:right;color:var(--muted)}
-  .ledger.wide .now{text-align:right}
-  .cap.wide{display:block;padding-top:9px;border-top:1px solid var(--r2);
-            max-width:none;margin-bottom:44px}
   .three .figure{margin-bottom:0}
   /* the three build: no numeral, then a middle one, then the full figure on ink */
   .figure.mid{font-size:clamp(1.5rem,4.4vw,3.95rem);margin:3.5px 0 17px;color:var(--ink)}
 
   /* ---------- 03: the climax, inverted, out of the column grid ---------- */
   .inv{background:var(--d-bg);color:var(--d-text)}
-  .inv .arg{padding:124px 0 116px}
-  .arg.three .figure{margin-top:4px}
+  .inv .arg{padding:76px 0 72px}
+  .arg.three .figure{margin-top:4px;font-size:clamp(2.6rem,11.4vw,10.2rem)}
   .inv .ruled{background-image:linear-gradient(to right,var(--d-rule),var(--d-rule))}
   .inv .rail{color:var(--d-text)}
   .inv .rail .i{color:var(--d-soft)}
@@ -272,12 +266,14 @@
   .reg > .row{padding:13px 0;border-bottom:1px solid var(--r2)}
   .reg > .row:last-child{border-bottom:0}
   .reg dd{margin:0;font-size:17px;line-height:27px;color:var(--ink-soft);max-width:var(--measure)}
-  .reg .ex{display:grid;grid-template-columns:1fr auto 1fr;gap:0 9px;
+  .reg .ex{display:grid;grid-template-columns:1fr auto 100px;gap:0 9px;
            font-family:var(--mono);font-size:12.5px;line-height:27px;
            color:var(--ink);white-space:nowrap;max-width:none}
   .reg .ex .was{text-align:right;color:var(--muted)}
   .reg .ex .ar{color:var(--muted)}
-  .reg .ex .is{text-align:left}
+  .reg .ex .is{text-align:right}
+  .reg .ex .is.up{color:var(--green)}
+  .reg .ex .is.down{color:var(--red)}
 
 
   /* ---------- the ask: cream, the form its only mass ---------- */
@@ -287,11 +283,13 @@
     font-variation-settings:"opsz" 72;font-weight:400;
     line-height:1;letter-spacing:-.026em;max-width:none;margin:0 0 0 -1px;
   }
-  .close form.snap{margin-top:34px;max-width:var(--measure)}
+  .close form.snap{margin-top:38px;max-width:none}
+  .close .field input{font-size:18px}
+  .close button.cta{width:268px;font-size:11px}
   .close .field{flex:1 1 auto}
-  .close .field input{font-size:16px;height:56px}
+  .close .field input{height:68px}
 
-  .close button.cta{height:56px}
+  .close button.cta{height:68px}
 
   /* ---------- footer ---------- */
   footer{padding:40px 0 56px}
@@ -408,7 +406,7 @@
         <div class="ev">
           <span class="k">Price up</span>
           <span class="v">Brow Pencil · Ash</span>
-          <span class="n"><span class="old">$18.00 →</span> $21.00 &nbsp;<span>+16.7%</span></span>
+          <span class="n"><span class="old">$18.00 →</span> $21.00 &nbsp;<span class="u">+16.7%</span></span>
         </div>
         <div class="ev">
           <span class="k">Sold out</span>
@@ -463,19 +461,17 @@
     </div>
     <div class="c fig">
       <span class="figure mid">4<span class="unit">new</span></span>
+      <div class="ledger">
+        <div class="hd"><span>Variant</span><span>Listed at</span></div>
+        <div><span>Canvas Tote 12L</span><span class="now">$64.00</span></div>
+        <div><span>Canvas Tote 18L</span><span class="now">$78.00</span></div>
+        <div><span>Canvas Tote 24L</span><span class="now">$92.00</span></div>
+        <div><span>Canvas Tote 30L</span><span class="now">$110.00</span></div>
+      </div>
+      <span class="cap">Fieldwork · Canvas Tote</span>
     </div>
   </div>
   </div>
-
-  <!-- 02's record leaves the rail and takes the whole measure -->
-  <div class="ledger wide">
-    <div class="hd"><span>Variant</span><span>Seen</span><span>Listed at</span></div>
-    <div><span>Canvas Tote 12L</span><span class="t">11:08</span><span class="now">$64.00</span></div>
-    <div><span>Canvas Tote 18L</span><span class="t">11:08</span><span class="now">$78.00</span></div>
-    <div><span>Canvas Tote 24L</span><span class="t">11:09</span><span class="now">$92.00</span></div>
-    <div><span>Canvas Tote 30L</span><span class="t">11:09</span><span class="now">$110.00</span></div>
-  </div>
-  <span class="cap wide">Fieldwork · four variants, none announced</span>
 </div>
 
 <section class="inv">
@@ -485,8 +481,8 @@
       <div class="a"><p class="rail"><span class="i">03</span>Sold out</p>
       <p class="note">Seen 17:23</p></div>
       <div class="b">
-        <h3>They can’t fill the orders.</h3>
-        <p>Harbour Goods has been dark on the Deck Boot for eighteen hours, and their buyers are already looking.</p>
+        <h3>Eighteen hours dark, and counting</h3>
+        <p>Harbour Goods cannot fill a single order on the Deck Boot, and their buyers are already looking elsewhere.</p>
       </div>
       <div class="c fig">
         <span class="figure">0<span class="unit">of 3</span></span>
@@ -495,7 +491,7 @@
           <div><span class="x">Deck Boot 9</span><span class="nil">out 24h</span></div>
           <div><span class="x">Deck Boot 10</span><span class="nil">out 18h</span></div>
         </div>
-        <span class="cap">Harbour Goods · three variants</span>
+        <span class="cap">Harbour Goods · Deck Boot</span>
       </div>
     </div>
    </div>
@@ -506,35 +502,34 @@
   <div class="ruled">
   <section class="band sect spec-sect">
     <div class="a"><p class="rail">The other five</p></div>
-    <div class="bc"><h2>Five more, on the same clock.</h2></div>
+    <div class="bc"><h2>Five more, on the same clock</h2></div>
   </section>
-  <hr class="r2">
 
   <dl class="reg">
     <div class="band row">
       <dt class="a"><p class="rail">Price up</p></dt>
       <dd class="b">Upward, with the same delta.</dd>
-      <dd class="c"><span class="ex"><span class="was">$18.00</span><span class="ar">→</span><span class="is">$21.00</span></span></dd>
+      <dd class="c"><span class="ex"><span class="was">$18.00</span><span class="ar">→</span><span class="is up">$21.00</span></span></dd>
     </div>
     <div class="band row">
       <dt class="a"><p class="rail">Sale started</p></dt>
       <dd class="b">A compare-at price appears against the list, usually the week they decided to chase volume.</dd>
-      <dd class="c"><span class="ex"><span class="was">$63.00</span><span class="ar">→</span><span class="is">$54.00</span></span></dd>
+      <dd class="c"><span class="ex"><span class="was">$63.00</span><span class="ar">→</span><span class="is down">$54.00</span></span></dd>
     </div>
     <div class="band row">
       <dt class="a"><p class="rail">Sale ended</p></dt>
       <dd class="b">The discount comes off again.</dd>
-      <dd class="c"><span class="ex"><span class="was">$54.00</span><span class="ar">→</span><span class="is">$63.00</span></span></dd>
+      <dd class="c"><span class="ex"><span class="was">$54.00</span><span class="ar">→</span><span class="is up">$63.00</span></span></dd>
     </div>
     <div class="band row">
       <dt class="a"><p class="rail">Removed</p></dt>
       <dd class="b">A product or variant disappears from the catalogue, and the handle starts returning a 404.</dd>
-      <dd class="c"><span class="ex"><span class="was">12</span><span class="ar">→</span><span class="is">11 variants</span></span></dd>
+      <dd class="c"><span class="ex"><span class="was">12</span><span class="ar">→</span><span class="is down">11 variants</span></span></dd>
     </div>
     <div class="band row">
       <dt class="a"><p class="rail">Back in stock</p></dt>
       <dd class="b">Inventory returns and the window shuts on you.</dd>
-      <dd class="c"><span class="ex"><span class="was">0</span><span class="ar">→</span><span class="is">2 of 3</span></span></dd>
+      <dd class="c"><span class="ex"><span class="was">0</span><span class="ar">→</span><span class="is up">2 of 3</span></span></dd>
     </div>
   </dl>
   </div>
