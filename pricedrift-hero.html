@@ -76,7 +76,7 @@
     border-bottom:1px solid var(--r2);
     font:400 10px/18px var(--mono);letter-spacing:.06em;color:var(--muted);
   }
-  .sched div:last-child{border-bottom:0}
+
   .sched .t{letter-spacing:0}
   .sched .m{text-transform:uppercase;letter-spacing:.14em;text-align:right}
   .sched .on{color:var(--ink)}
@@ -137,7 +137,7 @@
   button.cta{
     flex:none;font:500 10px/22px var(--mono);letter-spacing:.14em;text-transform:uppercase;
     color:var(--cream);background:var(--ink);border:1px solid var(--ink);
-    border-radius:0;height:56px;padding:0 22px;text-indent:.14em;cursor:pointer;white-space:nowrap;
+    border-radius:0;height:56px;width:212px;padding:0;text-indent:.14em;cursor:pointer;white-space:nowrap;
   }
   button.cta:hover{background:#000;border-color:#000}
   button.cta:focus-visible{outline:2px solid var(--red);outline-offset:2px}
@@ -172,8 +172,8 @@
     font-size:clamp(1.9rem,4.6vw,4.1rem);line-height:1.02;letter-spacing:-.026em;
     margin:0;text-wrap:balance;
   }
-  .note{margin:16px 0 0;padding-top:12px;border-top:1px solid var(--r2);
-        font:400 10px/17px var(--mono);letter-spacing:.02em;color:var(--muted)}
+  .note{margin:14px 0 0;font:400 10px/17px var(--mono);letter-spacing:.14em;
+        text-transform:uppercase;color:var(--muted);white-space:nowrap}
   .inv .note{border-top-color:var(--d-rule);color:#8E8A7C}
   .lede{margin:18px 0 0;color:var(--ink-soft);font-size:17px;line-height:27px;max-width:var(--measure)}
 
@@ -198,8 +198,6 @@
   .arg.three .a{padding-top:33px}
   .arg .c{padding-top:5px}
   .arg .figure{margin-right:-1px}
-  .arg.two .figure,.arg.three .figure{font-size:2.6rem;margin-bottom:16px}
-  .arg.two .figure .unit,.arg.three .figure .unit{font-size:.42em}
   .figure{
     display:block;font-family:var(--display);font-weight:500;
     font-variation-settings:"opsz" 72;font-feature-settings:"tnum" 1,"lnum" 1;
@@ -212,6 +210,15 @@
     display:inline-block;width:.40em;height:.072em;background:currentColor;
     vertical-align:.27em;margin-right:.04em;
   }
+  .ladder{border-top:1px solid var(--r2)}
+  .ladder div{display:grid;grid-template-columns:62px 1fr auto;gap:12px;padding:7px 0;
+              border-bottom:1px solid var(--r2);font-family:var(--mono);
+              font-size:12px;line-height:20px;color:var(--ink-soft)}
+  .ladder div:last-child{border-bottom:0}
+  .ladder .lbl{color:var(--muted)}
+  .ladder .old{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--red)}
+  .ladder .now{color:var(--ink)}
+  .ladder .d{color:var(--red)}
   .ledger{border-top:1px solid var(--r2)}
   .ledger div{
     display:grid;grid-template-columns:62px 1fr auto;gap:12px;padding:7px 0;
@@ -261,15 +268,15 @@
   /* ---------- the ask: cream, the form its only mass ---------- */
   .close{padding:52px 0 64px}
   .close h2{
-    font-family:var(--display);font-size:clamp(1.8rem,4.67vw,4.21rem);
+    font-family:var(--display);font-size:clamp(1.7rem,4.05vw,3.65rem);
     font-variation-settings:"opsz" 72;font-weight:400;
     line-height:1;letter-spacing:-.026em;max-width:none;margin:0 0 0 -1px;
   }
-  .close form.snap{margin-top:40px;max-width:720px}
+  .close form.snap{margin-top:34px;max-width:640px}
   .close .field{flex:1 1 auto}
-  .close .field input{font-size:18px;height:64px}
+  .close .field input{font-size:16px;height:56px}
 
-  .close button.cta{height:64px;padding:0 30px}
+  .close button.cta{height:56px}
 
   /* ---------- footer ---------- */
   footer{padding:40px 0 56px}
@@ -288,8 +295,7 @@
      thing it labels. Values taken from the rendered page. */
   .hero .a{padding-top:17px}      .hero .b{padding-top:2.5px}     .hero .c{padding-top:2.5px}
   .sect .a{padding-top:55.4px}      .sect .bc{padding-top:6px}
-  .spec-sect .a{padding-top:26px}
-  .spec-sect h2{font-size:1.85rem;line-height:1.14}
+  .spec-sect .a{padding-top:53.5px}
   .reg .row .a{padding-top:10.5px}
 
   @media (max-width:1080px){
@@ -392,7 +398,7 @@
         <div class="ev">
           <span class="k">New product</span>
           <span class="v">Winter Set</span>
-          <span class="n">listed at $48.00, 4 variants</span>
+          <span class="n">listed at $48.00, four variants</span>
         </div>
         <div class="ev">
           <span class="k">Price up</span>
@@ -401,8 +407,8 @@
         </div>
         <div class="ev">
           <span class="k">Sold out</span>
-          <span class="v">Eyeliner · Jet</span>
-          <span class="n">3 of 3 variants</span>
+          <span class="v">Eyeliner Jet</span>
+          <span class="n">none of 3 variants</span>
         </div>
         </div>
       </div>
@@ -428,28 +434,28 @@
   <div class="ruled">
   <div class="band arg one">
     <div class="a"><p class="rail">Price cut<span class="i">01</span></p>
-      <p class="note">kindred-beauty.com<br>seen 09:14</p></div>
+      <p class="note">Seen 09:14</p></div>
     <div class="b">
       <h3>You’re being undercut.</h3>
       <p>Your ROAS tells you a week later, once the ad spend is already gone. This tells you the morning it happens.</p>
     </div>
     <div class="c fig">
       <span class="figure"><span class="sr">minus </span><span class="sign" aria-hidden="true"></span>24.1<span class="unit">%</span></span>
-      <div class="ledger">
-        <div><span class="now">09:14</span><span class="now">$27.00</span><span class="d">−24.1%</span></div>
-        <div><span class="nil">03:14</span><span class="nil">$35.60</span><span class="nil">held since 21:14</span></div>
+      <div class="ladder">
+        <div><span class="lbl">was</span><span class="old">$29.00</span><span></span></div>
+        <div><span class="lbl">now</span><span class="now">$22.00</span><span class="d">−24.1%</span></div>
       </div>
-      <span class="cap">Silk Primer · 50ml</span>
+      <span class="cap">Matte Lip Kit · Rosewood, seen 09:14</span>
     </div>
   </div>
   <hr class="r2">
 
   <div class="band arg two">
     <div class="a"><p class="rail">New product<span class="i">02</span></p>
-      <p class="note">kindred-beauty.com<br>seen 03:14</p></div>
+      <p class="note">Seen 03:14</p></div>
     <div class="b">
       <h3>And a launch nobody announced.</h3>
-      <p>Every new listing on day one.</p>
+      <p>Every new listing on day one, before the store has announced it anywhere.</p>
     </div>
     <div class="c fig">
       <span class="figure">4<span class="unit">new</span></span>
@@ -471,7 +477,7 @@
    <div class="ruled">
     <div class="band arg three">
       <div class="a"><p class="rail">Sold out<span class="i">03</span></p>
-      <p class="note">kindred-beauty.com<br>seen 15:14</p></div>
+      <p class="note">Seen 15:14</p></div>
       <div class="b">
         <h3>They can’t fill the orders.</h3>
         <p>When a competitor runs dry, their customers start looking elsewhere. You have a window until they restock.</p>
@@ -479,9 +485,9 @@
       <div class="c fig">
         <span class="figure">0<span class="unit">of 3</span></span>
         <div class="ledger struck">
-          <div><span class="nil">42h</span><span class="x">Fine tip</span><span class="nil">out</span></div>
-          <div><span class="nil">24h</span><span class="x">Bold tip</span><span class="nil">out</span></div>
-          <div><span class="nil">18h</span><span class="x">Waterproof</span><span class="nil">out</span></div>
+          <div><span class="nil">out 42h</span><span class="x">Fine tip</span><span class="nil"></span></div>
+          <div><span class="nil">out 24h</span><span class="x">Bold tip</span><span class="nil"></span></div>
+          <div><span class="nil">out 18h</span><span class="x">Waterproof</span><span class="nil"></span></div>
         </div>
         <span class="cap">Eyeliner Jet · three variants</span>
       </div>
@@ -494,7 +500,7 @@
   <div class="ruled">
   <section class="band sect spec-sect">
     <div class="a"><p class="rail">The other five</p></div>
-    <div class="bc"><h2>The rest of the eight, watched on the same six-hour cycle.</h2></div>
+    <div class="bc"><h2>Five more, on the same six-hour clock.</h2></div>
   </section>
   <hr class="r2">
 
@@ -507,12 +513,12 @@
     <div class="band row">
       <dt class="a"><p class="rail">Sale started</p></dt>
       <dd class="b">A compare-at price appears against the list price, which is usually the week they decided to chase volume.</dd>
-      <dd class="c"><span class="ex">$29.00 compare-at</span></dd>
+      <dd class="c"><span class="ex">$63.00 compare-at</span></dd>
     </div>
     <div class="band row">
       <dt class="a"><p class="rail">Sale ended</p></dt>
       <dd class="b">The discount comes off again.</dd>
-      <dd class="c"><span class="ex">back to $29.00</span></dd>
+      <dd class="c"><span class="ex">$41.00 returns</span></dd>
     </div>
     <div class="band row">
       <dt class="a"><p class="rail">Removed</p></dt>
@@ -522,13 +528,16 @@
     <div class="band row">
       <dt class="a"><p class="rail">Back in stock</p></dt>
       <dd class="b">Inventory returns and the window shuts on you.</dd>
-      <dd class="c"><span class="ex">3 of 3 restocked</span></dd>
+      <dd class="c"><span class="ex">2 of 3 back</span></dd>
     </div>
   </dl>
   </div>
   <hr class="r1">
 
-  <section class="close" id="start">
+  <div class="ruled">
+  <section class="band close" id="start">
+    <div class="a"></div>
+    <div class="bc">
     <h2>Paste a URL.&nbsp;Read the whole catalogue.</h2>
     <form class="snap" action="/snapshot" method="get">
       <label class="field">
@@ -538,7 +547,9 @@
       <button class="cta" type="submit">Get a snapshot</button>
     </form>
     <p class="offer">Your first email arrives within six hours.</p>
+    </div>
   </section>
+  </div>
   <hr class="r1">
 
   <footer>
