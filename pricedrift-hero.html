@@ -12,7 +12,7 @@
     color-scheme: light;
 
     --cream:#F4F0E6;
-    --paper:#FFFFFF;
+    --paper:#FAF7ED;           /* paper, not white: the page keeps its material */
     --ink:#1A1A17;
     --ink-soft:#56544E;
     --muted:#6B6759;           /* 4.97:1 on cream — the floor for any real text */        /* a tint of the heading ink, not a second hue */
@@ -80,6 +80,7 @@
   .sched .t{letter-spacing:0}
   .sched .m{text-transform:uppercase;letter-spacing:.14em;text-align:right}
   .sched .on{color:var(--ink)}
+  .sched .on .m{color:var(--red)}
   .sched .on .t{font-weight:600}
   .sched .next{color:var(--ink-soft)}
 
@@ -96,8 +97,7 @@
   .mast .links a:hover{color:var(--red)}
   .login{font:400 10px/24px var(--mono);letter-spacing:.14em;text-transform:uppercase;
          color:var(--ink);text-decoration:none;white-space:nowrap;
-         margin-left:26px;padding-left:26px;border-left:1px solid var(--r2);
-         line-height:14px;align-self:center}
+         margin-left:44px}
   .login:hover{color:var(--red)}
 
   /* ---------- headline ---------- */
@@ -117,10 +117,12 @@
   /* ---------- hero ---------- */
   .hero{padding:32px 0 40px}
   .deck{font-size:20px;line-height:31px;margin:0 0 18px;max-width:var(--measure)}
-  .price-line{display:flex;align-items:baseline;gap:14px;margin:22px 0 0}
+  .price-line{display:flex;align-items:baseline;gap:11px;margin:22px 0 0}
   .price-line .n{font-family:var(--display);font-variation-settings:"opsz" 72;
                  font-weight:400;font-size:3.1rem;line-height:1;letter-spacing:-.03em}
   .price-line .u{font-size:17px;line-height:27px;color:var(--ink-soft)}
+  .price-line s{font-family:var(--mono);font-size:14px;text-decoration-thickness:1px;
+                text-decoration-color:var(--red);color:var(--muted)}
   .body{font-size:17px;line-height:27px;color:var(--ink-soft);margin:6px 0 0;max-width:var(--measure)}
 
   form.snap{display:flex;align-items:stretch;gap:0;margin:26px 0 0;width:100%}
@@ -181,7 +183,22 @@
   .tax p:not(.rail){margin:0;color:var(--ink-soft);font-size:17px;line-height:27px;max-width:var(--measure)}
 
   .arg{padding:44px 0 50px}
+  .arg.one{grid-template-columns:minmax(0,1.6fr) minmax(0,4.8fr) minmax(0,5.6fr)}
+  .arg.two{padding:38px 0 42px}
+  .arg.three{padding:52px 0 56px}
+  .headrow{display:flex;align-items:baseline;justify-content:space-between;gap:40px}
+  .headrow h3{margin-bottom:0}
+  .headrow .figure{flex:none;margin:0}
+  .two .ledger div{grid-template-columns:1fr auto}
+  .grouphd{margin:0 0 8px;font:500 10px/16px var(--mono);letter-spacing:.1em;
+           text-transform:uppercase;color:var(--muted)}
+  .three p{margin-top:14px}
+  .ledger.wide{margin-top:30px}
+  .ledger.wide div{grid-template-columns:110px 220px 1fr;font-size:14px;line-height:26px;padding:9px 0}
+  .ledger.wide .x{font-size:17px}
   .arg .a{padding-top:33.5px}
+  .arg.two .a{padding-top:24px}
+  .arg.three .a{padding-top:64px}
   .arg .c{padding-top:5px}
   .arg .figure{margin-right:-1px}
   .figure{
@@ -236,6 +253,7 @@
   /* ---------- the register ---------- */
   .reg{margin:0;border-top:1px solid var(--r2)}
   .reg > .row{padding:13px 0;border-bottom:1px solid var(--r2)}
+  .reg > .row:last-child{border-bottom:0}
   .reg dd{margin:0;font-size:17px;line-height:27px;color:var(--ink-soft);max-width:none}
 
 
@@ -280,6 +298,11 @@
   }
   @media (max-width:900px){
     .ruled{background-image:none}
+    .arg.one{grid-template-columns:1fr}
+    .headrow{display:block}
+    .headrow .figure{margin-top:14px}
+    .ledger.wide div{grid-template-columns:90px 1fr;font-size:13px}
+    .ledger.wide div span:last-child{display:none}
     .band{grid-template-columns:1fr}
     .band > .a{padding:0 0 16px!important}
     .band > .b,.band > .c,.band > .bc{grid-column:auto;padding:0;border-left:0}
@@ -342,7 +365,7 @@
     </div>
     <div class="b">
       <p class="deck">Paste any Shopify store URL and get the whole catalogue in seconds: prices, discounts, what’s sold out. Then an email every time any of it moves.</p>
-      <p class="price-line"><span class="n">$9</span><span class="u">a month, not $49</span></p>
+      <p class="price-line"><span class="n">$9</span><span class="u">a month, not <s>$49</s></span></p>
       <p class="body">We read only what any shopper can see, so there is nothing to map and your own store stays untouched.</p>
 
       <!-- wire action/name to your snapshot endpoint -->
@@ -401,7 +424,7 @@
 
 <div class="wrap">
   <div class="ruled">
-  <div class="band arg">
+  <div class="band arg one">
     <div class="a"><p class="rail">Price cut<span class="i">01</span></p></div>
     <div class="b">
       <h3>You’re being undercut.</h3>
@@ -418,19 +441,19 @@
   </div>
   <hr class="r2">
 
-  <div class="band arg">
+  <div class="band arg two">
     <div class="a"><p class="rail">New product<span class="i">02</span></p></div>
     <div class="b">
-      <h3>A launch you didn’t see.</h3>
+      <h3>And a launch nobody announced.</h3>
       <p>Every new listing on day one, including the products you would never have thought to look for.</p>
     </div>
-    <div class="c fig">
-      <span class="figure">4<span class="unit">new</span></span>
+    <div class="c">
+      <p class="grouphd">Listed 03:14</p>
       <div class="ledger">
-        <div><span class="nil">03:14</span><span>Ember 40ml</span><span class="now">$48.00</span></div>
-        <div><span class="nil">03:14</span><span>Ember 100ml</span><span class="now">$86.00</span></div>
-        <div><span class="nil">03:14</span><span>Dusk 40ml</span><span class="now">$52.00</span></div>
-        <div><span class="nil">03:14</span><span>Dusk 100ml</span><span class="now">$94.00</span></div>
+        <div><span>Ember 40ml</span><span class="now">$48.00</span></div>
+        <div><span>Ember 100ml</span><span class="now">$86.00</span></div>
+        <div><span>Dusk 40ml</span><span class="now">$52.00</span></div>
+        <div><span>Dusk 100ml</span><span class="now">$94.00</span></div>
       </div>
       <span class="cap">Winter Set · four variants</span>
     </div>
@@ -441,18 +464,18 @@
 <section class="inv">
   <div class="wrap">
    <div class="ruled">
-    <div class="band arg">
+    <div class="band arg three">
       <div class="a"><p class="rail">Sold out<span class="i">03</span></p></div>
-      <div class="b">
-        <h3>They can’t fill the orders.</h3>
+      <div class="bc">
+        <div class="headrow">
+          <h3>They can’t fill the orders.</h3>
+          <span class="figure">0<span class="unit">of 3</span></span>
+        </div>
         <p>When a competitor runs dry, their customers start looking elsewhere. You have a window until they restock.</p>
-      </div>
-      <div class="c fig">
-        <span class="figure">0<span class="unit">of 3</span></span>
-        <div class="ledger struck">
-          <div><span class="nil">42h</span><span class="x">Fine tip</span><span>out</span></div>
-          <div><span class="nil">24h</span><span class="x">Bold tip</span><span>out</span></div>
-          <div><span class="nil">18h</span><span class="x">Waterproof</span><span>out</span></div>
+        <div class="ledger struck wide">
+          <div><span class="nil">Out 42h</span><span class="x">Fine tip</span><span class="nil">last seen 15:14 Tuesday</span></div>
+          <div><span class="nil">Out 24h</span><span class="x">Bold tip</span><span class="nil">last seen 09:14 Wednesday</span></div>
+          <div><span class="nil">Out 18h</span><span class="x">Waterproof</span><span class="nil">last seen 15:14 Wednesday</span></div>
         </div>
         <span class="cap">Eyeliner Jet · three variants</span>
       </div>
