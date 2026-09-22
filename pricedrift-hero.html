@@ -89,8 +89,8 @@
   .login:hover{background:var(--ink);color:var(--cream)}
 
   /* ---------- headline ---------- */
-  .headline{padding:112px 0 52px;position:relative}
-  .dateline{position:absolute;right:0;top:130px;margin:0;text-align:right;
+  .headline{padding:84px 0 80px;position:relative}
+  .dateline{position:absolute;right:0;top:145px;margin:0;text-align:right;
             font:400 10px/19px var(--mono);letter-spacing:.14em;text-transform:uppercase;
             color:var(--muted)}
   .dateline span{display:block}
@@ -203,10 +203,10 @@
   /* every unit in the mono label face at label size, so the three read as one instrument */
   .figure .unit{display:block;font-family:var(--mono);font-weight:400;font-size:11px;
                 line-height:16px;letter-spacing:.14em;text-transform:uppercase;
-                margin:-16px -.14em 0 0;color:var(--muted)}
+                margin:-16px -.14em 0 0;color:inherit}
   .figure .sign{
-    display:inline-block;width:.30em;height:.062em;background:currentColor;
-    vertical-align:.32em;margin-right:.07em;
+    display:inline-block;width:.285em;height:.078em;background:currentColor;
+    vertical-align:.30em;margin-right:.02em;
   }
   .ladder{border-top:1px solid var(--r2)}
   .ladder div{display:grid;grid-template-columns:62px 1fr;gap:12px;padding:7px 0;
@@ -239,6 +239,14 @@
   .inv .arg{padding:76px 0 72px}
   .arg .figure{margin-top:6px}
   .arg.one .figure{color:var(--red)}
+  .inv .figure{color:var(--d-red)}        /* three of three is a fall, so it is rust */
+  /* per-glyph optical offsets: measured right ink was 2561 / 2565 / 2560 on a 2560 rail */
+  .figure.f25{margin-right:.5px}
+  .figure.f0{margin-right:0}
+  .arg.two .wide{grid-column:2/-1;padding-left:var(--gut);align-self:start;margin-top:30px}
+  .arg .b .ladder,.arg .b .ledger{margin-top:26px;max-width:var(--measure)}
+  .arg .b .cap{max-width:var(--measure)}
+  .ledger.four div{grid-template-columns:minmax(0,1fr) auto}
   .inv .ruled{background-image:linear-gradient(to right,var(--d-rule),var(--d-rule))}
   .inv .rail{color:var(--d-text)}
   .inv .rail .i{color:var(--d-soft)}
@@ -399,7 +407,7 @@
     <div class="b">
       <p class="deck">Paste any Shopify store URL and get the whole catalogue in seconds: prices, discounts, what’s sold out. Then an email every time any of it moves.</p>
       <p class="body">We read only what any shopper can see, so there is nothing to map and your own store stays untouched.</p>
-      <p class="price-line"><span class="n"><span class="cur">$</span>9</span><span class="u">a month, not <s>$49</s></span></p>
+      <p class="price-line"><span class="n"><span class="cur">$</span>9</span><span class="u">a month</span></p>
 
       <!-- wire action/name to your snapshot endpoint -->
       <form class="snap" action="/snapshot" method="get">
@@ -453,14 +461,14 @@
     <div class="b">
       <h3>You’re being undercut.</h3>
       <p>Your ROAS will say so next week.</p>
-    </div>
-    <div class="c fig">
-      <span class="figure"><span class="sr">minus </span><span class="sign" aria-hidden="true"></span>25<span class="unit">%</span></span>
       <div class="ladder">
         <div><span class="lbl">was</span><span class="old">$88.00</span></div>
         <div><span class="lbl">now</span><span class="now">$66.00</span></div>
       </div>
       <span class="cap">Northbound · Merino Crew</span>
+    </div>
+    <div class="c fig">
+      <span class="figure f25"><span class="sr">minus </span><span class="sign" aria-hidden="true"></span>25<span class="unit">%</span></span>
     </div>
   </div>
   <hr class="r2">
@@ -471,16 +479,14 @@
       <h3>A launch goes up <br class="hb">and nobody says a word.</h3>
       <p>Every new listing surfaces on day one: the variant, the price, the minute it appeared, well before the store has posted about it anywhere.</p>
     </div>
-    <div class="c fig">
-      <span class="figure">4<span class="unit">new</span></span>
-      <div class="ledger">
-        <div class="hd"><span>Variant</span><span>Listed at</span></div>
+    <div class="wide">
+      <div class="ledger four">
         <div><span>Canvas Tote 12L</span><span class="now">$64.00</span></div>
         <div><span>Canvas Tote 18L</span><span class="now">$78.00</span></div>
         <div><span>Canvas Tote 24L</span><span class="now">$92.00</span></div>
         <div><span>Canvas Tote 30L</span><span class="now">$110.00</span></div>
       </div>
-      <span class="cap">Fieldwork · Canvas Tote</span>
+      <span class="cap">Fieldwork · Canvas Tote, four variants listed at 11:08</span>
     </div>
   </div>
   </div>
@@ -494,15 +500,15 @@
       <div class="b">
         <h3>They can’t fill a single order.</h3>
         <p>Harbour Goods has been out on every Deck Boot size for two days, and their buyers are already looking elsewhere.</p>
-      </div>
-      <div class="c fig">
-        <span class="figure">0<span class="unit">of 3</span></span>
-        <div class="ledger struck">
+        <div class="ledger">
           <div><span class="x">Deck Boot 8</span><span class="nil">out 42h</span></div>
           <div><span class="x">Deck Boot 9</span><span class="nil">out 24h</span></div>
           <div><span class="x">Deck Boot 10</span><span class="nil">out 18h</span></div>
         </div>
         <span class="cap">Harbour Goods · Deck Boot</span>
+      </div>
+      <div class="c fig">
+        <span class="figure f0">0<span class="unit">of 3</span></span>
       </div>
     </div>
    </div>
@@ -570,6 +576,7 @@
           <span class="v">Matte Lip Kit · Rosewood</span>
           <span class="n"><span class="old">$29.00 →</span> $22.00 &nbsp;<span class="d">−24.1%</span></span>
         </div>
+        <p class="ft">One of four changes in that email</p>
       </div>
     </div>
   </section>
