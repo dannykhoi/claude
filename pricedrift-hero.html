@@ -68,6 +68,7 @@
   /* one rail treatment */
   .rail{font:400 10px/16px var(--mono);letter-spacing:.1em;text-transform:uppercase;
         color:var(--ink);margin:0}
+  .rail.grp{color:var(--muted);margin-bottom:22px}
   .rail .i{display:block;font-size:23px;line-height:23px;letter-spacing:.01em;
             color:var(--ink);margin:0 0 9px}
 
@@ -85,14 +86,15 @@
   .mast .links a:hover{color:var(--red)}
   .login{font:400 10px/24px var(--mono);letter-spacing:.2em;text-transform:uppercase;
          color:var(--ink);text-decoration:none;white-space:nowrap;
-         margin-left:44px;padding:3px 9px 2px 11px;border:1px solid var(--ink)}
+         margin-left:44px;padding:4px 9px 3px 11px;border:1px solid var(--ink);
+         position:relative;top:2px}
   .login:hover{background:var(--ink);color:var(--cream)}
 
   /* ---------- headline ---------- */
   .headline{padding:84px 0 80px;position:relative}
   .dateline{position:absolute;right:0;top:145px;margin:0;text-align:right;
             font:400 10px/19px var(--mono);letter-spacing:.14em;text-transform:uppercase;
-            color:var(--muted)}
+            color:var(--muted);margin-right:-.14em}
   .dateline span{display:block}
   h1{
     font-family:var(--display);font-weight:400;font-variation-settings:"opsz" 72;
@@ -114,8 +116,8 @@
   .price-line{display:flex;align-items:baseline;gap:18px;margin:26px 0 0 -3px;
               padding-top:16px;border-top:1px solid var(--r2)}
   .price-line .n{font-family:var(--display);font-variation-settings:"opsz" 72;
-                 font-weight:400;font-size:4.3rem;line-height:1;letter-spacing:-.03em}
-  .price-line .cur{font-size:.44em;vertical-align:.60em;letter-spacing:0;margin-right:.05em}
+                 font-weight:400;font-size:3.4rem;line-height:1;letter-spacing:-.03em}
+  .price-line .cur{font-size:.42em;vertical-align:.70em;letter-spacing:0;margin-right:.06em}
   .price-line .u{font:400 11px/16px var(--mono);letter-spacing:.14em;text-transform:uppercase;
                  color:var(--muted);position:relative;top:-.12em}
   /* "not" already does the semantic work, so the old price is tinted, not struck */
@@ -161,7 +163,7 @@
   .spec .old{color:var(--muted)}
   .spec .ft{margin:0;padding:10px 14px 11px;border-top:1px solid var(--r2);
             font-size:10.5px;line-height:18px;color:var(--muted)}
-  .inv .spec .ft{border-top-color:var(--d-rule);color:#8B8779}
+  .inv .spec .ft{border-top-color:#3A382F;color:#9D998B}   /* 4.38:1 on the lifted card fill */
 
   /* ---------- chapter head ---------- */
   .sect{padding:44.5px 0 40.5px}
@@ -198,16 +200,16 @@
     display:block;font-family:var(--display);font-weight:500;
     font-variation-settings:"opsz" 72;font-feature-settings:"tnum" 1,"lnum" 1;
     display:block;text-align:right;
-    font-size:clamp(2.08rem,7.0vw,6.3rem);line-height:.92;letter-spacing:-.028em;
+    font-size:clamp(1.9rem,5.9vw,5.3rem);line-height:.92;letter-spacing:-.028em;
     color:var(--ink);margin:0 0 24px;white-space:nowrap;
   }
   /* every unit in the mono label face at label size, so the three read as one instrument */
-  .figure .unit{display:block;font-family:var(--mono);font-weight:400;font-size:11px;
-                line-height:16px;letter-spacing:.14em;text-transform:uppercase;
-                margin:-16px -.14em 0 0;color:inherit}
+  .figure .unit{font-family:var(--mono);font-weight:400;font-size:12px;line-height:1;
+                letter-spacing:.14em;text-transform:uppercase;vertical-align:baseline;
+                margin:0 -.14em 0 15px;color:inherit}
   .figure .sign{
-    display:inline-block;width:.285em;height:.078em;background:currentColor;
-    vertical-align:.30em;margin-right:.02em;
+    display:inline-block;width:.285em;height:.076em;background:currentColor;
+    vertical-align:.345em;margin-right:.03em;
   }
   .ladder{border-top:1px solid var(--r2)}
   .ladder div{display:grid;grid-template-columns:62px 1fr;gap:12px;padding:7px 0;text-align:right;
@@ -238,16 +240,18 @@
   /* ---------- 03: the climax, inverted, out of the column grid ---------- */
   .inv{background:var(--d-bg);color:var(--d-text)}
   .inv .arg{padding:76px 0 72px}
-  /* measured: the A's apex sat 11px inboard of the Y's stem */
-  .arg.two h3{margin-left:-10px}
-  .arg.three h3{margin-left:-4px}
+  /* measured from rendered ink over one window: every stem hangs 1px past the 666 column */
+  .arg.one h3{margin-left:-3.5px}
+  .arg.two h3{margin-left:0}
+  .arg.three h3{margin-left:-1px}
   .arg .figure{margin-top:6px}
   .arg.one .figure{color:var(--red)}
   .inv .figure{color:var(--d-red)}        /* three of three is a fall, so it is rust */
   /* per-glyph optical offsets: measured right ink was 2561 / 2565 / 2560 on a 2560 rail */
-  .figure.f25{margin-right:.5px}
-  .figure.f0{margin-right:0}
-  .arg .wide{grid-column:2/-1;padding-left:var(--gut);align-self:start;margin-top:30px}
+  .figure.f25{margin-right:-2.5px}
+  .figure.f4{margin-right:-1.5px}
+  .figure.f0{margin-right:-3px}
+  .arg .wide{grid-column:2/-1;padding-left:var(--gut);align-self:start;margin-top:22px}
   .arg .wide .cap{max-width:none}
   .ledger.four div{grid-template-columns:minmax(0,1fr) auto}
   .inv .ruled{background-image:linear-gradient(to right,var(--d-rule),var(--d-rule))}
@@ -258,8 +262,8 @@
   .inv p:not(.rail){color:var(--d-soft)}
   .inv .arg p:not(.rail):not(.note):not(.grouphd){color:#C6C1B3}
   .inv .cap{color:#8B8779;border-top-color:var(--d-rule)}
-  .inv .spec{border-color:#4A463D}
-  .inv .spec .hd{background:#26251F;color:var(--d-soft)}
+  .inv .spec{border:0;background:#24231C}
+  .inv .spec .hd{background:#0F0F0C;color:var(--d-soft)}
   .inv .spec .hd b{color:var(--d-text)}
   .inv .spec .ev{border-top-color:var(--d-rule)}
   .inv .spec .k{color:#A8A497}
@@ -303,7 +307,6 @@
   .reg .ex .was{text-align:right;color:var(--muted)}
   .reg .ex .ar{color:var(--muted)}
   .reg .ex .is{text-align:right;color:var(--ink)}
-  .reg .ex .is.down{color:var(--red)}
 
 
   /* ---------- the ask: cream, the form its only mass ---------- */
@@ -459,7 +462,7 @@
 <div class="wrap">
   <div class="ruled">
   <div class="band arg one" id="cases">
-    <div class="a"><p class="rail"><span class="i">01</span>Price cut</p></div>
+    <div class="a"><p class="rail grp">The cases</p><p class="rail"><span class="i">01</span>Price cut</p></div>
     <div class="b">
       <h3>You’re being undercut.</h3>
       <p>Your ROAS will say so next week.</p>
@@ -482,6 +485,9 @@
     <div class="b">
       <h3>A launch goes up <br class="hb">and nobody says a word.</h3>
       <p>Every new listing surfaces on day one: the variant, the price, the minute it appeared, well before the store has posted about it anywhere.</p>
+    </div>
+    <div class="c fig">
+      <span class="figure f4">4<span class="unit">new</span></span>
     </div>
     <div class="wide">
       <div class="ledger four">
@@ -531,22 +537,22 @@
   <dl class="reg">
     <div class="band row">
       <dt class="a"><p class="rail">Price up</p></dt>
-      <dd class="b">They blink first and the price goes back up.</dd>
+      <dd class="b">They blink first.</dd>
       <dd class="c"><span class="ex"><span class="was">$18.00</span><span class="ar">→</span><span class="is">$21.00</span></span></dd>
     </div>
     <div class="band row">
       <dt class="a"><p class="rail">Sale started</p></dt>
-      <dd class="b">A compare-at price appears and a sale starts.</dd>
+      <dd class="b">A compare-at price appears, which is how a sale announces itself a day before the banner does.</dd>
       <dd class="c"><span class="ex"><span class="was">$63.00</span><span class="ar">→</span><span class="is down">$54.00</span></span></dd>
     </div>
     <div class="band row">
       <dt class="a"><p class="rail">Sale ended</p></dt>
-      <dd class="b">The discount comes off and their margin comes back.</dd>
+      <dd class="b">The discount comes off.</dd>
       <dd class="c"><span class="ex"><span class="was">$54.00</span><span class="ar">→</span><span class="is">$63.00</span></span></dd>
     </div>
     <div class="band row">
       <dt class="a"><p class="rail">Removed</p></dt>
-      <dd class="b">A variant vanishes and its handle starts returning a 404.</dd>
+      <dd class="b">A handle starts returning a 404.</dd>
       <dd class="c"><span class="ex"><span class="was">12 variants</span><span class="ar">→</span><span class="is down">11 variants</span></span></dd>
     </div>
     <div class="band row">
@@ -576,13 +582,13 @@
     </div>
     <div class="c">
       <div class="spec last" aria-label="The most recent alert">
-        <p class="hd">The last one we sent<b>09:14 · kindred-beauty.com</b></p>
+        <p class="hd">The last sweep<b>kindred-beauty.com</b></p>
         <div class="ev">
-          <span class="k">Price cut</span>
-          <span class="v">Matte Lip Kit · Rosewood</span>
-          <span class="n"><span class="old">$29.00 →</span> $22.00 &nbsp;<span class="d">−24.1%</span></span>
+          <span class="k">Read at 09:14</span>
+          <span class="v">1,240 variants · 312 prices</span>
+          <span class="n">4 changes worth sending</span>
         </div>
-        <p class="ft">One of four changes in that email</p>
+        <p class="ft">Every six hours, whether anything moved or not</p>
       </div>
     </div>
   </section>
