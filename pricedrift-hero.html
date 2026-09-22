@@ -113,13 +113,14 @@
   /* ---------- hero ---------- */
   .hero{padding:38.5px 0 31.5px}
   .deck{font-size:20px;line-height:31px;margin:0 0 18px;max-width:var(--measure)}
-  .price-line{display:flex;align-items:baseline;gap:18px;margin:26px 0 0 -3px;
+  .price-line{display:flex;align-items:baseline;gap:14px;margin:26px 0 0;
               padding-top:16px;border-top:1px solid var(--r2)}
   .price-line .n{font-family:var(--display);font-variation-settings:"opsz" 72;
                  font-weight:400;font-size:3.4rem;line-height:1;letter-spacing:-.03em}
   .price-line .cur{font-size:.42em;vertical-align:.70em;letter-spacing:0;margin-right:.06em}
   .price-line .u{font:400 11px/16px var(--mono);letter-spacing:.14em;text-transform:uppercase;
-                 color:var(--muted);position:relative;top:-.12em}
+                 color:var(--muted)}
+  .price-line .n{margin-left:-3px}
   /* "not" already does the semantic work, so the old price is tinted, not struck */
   .price-line s{text-decoration:none;color:var(--muted)}
   .body{font-size:17px;line-height:27px;color:var(--ink-soft);margin:6px 0 0;max-width:var(--measure)}
@@ -163,7 +164,7 @@
   .spec .old{color:var(--muted)}
   .spec .ft{margin:0;padding:10px 14px 11px;border-top:1px solid var(--r2);
             font-size:10.5px;line-height:18px;color:var(--muted)}
-  .inv .spec .ft{border-top-color:#3A382F;color:#9D998B}   /* 4.38:1 on the lifted card fill */
+  .inv .spec .ft{border-top-color:var(--d-rule);color:#9D998B}
 
   /* ---------- chapter head ---------- */
   .sect{padding:44.5px 0 40.5px}
@@ -229,9 +230,30 @@
   }
   .ledger div:last-child{border-bottom:0}
   .ledger .now{color:var(--ink)}
-  .cap{display:block;font-family:var(--mono);font-size:11px;line-height:18px;
-       color:var(--muted);margin-top:0;padding-top:9px;border-top:1px solid var(--r2);white-space:nowrap}
+  .cap{display:block;font-family:var(--mono);font-size:12px;line-height:19px;
+       color:#57534A;margin-top:0;padding-top:9px;border-top:1px solid var(--r2);white-space:nowrap}
 
+  /* 01: a price pair set large, the old price struck in the margin above it */
+  .pair{display:grid;justify-items:end;margin:4px 0 20px}
+  .pair .pwas{font:400 14px/20px var(--mono);color:var(--muted);
+              text-decoration:line-through;text-decoration-style:dotted;
+              text-decoration-color:#9A9588;text-decoration-thickness:1px}
+  .pair .pnow{font-family:var(--display);font-variation-settings:"opsz" 72;font-weight:400;
+              font-feature-settings:"lnum" 1,"tnum" 1;font-size:clamp(2.4rem,5.4vw,4.9rem);
+              line-height:.95;letter-spacing:-.03em;color:var(--ink);margin:6px -2px 0 0}
+  .pair .pdel{font-family:var(--display);font-variation-settings:"opsz" 36;
+              font-feature-settings:"lnum" 1;font-size:26px;line-height:32px;
+              color:var(--red);margin-top:6px}
+  /* 03: hours out of stock, drawn as bars on one scale */
+  .bars{border-top:1px solid var(--r2);margin:2px 0 0}
+  .bars > div{display:grid;grid-template-columns:96px minmax(0,1fr) 36px;gap:12px;align-items:center;
+              padding:9px 0;border-bottom:1px solid var(--r2);
+              font:400 12px/20px var(--mono);color:var(--ink-soft)}
+  .bars > div:last-child{border-bottom:0}
+  .bars .bt{display:block;height:7px;background:#E4DFD1}
+  .bars .bt i{display:block;height:100%;background:var(--ink)}
+  .bars .bv{text-align:right;color:var(--ink)}
+  .arg .c .ledger{border-top:1px solid var(--r2)}
   .ledger .hd{font-size:10px;letter-spacing:.14em;text-transform:uppercase;
               color:var(--muted);padding:6px 0 5px}
   .three .figure{margin-bottom:0}
@@ -262,8 +284,8 @@
   .inv p:not(.rail){color:var(--d-soft)}
   .inv .arg p:not(.rail):not(.note):not(.grouphd){color:#C6C1B3}
   .inv .cap{color:#8B8779;border-top-color:var(--d-rule)}
-  .inv .spec{border:0;background:#24231C}
-  .inv .spec .hd{background:#0F0F0C;color:var(--d-soft)}
+  .inv .spec{border:1px solid #55524A;border-top:0;background:transparent}
+  .inv .spec .hd{background:#2E2C25;color:var(--d-soft)}
   .inv .spec .hd b{color:var(--d-text)}
   .inv .spec .ev{border-top-color:var(--d-rule)}
   .inv .spec .k{color:#A8A497}
@@ -301,10 +323,11 @@
   .reg > .row{padding:13px 0;border-bottom:1px solid var(--r2)}
   .reg > .row:last-child{border-bottom:0}
   .reg dd{margin:0;font-size:17px;line-height:27px;color:var(--ink-soft);max-width:var(--measure)}
-  .reg .ex{display:grid;grid-template-columns:1fr auto 104px;gap:0 9px;
+  .reg .ex{display:grid;grid-template-columns:104px auto 104px;justify-content:end;gap:0 10px;
            font-family:var(--mono);font-size:12.5px;line-height:27px;
            color:var(--ink);white-space:nowrap;max-width:none}
-  .reg .ex .was{text-align:right;color:var(--muted)}
+  .reg .ex .was{text-align:right;color:var(--muted);text-decoration:line-through;
+                text-decoration-style:dotted;text-decoration-color:#9A9588}
   .reg .ex .ar{color:var(--muted)}
   .reg .ex .is{text-align:right;color:var(--ink)}
 
@@ -386,9 +409,9 @@
   <header class="mast">
     <a class="wordmark" href="/">PriceDrift</a>
     <div class="links">
-      <a href="#alert">The alert</a>
-      <a href="#cases">The cases</a>
-      <a href="#events">The other five</a>
+      <a href="#alert">Alert email</a>
+      <a href="#cases">Changes tracked</a>
+      <a href="#start">Get started</a>
     </div>
     <a class="login" href="/dashboard.html">Log in</a>
   </header>
@@ -407,7 +430,7 @@
   <div class="ruled">
   <section class="band hero" id="alert">
     <div class="a">
-      <p class="rail">The alert</p>
+      <p class="rail">Alert email</p>
     </div>
     <div class="b">
       <p class="deck">Paste any Shopify store URL and get the whole catalogue in seconds: prices, discounts, what’s sold out. Then an email every time any of it moves.</p>
@@ -462,20 +485,18 @@
 <div class="wrap">
   <div class="ruled">
   <div class="band arg one" id="cases">
-    <div class="a"><p class="rail grp">The cases</p><p class="rail"><span class="i">01</span>Price cut</p></div>
+    <div class="a"><p class="rail"><span class="i">01</span>Price cut</p></div>
     <div class="b">
       <h3>You’re being undercut.</h3>
-      <p>Your ROAS will say so next week.</p>
+      <p>Northbound took a quarter off the Merino Crew overnight. Your ads are still bidding against the old price.</p>
     </div>
     <div class="c fig">
-      <span class="figure f25"><span class="sr">minus </span><span class="sign" aria-hidden="true"></span>25<span class="unit">%</span></span>
-    </div>
-    <div class="wide">
-      <div class="ladder">
-        <div><span class="lbl">was</span><span class="old">$88.00</span></div>
-        <div><span class="lbl">now</span><span class="now">$66.00</span></div>
+      <div class="pair">
+        <span class="pwas"><span class="sr">was </span>$88.00</span>
+        <span class="pnow"><span class="sr">now </span>$66.00</span>
+        <span class="pdel">−25%</span>
       </div>
-      <span class="cap">Northbound · Merino Crew, cut at 06:41</span>
+      <span class="cap">Northbound · Merino Crew, seen 06:41</span>
     </div>
   </div>
   <hr class="r1">
@@ -483,81 +504,67 @@
   <div class="band arg two">
     <div class="a"><p class="rail"><span class="i">02</span>New product</p></div>
     <div class="b">
-      <h3>A launch goes up <br class="hb">and nobody says a word.</h3>
+      <h3>A new product, listed before it’s announced.</h3>
       <p>Every new listing surfaces on day one: the variant, the price, the minute it appeared, well before the store has posted about it anywhere.</p>
     </div>
     <div class="c fig">
-      <span class="figure f4">4<span class="unit">new</span></span>
-    </div>
-    <div class="wide">
       <div class="ledger four">
         <div><span>Canvas Tote 12L</span><span class="now">$64.00</span></div>
         <div><span>Canvas Tote 18L</span><span class="now">$78.00</span></div>
         <div><span>Canvas Tote 24L</span><span class="now">$92.00</span></div>
         <div><span>Canvas Tote 30L</span><span class="now">$110.00</span></div>
       </div>
-      <span class="cap">Fieldwork · Canvas Tote, four variants listed at 11:08</span>
+      <span class="cap">Fieldwork · Canvas Tote, listed 11:08</span>
     </div>
   </div>
-  </div>
-</div>
+  <hr class="r1">
 
-<section class="inv">
-  <div class="wrap">
-   <div class="ruled">
-    <div class="band arg three">
-      <div class="a"><p class="rail"><span class="i">03</span>Sold out</p></div>
-      <div class="b">
-        <h3>They can’t fill a single order.</h3>
-        <p>Harbour Goods has been out on every Deck Boot size for two days, and their buyers are already looking elsewhere.</p>
-      </div>
-      <div class="c fig">
-        <span class="figure f0">0<span class="unit">of 3</span></span>
-      </div>
-      <div class="wide">
-        <div class="ledger">
-          <div><span class="x">Deck Boot 8</span><span class="nil">out 42h</span></div>
-          <div><span class="x">Deck Boot 9</span><span class="nil">out 24h</span></div>
-          <div><span class="x">Deck Boot 10</span><span class="nil">out 18h</span></div>
-        </div>
-        <span class="cap">Harbour Goods · Deck Boot, dark since 17:23</span>
-      </div>
+  <div class="band arg three">
+    <div class="a"><p class="rail"><span class="i">03</span>Sold out</p></div>
+    <div class="b">
+      <h3>They can’t fill a single order.</h3>
+      <p>All three Deck Boot sizes are sold out at Harbour Goods. The first went 42 hours ago.</p>
     </div>
-   </div>
+    <div class="c fig">
+      <div class="bars" role="list" aria-label="Hours out of stock">
+        <div role="listitem"><span class="bl">Deck Boot 8</span><span class="bt"><i style="width:100%"></i></span><span class="bv">42h</span></div>
+        <div role="listitem"><span class="bl">Deck Boot 9</span><span class="bt"><i style="width:57.14%"></i></span><span class="bv">24h</span></div>
+        <div role="listitem"><span class="bl">Deck Boot 10</span><span class="bt"><i style="width:42.86%"></i></span><span class="bv">18h</span></div>
+      </div>
+      <span class="cap">Harbour Goods · Deck Boot, out on all three</span>
+    </div>
   </div>
-</section>
+  <hr class="r1">
 
-<div class="wrap">
-  <div class="ruled">
-  <section class="band sect spec-sect">
-    <div class="a"><p class="rail">The other five</p></div>
-    <div class="bc"><h2>Five more on the same clock.</h2></div>
+  <section class="band sect spec-sect" id="tracked">
+    <div class="a"><p class="rail">Also tracked</p></div>
+    <div class="bc"><h2>Also tracked on every sweep.</h2></div>
   </section>
 
   <dl class="reg">
     <div class="band row">
       <dt class="a"><p class="rail">Price up</p></dt>
-      <dd class="b">They blink first.</dd>
+      <dd class="b">A variant’s price goes up.</dd>
       <dd class="c"><span class="ex"><span class="was">$18.00</span><span class="ar">→</span><span class="is">$21.00</span></span></dd>
     </div>
     <div class="band row">
       <dt class="a"><p class="rail">Sale started</p></dt>
-      <dd class="b">A compare-at price appears, which is how a sale announces itself a day before the banner does.</dd>
+      <dd class="b">A compare-at price appears beside the list price.</dd>
       <dd class="c"><span class="ex"><span class="was">$63.00</span><span class="ar">→</span><span class="is down">$54.00</span></span></dd>
     </div>
     <div class="band row">
       <dt class="a"><p class="rail">Sale ended</p></dt>
-      <dd class="b">The discount comes off.</dd>
+      <dd class="b">The compare-at price comes off.</dd>
       <dd class="c"><span class="ex"><span class="was">$54.00</span><span class="ar">→</span><span class="is">$63.00</span></span></dd>
     </div>
     <div class="band row">
       <dt class="a"><p class="rail">Removed</p></dt>
-      <dd class="b">A handle starts returning a 404.</dd>
+      <dd class="b">A variant is delisted and its page returns a 404.</dd>
       <dd class="c"><span class="ex"><span class="was">12 variants</span><span class="ar">→</span><span class="is down">11 variants</span></span></dd>
     </div>
     <div class="band row">
       <dt class="a"><p class="rail">Back in stock</p></dt>
-      <dd class="b">Inventory returns and your window shuts.</dd>
+      <dd class="b">A sold-out variant can be bought again.</dd>
       <dd class="c"><span class="ex"><span class="was">0 of 3</span><span class="ar">→</span><span class="is">2 of 3</span></span></dd>
     </div>
   </dl>
@@ -568,7 +575,7 @@
 <div class="wrap">
   <div class="ruled">
   <section class="band close" id="start">
-    <div class="a"><p class="rail">The offer</p></div>
+    <div class="a"><p class="rail">Get started</p></div>
     <div class="b">
     <h2>Paste a URL.&nbsp;Read the whole catalogue.</h2>
     <form class="snap" action="/snapshot" method="get">
