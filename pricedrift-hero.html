@@ -6,7 +6,7 @@
 <title>PriceDrift — every price change in your competitors’ Shopify store</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     color-scheme: light;
@@ -24,7 +24,7 @@
 
     /* two families, three registers: the Didone speaks, its text cut reads,
        the mono means one thing only — this is machine output. */
-    --display:'Bodoni Moda', Georgia, 'Times New Roman', serif;
+    --display:'Newsreader', Georgia, 'Times New Roman', serif;
     --text:'Newsreader', Georgia, 'Times New Roman', serif;
     --mono:'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 
@@ -58,7 +58,7 @@
   /* exactly one column line, continuous from the first band to the last.
      The second boundary is held by the gutter, not by a rule. */
   .ruled{
-    background:linear-gradient(to right,var(--rule),var(--rule)) no-repeat 12.5% 0;
+    background:linear-gradient(to right,var(--hair),var(--hair)) no-repeat 12.5% 0;
     background-size:1px 100%;
   }
   .close .ruled{background-image:linear-gradient(to right,#3D3B31,#3D3B31)}
@@ -72,27 +72,36 @@
   /* ---------- masthead ---------- */
   .mast{display:flex;align-items:baseline;gap:40px;padding:32px 0 20px}
   .wordmark{
-    font-family:var(--display);font-weight:600;font-variation-settings:"opsz" 9;
+    font-family:var(--display);font-weight:600;font-variation-settings:"opsz" 72;
     font-size:25px;line-height:24px;letter-spacing:-.03em;text-decoration:none;white-space:nowrap;
   }
   .mast .links{display:flex;gap:26px;margin-left:auto;
-    font:400 10px/24px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+    font:400 10px/24px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
   .mast .links a{text-decoration:none}
-  .mast .links a:hover{color:var(--ink)}
-  .login{font:500 10px/24px var(--mono);letter-spacing:.12em;text-transform:uppercase;
-         color:var(--ink);text-decoration:none;white-space:nowrap}
+  .mast .links a:hover{color:var(--red)}
+  .login{font:400 10px/24px var(--mono);letter-spacing:.12em;text-transform:uppercase;
+         color:var(--ink-soft);text-decoration:none;white-space:nowrap}
   .login:hover{color:var(--red)}
 
   /* ---------- headline ---------- */
   .headline{position:relative;padding:46px 0 30px}
   h1{
-    font-family:var(--display);font-weight:400;font-variation-settings:"opsz" 40;
+    font-family:var(--display);font-weight:400;font-variation-settings:"opsz" 72;
     font-size:clamp(2.4rem,6.9vw,6rem);
     line-height:.955;letter-spacing:-.025em;word-spacing:-.09em;
     margin:0 0 0 -2px;
   }
   h1 .l{display:block}
   h1 .o{margin-left:-.041em}
+  /* the clock as a micro-table: label flush left, value flush right */
+  .clock{margin:16px 0 0;border-top:1px solid var(--hair)}
+  .clock div{display:grid;grid-template-columns:1fr auto;gap:8px;padding:4px 0;
+             border-bottom:1px solid var(--hair);
+             font:400 10px/18px var(--mono);letter-spacing:.06em;
+             text-transform:uppercase;color:var(--ink-soft)}
+  .clock div:last-child{border-bottom:0}
+  .clock span:last-child{color:var(--ink);letter-spacing:0;text-transform:none}
+
   /* the live clock, in the corner the rag leaves open */
   .stamp{
     position:absolute;right:0;top:119.7px;margin:0;text-align:right;white-space:nowrap;  /* baseline of the headline first line, measured */
@@ -110,15 +119,15 @@
   .field{position:relative;flex:1 1 auto;min-width:0}
   .field input{
     width:100%;font:400 14px/22px var(--mono);letter-spacing:0;
-    padding:13px 14px;color:var(--ink);
-    background:var(--paper);border:1px solid var(--rule);border-right:0;border-radius:0;
+    height:52px;padding:0 14px;color:var(--ink);
+    background:#FFFFFF;border:1px solid var(--rule);border-right:0;border-radius:0;
   }
   .field input::placeholder{color:#8A8471}
   .field input:focus{outline:2px solid var(--ink);outline-offset:-2px;position:relative;z-index:1}
   button.cta{
     flex:none;font:500 10px/22px var(--mono);letter-spacing:.12em;text-transform:uppercase;
     color:var(--cream);background:var(--ink);border:1px solid var(--ink);
-    border-radius:0;padding:13px 20px;cursor:pointer;white-space:nowrap;
+    border-radius:0;height:52px;padding:0 20px;text-indent:.12em;cursor:pointer;white-space:nowrap;
   }
   button.cta:hover{background:#000;border-color:#000}
   button.cta:focus-visible{outline:2px solid var(--red);outline-offset:2px}
@@ -148,7 +157,7 @@
   /* ---------- chapter head ---------- */
   .sect{padding:48px 0 40px}
   h2{
-    font-family:var(--display);font-weight:500;font-variation-settings:"opsz" 34;
+    font-family:var(--display);font-weight:500;font-variation-settings:"opsz" 72;
     font-size:clamp(1.9rem,3.5vw,3.05rem);line-height:1.06;letter-spacing:-.026em;
     word-spacing:-.04em;margin:-.05em 0 0;text-wrap:balance;
   }
@@ -157,65 +166,68 @@
   /* ---------- the three arguments, at three different heights ---------- */
   .tax{margin:0;padding:0;list-style:none}
   h3{
-    font-family:var(--display);font-weight:500;font-variation-settings:"opsz" 22;
+    font-family:var(--display);font-weight:500;font-variation-settings:"opsz" 72;
     font-size:2rem;line-height:1.1;letter-spacing:-.025em;word-spacing:-.03em;
     margin:0 0 10px;text-indent:-.012em;text-wrap:balance;
   }
   .tax p:not(.rail){margin:0;color:var(--ink-soft);font-size:18px;line-height:28px;max-width:var(--measure)}
 
-  /* 01 — tall */
-  .tax .lead{padding:52px 0 58px}
-  .tax .lead p:not(.rail){color:var(--ink)}
-  .huge{
+  /* ONE data lockup: signed figure, unit, mono ledger, caption.
+     Used three times, at three scales, always in the same column. */
+  .fig{--s:1}
+  .figure{
     display:block;font-family:var(--display);font-weight:500;
-    font-variation-settings:"opsz" 60;font-feature-settings:"tnum" 1,"lnum" 1;
-    font-size:clamp(3.4rem,10.15vw,9.2rem);line-height:.86;letter-spacing:-.03em;white-space:nowrap;
-    color:var(--red);margin:18px 0 24px;
+    font-variation-settings:"opsz" 72;font-feature-settings:"tnum" 1,"lnum" 1;
+    font-size:calc(clamp(2.7rem,11.23vw,10.11rem) * var(--s));line-height:.92;letter-spacing:-.028em;
+    color:var(--red);margin:0 0 calc(22px * var(--s));white-space:nowrap;
+    text-indent:var(--ti,0);   /* measured optical flush, per figure */
   }
-  .val{display:block;font-size:14px;line-height:22px;color:var(--ink)}
-  /* a figure dash at the numeral's stem weight, set on the math axis */
-  .huge .sign{
-    display:inline-block;width:.40em;height:.056em;background:currentColor;
-    vertical-align:.30em;margin-right:.015em;
+  .figure .unit{font-size:.55em;letter-spacing:-.012em;margin-left:.14em}
+  .ledger{border-top:1px solid var(--hair)}
+  .ledger div{
+    display:grid;grid-template-columns:84px 1fr auto;padding:7px 0;
+    border-bottom:1px solid var(--hair);font-family:var(--mono);
+    font-size:12.5px;line-height:20px;color:var(--ink-soft);
   }
-  .log{border-top:1px solid var(--hair)}
-  .log div{display:grid;grid-template-columns:54px 1fr auto;padding:6px 0;
-           border-bottom:1px solid var(--hair);font-size:12.5px;line-height:20px;color:var(--ink-soft)}
-  .log div:last-child{border-bottom:0}
-  .log .now{color:var(--ink)}
-  .log .d{color:var(--red)}
-  .cap{display:block;font-size:10px;line-height:18px;letter-spacing:.12em;
-       text-transform:uppercase;color:var(--ink-soft);margin-top:12px}
+  .ledger div:last-child{border-bottom:0}
+  .ledger .now{color:var(--ink)}
+  .ledger .d{color:var(--red)}
+  .ledger .nil{color:#9E9884}
+  .ledger .day{color:#9E9884}
 
-  .mid{
-    display:block;font-family:var(--mono);font-weight:500;
-    font-size:3.1rem;line-height:1;letter-spacing:-.045em;
-    color:var(--ink);margin:6px 0 20px;
+  .tax .lead{padding:52px 0 58px}
+  .tax .lead .fig{--s:1;--ti:0}
+  .tax .tight{padding:52px 0 58px}
+  .tax .tight .fig{--s:.70;--ti:-.0849em}
+  .tax .wide{padding:52px 0 58px}
+  .tax .wide .fig{--s:.85;--ti:-.0364em}
+
+  /* the counter-beat: one section inverted, full bleed, its own spine */
+  .inv{background:var(--ink);color:#EAE5D6}
+  .inv .rail{color:#EAE5D6}
+  .inv .rail span{color:#9C9784}
+  .inv h3{color:#F6F2E8}
+  .inv p:not(.rail){color:#BDB8A6}
+  .inv .ledger{border-top-color:#3D3B31}
+  .inv .ledger div{border-bottom-color:#3D3B31;color:#BDB8A6}
+  .inv .ledger .now{color:#F6F2E8}
+  .inv .cap{color:#8E8976}
+  .inv .ruled{background-image:linear-gradient(to right,#3D3B31,#3D3B31)}
+
+  /* a figure dash drawn at the numeral's own stem weight, on the math axis */
+  .figure .sign{
+    display:inline-block;width:.40em;height:.072em;background:currentColor;
+    vertical-align:.27em;margin-right:.04em;
   }
 
-  /* 02 — compressed */
-  .tax .tight{padding:57.3px 0 28px}
-  .ladder{border-top:1px solid var(--hair)}
-  .ladder div{display:grid;grid-template-columns:1fr auto;padding:4px 0;
-              border-bottom:1px solid var(--hair);font-size:18px;line-height:26px;
-              letter-spacing:-.01em;font-feature-settings:"tnum" 1}
-  .ladder div:last-child{border-bottom:0}
-  .ladder span:first-child{color:var(--ink-soft);font-size:14px}
-
-  /* 03 — the strike is the image */
-  .tax .wide{padding:47.6px 0 48px}
-  .struck{margin:0}
-  .struck div{
-    font-size:clamp(1.4rem,2.4vw,1.95rem);line-height:1.42;letter-spacing:-.02em;
-    color:var(--ink);display:grid;grid-template-columns:1fr auto;align-items:baseline;
+  /* the strike is the negation: the word recedes, the rule carries it */
+  .ledger.struck div{grid-template-columns:132px max-content}
+  .ledger.struck .x{position:relative;display:inline-block;justify-self:start;
+                    font-size:15px;color:var(--ink-soft)}
+  .ledger.struck .x::after{
+    content:"";position:absolute;left:-.25em;right:-.25em;top:50%;
+    transform:translateY(-50%);height:2px;background:var(--red);
   }
-  .struck .x{position:relative;display:inline-block;justify-self:start}
-  .struck .x::after{
-    content:"";position:absolute;left:-.13em;right:-.13em;top:52%;
-    height:1.5px;background:var(--red);
-  }
-  .struck .t{font-size:12.5px;letter-spacing:.06em;color:var(--red)}
-
   /* ---------- the register ---------- */
   /* the register: one flow, every rule crossing the whole block */
   .reg{margin:0}
@@ -231,7 +243,7 @@
   .close .rail span{color:#98937F}
   .close .b,.close .c,.close .bc{border-left-color:#3A382F}
   .close h2{color:#F6F2E8;font-size:clamp(2.2rem,5.4vw,4.6rem);line-height:.98;
-            letter-spacing:-.028em;font-variation-settings:"opsz" 40;font-weight:400;text-wrap:initial}
+            letter-spacing:-.028em;font-variation-settings:"opsz" 72;font-weight:400;text-wrap:initial}
   .close h2 .l{display:block}
   .close h2 .p1{margin-left:-.105em}
   .close h2 .p2{margin-left:-.132em}
@@ -256,15 +268,15 @@
 
   .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 
-  /* measured first-baseline alignment, applied after layout */
-  /* measured first-baseline alignment: every zone in a band lands on one line */
-  .hero .a{padding-top:21px}   .hero .b{padding-top:4px}    .hero .c{padding-top:0}
-  .sect .a{padding-top:33.3px}
-  .tax .lead .a{padding-top:28.3px}  .tax .lead .b{padding-top:9.1px}   .tax .lead .c{padding-top:22.3px}
-  .tax .tight .a{padding-top:23px}   .tax .tight .b{padding-top:17px}    .tax .tight .c{padding-top:3.8px}
-  .tax .wide .a{padding-top:32.7px}  .tax .wide .b{padding-top:13.5px}  .tax .wide .c{padding-top:4.4px}
-  .spec-sect .a{padding-top:18px}
-  .close .a{padding-top:52.5px}
+  /* measured cap-height alignment: in every band, the eyebrow, the headline
+     and the data all sit on one cap line. Values are measured from ink. */
+  .hero .a{padding-top:1px}
+  .sect .bc{padding-top:6px}
+  .tax .lead .b{padding-top:3px}    .tax .lead .c{padding-top:3.5px}
+  .tax .tight .b{padding-top:3.5px} .tax .tight .c{padding-top:4.5px}
+  .tax .wide .b{padding-top:3.5px}  .tax .wide .c{padding-top:4px}
+  .spec-sect .a{padding-top:22px}
+  .close .bc{padding-top:8px}
 
   @media (max-width:1080px){
     :root{--gut:28px}
@@ -274,6 +286,7 @@
     .stamp{display:none}
   }
   @media (max-width:900px){
+    .ruled{background-image:none}   /* no column line where there are no columns */
     .band{grid-template-columns:1fr}
     .band > .a{padding:0 0 14px!important}
     .band > .b,.band > .c,.band > .bc{grid-column:auto;padding:0;border-left:0}
@@ -319,7 +332,7 @@
     </div>
     <a class="login" href="/dashboard.html">Log in</a>
   </header>
-  <hr class="r-hair">
+  <hr class="r-rule">
 
   <section class="headline">
     <h1>
@@ -327,7 +340,6 @@
       <span class="l">in a competitor’s store,</span>
       <span class="l o">six hours after it happens.</span>
     </h1>
-    <p class="stamp"><b>09:14 checked</b>15:14 next</p>
   </section>
   <hr class="r-chapter">
 
@@ -335,6 +347,10 @@
   <section class="band hero" id="alert">
     <div class="a">
       <p class="rail">The alert</p>
+      <div class="clock">
+        <div><span>Checked</span><span>09:14</span></div>
+        <div><span>Next</span><span>15:14</span></div>
+      </div>
     </div>
     <div class="b">
       <p class="deck">Paste any Shopify store URL and get the whole catalogue in seconds: prices, discounts, what’s sold out. Then an email every time any of it moves.</p>
@@ -354,7 +370,6 @@
       <div class="notes">
         <p class="rail">What we read</p>
         <p>We read only what any shopper can see. Your own store stays untouched.</p>
-        <p>Nothing to map, nothing to install.</p>
       </div>
     </div>
     <div class="c">
@@ -403,70 +418,85 @@
 
   <ul class="tax">
     <li class="band lead">
-      <div class="a"><p class="rail">Price cut<span class="i">01</span></p></div>
+      <div class="a">
+        <p class="rail">Price cut<span class="i">01</span></p>
+      </div>
       <div class="b">
         <h3>You’re being undercut.</h3>
-        <p>Your ROAS tells you a week later, once the ad spend is gone. This tells you the morning it happens — the old price, the new price, the variant it moved on.</p>
+        <p>Your ROAS tells you a week later, once the ad spend is gone. This tells you the morning it happens: the old price, the new price, the variant it moved on.</p>
       </div>
-      <div class="c">
-        <span class="val">$29.00 → $22.00</span>
-        <span class="huge"><span class="sr">minus </span><span class="sign" aria-hidden="true"></span>24.1%</span>
-        <div class="log">
+      <div class="c fig">
+        <span class="figure"><span class="sr">minus </span><span class="sign" aria-hidden="true"></span>24.1<span class="unit">%</span></span>
+        <div class="ledger">
           <div><span class="now">09:14</span><span class="now">$22.00</span><span class="d">−24.1%</span></div>
-          <div><span>03:14</span><span>$29.00</span><span>—</span></div>
-          <div><span>21:14</span><span>$29.00</span><span>—</span></div>
+          <div><span>03:14</span><span>$29.00</span><span class="nil">no change</span></div>
+          <div><span>21:14 <span class="day">yest</span></span><span>$29.00</span><span class="nil">no change</span></div>
         </div>
         <span class="cap">Matte Lip Kit — Rosewood, last three checks</span>
       </div>
     </li>
-    <hr class="r-hair">
+  </ul>
+  </div>
+</div>
 
-    <li class="band tight">
-      <div class="a"><p class="rail">New product<span class="i">02</span></p></div>
-      <div class="b">
-        <span class="val">Winter Set, four variants</span>
-        <span class="mid">06:12</span>
-        <div class="ladder">
-          <div><span>Ember 40ml</span><span>$48.00</span></div>
-          <div><span>Ember 100ml</span><span>$86.00</span></div>
-          <div><span>Dusk 40ml</span><span>$52.00</span></div>
-          <div><span>Dusk 100ml</span><span>$94.00</span></div>
-        </div>
-        <span class="cap">First seen, before the store announced it</span>
+<section class="tax inv">
+  <div class="wrap">
+   <div class="ruled">
+    <div class="band tight">
+      <div class="a">
+        <p class="rail">New product<span class="i">02</span></p>
       </div>
-      <div class="c">
+      <div class="b">
         <h3>They just launched.</h3>
         <p>Every new listing across the catalogue on day one, including the products you would never have thought to look for.</p>
       </div>
-    </li>
-    <hr class="r-hair">
+      <div class="c fig">
+        <span class="figure">+4<span class="unit">new</span></span>
+        <div class="ledger">
+          <div><span class="now">06:12</span><span>Ember 40ml</span><span class="now">$48.00</span></div>
+          <div><span></span><span>Ember 100ml</span><span>$86.00</span></div>
+          <div><span></span><span>Dusk 40ml</span><span>$52.00</span></div>
+          <div><span></span><span>Dusk 100ml</span><span>$94.00</span></div>
+        </div>
+        <span class="cap">Winter Set, four new variants, first seen 06:12</span>
+      </div>
+    </div>
+   </div>
+  </div>
+</section>
 
+<div class="wrap">
+  <div class="ruled">
+  <ul class="tax">
     <li class="band wide">
-      <div class="a"><p class="rail">Sold out<span class="i">03</span></p></div>
+      <div class="a">
+        <p class="rail">Sold out<span class="i">03</span></p>
+      </div>
       <div class="b">
         <h3>They can’t fill the orders.</h3>
         <p>When a competitor runs dry their customers start looking elsewhere. You have a window, and it closes the day they restock.</p>
       </div>
-      <div class="c">
-        <div class="struck">
+      <div class="c fig">
+        <span class="figure">0<span class="unit">of 3</span></span>
+        <div class="ledger struck">
           <div><span class="x">Fine tip</span><span class="t">out 42h</span></div>
           <div><span class="x">Bold tip</span><span class="t">out 24h</span></div>
           <div><span class="x">Waterproof</span><span class="t">out 18h</span></div>
         </div>
-        <span class="cap">Eyeliner — Jet, 3 of 3 variants</span>
+        <span class="cap">Eyeliner “Jet”, none of three variants in stock</span>
       </div>
     </li>
   </ul>
   <hr class="r-rule">
 
   <section class="band sect spec-sect" style="padding:26px 0 30px">
-    <div class="a"><p class="rail">Also tracked<span class="i">04–08</span></p></div>
+    <div class="a"><p class="rail">Five more</p></div>
     <div class="bc">
       <dl class="reg">
-        <div><dt>Price up</dt><dd>A variant reprices upward, with the delta.</dd></div>
-        <div><dt>Sale started</dt><dd>A compare-at price appears against the list price.</dd></div>
-        <div><dt>Sale ended</dt><dd>The discount comes off, the old price returns.</dd></div>
-        <div><dt>Removed</dt><dd>A product or variant leaves the catalogue.</dd></div>
+        <div><dt>Price up</dt><dd>Upward, with the delta.</dd></div>
+        <div><dt>Sale started</dt><dd>A compare-at price appears against the list price, which is usually the week they decided to chase volume.</dd></div>
+        <div><dt>Sale ended</dt><dd>The discount comes off.</dd></div>
+        <div><dt>Removed</dt><dd>Gone.</dd></div>
         <div><dt>Back in stock</dt><dd>Inventory returns, and your window closes.</dd></div>
       </dl>
     </div>
@@ -485,7 +515,7 @@
     <div class="band row2">
       <div class="a"></div>
       <div class="b">
-        <p class="offer">No account for the snapshot. $9 a month only if you keep the alerts.</p>
+        <p class="offer">$9 a month only if you keep the alerts.</p>
       </div>
       <div class="c">
         <form class="snap" action="/snapshot" method="get">
