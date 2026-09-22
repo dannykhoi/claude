@@ -6,7 +6,7 @@
 <title>PriceDrift — every price change in your competitors’ Shopify store</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400;1,6..96,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     color-scheme: light;
@@ -14,15 +14,17 @@
     /* three values with jobs: ground, ink, and one signal for anything
        negative or absent. Nothing else gets colour. */
     --cream:#F4F0E6;
-    --white:#FFFFFF;
+    --paper:#FBF8EF;          /* surfaces: warm, never a hole punched in the page */
     --ink:#1A1A17;
     --ink-soft:#5F5C4C;
     --red:#A23A24;
     --hair:#DCD5C3;
     --rule:#C2B9A2;
 
-    /* two families. The Didone speaks; the mono does all the work. */
+    /* two families, three registers: the Didone speaks, its text cut reads,
+       the mono means one thing only — this is machine output. */
     --display:'Bodoni Moda', Georgia, 'Times New Roman', serif;
+    --text:'Bodoni Moda', Georgia, 'Times New Roman', serif;
     --mono:'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 
     /* one grid: 1.5 / 5.5 / 5 of twelve */
@@ -34,7 +36,7 @@
   body{
     margin:0;padding:env(safe-area-inset-top,0) 0 0;
     background:var(--cream);color:var(--ink);
-    font:400 15px/24px var(--mono);letter-spacing:.01em;
+    font:400 17px/27px var(--text);font-variation-settings:"opsz" 11;letter-spacing:0;
     -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
   }
   a{color:inherit}
@@ -45,7 +47,8 @@
   .r-rule{border-top:1px solid var(--rule)}
   .r-chapter{border-top:2px solid var(--ink)}
 
-  .band{display:grid;grid-template-columns:var(--zA) var(--zB) var(--zC)}
+  .band{display:grid;
+    grid-template-columns:minmax(0,var(--zA)) minmax(0,var(--zB)) minmax(0,var(--zC))}
   .band > .a{padding-right:var(--gut)}
   .band > .b{padding:0 var(--gut);border-left:1px solid var(--hair)}
   .band > .c{padding-left:var(--gut);border-left:1px solid var(--hair)}
@@ -75,7 +78,7 @@
   .headline{padding:46px 0 18px}
   h1{
     font-family:var(--display);font-weight:400;font-variation-settings:"opsz" 40;
-    font-size:clamp(2.4rem,6.55vw,5.7rem);
+    font-size:clamp(2.4rem,6.9vw,6rem);
     line-height:.955;letter-spacing:-.025em;word-spacing:-.09em;
     margin:0 0 0 -2px;
   }
@@ -91,16 +94,16 @@
 
   /* ---------- hero ---------- */
   .hero{padding:32px 0 38px}
-  .deck{font-size:20px;line-height:30px;letter-spacing:-.005em;margin:0 0 22px}
-  .body{font-size:15px;line-height:24px;color:var(--ink-soft);margin:0}
-  .body b{color:var(--ink);font-weight:500}
+  .deck{font-size:21px;line-height:31px;letter-spacing:-.003em;margin:0 0 20px}
+  .body{font-size:17px;line-height:27px;color:var(--ink-soft);margin:0}
+  .price-line{font-size:17px;line-height:27px;color:var(--ink);margin:14px 0 0;font-weight:500}
 
   form.snap{display:flex;margin:26px 0 0;max-width:396px}
   .field{position:relative;flex:1 1 auto;min-width:0}
   .field input{
     width:100%;font:400 14px/22px var(--mono);letter-spacing:0;
     padding:13px 14px;color:var(--ink);
-    background:var(--white);border:1px solid var(--rule);border-right:0;border-radius:0;
+    background:var(--paper);border:1px solid var(--rule);border-right:0;border-radius:0;
   }
   .field input::placeholder{color:#8A8471}
   .field input:focus{outline:2px solid var(--ink);outline-offset:-2px;position:relative;z-index:1}
@@ -111,13 +114,16 @@
   }
   button.cta:hover{background:#000;border-color:#000}
   button.cta:focus-visible{outline:2px solid var(--red);outline-offset:2px}
-  .offer{font-size:13px;line-height:22px;color:var(--ink-soft);margin:12px 0 0}
+  .offer{font-size:15px;line-height:24px;color:var(--ink-soft);margin:14px 0 0;font-style:italic}
 
   .notes{margin:30px 0 0;padding-top:18px;border-top:1px solid var(--hair)}
-  .notes p{margin:8px 0 0;font-size:13px;line-height:21px;color:var(--ink-soft)}
+  .notes p:not(.rail){margin:9px 0 0;font-size:15px;line-height:24px;color:var(--ink-soft)}
+
+  /* every machine value keeps the mono voice, whatever the body face is */
+  .mail,.log,.ladder,.struck,.val,.cap,.reg dt{font-family:var(--mono)}
 
   /* ---------- the specimen ---------- */
-  .mail{background:var(--white)}
+  .mail{background:var(--paper)}
   .mail-head{padding:14px 18px;border-bottom:1px solid var(--hair)}
   .mail-head dl{display:grid;grid-template-columns:46px 1fr;margin:0;font-size:12.5px;line-height:22px}
   .mail-head dt{color:var(--ink-soft);text-transform:uppercase;letter-spacing:.08em;font-size:10px}
@@ -137,26 +143,25 @@
     font-size:clamp(1.9rem,3.5vw,3.05rem);line-height:1.06;letter-spacing:-.026em;
     word-spacing:-.04em;margin:-.05em 0 0;text-wrap:balance;
   }
-  .lede{margin:14px 0 0;color:var(--ink-soft);font-size:15px;line-height:24px;max-width:62ch}
+  .lede{margin:14px 0 0;color:var(--ink-soft);font-size:17px;line-height:27px;max-width:58ch}
 
   /* ---------- the three arguments, at three different heights ---------- */
   .tax{margin:0;padding:0;list-style:none}
   h3{
     font-family:var(--display);font-weight:500;font-variation-settings:"opsz" 22;
-    font-size:1.75rem;line-height:1.1;letter-spacing:-.024em;word-spacing:-.03em;
+    font-size:2rem;line-height:1.1;letter-spacing:-.025em;word-spacing:-.03em;
     margin:0 0 10px;text-indent:-.012em;text-wrap:balance;
   }
-  .tax p{margin:0;color:var(--ink-soft);font-size:15px;line-height:24px}
+  .tax p:not(.rail){margin:0;color:var(--ink-soft);font-size:17px;line-height:27px}
 
   /* 01 — tall */
   .tax .lead{padding:52px 0 58px}
-  .tax .lead h3{font-size:2.35rem;letter-spacing:-.028em;margin-bottom:14px}
-  .tax .lead p{color:var(--ink)}
+  .tax .lead p:not(.rail){color:var(--ink)}
   .huge{
     display:block;font-family:var(--display);font-weight:500;
     font-variation-settings:"opsz" 60;font-feature-settings:"tnum" 1,"lnum" 1;
     font-size:clamp(3.4rem,8.6vw,8.2rem);line-height:.86;letter-spacing:-.03em;
-    color:var(--red);margin:2px 0 22px;text-indent:-.441em;
+    color:var(--red);margin:2px 0 22px;text-indent:-.061em;  /* measured: minus stem flush to the column, clear of the rule */
   }
   .val{display:block;font-size:14px;line-height:22px;color:var(--ink)}
   .log{border-top:1px solid var(--hair)}
@@ -170,7 +175,6 @@
 
   /* 02 — compressed */
   .tax .tight{padding:24px 0 26px}
-  .tax .tight h3{font-size:1.55rem}
   .ladder{border-top:1px solid var(--hair)}
   .ladder div{display:grid;grid-template-columns:1fr auto;padding:4px 0;
               border-bottom:1px solid var(--hair);font-size:18px;line-height:26px;
@@ -185,25 +189,28 @@
     font-size:clamp(1.4rem,2.4vw,1.95rem);line-height:1.42;letter-spacing:-.02em;
     color:var(--ink);display:grid;grid-template-columns:1fr auto;align-items:baseline;
   }
-  .struck .x{text-decoration:line-through;text-decoration-color:var(--red);
-             text-decoration-thickness:2px;text-underline-offset:0}
+  .struck .x{position:relative;display:inline-block;justify-self:start}
+  .struck .x::after{
+    content:"";position:absolute;left:-.13em;right:-.13em;top:52%;
+    height:1.5px;background:var(--red);
+  }
   .struck .t{font-size:12.5px;letter-spacing:.06em;color:var(--red)}
 
   /* ---------- the register ---------- */
-  .spec{display:grid;grid-template-rows:repeat(3,auto);grid-auto-flow:column;grid-auto-columns:1fr}
-  .spec > div:nth-child(n+4){padding-left:var(--gut);border-left:1px solid var(--hair)}
-  .spec .i{display:grid;grid-template-columns:108px minmax(0,1fr);padding:9px 0;
-           border-bottom:1px solid var(--hair)}
-  .spec .i.last{border-bottom:0}
-  .spec .i span:first-child{font:600 10px/20px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
-  .spec .i span:last-child{font-size:13px;line-height:20px;color:var(--ink-soft)}
+  /* the register: one flow, every rule crossing the whole block */
+  .reg{margin:0}
+  .reg > div{display:grid;grid-template-columns:150px minmax(0,1fr);
+             padding:10px 0;border-bottom:1px solid var(--hair)}
+  .reg > div:last-child{border-bottom:0}
+  .reg dt{font:600 10px/24px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
+  .reg dd{margin:0;font-size:16px;line-height:24px;color:var(--ink-soft)}
 
   /* ---------- the ask, inverted ---------- */
   .close{background:var(--ink);color:#EAE5D6;padding:66px 0 70px}
   .close .rail{color:#EAE5D6}
   .close .rail span{color:#98937F}
   .close .b,.close .c,.close .bc{border-left-color:#3A382F}
-  .close h2{color:#F6F2E8;font-size:clamp(2.2rem,5.4vw,4.6rem);line-height:.98;
+  .close h2{color:#F6F2E8;font-size:clamp(2.2rem,5.4vw,4.6rem);line-height:.98;text-indent:-.105em;
             letter-spacing:-.028em;font-variation-settings:"opsz" 40;font-weight:400;text-wrap:initial}
   .close .row2{margin-top:44px}
   .close .field input{background:transparent;border-color:#6E6A5C;color:#F6F2E8}
@@ -215,24 +222,25 @@
   .close .offer{color:#B3AE99}
 
   /* ---------- the signature ---------- */
-  footer{padding:30px 0 46px}
-  .sig{display:flex;align-items:flex-end;gap:36px}
-  .sig .wordmark{font-size:clamp(2.6rem,7vw,5.6rem);line-height:.86;letter-spacing:-.04em;
-                 font-weight:500;font-variation-settings:"opsz" 40}
-  .sig .meta{margin:0 0 6px auto;display:flex;gap:22px;
-             font:400 10px/18px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+  footer{padding:26px 0 44px}
+  .sig{display:flex;align-items:baseline;gap:32px}
+  .sig .status{margin:0;font:400 10px/24px var(--mono);letter-spacing:.12em;
+               text-transform:uppercase;color:var(--ink-soft)}
+  .sig .meta{margin:0 0 0 auto;display:flex;gap:22px;
+             font:400 10px/24px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
   .sig .meta a{text-decoration:none}
   .sig .meta a:hover{color:var(--ink)}
 
   .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 
   /* measured first-baseline alignment, applied after layout */
-  .hero .a{padding-top:20px}  .hero .b{padding-top:6px}
+  /* measured first-baseline alignment: every zone in a band lands on one line */
+  .hero .a{padding-top:21px}   .hero .b{padding-top:6px}    .hero .c{padding-top:1px}
   .sect .a{padding-top:33.3px}
-  .tax .lead .a{padding-top:17.3px}  .tax .lead .b{padding-top:0}  .tax .lead .c{padding-top:19.3px}
-  .tax .tight .a{padding-top:7px}   .tax .tight .c{padding-top:3.8px}
-  .tax .wide .a{padding-top:20.3px} .tax .wide .b{padding-top:13.5px}
-  .spec-sect .a{padding-top:13px}
+  .tax .lead .a{padding-top:28.3px}  .tax .lead .b{padding-top:9.1px}   .tax .lead .c{padding-top:22.3px}
+  .tax .tight .a{padding-top:23px}   .tax .tight .b{padding-top:8px}    .tax .tight .c{padding-top:3.8px}
+  .tax .wide .a{padding-top:32.7px}  .tax .wide .b{padding-top:13.5px}  .tax .wide .c{padding-top:4.4px}
+  .spec-sect .a{padding-top:18px}
   .close .a{padding-top:52.5px}
 
   @media (max-width:1080px){
@@ -282,9 +290,9 @@
   <header class="mast">
     <a class="wordmark" href="/">PriceDrift</a>
     <div class="links">
-      <a href="#how">How it works</a>
+      <a href="#alert">The alert</a>
       <a href="#events">Change types</a>
-      <a href="#pricing">Pricing</a>
+      <a href="#start">Start here</a>
     </div>
     <a class="login" href="/dashboard.html">Log in</a>
   </header>
@@ -292,21 +300,21 @@
 
   <section class="headline">
     <h1>
-      <span class="l">Every price change in your</span>
-      <span class="l o">competitors’ Shopify store,</span>
+      <span class="l">Every price change</span>
+      <span class="l">in a competitor’s store,</span>
       <span class="l o">six hours after it happens.</span>
     </h1>
-    <p class="stamp"><b>Last check 09:14</b><span>Next check 15:14</span></p>
   </section>
   <hr class="r-chapter">
 
-  <section class="band hero">
+  <section class="band hero" id="alert">
     <div class="a">
       <p class="rail">The alert<span class="i">09:14 checked</span><span>15:14 next</span></p>
     </div>
     <div class="b">
-      <p class="deck">Paste a store URL and get the whole catalogue in seconds — prices, discounts, what’s sold out.</p>
-      <p class="body">Then an email every time any of it moves. <b>$9 a month, not $49</b> — there’s nothing to map and nobody to onboard you.</p>
+      <p class="deck">Paste any Shopify store URL and get the whole catalogue in seconds — prices, discounts, what’s sold out. Then an email every time any of it moves.</p>
+      <p class="price-line">$9 a month, not $49.</p>
+      <p class="body">There’s nothing to map and nobody to onboard you.</p>
 
       <!-- wire action/name to your snapshot endpoint -->
       <form class="snap" action="/snapshot" method="get">
@@ -348,7 +356,7 @@
           <span class="v">Eyeliner — Jet</span>
           <span class="n">3 of 3 variants unavailable</span>
         </div>
-        <div class="mail-foot">kindred-beauty.com, next check 15:14</div>
+        <div class="mail-foot">kindred-beauty.com</div>
       </div>
     </div>
   </section>
@@ -422,19 +430,20 @@
   <section class="band sect spec-sect" style="padding:26px 0 30px">
     <div class="a"><p class="rail">Also tracked<span class="i">04–08</span></p></div>
     <div class="bc">
-      <div class="spec">
-        <div class="i"><span>Price up</span><span>A variant reprices upward, with the delta.</span></div>
-        <div class="i"><span>Sale started</span><span>A compare-at price appears against the list price.</span></div>
-        <div class="i last"><span>Sale ended</span><span>The discount comes off, the old price returns.</span></div>
-        <div class="i"><span>Removed</span><span>A product or variant leaves the catalogue.</span></div>
-        <div class="i last"><span>Back in stock</span><span>Inventory returns, and your window closes.</span></div>
-      </div>
+      <dl class="reg">
+        <div><dt>Price up</dt><dd>A variant reprices upward, with the delta.</dd></div>
+        <div><dt>Sale started</dt><dd>A compare-at price appears against the list price.</dd></div>
+        <div><dt>Sale ended</dt><dd>The discount comes off, the old price returns.</dd></div>
+        <div><dt>Removed</dt><dd>A product or variant leaves the catalogue.</dd></div>
+        <div><dt>Back in stock</dt><dd>Inventory returns, and your window closes.</dd></div>
+      </dl>
     </div>
   </section>
 
+  <hr class="r-chapter">
 </div>
 
-<section class="close">
+<section class="close" id="start">
   <div class="wrap">
     <div class="band">
       <div class="a"><p class="rail">Start here</p></div>
@@ -443,7 +452,7 @@
     <div class="band row2">
       <div class="a"></div>
       <div class="b">
-        <p class="offer">The snapshot is free and needs no account.</p>
+        <p class="offer">No account for the snapshot. $9 a month only if you keep the alerts.</p>
       </div>
       <div class="c">
         <form class="snap" action="/snapshot" method="get">
@@ -462,6 +471,7 @@
   <footer>
     <div class="sig">
       <span class="wordmark">PriceDrift</span>
+      <p class="status">Every store, every six hours</p>
       <p class="meta"><a href="#privacy">Privacy</a><a href="#terms">Terms</a></p>
     </div>
   </footer>
