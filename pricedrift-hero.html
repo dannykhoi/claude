@@ -144,13 +144,13 @@
 
   /* ---------- the specimen ---------- */
   /* the alert, set as a typographic specimen rather than a UI mockup */
-  .spec{font-family:var(--mono)}
+  .spec{font-family:var(--mono);border:1px solid var(--ink);border-top:0}
   .spec .hd{margin:0;padding:11px 14px 10px;font:400 10px/17px var(--mono);
             letter-spacing:.02em;color:var(--d-soft);background:var(--ink)}
   .spec .hd b{display:block;font-weight:600;color:var(--d-text);letter-spacing:0;margin-top:2px}
   .spec .body-rows{padding:0}
-  .spec .ev{padding:9px 0;border-top:1px solid var(--r2)}
-  .spec .ev:first-child{border-top:0;padding-top:11px}
+  .spec .ev{padding:9px 14px;border-top:1px solid var(--r2)}
+  .spec .ev:first-child{border-top:0;padding-top:12px}
   .spec .k{font:400 10px/17px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:block}
   .spec .v{font-family:var(--text);font-size:13.5px;line-height:20px;color:var(--ink-soft);display:block}
   /* one entry is the focal; the rest fall away a step in size and tint */
@@ -164,6 +164,7 @@
 
   /* ---------- chapter head ---------- */
   .sect{padding:44.5px 0 40.5px}
+  .spec-sect h2{font-size:2.5rem;line-height:1.06;letter-spacing:-.028em}
   h2{
     font-family:var(--display);font-weight:400;font-variation-settings:"opsz" 72;
     font-size:clamp(1.75rem,3.78vw,3.4rem);line-height:1.04;letter-spacing:-.026em;
@@ -247,6 +248,15 @@
   .inv .arg p:not(.rail):not(.note):not(.grouphd){color:#C6C1B3}
   .inv .figure{color:#F6F2E8}
   .inv .cap{color:#8B8779;border-top-color:var(--d-rule)}
+  .inv .spec{border-color:#4A463D}
+  .inv .spec .hd{background:#26251F;color:var(--d-soft)}
+  .inv .spec .hd b{color:var(--d-text)}
+  .inv .spec .ev{border-top-color:var(--d-rule)}
+  .inv .spec .k{color:#A8A497}
+  .inv .spec .v{color:var(--d-text)}
+  .inv .spec .n{color:#C6C1B3}
+  .inv .spec .old{color:#8B8779}
+  .inv .spec .d{color:var(--d-red)}   /* the paper red is 2.63:1 on ink */
   .inv .figure .unit{color:#A8A497}
   .inv .ledger{border-top-color:var(--d-rule)}
   .inv .ledger div{border-bottom-color:var(--d-rule);color:var(--d-soft);
@@ -293,7 +303,7 @@
     font-variation-settings:"opsz" 72;font-weight:400;
     line-height:1;letter-spacing:-.026em;max-width:none;margin:0 0 0 -1px;
   }
-  .close form.snap{margin-top:38px;max-width:680px}
+  .close form.snap{margin-top:38px;max-width:var(--measure)}
   .close .field{flex:1 1 auto}
 
 
@@ -503,7 +513,7 @@
   <div class="ruled">
   <section class="band sect spec-sect">
     <div class="a"><p class="rail">The other five</p></div>
-    <div class="bc"><h2>Five more on the same clock</h2></div>
+    <div class="bc"><h2>Five more on the same clock.</h2></div>
   </section>
 
   <dl class="reg">
@@ -541,7 +551,7 @@
   <div class="ruled">
   <section class="band close" id="start">
     <div class="a"><p class="rail">Start</p></div>
-    <div class="bc">
+    <div class="b">
     <h2>Paste a URL.&nbsp;Read the whole catalogue.</h2>
     <form class="snap" action="/snapshot" method="get">
       <label class="field">
@@ -551,6 +561,16 @@
       <button class="cta" type="submit">Get a snapshot</button>
     </form>
     <p class="offer">Your first email arrives within six hours.</p>
+    </div>
+    <div class="c">
+      <div class="spec last" aria-label="The most recent alert">
+        <p class="hd">The last one we sent<b>09:14 · kindred-beauty.com</b></p>
+        <div class="ev">
+          <span class="k">Price cut</span>
+          <span class="v">Matte Lip Kit · Rosewood</span>
+          <span class="n"><span class="old">$29.00 →</span> $22.00 &nbsp;<span class="d">−24.1%</span></span>
+        </div>
+      </div>
     </div>
   </section>
   </div>
