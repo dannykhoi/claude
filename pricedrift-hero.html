@@ -178,7 +178,6 @@
   .lede{margin:18px 0 0;color:var(--ink-soft);font-size:17px;line-height:27px;max-width:var(--measure)}
 
   /* ---------- the three arguments: one lockup, one language ---------- */
-  .tax{margin:0;padding:0;list-style:none}
   h3{
     font-family:var(--display);font-weight:400;font-variation-settings:"opsz" 72;
     font-size:2.85rem;line-height:1.04;letter-spacing:-.028em;
@@ -190,12 +189,10 @@
   .arg.two{padding:38px 0 42px}
   .arg.three{padding:52px 0 56px}
   .two .ledger div{grid-template-columns:1fr auto}
-  .grouphd{margin:0 0 8px;font:500 10px/16px var(--mono);letter-spacing:.14em;
-           text-transform:uppercase;color:var(--muted)}
 
   .arg .a{padding-top:33.5px}
   .arg.two .a{padding-top:24px}
-  .arg.three .a{padding-top:33px}
+  .arg.three .a{padding-top:23.5px}
   .arg .c{padding-top:5px}
   .arg .figure{margin-right:-1px}
   .figure{
@@ -228,11 +225,16 @@
   .ledger div:last-child{border-bottom:0}
   .ledger .now{color:var(--ink)}
   .ledger .d{color:var(--red)}
-  .ledger .nil{color:var(--muted)}
   .cap{display:block;font-family:var(--mono);font-size:11px;line-height:18px;
        color:var(--muted);margin-top:0;padding-top:9px;border-top:1px solid var(--r2);white-space:nowrap}
 
-  .ledger.stack div{grid-template-columns:1fr auto}
+  .ledger .hd{font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+              color:var(--muted);padding:6px 0 5px}
+  .three .figure{margin-bottom:0}
+  /* 01 is figure-led: the numeral takes the wide column and sets the left stem */
+  .one .b .figure{text-align:left;margin:-.12em 0 6px -.055em;font-size:clamp(2.4rem,9.4vw,8.4rem)}
+  .one .b h3{margin:0}
+  .one .c{padding-top:16px}
 
   /* ---------- 03: the climax, inverted, out of the column grid ---------- */
   .inv{background:var(--d-bg);color:var(--d-text)}
@@ -247,14 +249,8 @@
   .inv .ledger{border-top-color:var(--d-rule)}
   .inv .ledger div{border-bottom-color:var(--d-rule);color:var(--d-soft)}
   .inv .ledger .now{color:var(--d-text)}
-  .inv .ledger .nil{color:#8E8A7C}   /* 5.3:1 on ink */
   .inv .ledger .d{color:var(--d-red)}   /* was 2.63:1 on ink */
   .inv .cap{color:#8B8779;border-top-color:var(--d-rule)}
-  .ledger.struck .x{position:relative;display:inline-block;justify-self:start;color:var(--d-text)}
-  .ledger.struck .x::after{
-    content:"";position:absolute;left:0;right:.08em;top:55%;
-    transform:translateY(-50%);height:1px;background:var(--d-soft);
-  }
 
   /* ---------- the register ---------- */
   .reg{margin:0;border-top:1px solid var(--r2)}
@@ -294,8 +290,8 @@
   /* measured: every rail label's baseline sits on the first baseline of the
      thing it labels. Values taken from the rendered page. */
   .hero .a{padding-top:17px}      .hero .b{padding-top:2.5px}     .hero .c{padding-top:2.5px}
-  .sect .a{padding-top:55.4px}      .sect .bc{padding-top:6px}
-  .spec-sect .a{padding-top:53.5px}
+  .sect .a{padding-top:54.4px}      .sect .bc{padding-top:6px}
+  .spec-sect .a{padding-top:54px}
   .reg .row .a{padding-top:10.5px}
 
   @media (max-width:1080px){
@@ -307,8 +303,6 @@
   @media (max-width:900px){
     .ruled{background-image:none}
     .arg.one{grid-template-columns:1fr}
-    .headrow{display:block}
-    .headrow .figure{margin-top:14px}
     .ledger.wide div{grid-template-columns:90px 1fr;font-size:13px}
     .ledger.wide div span:last-child{display:none}
     .band{grid-template-columns:1fr}
@@ -422,7 +416,7 @@
     <div class="a"><p class="rail">Change types</p></div>
     <div class="bc">
       <h2>Three you’d otherwise find out too late.</h2>
-      <p class="lede">Every change is tied to one variant and one price, so you get what moved and by how much, not a notification that something happened.</p>
+      <p class="lede">Every change is tied to one variant and one price. You get what moved and by how much — never just that something happened.</p>
     </div>
   </section>
   <hr class="r2">
@@ -436,11 +430,10 @@
     <div class="a"><p class="rail">Price cut<span class="i">01</span></p>
       <p class="note">Seen 09:14</p></div>
     <div class="b">
+      <span class="figure"><span class="sr">minus </span><span class="sign" aria-hidden="true"></span>24.1<span class="unit">%</span></span>
       <h3>You’re being undercut.</h3>
-      <p>Your ROAS tells you a week later, once the ad spend is already gone. This tells you the morning it happens.</p>
     </div>
     <div class="c fig">
-      <span class="figure"><span class="sr">minus </span><span class="sign" aria-hidden="true"></span>24.1<span class="unit">%</span></span>
       <div class="ladder">
         <div><span class="lbl">was</span><span class="old">$29.00</span><span></span></div>
         <div><span class="lbl">now</span><span class="now">$22.00</span><span class="d">−24.1%</span></div>
@@ -454,19 +447,18 @@
     <div class="a"><p class="rail">New product<span class="i">02</span></p>
       <p class="note">Seen 03:14</p></div>
     <div class="b">
-      <h3>And a launch nobody announced.</h3>
-      <p>Every new listing on day one, before the store has announced it anywhere.</p>
+      <h3>A launch goes up and nobody says a word.</h3>
+      <p>Every new listing surfaces on day one — the variant, the price, the minute it appeared — well before the store posts about it anywhere. Four went up on the Winter Set overnight, priced against your two best sellers.</p>
     </div>
     <div class="c fig">
-      <span class="figure">4<span class="unit">new</span></span>
-      <p class="grouphd">Listed 03:14</p>
       <div class="ledger">
+        <div class="hd"><span>Variant</span><span>Price</span></div>
         <div><span>Ember 40ml</span><span class="now">$48.00</span></div>
         <div><span>Ember 100ml</span><span class="now">$86.00</span></div>
         <div><span>Dusk 40ml</span><span class="now">$52.00</span></div>
         <div><span>Dusk 100ml</span><span class="now">$94.00</span></div>
       </div>
-      <span class="cap">Winter Set · four variants</span>
+      <span class="cap">Winter Set · listed 03:14</span>
     </div>
   </div>
   </div>
@@ -480,16 +472,10 @@
       <p class="note">Seen 15:14</p></div>
       <div class="b">
         <h3>They can’t fill the orders.</h3>
-        <p>When a competitor runs dry, their customers start looking elsewhere. You have a window until they restock.</p>
+        <p>Eyeliner Jet has been dark for eighteen hours, and their buyers are already looking.</p>
       </div>
       <div class="c fig">
         <span class="figure">0<span class="unit">of 3</span></span>
-        <div class="ledger struck">
-          <div><span class="nil">out 42h</span><span class="x">Fine tip</span><span class="nil"></span></div>
-          <div><span class="nil">out 24h</span><span class="x">Bold tip</span><span class="nil"></span></div>
-          <div><span class="nil">out 18h</span><span class="x">Waterproof</span><span class="nil"></span></div>
-        </div>
-        <span class="cap">Eyeliner Jet · three variants</span>
       </div>
     </div>
    </div>
