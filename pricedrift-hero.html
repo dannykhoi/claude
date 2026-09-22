@@ -33,9 +33,9 @@
     --mono:'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 
     /* one grid: 1.5 / 6 / 4.5 of twelve */
-    --zA:1.35fr; --zB:6.15fr; --zC:4.5fr;
+    --zA:1.6fr; --zB:6fr; --zC:4.4fr;
     --gut:36px;
-    --measure:502px;           /* one measure for every prose surface */
+    --measure:488px;           /* one measure for every prose surface */
   }
   *,*::before,*::after{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
@@ -59,7 +59,7 @@
   .band > .c{padding-left:var(--gut)}
   .band > .bc{grid-column:2/-1;padding-left:var(--gut)}
   .ruled{
-    background:linear-gradient(to right,var(--r2),var(--r2)) no-repeat 11.25% 0;
+    background:linear-gradient(to right,var(--r2),var(--r2)) no-repeat 13.3333% 0;
     background-size:1px 100%;
   }
 
@@ -135,32 +135,38 @@
   }
   button.cta:hover{background:#000;border-color:#000}
   button.cta:focus-visible{outline:2px solid var(--red);outline-offset:2px}
-  .offer{font-size:16px;line-height:25px;color:var(--ink-soft);margin:13px 0 0;font-style:italic}
+  .offer{font-size:16px;line-height:25px;color:var(--ink-soft);margin:16px 0 0}
 
   .notes{margin:28px 0 0;padding-top:18px;border-top:1px solid var(--r2)}
   .notes p:not(.rail){margin:9px 0 0;font-size:16px;line-height:25px;color:var(--ink-soft);max-width:var(--measure)}
 
   /* ---------- the specimen ---------- */
   /* the alert, set as a typographic specimen rather than a UI mockup */
-  .spec{font-family:var(--mono);background:#EFEADC;border:1px solid var(--ink);padding:16px 18px}
-  .spec .hd{margin:0 0 8px;font:400 10.5px/17px var(--mono);letter-spacing:.02em;color:#807B6E}
+  .spec{font-family:var(--mono);background:#E6DFCB;border:1px solid var(--ink)}
+  .spec .hd{margin:0;padding:13px 18px;border-bottom:1px solid var(--ink);
+            font:400 11px/19px var(--mono);letter-spacing:.02em;color:#6E6A5D}
+  .spec .hd b{display:block;font-weight:600;color:var(--ink);letter-spacing:0;margin-top:2px}
+  .spec .body-rows{padding:4px 18px 14px}
   .spec .hd b{display:block;font-weight:600;color:var(--ink);letter-spacing:0}
-  .spec .ev{padding:10px 0;border-top:1px solid #DAD3C0}
-  .spec .k{font:500 11px/17px var(--mono);letter-spacing:0;color:var(--red);display:block}
+  .spec .ev{padding:10px 0;border-top:1px solid #D2CAB4}
+  .spec .ev:first-child{border-top:0}
+  .spec .k{font:500 11px/17px var(--mono);letter-spacing:0;color:var(--ink);display:block}
   .spec .v{font-size:12.5px;line-height:19px;color:var(--ink);display:block}
   .spec .n{display:block;font-size:12.5px;line-height:19px;color:var(--ink-soft)}
   .spec .n .d{color:var(--red)}
   .spec .old{color:#9B968A}
+  .spec .n .up{color:var(--ink);font-weight:600}
   .spec .ft{margin:0;padding:10px 0 0;border-top:1px solid var(--r2);
             font-size:10.5px;line-height:18px;color:#807B6E}
 
   /* ---------- chapter head ---------- */
   .sect{padding:44px 0 38px}
   h2{
-    font-family:var(--text);font-weight:500;font-variation-settings:"opsz" 20;
-    font-size:21px;line-height:31px;letter-spacing:0;margin:0;max-width:var(--measure);
+    font-family:var(--display);font-weight:400;font-variation-settings:"opsz" 72;
+    font-size:clamp(1.9rem,4.6vw,4.1rem);line-height:1.02;letter-spacing:-.026em;
+    margin:0;text-wrap:balance;
   }
-  .lede{margin:14px 0 0;color:var(--ink-soft);font-size:17px;line-height:27px;max-width:var(--measure)}
+  .lede{margin:18px 0 0;color:var(--ink-soft);font-size:17px;line-height:27px;max-width:var(--measure)}
 
   /* ---------- the three arguments: one lockup, one language ---------- */
   .tax{margin:0;padding:0;list-style:none}
@@ -178,12 +184,15 @@
     font-size:clamp(2.08rem,7.8vw,7.02rem);line-height:.92;letter-spacing:-.028em;
     color:var(--red);margin:0 0 24px;white-space:nowrap;
   }
-  .figure .unit{font-size:.40em;letter-spacing:-.008em;vertical-align:.62em;margin-left:.04em}
+  .figure.gain{color:var(--ink)}
+  .figure .unit{font-size:.36em;letter-spacing:-.008em;vertical-align:.40em;margin-left:.10em}
   .figure .sign{
     display:inline-block;width:.40em;height:.072em;background:currentColor;
     vertical-align:.27em;margin-right:.04em;
   }
   .ledger{border-top:1px solid var(--r2)}
+  .brief .ledger{border-top-color:#CFC7B2}
+  .brief .ledger div{border-bottom-color:#CFC7B2}
   .ledger div{
     display:grid;grid-template-columns:62px 1fr auto;gap:12px;padding:7px 0;
     border-bottom:1px solid var(--r2);font-family:var(--mono);
@@ -198,7 +207,9 @@
 
   .tax .lead{padding:46px 0 52px}
   .tax .lead .figure{margin-right:-1px}   /* measured optical flush */
-  .tax .brief{padding:46px 0 52px}
+  .tint{background:#EBE5D6}
+  .tint .ruled{background-image:linear-gradient(to right,#CFC7B2,#CFC7B2)}
+  .brief{padding:46px 0 52px}
   .ledger.stack div{grid-template-columns:1fr auto}
 
   /* ---------- 03: the climax, inverted, out of the column grid ---------- */
@@ -223,9 +234,8 @@
   /* ---------- the register ---------- */
   .reg{margin:0;border-top:1px solid var(--r2)}
   .reg > .row{padding:13px 0;border-bottom:1px solid var(--r2)}
-  .reg dd{margin:0;font-size:17px;line-height:27px;color:var(--ink-soft);max-width:var(--measure)}
-  .reg .ex{display:block;font-family:var(--mono);font-size:12.5px;line-height:27px;
-           color:var(--ink);text-align:right;white-space:nowrap}
+  .reg dd{margin:0;font-size:17px;line-height:27px;color:var(--ink-soft);max-width:none}
+
 
   /* ---------- the ask: cream, the form its only mass ---------- */
   .close{padding:52px 0 64px}
@@ -236,7 +246,13 @@
     line-height:1;letter-spacing:-.026em;max-width:none;margin:0 0 0 -1px;
   }
   .close form.snap{margin-top:40px}
-  .close .field input{font-size:19px;height:62px}
+  .close .field{flex:1 1 auto}
+  .close .field input{font-size:19px;height:64px}
+  .close button.cta{
+    font-family:var(--display);font-variation-settings:"opsz" 30;
+    font-size:22px;font-weight:500;letter-spacing:-.01em;text-transform:none;
+    height:64px;padding:0 30px;text-indent:0;line-height:1;
+  }
 
   /* ---------- footer ---------- */
   footer{padding:40px 0 56px}
@@ -255,11 +271,11 @@
   /* measured: every rail label's baseline sits on the first baseline of the
      thing it labels. Values taken from the rendered page. */
   .hero .a{padding-top:17.5px}      .hero .b{padding-top:2.5px}     .hero .c{padding-top:2.5px}
-  .sect .a{padding-top:21px}        .sect .bc{padding-top:6px}
+  .sect .a{padding-top:56.9px}      .sect .bc{padding-top:6px}
   .tax .lead .a{padding-top:34.9px} .tax .lead .b{padding-top:3.5px} .tax .lead .c{padding-top:5px}
-  .tax .brief .a{padding-top:31.4px} .tax .brief .c{padding-top:5px}
+  .brief .a{padding-top:31.4px}     .brief .c{padding-top:5px}
   .climax .a{padding-top:37.9px}    .climax .b{padding-top:6.5px}   .climax .c{padding-top:9px}
-  .spec-sect .a{padding-top:21px}
+  .spec-sect .a{padding-top:56.9px}
   .reg .row .a{padding-top:11px}
 
   @media (max-width:1080px){
@@ -353,7 +369,8 @@
     </div>
     <div class="c">
       <div class="spec" aria-label="Example alert email">
-        <p class="hd">kindred-beauty.com, 09:14<b>4 changes at Kindred Beauty</b></p>
+        <p class="hd">From PriceDrift · kindred-beauty.com · 09:14<b>4 changes at Kindred Beauty</b></p>
+        <div class="body-rows">
         <div class="ev">
           <span class="k">price cut</span>
           <span class="v">Matte Lip Kit · Rosewood</span>
@@ -367,12 +384,13 @@
         <div class="ev">
           <span class="k">price up</span>
           <span class="v">Brow Pencil · Ash</span>
-          <span class="n"><span class="old">$18.00 →</span> $21.00 &nbsp;<span class="d">+16.7%</span></span>
+          <span class="n"><span class="old">$18.00 →</span> $21.00 &nbsp;<span class="up">+16.7%</span></span>
         </div>
         <div class="ev">
           <span class="k">sold out</span>
           <span class="v">Eyeliner · Jet</span>
           <span class="n">3 of 3 variants</span>
+        </div>
         </div>
       </div>
     </div>
@@ -397,26 +415,32 @@
       </div>
       <div class="b">
         <h3>You’re being undercut.</h3>
-        <p>Your ROAS tells you a week later, once the ad spend is gone. This tells you the morning it happens: the old price, the new price, the variant it moved on.</p>
+        <p>Your ROAS tells you a week later, once the ad spend is already gone, and by then the only thing left to do is match a price you never chose. This tells you the morning it happens.</p>
       </div>
       <div class="c fig">
         <span class="figure"><span class="sr">minus </span><span class="sign" aria-hidden="true"></span>24.1<span class="unit">%</span></span>
         <div class="ledger">
-          <div><span class="now">09:14</span><span class="now">$22.00</span><span class="d">−24.1%</span></div>
-          <div><span class="nil">03:14</span><span class="nil">$29.00</span><span class="nil">held since 21:14</span></div>
+          <div><span class="now">09:14</span><span class="now">$27.00</span><span class="d">−24.1%</span></div>
+          <div><span class="nil">03:14</span><span class="nil">$35.60</span><span class="nil">held since 21:14</span></div>
         </div>
-        <span class="cap">Matte Lip Kit · Rosewood</span>
+        <span class="cap">Silk Primer · 50ml</span>
       </div>
     </li>
-    <hr class="r2">
+  </ul>
+  </div>
+</div>
 
-    <li class="band brief">
+<section class="tint">
+  <div class="wrap">
+   <div class="ruled">
+    <div class="band brief">
       <div class="a"><p class="rail">New product<span class="i">02</span></p></div>
       <div class="b">
         <h3>A launch you didn’t see.</h3>
         <p>Every new listing on day one, including the products you would never have thought to look for.</p>
       </div>
-      <div class="c">
+      <div class="c fig">
+        <span class="figure gain">+4<span class="unit">new</span></span>
         <div class="ledger stack">
           <div><span>Ember 40ml</span><span class="now">$48.00</span></div>
           <div><span>Ember 100ml</span><span class="now">$86.00</span></div>
@@ -425,10 +449,10 @@
         </div>
         <span class="cap">Winter Set, four variants, listed 03:14</span>
       </div>
-    </li>
-  </ul>
+    </div>
+   </div>
   </div>
-</div>
+</section>
 
 <section class="inv">
   <div class="wrap">
@@ -442,7 +466,7 @@
         <p>When a competitor runs dry, their customers start looking elsewhere. You have a window until they restock.</p>
       </div>
       <div class="c fig">
-        <span class="figure">0<span class="unit">/3</span></span>
+        <span class="figure">0<span class="unit">of 3</span></span>
         <div class="ledger struck">
           <div><span>42h</span><span class="x">Fine tip</span><span>out</span></div>
           <div><span>24h</span><span class="x">Bold tip</span><span>out</span></div>
@@ -466,28 +490,23 @@
   <dl class="reg">
     <div class="band row">
       <dt class="a"><p class="rail">Price up</p></dt>
-      <dd class="b">A variant reprices upward. You get the delta, the same as a cut.</dd>
-      <dd class="c"><span class="ex">$18.00 → $21.00</span></dd>
+      <dd class="bc">A variant reprices upward, with the same delta you get on a cut.</dd>
     </div>
     <div class="band row">
       <dt class="a"><p class="rail">Sale started</p></dt>
-      <dd class="b">A compare-at price appears against the list price, which is usually the week they decided to chase volume.</dd>
-      <dd class="c"><span class="ex">compare-at appears</span></dd>
+      <dd class="bc">A compare-at price appears against the list price, which is usually the week they decided to chase volume.</dd>
     </div>
     <div class="band row">
       <dt class="a"><p class="rail">Sale ended</p></dt>
-      <dd class="b">The discount comes off again.</dd>
-      <dd class="c"><span class="ex">back to $29.00</span></dd>
+      <dd class="bc">The discount comes off again.</dd>
     </div>
     <div class="band row">
       <dt class="a"><p class="rail">Removed</p></dt>
-      <dd class="b">A product or variant disappears from the catalogue.</dd>
-      <dd class="c"><span class="ex">404 on the handle</span></dd>
+      <dd class="bc">A product or variant disappears from the catalogue.</dd>
     </div>
     <div class="band row">
       <dt class="a"><p class="rail">Back in stock</p></dt>
-      <dd class="b">Inventory returns. The window shuts.</dd>
-      <dd class="c"><span class="ex">3 of 3 restocked</span></dd>
+      <dd class="bc">Inventory returns and the window shuts on you.</dd>
     </div>
   </dl>
   </div>
