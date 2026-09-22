@@ -89,13 +89,15 @@
     font-family:var(--display);font-weight:600;font-variation-settings:"opsz" 22;
     font-size:25px;line-height:24px;letter-spacing:-.022em;text-decoration:none;white-space:nowrap;
   }
+  .mast{align-items:baseline}
   .mast .links{display:flex;gap:26px;margin-left:auto;
     font:400 10px/24px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
   .mast .links a{text-decoration:none}
   .mast .links a:hover{color:var(--red)}
   .login{font:400 10px/24px var(--mono);letter-spacing:.14em;text-transform:uppercase;
          color:var(--ink);text-decoration:none;white-space:nowrap;
-         padding-left:26px;border-left:1px solid var(--r2)}
+         margin-left:26px;padding-left:26px;border-left:1px solid var(--r2);
+         line-height:14px;align-self:center}
   .login:hover{color:var(--red)}
 
   /* ---------- headline ---------- */
@@ -121,18 +123,18 @@
   .price-line .u{font-size:17px;line-height:27px;color:var(--ink-soft)}
   .body{font-size:17px;line-height:27px;color:var(--ink-soft);margin:6px 0 0;max-width:var(--measure)}
 
-  form.snap{display:flex;align-items:flex-end;gap:20px;margin:26px 0 0;width:100%}
+  form.snap{display:flex;align-items:stretch;gap:0;margin:26px 0 0;width:100%}
   .field{position:relative;flex:1 1 auto;min-width:0}
   .field input{
-    width:100%;font:400 15px/22px var(--mono);height:52px;padding:0 0 0 2px;color:var(--ink);
-    background:transparent;border:0;border-bottom:2px solid var(--ink);border-radius:0;
+    width:100%;font:400 15px/22px var(--mono);height:56px;padding:0 14px;color:var(--ink);
+    background:var(--paper);border:1px solid var(--ink);border-right:0;border-radius:0;
   }
   .field input::placeholder{color:var(--muted)}
-  .field input:focus{outline:0;border-bottom-color:var(--red)}
+  .field input:focus{outline:2px solid var(--red);outline-offset:-2px;position:relative;z-index:1}
   button.cta{
     flex:none;font:500 10px/22px var(--mono);letter-spacing:.14em;text-transform:uppercase;
     color:var(--cream);background:var(--ink);border:1px solid var(--ink);
-    border-radius:0;height:52px;padding:0 22px;text-indent:.14em;cursor:pointer;white-space:nowrap;
+    border-radius:0;height:56px;padding:0 22px;text-indent:.14em;cursor:pointer;white-space:nowrap;
   }
   button.cta:hover{background:#000;border-color:#000}
   button.cta:focus-visible{outline:2px solid var(--red);outline-offset:2px}
@@ -143,20 +145,20 @@
 
   /* ---------- the specimen ---------- */
   /* the alert, set as a typographic specimen rather than a UI mockup */
-  .spec{font-family:var(--mono);background:#E6DFCB;border:1px solid var(--ink)}
-  .spec .hd{margin:0;padding:13px 18px;border-bottom:1px solid var(--ink);
-            font:400 11px/19px var(--mono);letter-spacing:.02em;color:#6E6A5D}
+  .spec{font-family:var(--mono)}
+  .spec .hd{margin:0;padding:0 0 11px;border-bottom:1px solid var(--r2);
+            font:400 11px/19px var(--mono);letter-spacing:.02em;color:var(--ink-soft)}
   .spec .hd b{display:block;font-weight:600;color:var(--ink);letter-spacing:0;margin-top:2px}
-  .spec .body-rows{padding:4px 18px 14px}
+  .spec .body-rows{padding:0}
   .spec .hd b{display:block;font-weight:600;color:var(--ink);letter-spacing:0}
-  .spec .ev{padding:10px 0;border-top:1px solid #D2CAB4}
+  .spec .ev{padding:10px 0;border-top:1px solid var(--r2)}
   .spec .ev:first-child{border-top:0}
   .spec .k{font:500 11px/17px var(--mono);letter-spacing:0;color:var(--ink);display:block}
   .spec .v{font-size:12.5px;line-height:19px;color:var(--ink);display:block}
   .spec .n{display:block;font-size:12.5px;line-height:19px;color:var(--ink-soft)}
   .spec .n .d{color:var(--red)}
   .spec .old{color:var(--muted)}
-  .spec .n .up{color:var(--ink);font-weight:600}
+  .spec .n .up{color:var(--red)}
   .spec .ft{margin:0;padding:10px 0 0;border-top:1px solid var(--r2);
             font-size:10.5px;line-height:18px;color:var(--muted)}
 
@@ -178,6 +180,10 @@
   }
   .tax p:not(.rail){margin:0;color:var(--ink-soft);font-size:17px;line-height:27px;max-width:var(--measure)}
 
+  .arg{padding:44px 0 50px}
+  .arg .a{padding-top:33.5px}
+  .arg .c{padding-top:5px}
+  .arg .figure{margin-right:-1px}
   .figure{
     display:block;font-family:var(--display);font-weight:500;
     font-variation-settings:"opsz" 72;font-feature-settings:"tnum" 1,"lnum" 1;
@@ -203,16 +209,11 @@
   .cap{display:block;font-family:var(--mono);font-size:11px;line-height:18px;
        color:var(--muted);margin-top:0;padding-top:9px;border-top:1px solid var(--r2);white-space:nowrap}
 
-  .lead{padding:58px 0 64px;grid-template-columns:minmax(0,1.6fr) minmax(0,4.1fr) minmax(0,6.3fr)}
-  .lead .figure{margin-right:-1px}
-  .brief{padding:30px 0 34px}
-  .runon{margin:12px 0 0;font-family:var(--mono);font-size:13px;line-height:23px;
-         color:var(--ink-soft);max-width:none}
-  .short{padding:38px 0 44px}
   .ledger.stack div{grid-template-columns:1fr auto}
 
   /* ---------- 03: the climax, inverted, out of the column grid ---------- */
   .inv{background:var(--d-bg);color:var(--d-text)}
+  .inv .arg{padding:52px 0 46px}
   .inv .ruled{background-image:linear-gradient(to right,var(--d-rule),var(--d-rule))}
   .inv .rail{color:var(--d-text)}
   .inv .rail .i{color:var(--d-soft)}
@@ -224,8 +225,8 @@
   .inv .ledger div{border-bottom-color:var(--d-rule);color:var(--d-soft)}
   .inv .ledger .now{color:var(--d-text)}
   .inv .ledger .nil{color:#8E8A7C}   /* 5.3:1 on ink */
+  .inv .ledger .d{color:var(--d-red)}   /* was 2.63:1 on ink */
   .inv .cap{color:#8B8779;border-top-color:var(--d-rule)}
-  .short .figure{margin-right:-2.5px}
   .ledger.struck .x{position:relative;display:inline-block;justify-self:start;color:var(--d-text)}
   .ledger.struck .x::after{
     content:"";position:absolute;left:0;right:.08em;top:55%;
@@ -241,14 +242,14 @@
   /* ---------- the ask: cream, the form its only mass ---------- */
   .close{padding:52px 0 64px}
   .close h2{
-    font-family:var(--display);font-size:clamp(1.8rem,4.6vw,4rem);
+    font-family:var(--display);font-size:clamp(1.8rem,4.67vw,4.21rem);
     font-variation-settings:"opsz" 72;font-weight:400;
     line-height:1;letter-spacing:-.026em;max-width:none;margin:0 0 0 -1px;
   }
   .close form.snap{margin-top:40px}
   .close .field{flex:1 1 auto}
-  .close .field input{font-size:19px;height:64px}
-  .hero .field input,.hero button.cta{height:56px}
+  .close .field input{font-size:18px;height:64px}
+
   .close button.cta{height:64px;padding:0 30px}
 
   /* ---------- footer ---------- */
@@ -266,13 +267,10 @@
   /* measured cap-height alignment, applied after layout */
   /* measured: every rail label's baseline sits on the first baseline of the
      thing it labels. Values taken from the rendered page. */
-  .hero .a{padding-top:17.5px}      .hero .b{padding-top:2.5px}     .hero .c{padding-top:2.5px}
-  .sect .a{padding-top:56.9px}      .sect .bc{padding-top:6px}
-  .lead .a{padding-top:34.9px}      .lead .b{padding-top:3.5px}     .lead .c{padding-top:5px}
-  .brief .a{padding-top:31.4px}
-  .short .a{padding-top:31.4px}     .short .c{padding-top:5px}
-  .spec-sect .a{padding-top:56.9px}
-  .reg .row .a{padding-top:11px}
+  .hero .a{padding-top:17px}      .hero .b{padding-top:2.5px}     .hero .c{padding-top:2.5px}
+  .sect .a{padding-top:54.4px}      .sect .bc{padding-top:6px}
+  .spec-sect .a{padding-top:55.4px}
+  .reg .row .a{padding-top:10.5px}
 
   @media (max-width:1080px){
     :root{--gut:28px}
@@ -374,7 +372,7 @@
         <div class="ev">
           <span class="k">price up</span>
           <span class="v">Brow Pencil · Ash</span>
-          <span class="n"><span class="old">$18.00 →</span> $21.00 &nbsp;<span class="up">+16.7%</span></span>
+          <span class="n"><span class="old">$18.00 →</span> $21.00 &nbsp;<span class="d">+16.7%</span></span>
         </div>
         <div class="ev">
           <span class="k">sold out</span>
@@ -401,22 +399,62 @@
   </div>
 </div>
 
+<div class="wrap">
+  <div class="ruled">
+  <div class="band arg">
+    <div class="a"><p class="rail">Price cut<span class="i">01</span></p></div>
+    <div class="b">
+      <h3>You’re being undercut.</h3>
+      <p>Your ROAS tells you a week later, once the ad spend is already gone. This tells you the morning it happens.</p>
+    </div>
+    <div class="c fig">
+      <span class="figure"><span class="sr">minus </span><span class="sign" aria-hidden="true"></span>24.1<span class="unit">%</span></span>
+      <div class="ledger">
+        <div><span class="now">09:14</span><span class="now">$27.00</span><span class="d">−24.1%</span></div>
+        <div><span class="nil">03:14</span><span class="nil">$35.60</span><span class="nil">held since 21:14</span></div>
+      </div>
+      <span class="cap">Silk Primer · 50ml</span>
+    </div>
+  </div>
+  <hr class="r2">
+
+  <div class="band arg">
+    <div class="a"><p class="rail">New product<span class="i">02</span></p></div>
+    <div class="b">
+      <h3>A launch you didn’t see.</h3>
+      <p>Every new listing on day one, including the products you would never have thought to look for.</p>
+    </div>
+    <div class="c fig">
+      <span class="figure">4<span class="unit">new</span></span>
+      <div class="ledger">
+        <div><span class="nil">03:14</span><span>Ember 40ml</span><span class="now">$48.00</span></div>
+        <div><span class="nil">03:14</span><span>Ember 100ml</span><span class="now">$86.00</span></div>
+        <div><span class="nil">03:14</span><span>Dusk 40ml</span><span class="now">$52.00</span></div>
+        <div><span class="nil">03:14</span><span>Dusk 100ml</span><span class="now">$94.00</span></div>
+      </div>
+      <span class="cap">Winter Set · four variants</span>
+    </div>
+  </div>
+  </div>
+</div>
+
 <section class="inv">
   <div class="wrap">
    <div class="ruled">
-    <div class="band lead">
-      <div class="a"><p class="rail">Price cut<span class="i">01</span></p></div>
+    <div class="band arg">
+      <div class="a"><p class="rail">Sold out<span class="i">03</span></p></div>
       <div class="b">
-        <h3>You’re being undercut.</h3>
-        <p>Your ROAS tells you a week later, once the ad spend is already gone, and by then the only thing left to do is match a price you never chose. This tells you the morning it happens.</p>
+        <h3>They can’t fill the orders.</h3>
+        <p>When a competitor runs dry, their customers start looking elsewhere. You have a window until they restock.</p>
       </div>
       <div class="c fig">
-        <span class="figure"><span class="sr">minus </span><span class="sign" aria-hidden="true"></span>24.1<span class="unit">%</span></span>
-        <div class="ledger">
-          <div><span class="now">09:14</span><span class="now">$27.00</span><span class="d">−24.1%</span></div>
-          <div><span class="nil">03:14</span><span class="nil">$35.60</span><span class="nil">held since 21:14</span></div>
+        <span class="figure">0<span class="unit">of 3</span></span>
+        <div class="ledger struck">
+          <div><span class="nil">42h</span><span class="x">Fine tip</span><span>out</span></div>
+          <div><span class="nil">24h</span><span class="x">Bold tip</span><span>out</span></div>
+          <div><span class="nil">18h</span><span class="x">Waterproof</span><span>out</span></div>
         </div>
-        <span class="cap">Silk Primer · 50ml</span>
+        <span class="cap">Eyeliner Jet · three variants</span>
       </div>
     </div>
    </div>
@@ -425,28 +463,6 @@
 
 <div class="wrap">
   <div class="ruled">
-  <div class="band brief">
-    <div class="a"><p class="rail">New product<span class="i">02</span></p></div>
-    <div class="bc">
-      <h3>A launch you didn’t see.</h3>
-      <p class="runon">Four new variants at 03:14 — Ember 40ml $48.00 · Ember 100ml $86.00 · Dusk 40ml $52.00 · Dusk 100ml $94.00, listed before the store announced them.</p>
-    </div>
-  </div>
-  <hr class="r2">
-
-  <div class="band short">
-    <div class="a"><p class="rail">Sold out<span class="i">03</span></p></div>
-    <div class="b">
-      <h3>They can’t fill the orders.</h3>
-      <p>When a competitor runs dry, their customers start looking elsewhere. You have a window until they restock.</p>
-    </div>
-    <div class="c fig">
-      <span class="figure">0<span class="unit">of 3</span></span>
-      <span class="cap">Eyeliner Jet · three variants</span>
-    </div>
-  </div>
-  <hr class="r1">
-
   <section class="band sect spec-sect">
     <div class="a"><p class="rail">The other five</p></div>
     <div class="bc"><h2>The rest of the eight, watched on the same six-hour cycle.</h2></div>
@@ -479,7 +495,7 @@
   <hr class="r1">
 
   <section class="close" id="start">
-    <h2>Paste a URL. Read the whole catalogue.</h2>
+    <h2>Paste a URL.&nbsp;Read the whole catalogue.</h2>
     <form class="snap" action="/snapshot" method="get">
       <label class="field">
         <span class="sr">Competitor store URL</span>
