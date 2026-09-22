@@ -6,7 +6,7 @@
 <title>PriceDrift — every price change in your competitors’ Shopify store</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,400;1,6..96,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     color-scheme: light;
@@ -18,25 +18,27 @@
     --ink:#1A1A17;
     --ink-soft:#5F5C4C;
     --red:#A23A24;
-    --hair:#DCD5C3;
-    --rule:#C2B9A2;
+    --hair:#E4DECE;   /* item dividers */
+    --rule:#ABA189;   /* group openings */
+    --faint:#EFEADC;  /* inside the specimen, lighter than the page */
 
     /* two families, three registers: the Didone speaks, its text cut reads,
        the mono means one thing only — this is machine output. */
     --display:'Bodoni Moda', Georgia, 'Times New Roman', serif;
-    --text:'Bodoni Moda', Georgia, 'Times New Roman', serif;
+    --text:'Newsreader', Georgia, 'Times New Roman', serif;
     --mono:'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 
     /* one grid: 1.5 / 5.5 / 5 of twelve */
-    --zA:1.5fr; --zB:5.5fr; --zC:5fr;
+    --zA:1.5fr; --zB:5fr; --zC:5.5fr;
     --gut:36px;
+    --measure:52ch;
   }
   *,*::before,*::after{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
   body{
     margin:0;padding:env(safe-area-inset-top,0) 0 0;
     background:var(--cream);color:var(--ink);
-    font:400 17px/27px var(--text);font-variation-settings:"opsz" 11;letter-spacing:0;
+    font:400 18px/28px var(--text);font-variation-settings:"opsz" 16;letter-spacing:0;
     -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
   }
   a{color:inherit}
@@ -50,9 +52,16 @@
   .band{display:grid;
     grid-template-columns:minmax(0,var(--zA)) minmax(0,var(--zB)) minmax(0,var(--zC))}
   .band > .a{padding-right:var(--gut)}
-  .band > .b{padding:0 var(--gut);border-left:1px solid var(--hair)}
-  .band > .c{padding-left:var(--gut);border-left:1px solid var(--hair)}
-  .band > .bc{grid-column:2/-1;padding-left:var(--gut);border-left:1px solid var(--hair)}
+  .band > .b{padding:0 var(--gut)}
+  .band > .c{padding-left:var(--gut)}
+  .band > .bc{grid-column:2/-1;padding-left:var(--gut)}
+  /* exactly one column line, continuous from the first band to the last.
+     The second boundary is held by the gutter, not by a rule. */
+  .ruled{
+    background:linear-gradient(to right,var(--rule),var(--rule)) no-repeat 12.5% 0;
+    background-size:1px 100%;
+  }
+  .close .ruled{background-image:linear-gradient(to right,#3D3B31,#3D3B31)}
 
   /* ONE rail treatment, at every stop */
   .rail{font:400 10px/16px var(--mono);letter-spacing:.12em;text-transform:uppercase;
@@ -75,7 +84,7 @@
   .login:hover{color:var(--red)}
 
   /* ---------- headline ---------- */
-  .headline{padding:46px 0 18px}
+  .headline{position:relative;padding:46px 0 30px}
   h1{
     font-family:var(--display);font-weight:400;font-variation-settings:"opsz" 40;
     font-size:clamp(2.4rem,6.9vw,6rem);
@@ -84,21 +93,20 @@
   }
   h1 .l{display:block}
   h1 .o{margin-left:-.041em}
-  /* the datum that occupies the void beside the short last line */
-  /* a dateline under the masthead line, not a label floating in a notch */
+  /* the live clock, in the corner the rag leaves open */
   .stamp{
-    display:flex;gap:26px;justify-content:flex-end;margin:18px 0 0;
+    position:absolute;right:0;top:119.7px;margin:0;text-align:right;white-space:nowrap;  /* baseline of the headline first line, measured */
     font:400 10px/18px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);
   }
-  .stamp b{font-weight:500;color:var(--ink)}
+  .stamp b{display:block;font-weight:500;color:var(--ink)}
 
   /* ---------- hero ---------- */
   .hero{padding:32px 0 38px}
-  .deck{font-size:21px;line-height:31px;letter-spacing:-.003em;margin:0 0 20px}
-  .body{font-size:17px;line-height:27px;color:var(--ink-soft);margin:0}
-  .price-line{font-size:17px;line-height:27px;color:var(--ink);margin:14px 0 0;font-weight:500}
+  .deck{font-size:22px;line-height:33px;letter-spacing:-.003em;margin:0 0 20px;max-width:var(--measure)}
+  .body{font-size:18px;line-height:28px;color:var(--ink-soft);margin:0;max-width:var(--measure)}
+  .price-line{font-size:18px;line-height:28px;color:var(--ink);margin:14px 0 0;font-weight:500}
 
-  form.snap{display:flex;margin:26px 0 0;max-width:396px}
+  form.snap{display:flex;margin:26px 0 0;width:100%}
   .field{position:relative;flex:1 1 auto;min-width:0}
   .field input{
     width:100%;font:400 14px/22px var(--mono);letter-spacing:0;
@@ -114,27 +122,28 @@
   }
   button.cta:hover{background:#000;border-color:#000}
   button.cta:focus-visible{outline:2px solid var(--red);outline-offset:2px}
-  .offer{font-size:15px;line-height:24px;color:var(--ink-soft);margin:14px 0 0;font-style:italic}
+  .offer{font-size:16px;line-height:25px;color:var(--ink-soft);margin:14px 0 0;font-style:italic}
 
   .notes{margin:30px 0 0;padding-top:18px;border-top:1px solid var(--hair)}
-  .notes p:not(.rail){margin:9px 0 0;font-size:15px;line-height:24px;color:var(--ink-soft)}
+  .notes p:not(.rail){margin:9px 0 0;font-size:16px;line-height:25px;color:var(--ink-soft);max-width:var(--measure)}
 
   /* every machine value keeps the mono voice, whatever the body face is */
   .mail,.log,.ladder,.struck,.val,.cap,.reg dt{font-family:var(--mono)}
 
   /* ---------- the specimen ---------- */
-  .mail{background:var(--paper)}
-  .mail-head{padding:14px 18px;border-bottom:1px solid var(--hair)}
+  .hero .c{display:flex;align-items:flex-start}
+  .mail{background:#FFFFFF;border:1px solid var(--ink);width:100%}
+  .mail-head{padding:14px 18px;border-bottom:1px solid var(--faint)}
   .mail-head dl{display:grid;grid-template-columns:46px 1fr;margin:0;font-size:12.5px;line-height:22px}
   .mail-head dt{color:var(--ink-soft);text-transform:uppercase;letter-spacing:.08em;font-size:10px}
   .mail-head dd{margin:0;color:var(--ink-soft)}
   .mail-head dd.subj{color:var(--ink);font-weight:600}
-  .mail .ev{padding:11px 18px;border-bottom:1px solid var(--hair)}
+  .mail .ev{padding:11px 18px;border-bottom:1px solid var(--faint)}
   .mail .k{font:600 10px/20px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink);display:block}
   .mail .v{font-size:12.5px;line-height:21px;color:var(--ink);display:block}
   .mail .n{display:block;font-size:12.5px;line-height:21px;color:var(--ink-soft)}
   .mail .n .d{color:var(--red)}
-  .mail-foot{padding:12px 18px;font-size:11px;line-height:20px;color:var(--ink-soft)}
+  .mail-foot{border-top:1px solid var(--faint);padding:12px 18px;font-size:11px;line-height:20px;color:var(--ink-soft)}
 
   /* ---------- chapter head ---------- */
   .sect{padding:48px 0 40px}
@@ -143,7 +152,7 @@
     font-size:clamp(1.9rem,3.5vw,3.05rem);line-height:1.06;letter-spacing:-.026em;
     word-spacing:-.04em;margin:-.05em 0 0;text-wrap:balance;
   }
-  .lede{margin:14px 0 0;color:var(--ink-soft);font-size:17px;line-height:27px;max-width:58ch}
+  .lede{margin:0;color:var(--ink-soft);font-size:18px;line-height:28px;max-width:var(--measure)}
 
   /* ---------- the three arguments, at three different heights ---------- */
   .tax{margin:0;padding:0;list-style:none}
@@ -152,7 +161,7 @@
     font-size:2rem;line-height:1.1;letter-spacing:-.025em;word-spacing:-.03em;
     margin:0 0 10px;text-indent:-.012em;text-wrap:balance;
   }
-  .tax p:not(.rail){margin:0;color:var(--ink-soft);font-size:17px;line-height:27px}
+  .tax p:not(.rail){margin:0;color:var(--ink-soft);font-size:18px;line-height:28px;max-width:var(--measure)}
 
   /* 01 — tall */
   .tax .lead{padding:52px 0 58px}
@@ -160,10 +169,15 @@
   .huge{
     display:block;font-family:var(--display);font-weight:500;
     font-variation-settings:"opsz" 60;font-feature-settings:"tnum" 1,"lnum" 1;
-    font-size:clamp(3.4rem,8.6vw,8.2rem);line-height:.86;letter-spacing:-.03em;
-    color:var(--red);margin:2px 0 22px;text-indent:-.061em;  /* measured: minus stem flush to the column, clear of the rule */
+    font-size:clamp(3.4rem,10.15vw,9.2rem);line-height:.86;letter-spacing:-.03em;white-space:nowrap;
+    color:var(--red);margin:18px 0 24px;
   }
   .val{display:block;font-size:14px;line-height:22px;color:var(--ink)}
+  /* a figure dash at the numeral's stem weight, set on the math axis */
+  .huge .sign{
+    display:inline-block;width:.40em;height:.056em;background:currentColor;
+    vertical-align:.30em;margin-right:.015em;
+  }
   .log{border-top:1px solid var(--hair)}
   .log div{display:grid;grid-template-columns:54px 1fr auto;padding:6px 0;
            border-bottom:1px solid var(--hair);font-size:12.5px;line-height:20px;color:var(--ink-soft)}
@@ -173,8 +187,14 @@
   .cap{display:block;font-size:10px;line-height:18px;letter-spacing:.12em;
        text-transform:uppercase;color:var(--ink-soft);margin-top:12px}
 
+  .mid{
+    display:block;font-family:var(--mono);font-weight:500;
+    font-size:3.1rem;line-height:1;letter-spacing:-.045em;
+    color:var(--ink);margin:6px 0 20px;
+  }
+
   /* 02 — compressed */
-  .tax .tight{padding:24px 0 26px}
+  .tax .tight{padding:57.3px 0 28px}
   .ladder{border-top:1px solid var(--hair)}
   .ladder div{display:grid;grid-template-columns:1fr auto;padding:4px 0;
               border-bottom:1px solid var(--hair);font-size:18px;line-height:26px;
@@ -183,7 +203,7 @@
   .ladder span:first-child{color:var(--ink-soft);font-size:14px}
 
   /* 03 — the strike is the image */
-  .tax .wide{padding:44px 0 48px}
+  .tax .wide{padding:47.6px 0 48px}
   .struck{margin:0}
   .struck div{
     font-size:clamp(1.4rem,2.4vw,1.95rem);line-height:1.42;letter-spacing:-.02em;
@@ -203,15 +223,18 @@
              padding:10px 0;border-bottom:1px solid var(--hair)}
   .reg > div:last-child{border-bottom:0}
   .reg dt{font:600 10px/24px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
-  .reg dd{margin:0;font-size:16px;line-height:24px;color:var(--ink-soft)}
+  .reg dd{margin:0;font-size:17px;line-height:26px;color:var(--ink-soft)}
 
   /* ---------- the ask, inverted ---------- */
   .close{background:var(--ink);color:#EAE5D6;padding:66px 0 70px}
   .close .rail{color:#EAE5D6}
   .close .rail span{color:#98937F}
   .close .b,.close .c,.close .bc{border-left-color:#3A382F}
-  .close h2{color:#F6F2E8;font-size:clamp(2.2rem,5.4vw,4.6rem);line-height:.98;text-indent:-.105em;
+  .close h2{color:#F6F2E8;font-size:clamp(2.2rem,5.4vw,4.6rem);line-height:.98;
             letter-spacing:-.028em;font-variation-settings:"opsz" 40;font-weight:400;text-wrap:initial}
+  .close h2 .l{display:block}
+  .close h2 .p1{margin-left:-.105em}
+  .close h2 .p2{margin-left:-.132em}
   .close .row2{margin-top:44px}
   .close .field input{background:transparent;border-color:#6E6A5C;color:#F6F2E8}
   .close .field input::placeholder{color:#8E8975}
@@ -235,10 +258,10 @@
 
   /* measured first-baseline alignment, applied after layout */
   /* measured first-baseline alignment: every zone in a band lands on one line */
-  .hero .a{padding-top:21px}   .hero .b{padding-top:6px}    .hero .c{padding-top:1px}
+  .hero .a{padding-top:21px}   .hero .b{padding-top:4px}    .hero .c{padding-top:0}
   .sect .a{padding-top:33.3px}
   .tax .lead .a{padding-top:28.3px}  .tax .lead .b{padding-top:9.1px}   .tax .lead .c{padding-top:22.3px}
-  .tax .tight .a{padding-top:23px}   .tax .tight .b{padding-top:8px}    .tax .tight .c{padding-top:3.8px}
+  .tax .tight .a{padding-top:23px}   .tax .tight .b{padding-top:17px}    .tax .tight .c{padding-top:3.8px}
   .tax .wide .a{padding-top:32.7px}  .tax .wide .b{padding-top:13.5px}  .tax .wide .c{padding-top:4.4px}
   .spec-sect .a{padding-top:18px}
   .close .a{padding-top:52.5px}
@@ -304,15 +327,17 @@
       <span class="l">in a competitor’s store,</span>
       <span class="l o">six hours after it happens.</span>
     </h1>
+    <p class="stamp"><b>09:14 checked</b>15:14 next</p>
   </section>
   <hr class="r-chapter">
 
+  <div class="ruled">
   <section class="band hero" id="alert">
     <div class="a">
-      <p class="rail">The alert<span class="i">09:14 checked</span><span>15:14 next</span></p>
+      <p class="rail">The alert</p>
     </div>
     <div class="b">
-      <p class="deck">Paste any Shopify store URL and get the whole catalogue in seconds — prices, discounts, what’s sold out. Then an email every time any of it moves.</p>
+      <p class="deck">Paste any Shopify store URL and get the whole catalogue in seconds: prices, discounts, what’s sold out. Then an email every time any of it moves.</p>
       <p class="price-line">$9 a month, not $49.</p>
       <p class="body">There’s nothing to map and nobody to onboard you.</p>
 
@@ -328,8 +353,8 @@
 
       <div class="notes">
         <p class="rail">What we read</p>
-        <p>Public catalogue data only. No login, no app, and no access to your own shop.</p>
-        <p>No SKU matching, and nothing to install.</p>
+        <p>We read only what any shopper can see. Your own store stays untouched.</p>
+        <p>Nothing to map, nothing to install.</p>
       </div>
     </div>
     <div class="c">
@@ -338,7 +363,7 @@
           <dl>
             <dt>From</dt><dd>PriceDrift alerts</dd>
             <dt>Sent</dt><dd>Today 09:14</dd>
-            <dt>Subj</dt><dd class="subj">3 changes at Kindred Beauty</dd>
+            <dt>Subj</dt><dd class="subj">4 changes at Kindred Beauty</dd>
           </dl>
         </div>
         <div class="ev">
@@ -350,6 +375,11 @@
           <span class="k">New product</span>
           <span class="v">Winter Set</span>
           <span class="n">listed at $48.00, 4 variants</span>
+        </div>
+        <div class="ev">
+          <span class="k">Price up</span>
+          <span class="v">Brow Pencil — Ash</span>
+          <span class="n">$18.00 → $21.00 &nbsp;+16.7%</span>
         </div>
         <div class="ev">
           <span class="k">Sold out</span>
@@ -366,7 +396,7 @@
     <div class="a"><p class="rail">Change types</p></div>
     <div class="bc">
       <h2>Three you’d otherwise find out too late.</h2>
-      <p class="lede">Every change is tied to one variant and one price, so you get what moved and by how much — never a notification that something happened.</p>
+      <p class="lede">Every change is tied to one variant and one price, so you get what moved and by how much, not a notification that something happened.</p>
     </div>
   </section>
   <hr class="r-rule">
@@ -380,7 +410,7 @@
       </div>
       <div class="c">
         <span class="val">$29.00 → $22.00</span>
-        <span class="huge">−24.1%</span>
+        <span class="huge"><span class="sr">minus </span><span class="sign" aria-hidden="true"></span>24.1%</span>
         <div class="log">
           <div><span class="now">09:14</span><span class="now">$22.00</span><span class="d">−24.1%</span></div>
           <div><span>03:14</span><span>$29.00</span><span>—</span></div>
@@ -394,13 +424,15 @@
     <li class="band tight">
       <div class="a"><p class="rail">New product<span class="i">02</span></p></div>
       <div class="b">
+        <span class="val">Winter Set, four variants</span>
+        <span class="mid">06:12</span>
         <div class="ladder">
           <div><span>Ember 40ml</span><span>$48.00</span></div>
           <div><span>Ember 100ml</span><span>$86.00</span></div>
-          <div><span>Dusk 40ml</span><span>$48.00</span></div>
-          <div><span>Dusk 100ml</span><span>$86.00</span></div>
+          <div><span>Dusk 40ml</span><span>$52.00</span></div>
+          <div><span>Dusk 100ml</span><span>$94.00</span></div>
         </div>
-        <span class="cap">Winter Set, four variants, first seen 06:12</span>
+        <span class="cap">First seen, before the store announced it</span>
       </div>
       <div class="c">
         <h3>They just launched.</h3>
@@ -412,14 +444,14 @@
     <li class="band wide">
       <div class="a"><p class="rail">Sold out<span class="i">03</span></p></div>
       <div class="b">
-        <h3>Demand with nowhere to go.</h3>
-        <p>When a competitor runs dry their customers start looking. You have a window, and it closes the day they restock.</p>
+        <h3>They can’t fill the orders.</h3>
+        <p>When a competitor runs dry their customers start looking elsewhere. You have a window, and it closes the day they restock.</p>
       </div>
       <div class="c">
         <div class="struck">
-          <div><span class="x">Jet 01</span><span class="t">out 41h</span></div>
-          <div><span class="x">Jet 02</span><span class="t">out 41h</span></div>
-          <div><span class="x">Jet 03</span><span class="t">out 16h</span></div>
+          <div><span class="x">Fine tip</span><span class="t">out 42h</span></div>
+          <div><span class="x">Bold tip</span><span class="t">out 24h</span></div>
+          <div><span class="x">Waterproof</span><span class="t">out 18h</span></div>
         </div>
         <span class="cap">Eyeliner — Jet, 3 of 3 variants</span>
       </div>
@@ -439,15 +471,16 @@
       </dl>
     </div>
   </section>
+  </div>
 
-  <hr class="r-chapter">
 </div>
 
 <section class="close" id="start">
   <div class="wrap">
+   <div class="ruled">
     <div class="band">
       <div class="a"><p class="rail">Start here</p></div>
-      <div class="bc"><h2>Paste a URL.<br>Read the whole catalogue.</h2></div>
+      <div class="bc"><h2><span class="l p1">Paste a URL.</span><span class="l p2">Read the whole catalogue.</span></h2></div>
     </div>
     <div class="band row2">
       <div class="a"></div>
@@ -464,6 +497,7 @@
         </form>
       </div>
     </div>
+   </div>
   </div>
 </section>
 
