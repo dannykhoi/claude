@@ -66,8 +66,9 @@
   }
 
   /* one rail treatment */
-  .rail{font:400 10px/16px var(--mono);letter-spacing:.1em;text-transform:uppercase;
-        color:var(--ink);margin:0}
+  /* labels are marginalia in the text serif; mono is reserved for values */
+  .rail{font:italic 400 15px/22px var(--text);font-variation-settings:"opsz" 16;
+        letter-spacing:0;text-transform:none;color:var(--ink-soft);margin:0}
   .rail.grp{color:var(--muted);margin-bottom:22px}
   .rail .i{display:block;font-size:23px;line-height:23px;letter-spacing:.01em;
             color:var(--ink);margin:0 0 9px}
@@ -75,19 +76,19 @@
 
   /* ---------- masthead ---------- */
   .mast{display:flex;align-items:baseline;gap:34px;padding:34px 0 22px}
+  .wordmark i{font-style:italic;font-weight:500;letter-spacing:-.01em}
   .wordmark{
     font-family:var(--display);font-weight:600;font-variation-settings:"opsz" 22;
     font-size:25px;line-height:24px;letter-spacing:-.022em;text-decoration:none;white-space:nowrap;
     margin-left:-2px;
   }
-  .mast .links{display:flex;gap:26px;margin-left:auto;
-    font:400 10px/24px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft)}
+  .mast .links{display:flex;gap:28px;margin-left:auto;
+    font:400 15px/24px var(--text);letter-spacing:0;color:var(--ink-soft)}
   .mast .links a{text-decoration:none}
   .mast .links a:hover{color:var(--red)}
-  .login{font:400 10px/24px var(--mono);letter-spacing:.2em;text-transform:uppercase;
+  .login{font:400 15px/24px var(--text);letter-spacing:0;
          color:var(--ink);text-decoration:none;white-space:nowrap;
-         margin-left:44px;padding:4px 9px 3px 11px;border:1px solid var(--ink);
-         position:relative;top:2px}
+         margin-left:44px;padding:2px 12px 1px;border:1px solid var(--ink)}
   .login:hover{background:var(--ink);color:var(--cream)}
 
   /* ---------- headline ---------- */
@@ -113,13 +114,13 @@
   /* ---------- hero ---------- */
   .hero{padding:38.5px 0 31.5px}
   .deck{font-size:20px;line-height:31px;margin:0 0 18px;max-width:var(--measure)}
-  .price-line{display:flex;align-items:baseline;gap:14px;margin:26px 0 0;
-              padding-top:16px;border-top:1px solid var(--r2)}
+  .price-line{display:flex;align-items:baseline;gap:12px;margin:22px 0 0;
+              padding-top:0;border-top:0}
   .price-line .n{font-family:var(--display);font-variation-settings:"opsz" 72;
-                 font-weight:400;font-size:3.4rem;line-height:1;letter-spacing:-.03em}
+                 font-weight:400;font-size:2.6rem;line-height:1;letter-spacing:-.03em;
+                 font-feature-settings:"lnum" 1,"tnum" 1}
   .price-line .cur{font-size:.42em;vertical-align:.70em;letter-spacing:0;margin-right:.06em}
-  .price-line .u{font:400 11px/16px var(--mono);letter-spacing:.14em;text-transform:uppercase;
-                 color:var(--muted)}
+  .price-line .u{font:400 17px/27px var(--text);color:var(--ink-soft)}
   .price-line .n{margin-left:-3px}
   /* "not" already does the semantic work, so the old price is tinted, not struck */
   .price-line s{text-decoration:none;color:var(--muted)}
@@ -154,7 +155,7 @@
   .spec .body-rows{padding:0}
   .spec .ev{padding:9px 14px;border-top:1px solid var(--r2)}
   .spec .ev:first-child{border-top:0;padding-top:12px}
-  .spec .k{font:400 10px/17px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:block}
+  .spec .k{font:italic 400 13.5px/19px var(--text);letter-spacing:0;color:var(--muted);display:block}
   .spec .v{font-family:var(--text);font-size:13.5px;line-height:20px;color:var(--ink-soft);display:block}
   /* one entry is the focal; the rest fall away a step in size and tint */
   .spec .ev:first-child .v{font-size:16.5px;line-height:23px;color:var(--ink)}
@@ -235,9 +236,8 @@
 
   /* 01: a price pair set large, the old price struck in the margin above it */
   .pair{display:grid;justify-items:end;margin:4px 0 20px}
-  .pair .pwas{font:400 14px/20px var(--mono);color:var(--muted);
-              text-decoration:line-through;text-decoration-style:dotted;
-              text-decoration-color:#9A9588;text-decoration-thickness:1px}
+  .pair .pwas{font:400 14px/20px var(--mono);color:var(--muted);position:relative}
+  .pair .pwas::after{content:"";position:absolute;left:-1px;right:-1px;top:48%;height:1px;background:#9A9588}
   .pair .pnow{font-family:var(--display);font-variation-settings:"opsz" 72;font-weight:400;
               font-feature-settings:"lnum" 1,"tnum" 1;font-size:clamp(2.4rem,5.4vw,4.9rem);
               line-height:.95;letter-spacing:-.03em;color:var(--ink);margin:6px -2px 0 0}
@@ -249,9 +249,11 @@
   .bars > div{display:grid;grid-template-columns:96px minmax(0,1fr) 36px;gap:12px;align-items:center;
               padding:9px 0;border-bottom:1px solid var(--r2);
               font:400 12px/20px var(--mono);color:var(--ink-soft)}
-  .bars > div:last-child{border-bottom:0}
-  .bars .bt{display:block;height:7px;background:#E4DFD1}
-  .bars .bt i{display:block;height:100%;background:var(--ink)}
+  .bars > div:nth-last-child(2){border-bottom:0}
+  .bars .bt{display:block;height:2px;background:transparent}
+  .bars .bt i{display:block;height:2px;background:var(--ink)}
+  .bars > div.axis{padding:6px 0 8px;border-bottom:0;font-size:10px;line-height:14px;color:var(--muted)}
+  .bars .ax{display:flex;justify-content:space-between;border-top:1px solid var(--ink-soft);padding-top:4px}
   .bars .bv{text-align:right;color:var(--ink)}
   .arg .c .ledger{border-top:1px solid var(--r2)}
   .ledger .hd{font-size:10px;letter-spacing:.14em;text-transform:uppercase;
@@ -275,7 +277,9 @@
   .figure.f0{margin-right:-3px}
   .arg .wide{grid-column:2/-1;padding-left:var(--gut);align-self:start;margin-top:22px}
   .arg .wide .cap{max-width:none}
-  .ledger.four div{grid-template-columns:minmax(0,1fr) auto}
+  .ledger.four div{grid-template-columns:minmax(0,1fr) 52px 72px}
+  .ledger.four .t{color:var(--muted);text-align:right}
+  .ledger.four .now{text-align:right}
   .inv .ruled{background-image:linear-gradient(to right,var(--d-rule),var(--d-rule))}
   .inv .rail{color:var(--d-text)}
   .inv .rail .i{color:var(--d-soft)}
@@ -322,13 +326,16 @@
   .reg{margin:0;border-top:1px solid var(--r2)}
   .reg > .row{padding:13px 0;border-bottom:1px solid var(--r2)}
   .reg > .row:last-child{border-bottom:0}
+  .reg{padding-bottom:40px}
+  .reg > .row.hdr{padding:18px 0 9px;border-bottom:1px solid var(--r1)}
+  .reg .hc{margin:0;font:italic 400 15px/22px var(--text);color:var(--muted)}
+  .reg .hc.hr{text-align:right}
   .reg dd{margin:0;font-size:17px;line-height:27px;color:var(--ink-soft);max-width:var(--measure)}
   .reg .ex{display:grid;grid-template-columns:104px auto 104px;justify-content:end;gap:0 10px;
            font-family:var(--mono);font-size:12.5px;line-height:27px;
            color:var(--ink);white-space:nowrap;max-width:none}
-  .reg .ex .was{text-align:right;color:var(--muted);text-decoration:line-through;
-                text-decoration-style:dotted;text-decoration-color:#9A9588}
-  .reg .ex .ar{color:var(--muted)}
+  .reg .ex .was{text-align:right;color:var(--muted)}
+  .reg .ex .ar{color:var(--muted);font-family:var(--text);font-size:16px;position:relative;top:-.06em}
   .reg .ex .is{text-align:right;color:var(--ink)}
 
 
@@ -351,7 +358,7 @@
   .sig .status{margin:0;font:400 10px/24px var(--mono);letter-spacing:.14em;
                text-transform:uppercase;color:var(--d-soft)}
   .sig .meta{margin:0;display:flex;gap:22px;justify-content:flex-end;
-             font:400 10px/24px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
+             font:400 15px/24px var(--text);letter-spacing:0;color:var(--ink-soft)}
   .sig .meta a{text-decoration:none}
   .sig .meta a:hover{color:var(--ink)}
 
@@ -407,18 +414,17 @@
 <div class="wrap">
 
   <header class="mast">
-    <a class="wordmark" href="/">PriceDrift</a>
+    <a class="wordmark" href="/">Price<i>Drift</i></a>
     <div class="links">
-      <a href="#alert">Alert email</a>
-      <a href="#cases">Changes tracked</a>
-      <a href="#start">Get started</a>
+      <a href="#alert">Sample alert</a>
+      <a href="#tracked">All changes</a>
+      <a href="#start">Start</a>
     </div>
     <a class="login" href="/dashboard.html">Log in</a>
   </header>
   <hr class="r0">
 
   <section class="headline">
-    <p class="dateline">Shopify catalogue monitor</p>
     <h1>
       <span class="l l1">Every price change</span>
       <span class="l l2">in a competitor’s store,</span>
@@ -430,13 +436,11 @@
   <div class="ruled">
   <section class="band hero" id="alert">
     <div class="a">
-      <p class="rail">Alert email</p>
+      <p class="rail">Sample alert</p>
     </div>
     <div class="b">
       <p class="deck">Paste any Shopify store URL and get the whole catalogue in seconds: prices, discounts, what’s sold out. Then an email every time any of it moves.</p>
       <p class="body">We read only what any shopper can see.</p>
-      <p class="price-line"><span class="n"><span class="cur">$</span>9</span><span class="u">a month</span></p>
-
       <!-- wire action/name to your snapshot endpoint -->
       <form class="snap" action="/snapshot" method="get">
         <label class="field">
@@ -445,6 +449,7 @@
         </label>
         <button class="cta" type="submit">Get a snapshot</button>
       </form>
+      <p class="price-line"><span class="n"><span class="cur">$</span>9</span><span class="u">a month, after a free first snapshot</span></p>
 
     </div>
     <div class="c">
@@ -459,7 +464,7 @@
         <div class="ev">
           <span class="k">New product</span>
           <span class="v">Winter Set</span>
-          <span class="n">listed at $48.00, four variants</span>
+          <span class="n">listed at $48.00, 4 variants</span>
         </div>
         <div class="ev">
           <span class="k">Price up</span>
@@ -469,7 +474,7 @@
         <div class="ev">
           <span class="k">Sold out</span>
           <span class="v">Eyeliner Jet</span>
-          <span class="n">none of 3 variants</span>
+          <span class="n">0 of 3 variants</span>
         </div>
         </div>
       </div>
@@ -485,7 +490,7 @@
 <div class="wrap">
   <div class="ruled">
   <div class="band arg one" id="cases">
-    <div class="a"><p class="rail"><span class="i">01</span>Price cut</p></div>
+    <div class="a"><p class="rail">Price cut</p></div>
     <div class="b">
       <h3>You’re being undercut.</h3>
       <p>Northbound took a quarter off the Merino Crew overnight. Your ads are still bidding against the old price.</p>
@@ -502,46 +507,52 @@
   <hr class="r1">
 
   <div class="band arg two">
-    <div class="a"><p class="rail"><span class="i">02</span>New product</p></div>
+    <div class="a"><p class="rail">New product</p></div>
     <div class="b">
-      <h3>A new product, listed before it’s announced.</h3>
-      <p>Every new listing surfaces on day one: the variant, the price, the minute it appeared, well before the store has posted about it anywhere.</p>
+      <h3>Four new variants, live before the launch post.</h3>
+      <p>Fieldwork listed the Canvas Tote at 11:08. Their launch email went out the next morning.</p>
     </div>
     <div class="c fig">
       <div class="ledger four">
-        <div><span>Canvas Tote 12L</span><span class="now">$64.00</span></div>
-        <div><span>Canvas Tote 18L</span><span class="now">$78.00</span></div>
-        <div><span>Canvas Tote 24L</span><span class="now">$92.00</span></div>
-        <div><span>Canvas Tote 30L</span><span class="now">$110.00</span></div>
+        <div><span>Canvas Tote 12L</span><span class="t">11:08</span><span class="now">$64.00</span></div>
+        <div><span>Canvas Tote 18L</span><span class="t">11:08</span><span class="now">$78.00</span></div>
+        <div><span>Canvas Tote 24L</span><span class="t">11:09</span><span class="now">$92.00</span></div>
+        <div><span>Canvas Tote 30L</span><span class="t">11:09</span><span class="now">$110.00</span></div>
       </div>
-      <span class="cap">Fieldwork · Canvas Tote, listed 11:08</span>
+      <span class="cap">Listed, not yet announced</span>
     </div>
   </div>
   <hr class="r1">
 
   <div class="band arg three">
-    <div class="a"><p class="rail"><span class="i">03</span>Sold out</p></div>
+    <div class="a"><p class="rail">Sold out</p></div>
     <div class="b">
-      <h3>They can’t fill a single order.</h3>
+      <h3>Sold out in every size.</h3>
       <p>All three Deck Boot sizes are sold out at Harbour Goods. The first went 42 hours ago.</p>
     </div>
     <div class="c fig">
-      <div class="bars" role="list" aria-label="Hours out of stock">
-        <div role="listitem"><span class="bl">Deck Boot 8</span><span class="bt"><i style="width:100%"></i></span><span class="bv">42h</span></div>
-        <div role="listitem"><span class="bl">Deck Boot 9</span><span class="bt"><i style="width:57.14%"></i></span><span class="bv">24h</span></div>
-        <div role="listitem"><span class="bl">Deck Boot 10</span><span class="bt"><i style="width:42.86%"></i></span><span class="bv">18h</span></div>
+      <div class="bars" role="list" aria-label="Hours out of stock, on a 48-hour scale">
+        <div role="listitem"><span class="bl">Deck Boot 8</span><span class="bt"><i style="width:87.5%"></i></span><span class="bv">42h</span></div>
+        <div role="listitem"><span class="bl">Deck Boot 9</span><span class="bt"><i style="width:50%"></i></span><span class="bv">24h</span></div>
+        <div role="listitem"><span class="bl">Deck Boot 10</span><span class="bt"><i style="width:37.5%"></i></span><span class="bv">18h</span></div>
+        <div class="axis" aria-hidden="true"><span></span><span class="ax"><span>0</span><span>24h</span><span>48h</span></span><span></span></div>
       </div>
-      <span class="cap">Harbour Goods · Deck Boot, out on all three</span>
+      <span class="cap">Hours out of stock · Harbour Goods</span>
     </div>
   </div>
   <hr class="r1">
 
-  <section class="band sect spec-sect" id="tracked">
-    <div class="a"><p class="rail">Also tracked</p></div>
-    <div class="bc"><h2>Also tracked on every sweep.</h2></div>
-  </section>
-
-  <dl class="reg">
+  <dl class="reg" id="tracked">
+    <div class="band row hdr" aria-hidden="true">
+      <dt class="a"><p class="rail">Every change</p></dt>
+      <dd class="b"><p class="hc">What triggers it</p></dd>
+      <dd class="c"><p class="hc hr">Example</p></dd>
+    </div>
+    <div class="band row">
+      <dt class="a"><p class="rail">Price cut</p></dt>
+      <dd class="b">A variant’s price goes down.</dd>
+      <dd class="c"><span class="ex"><span class="was">$88.00</span><span class="ar">→</span><span class="is">$66.00</span></span></dd>
+    </div>
     <div class="band row">
       <dt class="a"><p class="rail">Price up</p></dt>
       <dd class="b">A variant’s price goes up.</dd>
@@ -550,7 +561,7 @@
     <div class="band row">
       <dt class="a"><p class="rail">Sale started</p></dt>
       <dd class="b">A compare-at price appears beside the list price.</dd>
-      <dd class="c"><span class="ex"><span class="was">$63.00</span><span class="ar">→</span><span class="is down">$54.00</span></span></dd>
+      <dd class="c"><span class="ex"><span class="was">$63.00</span><span class="ar">→</span><span class="is">$54.00</span></span></dd>
     </div>
     <div class="band row">
       <dt class="a"><p class="rail">Sale ended</p></dt>
@@ -558,9 +569,19 @@
       <dd class="c"><span class="ex"><span class="was">$54.00</span><span class="ar">→</span><span class="is">$63.00</span></span></dd>
     </div>
     <div class="band row">
+      <dt class="a"><p class="rail">New product</p></dt>
+      <dd class="b">A product or variant appears in the catalogue.</dd>
+      <dd class="c"><span class="ex"><span class="was">none</span><span class="ar">→</span><span class="is">4 variants</span></span></dd>
+    </div>
+    <div class="band row">
       <dt class="a"><p class="rail">Removed</p></dt>
       <dd class="b">A variant is delisted and its page returns a 404.</dd>
-      <dd class="c"><span class="ex"><span class="was">12 variants</span><span class="ar">→</span><span class="is down">11 variants</span></span></dd>
+      <dd class="c"><span class="ex"><span class="was">12 variants</span><span class="ar">→</span><span class="is">11 variants</span></span></dd>
+    </div>
+    <div class="band row">
+      <dt class="a"><p class="rail">Sold out</p></dt>
+      <dd class="b">A variant can no longer be bought.</dd>
+      <dd class="c"><span class="ex"><span class="was">3 of 3</span><span class="ar">→</span><span class="is">0 of 3</span></span></dd>
     </div>
     <div class="band row">
       <dt class="a"><p class="rail">Back in stock</p></dt>
@@ -575,8 +596,8 @@
 <div class="wrap">
   <div class="ruled">
   <section class="band close" id="start">
-    <div class="a"><p class="rail">Get started</p></div>
-    <div class="b">
+    <div class="a"><p class="rail">Start</p></div>
+    <div class="bc">
     <h2>Paste a URL.&nbsp;Read the whole catalogue.</h2>
     <form class="snap" action="/snapshot" method="get">
       <label class="field">
@@ -587,25 +608,14 @@
     </form>
     <p class="offer">Your first email arrives within six hours.</p>
     </div>
-    <div class="c">
-      <div class="spec last" aria-label="The most recent alert">
-        <p class="hd">The last sweep<b>kindred-beauty.com</b></p>
-        <div class="ev">
-          <span class="k">Read at 09:14</span>
-          <span class="v">1,240 variants · 312 prices</span>
-          <span class="n">4 changes worth sending</span>
-        </div>
-        <p class="ft">Every six hours, whether anything moved or not</p>
-      </div>
-    </div>
   </section>
   </div>
   <hr class="r1">
 
   <footer>
     <div class="band sig">
-      <div class="a"><span class="wordmark">PriceDrift</span></div>
-      <div class="b"><p class="status">Public catalogue data only</p></div>
+      <div class="a"><span class="wordmark">Price<i>Drift</i></span></div>
+      <div class="b"></div>
       <div class="c"><p class="meta"><a href="#privacy">Privacy</a><a href="#terms">Terms</a></p></div>
     </div>
   </footer>
