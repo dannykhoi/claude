@@ -14,7 +14,8 @@
     --cream:#F4F0E6;
     --paper:#FFFFFF;
     --ink:#1A1A17;
-    --ink-soft:#56544E;        /* a tint of the heading ink, not a second hue */
+    --ink-soft:#56544E;
+    --muted:#6B6759;           /* 4.97:1 on cream — the floor for any real text */        /* a tint of the heading ink, not a second hue */
     --red:#A23A24;
 
     /* three rule weights, and only three */
@@ -73,7 +74,7 @@
   .sched div{
     display:grid;grid-template-columns:auto 1fr;gap:10px;padding:5px 0;
     border-bottom:1px solid var(--r2);
-    font:400 10px/18px var(--mono);letter-spacing:.06em;color:#918D80;
+    font:400 10px/18px var(--mono);letter-spacing:.06em;color:var(--muted);
   }
   .sched div:last-child{border-bottom:0}
   .sched .t{letter-spacing:0}
@@ -126,7 +127,7 @@
     width:100%;font:400 15px/22px var(--mono);height:52px;padding:0 0 0 2px;color:var(--ink);
     background:transparent;border:0;border-bottom:2px solid var(--ink);border-radius:0;
   }
-  .field input::placeholder{color:#8A8578}
+  .field input::placeholder{color:var(--muted)}
   .field input:focus{outline:0;border-bottom-color:var(--red)}
   button.cta{
     flex:none;font:500 10px/22px var(--mono);letter-spacing:.14em;text-transform:uppercase;
@@ -154,10 +155,10 @@
   .spec .v{font-size:12.5px;line-height:19px;color:var(--ink);display:block}
   .spec .n{display:block;font-size:12.5px;line-height:19px;color:var(--ink-soft)}
   .spec .n .d{color:var(--red)}
-  .spec .old{color:#9B968A}
+  .spec .old{color:var(--muted)}
   .spec .n .up{color:var(--ink);font-weight:600}
   .spec .ft{margin:0;padding:10px 0 0;border-top:1px solid var(--r2);
-            font-size:10.5px;line-height:18px;color:#807B6E}
+            font-size:10.5px;line-height:18px;color:var(--muted)}
 
   /* ---------- chapter head ---------- */
   .sect{padding:44px 0 38px}
@@ -184,15 +185,12 @@
     font-size:clamp(2.08rem,7.8vw,7.02rem);line-height:.92;letter-spacing:-.028em;
     color:var(--red);margin:0 0 24px;white-space:nowrap;
   }
-  .figure.gain{color:var(--ink)}
-  .figure .unit{font-size:.36em;letter-spacing:-.008em;vertical-align:.40em;margin-left:.10em}
+  .figure .unit{font-size:.32em;letter-spacing:-.008em;vertical-align:baseline;margin-left:.30em}
   .figure .sign{
     display:inline-block;width:.40em;height:.072em;background:currentColor;
     vertical-align:.27em;margin-right:.04em;
   }
   .ledger{border-top:1px solid var(--r2)}
-  .brief .ledger{border-top-color:#CFC7B2}
-  .brief .ledger div{border-bottom-color:#CFC7B2}
   .ledger div{
     display:grid;grid-template-columns:62px 1fr auto;gap:12px;padding:7px 0;
     border-bottom:1px solid var(--r2);font-family:var(--mono);
@@ -201,15 +199,16 @@
   .ledger div:last-child{border-bottom:0}
   .ledger .now{color:var(--ink)}
   .ledger .d{color:var(--red)}
-  .ledger .nil{color:#9B968A}
+  .ledger .nil{color:var(--muted)}
   .cap{display:block;font-family:var(--mono);font-size:11px;line-height:18px;
-       color:#807B6E;margin-top:0;padding-top:9px;border-top:1px solid var(--r2);white-space:nowrap}
+       color:var(--muted);margin-top:0;padding-top:9px;border-top:1px solid var(--r2);white-space:nowrap}
 
-  .tax .lead{padding:46px 0 52px}
-  .tax .lead .figure{margin-right:-1px}   /* measured optical flush */
-  .tint{background:#EBE5D6}
-  .tint .ruled{background-image:linear-gradient(to right,#CFC7B2,#CFC7B2)}
-  .brief{padding:46px 0 52px}
+  .lead{padding:58px 0 64px;grid-template-columns:minmax(0,1.6fr) minmax(0,4.1fr) minmax(0,6.3fr)}
+  .lead .figure{margin-right:-1px}
+  .brief{padding:30px 0 34px}
+  .runon{margin:12px 0 0;font-family:var(--mono);font-size:13px;line-height:23px;
+         color:var(--ink-soft);max-width:none}
+  .short{padding:38px 0 44px}
   .ledger.stack div{grid-template-columns:1fr auto}
 
   /* ---------- 03: the climax, inverted, out of the column grid ---------- */
@@ -218,17 +217,19 @@
   .inv .rail{color:var(--d-text)}
   .inv .rail .i{color:var(--d-soft)}
   .inv h3{color:#F6F2E8}
+  .inv .lede,.inv .cap{color:#A8A497}
   .inv p:not(.rail){color:var(--d-soft)}
   .inv .figure{color:var(--d-red)}
   .inv .ledger{border-top-color:var(--d-rule)}
   .inv .ledger div{border-bottom-color:var(--d-rule);color:var(--d-soft)}
+  .inv .ledger .now{color:var(--d-text)}
+  .inv .ledger .nil{color:#8E8A7C}   /* 5.3:1 on ink */
   .inv .cap{color:#8B8779;border-top-color:var(--d-rule)}
-  .climax{padding:46px 0 52px}
-  .climax .figure{margin-right:-3.5px}   /* measured optical flush */
-  .ledger.struck .x{position:relative;display:inline-block;justify-self:start;color:var(--d-soft)}
+  .short .figure{margin-right:-2.5px}
+  .ledger.struck .x{position:relative;display:inline-block;justify-self:start;color:var(--d-text)}
   .ledger.struck .x::after{
-    content:"";position:absolute;left:0;right:.08em;top:50%;
-    transform:translateY(-50%);height:2px;background:var(--d-red);
+    content:"";position:absolute;left:0;right:.08em;top:55%;
+    transform:translateY(-50%);height:1px;background:var(--d-soft);
   }
 
   /* ---------- the register ---------- */
@@ -239,7 +240,6 @@
 
   /* ---------- the ask: cream, the form its only mass ---------- */
   .close{padding:52px 0 64px}
-  .close .rail{margin-bottom:26px}
   .close h2{
     font-family:var(--display);font-size:clamp(1.8rem,4.6vw,4rem);
     font-variation-settings:"opsz" 72;font-weight:400;
@@ -248,18 +248,14 @@
   .close form.snap{margin-top:40px}
   .close .field{flex:1 1 auto}
   .close .field input{font-size:19px;height:64px}
-  .close button.cta{
-    font-family:var(--display);font-variation-settings:"opsz" 30;
-    font-size:22px;font-weight:500;letter-spacing:-.01em;text-transform:none;
-    height:64px;padding:0 30px;text-indent:0;line-height:1;
-  }
+  .hero .field input,.hero button.cta{height:56px}
+  .close button.cta{height:64px;padding:0 30px}
 
   /* ---------- footer ---------- */
   footer{padding:40px 0 56px}
   .sig{align-items:baseline}
   .sig .wordmark{font-size:22px;color:var(--ink)}
-  .sig .status{margin:0;font:400 10px/24px var(--mono);letter-spacing:.14em;
-               text-transform:uppercase;color:var(--ink-soft)}
+  .sig .status{margin:0;font-size:15px;line-height:24px;color:var(--ink-soft)}
   .sig .meta{margin:0;display:flex;gap:22px;justify-content:flex-end;
              font:400 10px/24px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft)}
   .sig .meta a{text-decoration:none}
@@ -272,9 +268,9 @@
      thing it labels. Values taken from the rendered page. */
   .hero .a{padding-top:17.5px}      .hero .b{padding-top:2.5px}     .hero .c{padding-top:2.5px}
   .sect .a{padding-top:56.9px}      .sect .bc{padding-top:6px}
-  .tax .lead .a{padding-top:34.9px} .tax .lead .b{padding-top:3.5px} .tax .lead .c{padding-top:5px}
-  .brief .a{padding-top:31.4px}     .brief .c{padding-top:5px}
-  .climax .a{padding-top:37.9px}    .climax .b{padding-top:6.5px}   .climax .c{padding-top:9px}
+  .lead .a{padding-top:34.9px}      .lead .b{padding-top:3.5px}     .lead .c{padding-top:5px}
+  .brief .a{padding-top:31.4px}
+  .short .a{padding-top:31.4px}     .short .c{padding-top:5px}
   .spec-sect .a{padding-top:56.9px}
   .reg .row .a{padding-top:11px}
 
@@ -290,9 +286,7 @@
     .band > .a{padding:0 0 16px!important}
     .band > .b,.band > .c,.band > .bc{grid-column:auto;padding:0;border-left:0}
     .hero .c{padding-top:30px}
-    .tax .lead .c,.tax .tight .c{padding-top:26px}
-    .climax .bc{padding-top:0}
-    .reg > div{grid-template-columns:1fr;gap:2px}
+        .reg > div{grid-template-columns:1fr;gap:2px}
     .reg dt{line-height:22px}
   }
   @media (max-width:620px){
@@ -351,7 +345,7 @@
     <div class="b">
       <p class="deck">Paste any Shopify store URL and get the whole catalogue in seconds: prices, discounts, what’s sold out. Then an email every time any of it moves.</p>
       <p class="price-line"><span class="n">$9</span><span class="u">a month, not $49</span></p>
-      <p class="body">Nothing to map. No onboarding call, no implementation week, no account manager who needs to understand your catalogue before any of it starts working.</p>
+      <p class="body">We read only what any shopper can see, so there is nothing to map and your own store stays untouched.</p>
 
       <!-- wire action/name to your snapshot endpoint -->
       <form class="snap" action="/snapshot" method="get">
@@ -362,10 +356,6 @@
         <button class="cta" type="submit">Get a snapshot</button>
       </form>
 
-      <div class="notes">
-        <p class="rail">What we read</p>
-        <p>We read only what any shopper can see. Your own store stays untouched.</p>
-      </div>
     </div>
     <div class="c">
       <div class="spec" aria-label="Example alert email">
@@ -408,11 +398,14 @@
   </section>
   <hr class="r2">
 
-  <ul class="tax">
-    <li class="band lead">
-      <div class="a">
-        <p class="rail">Price cut<span class="i">01</span></p>
-      </div>
+  </div>
+</div>
+
+<section class="inv">
+  <div class="wrap">
+   <div class="ruled">
+    <div class="band lead">
+      <div class="a"><p class="rail">Price cut<span class="i">01</span></p></div>
       <div class="b">
         <h3>You’re being undercut.</h3>
         <p>Your ROAS tells you a week later, once the ad spend is already gone, and by then the only thing left to do is match a price you never chose. This tells you the morning it happens.</p>
@@ -425,55 +418,6 @@
         </div>
         <span class="cap">Silk Primer · 50ml</span>
       </div>
-    </li>
-  </ul>
-  </div>
-</div>
-
-<section class="tint">
-  <div class="wrap">
-   <div class="ruled">
-    <div class="band brief">
-      <div class="a"><p class="rail">New product<span class="i">02</span></p></div>
-      <div class="b">
-        <h3>A launch you didn’t see.</h3>
-        <p>Every new listing on day one, including the products you would never have thought to look for.</p>
-      </div>
-      <div class="c fig">
-        <span class="figure gain">+4<span class="unit">new</span></span>
-        <div class="ledger stack">
-          <div><span>Ember 40ml</span><span class="now">$48.00</span></div>
-          <div><span>Ember 100ml</span><span class="now">$86.00</span></div>
-          <div><span>Dusk 40ml</span><span class="now">$52.00</span></div>
-          <div><span>Dusk 100ml</span><span class="now">$94.00</span></div>
-        </div>
-        <span class="cap">Winter Set, four variants, listed 03:14</span>
-      </div>
-    </div>
-   </div>
-  </div>
-</section>
-
-<section class="inv">
-  <div class="wrap">
-   <div class="ruled">
-    <div class="band climax">
-      <div class="a">
-        <p class="rail">Sold out<span class="i">03</span></p>
-      </div>
-      <div class="b">
-        <h3>They can’t fill the orders.</h3>
-        <p>When a competitor runs dry, their customers start looking elsewhere. You have a window until they restock.</p>
-      </div>
-      <div class="c fig">
-        <span class="figure">0<span class="unit">of 3</span></span>
-        <div class="ledger struck">
-          <div><span>42h</span><span class="x">Fine tip</span><span>out</span></div>
-          <div><span>24h</span><span class="x">Bold tip</span><span>out</span></div>
-          <div><span>18h</span><span class="x">Waterproof</span><span>out</span></div>
-        </div>
-        <span class="cap">Eyeliner Jet, none of three in stock</span>
-      </div>
     </div>
    </div>
   </div>
@@ -481,6 +425,28 @@
 
 <div class="wrap">
   <div class="ruled">
+  <div class="band brief">
+    <div class="a"><p class="rail">New product<span class="i">02</span></p></div>
+    <div class="bc">
+      <h3>A launch you didn’t see.</h3>
+      <p class="runon">Four new variants at 03:14 — Ember 40ml $48.00 · Ember 100ml $86.00 · Dusk 40ml $52.00 · Dusk 100ml $94.00, listed before the store announced them.</p>
+    </div>
+  </div>
+  <hr class="r2">
+
+  <div class="band short">
+    <div class="a"><p class="rail">Sold out<span class="i">03</span></p></div>
+    <div class="b">
+      <h3>They can’t fill the orders.</h3>
+      <p>When a competitor runs dry, their customers start looking elsewhere. You have a window until they restock.</p>
+    </div>
+    <div class="c fig">
+      <span class="figure">0<span class="unit">of 3</span></span>
+      <span class="cap">Eyeliner Jet · three variants</span>
+    </div>
+  </div>
+  <hr class="r1">
+
   <section class="band sect spec-sect">
     <div class="a"><p class="rail">The other five</p></div>
     <div class="bc"><h2>The rest of the eight, watched on the same six-hour cycle.</h2></div>
@@ -513,7 +479,6 @@
   <hr class="r1">
 
   <section class="close" id="start">
-    <p class="rail">Start here</p>
     <h2>Paste a URL. Read the whole catalogue.</h2>
     <form class="snap" action="/snapshot" method="get">
       <label class="field">
@@ -529,7 +494,7 @@
   <footer>
     <div class="band sig">
       <div class="a"><span class="wordmark">PriceDrift</span></div>
-      <div class="b"><p class="status">Every store, every six hours</p></div>
+      <div class="b"><p class="status">Checked every six hours</p></div>
       <div class="c"><p class="meta"><a href="#privacy">Privacy</a><a href="#terms">Terms</a></p></div>
     </div>
   </footer>
