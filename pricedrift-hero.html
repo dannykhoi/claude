@@ -17,7 +17,6 @@
     --ink-soft:#2E2B24;
     --muted:#6B6759;           /* 4.97:1 on cream — the floor for any real text */        /* a tint of the heading ink, not a second hue */
     --red:#A23A24;            /* a value that fell */
-    --green:#2F6B3A;          /* a value that rose — 5.62:1, matched to the red’s 5.83:1 */
 
     /* three rule weights, and only three */
     --r1:#1A1A17;              /* 2px, chapter */
@@ -78,6 +77,7 @@
   .wordmark{
     font-family:var(--display);font-weight:600;font-variation-settings:"opsz" 22;
     font-size:25px;line-height:24px;letter-spacing:-.022em;text-decoration:none;white-space:nowrap;
+    margin-left:-2px;
   }
   .mast .links{display:flex;gap:26px;margin-left:auto;
     font:400 10px/24px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft)}
@@ -85,11 +85,15 @@
   .mast .links a:hover{color:var(--red)}
   .login{font:400 10px/24px var(--mono);letter-spacing:.2em;text-transform:uppercase;
          color:var(--ink);text-decoration:none;white-space:nowrap;
-         margin-left:44px;padding-bottom:3px;border-bottom:1px solid var(--ink)}
+         margin-left:44px}
   .login:hover{color:var(--ink)}
 
   /* ---------- headline ---------- */
-  .headline{padding:112px 0 52px}
+  .headline{padding:112px 0 52px;position:relative}
+  .dateline{position:absolute;right:0;top:108px;margin:0;text-align:right;
+            font:400 10px/19px var(--mono);letter-spacing:.14em;text-transform:uppercase;
+            color:var(--muted)}
+  .dateline span{display:block}
   h1{
     font-family:var(--display);font-weight:400;font-variation-settings:"opsz" 72;
     font-size:clamp(2.4rem,7.28vw,6.8rem);
@@ -144,20 +148,19 @@
         padding:15px 17px 13px}
   .spec .hd{margin:-15px -17px 0;padding:10px 17px 9px;border-bottom:1px solid var(--ink);
             font:400 10px/17px var(--mono);letter-spacing:.02em;color:var(--muted);
-            background:#F1EDE2}
+            background:#EDE8DB}
   .spec .hd b{display:block;font-weight:600;color:var(--ink);letter-spacing:0;margin-top:2px}
   .spec .body-rows{padding:0}
   .spec .hd b{display:block;font-weight:600;color:var(--ink);letter-spacing:0}
   .spec .ev{padding:9px 0;border-top:1px solid var(--r2)}
   .spec .ev:first-child{border-top:0}
   .spec .k{font:500 10px/17px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink);display:block}
-  .spec .v{font-size:12px;line-height:19px;color:var(--ink-soft);display:block}
+  .spec .v{font-family:var(--text);font-size:13.5px;line-height:20px;color:var(--ink-soft);display:block}
   /* one entry is the focal; the rest fall away a step in size and tint */
-  .spec .ev:first-child .v{font-size:15px;line-height:22px;color:var(--ink)}
+  .spec .ev:first-child .v{font-size:16.5px;line-height:23px;color:var(--ink)}
   .spec .ev:first-child .n{font-size:13px}
   .spec .n{display:block;font-size:12.5px;line-height:19px;color:var(--ink-soft)}
-  .spec .n .d{color:var(--red)}
-  .spec .n .u{color:var(--green)}
+  .spec .n .d,.spec .n .u{color:var(--red)}
   .spec .old{color:var(--muted)}
   .spec .ft{margin:0;padding:10px 0 0;border-top:1px solid var(--r2);
             font-size:10.5px;line-height:18px;color:var(--muted)}
@@ -172,6 +175,9 @@
   .note{margin:9px 0 0;font:400 9px/16px var(--mono);letter-spacing:.12em;
         text-transform:uppercase;color:var(--muted);white-space:nowrap}
   .inv .note{border-top-color:var(--d-rule);color:#8E8A7C}
+  .chead{display:flex;align-items:baseline;justify-content:space-between;gap:40px}
+  .key{font:400 10px/16px var(--mono);letter-spacing:.14em;text-transform:uppercase;
+       color:var(--muted);white-space:nowrap}
   .lede{margin:18px 0 0;color:var(--ink-soft);font-size:17px;line-height:27px;max-width:var(--measure)}
 
   /* ---------- the three arguments: one lockup, one language ---------- */
@@ -183,6 +189,8 @@
   .arg p:not(.rail):not(.note){margin:0;color:var(--ink-soft);font-size:17px;line-height:27px;max-width:var(--measure)}
 
   .arg{padding:44px 0 43.5px}
+  /* the evidence column hangs from the top line; the rail keeps the headline baseline */
+  .arg > .c{align-self:start}
   .two .ledger div{grid-template-columns:1fr auto}
 
   .arg .figure{margin-right:-1px}
@@ -193,13 +201,15 @@
     font-size:clamp(2.08rem,7.8vw,7.02rem);line-height:.9;letter-spacing:-.028em;
     color:var(--red);margin:0 0 24px;white-space:nowrap;
   }
-  .figure .unit{font-size:.32em;letter-spacing:-.008em;vertical-align:baseline;margin-left:.30em}
+  /* every unit in the mono label face at label size, so the three read as one instrument */
+  .figure .unit{font-family:var(--mono);font-weight:400;font-size:11px;line-height:1;
+                letter-spacing:.14em;text-transform:uppercase;vertical-align:baseline;margin-left:.34em}
   .figure .sign{
     display:inline-block;width:.40em;height:.072em;background:currentColor;
     vertical-align:.27em;margin-right:.04em;
   }
   .ladder{border-top:1px solid var(--r2)}
-  .ladder div{display:grid;grid-template-columns:62px 1fr auto;gap:12px;padding:7px 0;
+  .ladder div{display:grid;grid-template-columns:62px 1fr;gap:12px;padding:7px 0;
               border-bottom:1px solid var(--r2);font-family:var(--mono);
               font-size:12px;line-height:20px;color:var(--ink-soft)}
   .ladder div:last-child{border-bottom:0}
@@ -222,16 +232,17 @@
               color:var(--muted);padding:6px 0 5px}
   .three .figure{margin-bottom:0}
   /* the three build: no numeral, then a middle one, then the full figure on ink */
-  .figure.mid{font-size:clamp(1.5rem,4.4vw,3.95rem);margin:3.5px 0 17px;color:var(--ink)}
+  .figure.small{font-size:clamp(1.5rem,4.0vw,3.6rem);margin:3.5px 0 18px;color:var(--red)}
+  .figure.mid{font-size:clamp(1.9rem,5.8vw,5.2rem);margin:4.5px 0 18px;color:var(--ink)}
 
   /* ---------- 03: the climax, inverted, out of the column grid ---------- */
   .inv{background:var(--d-bg);color:var(--d-text)}
   .inv .arg{padding:76px 0 72px}
-  .arg.three .figure{margin-top:4px;font-size:clamp(2.6rem,11.4vw,10.2rem)}
+  .arg.three .figure{margin-top:7.5px;font-size:clamp(2.6rem,11.4vw,10.2rem)}
   .inv .ruled{background-image:linear-gradient(to right,var(--d-rule),var(--d-rule))}
   .inv .rail{color:var(--d-text)}
   .inv .rail .i{color:var(--d-soft)}
-  .inv h3{color:#F6F2E8}
+  .inv h3,.inv h2{color:#F6F2E8}
   .inv .lede,.inv .cap{color:#A8A497}
   .inv p:not(.rail){color:var(--d-soft)}
   .inv .arg p:not(.rail):not(.note){color:var(--d-soft)}
@@ -253,7 +264,7 @@
   /* the ask inverts with its ground: the field becomes the light mass */
   .inv .field input{background:transparent;border-color:var(--d-text);color:var(--d-text)}
   .inv .field input::placeholder{color:#8E8A7C}
-  .inv button.cta{background:var(--d-text);border-color:var(--d-text);color:var(--d-bg)}
+  .inv button.cta{background:#FBF8F1;border-color:#FBF8F1;color:var(--d-bg)}
   .inv button.cta:hover{background:#FFFDF6;border-color:#FFFDF6}
   .inv .offer{color:var(--d-soft)}
   .inv .sig .wordmark{color:var(--d-text)}
@@ -266,14 +277,12 @@
   .reg > .row{padding:13px 0;border-bottom:1px solid var(--r2)}
   .reg > .row:last-child{border-bottom:0}
   .reg dd{margin:0;font-size:17px;line-height:27px;color:var(--ink-soft);max-width:var(--measure)}
-  .reg .ex{display:grid;grid-template-columns:1fr auto 100px;gap:0 9px;
+  .reg .ex{display:grid;grid-template-columns:1fr auto 76px;gap:0 9px;
            font-family:var(--mono);font-size:12.5px;line-height:27px;
            color:var(--ink);white-space:nowrap;max-width:none}
   .reg .ex .was{text-align:right;color:var(--muted)}
   .reg .ex .ar{color:var(--muted)}
-  .reg .ex .is{text-align:right}
-  .reg .ex .is.up{color:var(--green)}
-  .reg .ex .is.down{color:var(--red)}
+  .reg .ex .is{text-align:right;color:var(--red)}
 
 
   /* ---------- the ask: cream, the form its only mass ---------- */
@@ -361,6 +370,7 @@
   <hr class="r0">
 
   <section class="headline">
+    <p class="dateline">Shopify catalogue monitor<span>Public data · no login required</span></p>
     <h1>
       <span class="l l1">Every price change</span>
       <span class="l l2">in a competitor’s store,</span>
@@ -424,7 +434,7 @@
   <section class="band sect" id="events">
     <div class="a"><p class="rail">Change types</p></div>
     <div class="bc">
-      <h2>What moves, and what it costs you</h2>
+      <div class="chead"><h2>What moves, and what it costs you</h2><span class="key">01–03 of 08</span></div>
       <p class="lede">Every change is tied to one variant and one price. You get what moved and by how much — never just that something happened.</p>
     </div>
   </section>
@@ -443,9 +453,10 @@
       <p>Your ROAS says so a week later, once the spend is already gone.</p>
     </div>
     <div class="c fig">
+      <span class="figure small"><span class="sr">minus </span><span class="sign" aria-hidden="true"></span>25<span class="unit">%</span></span>
       <div class="ladder">
-        <div><span class="lbl">was</span><span class="old">$88.00</span><span></span></div>
-        <div><span class="lbl">now</span><span class="now">$66.00</span><span class="d">−25.0%</span></div>
+        <div><span class="lbl">was</span><span class="old">$88.00</span></div>
+        <div><span class="lbl">now</span><span class="now">$66.00</span></div>
       </div>
       <span class="cap">Northbound · Merino Crew</span>
     </div>
@@ -502,34 +513,34 @@
   <div class="ruled">
   <section class="band sect spec-sect">
     <div class="a"><p class="rail">The other five</p></div>
-    <div class="bc"><h2>Five more, on the same clock</h2></div>
+    <div class="bc"><div class="chead"><h2>Five more, on the same clock</h2><span class="key">04–08 of 08</span></div></div>
   </section>
 
   <dl class="reg">
     <div class="band row">
       <dt class="a"><p class="rail">Price up</p></dt>
       <dd class="b">Upward, with the same delta.</dd>
-      <dd class="c"><span class="ex"><span class="was">$18.00</span><span class="ar">→</span><span class="is up">$21.00</span></span></dd>
+      <dd class="c"><span class="ex"><span class="was">$18.00</span><span class="ar">→</span><span class="is">$21.00</span></span></dd>
     </div>
     <div class="band row">
       <dt class="a"><p class="rail">Sale started</p></dt>
-      <dd class="b">A compare-at price appears against the list, usually the week they decided to chase volume.</dd>
-      <dd class="c"><span class="ex"><span class="was">$63.00</span><span class="ar">→</span><span class="is down">$54.00</span></span></dd>
+      <dd class="b">A compare-at price appears against the list price.</dd>
+      <dd class="c"><span class="ex"><span class="was">$63.00</span><span class="ar">→</span><span class="is">$54.00</span></span></dd>
     </div>
     <div class="band row">
       <dt class="a"><p class="rail">Sale ended</p></dt>
       <dd class="b">The discount comes off again.</dd>
-      <dd class="c"><span class="ex"><span class="was">$54.00</span><span class="ar">→</span><span class="is up">$63.00</span></span></dd>
+      <dd class="c"><span class="ex"><span class="was">$54.00</span><span class="ar">→</span><span class="is">$63.00</span></span></dd>
     </div>
     <div class="band row">
       <dt class="a"><p class="rail">Removed</p></dt>
-      <dd class="b">A product or variant disappears from the catalogue, and the handle starts returning a 404.</dd>
-      <dd class="c"><span class="ex"><span class="was">12</span><span class="ar">→</span><span class="is down">11 variants</span></span></dd>
+      <dd class="b">A product or variant disappears from the catalogue.</dd>
+      <dd class="c"><span class="ex"><span class="was">12 variants</span><span class="ar">→</span><span class="is">11</span></span></dd>
     </div>
     <div class="band row">
       <dt class="a"><p class="rail">Back in stock</p></dt>
       <dd class="b">Inventory returns and the window shuts on you.</dd>
-      <dd class="c"><span class="ex"><span class="was">0</span><span class="ar">→</span><span class="is up">2 of 3</span></span></dd>
+      <dd class="c"><span class="ex"><span class="was">0</span><span class="ar">→</span><span class="is">2 of 3</span></span></dd>
     </div>
   </dl>
   </div>
