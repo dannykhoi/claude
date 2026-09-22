@@ -88,11 +88,11 @@
   .mast .links a:hover{color:var(--red)}
   .login{font:400 15px/24px var(--text);letter-spacing:0;
          color:var(--ink);text-decoration:none;white-space:nowrap;
-         margin-left:44px;padding:2px 12px 1px;border:1px solid var(--ink)}
+         margin-left:60px;padding:2px 12px 1px;border:1px solid var(--ink)}
   .login:hover{background:var(--ink);color:var(--cream)}
 
   /* ---------- headline ---------- */
-  .headline{padding:84px 0 80px;position:relative}
+  .headline{padding:84px 0 34px;position:relative}
   .dateline{position:absolute;right:0;top:145px;margin:0;text-align:right;
             font:400 10px/19px var(--mono);letter-spacing:.14em;text-transform:uppercase;
             color:var(--muted);margin-right:-.14em}
@@ -112,7 +112,7 @@
   h1 .o{margin-left:calc(-.028em - 4.5px)}
 
   /* ---------- hero ---------- */
-  .hero{padding:38.5px 0 31.5px}
+  .hero{padding:10px 0 52px}
   .deck{font-size:20px;line-height:31px;margin:0 0 18px;max-width:var(--measure)}
   .price-line{display:flex;align-items:baseline;gap:12px;margin:22px 0 0;
               padding-top:0;border-top:0}
@@ -135,9 +135,9 @@
   .field input::placeholder{color:var(--muted)}
   .field input:focus{outline:2px solid var(--red);outline-offset:-2px;position:relative;z-index:1}
   button.cta{
-    flex:none;font:500 10px/22px var(--mono);letter-spacing:.14em;text-transform:uppercase;
+    flex:none;font:500 16px/22px var(--text);letter-spacing:0;text-transform:none;
     color:var(--cream);background:var(--ink);border:1px solid var(--ink);
-    border-radius:0;height:56px;width:212px;padding:0;text-indent:.14em;cursor:pointer;white-space:nowrap;
+    border-radius:0;height:56px;width:212px;padding:0;cursor:pointer;white-space:nowrap;
   }
   button.cta:hover{background:#000;border-color:#000}
   button.cta:focus-visible{outline:2px solid var(--red);outline-offset:2px}
@@ -148,18 +148,15 @@
 
   /* ---------- the specimen ---------- */
   /* the alert, set as a typographic specimen rather than a UI mockup */
-  .spec{font-family:var(--mono);border:1px solid var(--ink);border-top:0}
+  .spec{font-family:var(--mono);border:1px solid var(--ink)}
   .spec .hd{margin:0;padding:11px 14px 10px;font:400 10px/17px var(--mono);
-            letter-spacing:.02em;color:var(--d-soft);background:var(--ink)}
-  .spec .hd b{display:block;font-weight:600;color:var(--d-text);letter-spacing:0;margin-top:2px}
+            letter-spacing:.02em;color:var(--muted);border-bottom:1px solid var(--ink)}
+  .spec .hd b{display:block;font-weight:600;color:var(--ink);letter-spacing:0;margin-top:2px}
   .spec .body-rows{padding:0}
   .spec .ev{padding:9px 14px;border-top:1px solid var(--r2)}
   .spec .ev:first-child{border-top:0;padding-top:12px}
   .spec .k{font:italic 400 13.5px/19px var(--text);letter-spacing:0;color:var(--muted);display:block}
-  .spec .v{font-family:var(--text);font-size:13.5px;line-height:20px;color:var(--ink-soft);display:block}
-  /* one entry is the focal; the rest fall away a step in size and tint */
-  .spec .ev:first-child .v{font-size:16.5px;line-height:23px;color:var(--ink)}
-  .spec .ev:first-child .n{font-size:13px}
+  .spec .v{font-family:var(--text);font-size:15px;line-height:21px;color:var(--ink);display:block}
   .spec .n{display:block;font-size:12.5px;line-height:19px;color:var(--ink-soft)}
   .spec .n .d{color:var(--red)}
   .spec .old{color:var(--muted)}
@@ -193,6 +190,7 @@
   .arg p:not(.rail):not(.note):not(.grouphd){margin:0;color:var(--ink-soft);font-size:17px;line-height:27px;max-width:var(--measure)}
 
   .arg{padding:44px 0 43.5px}
+  .arg.one{padding:64px 0 60px}
   /* the evidence column hangs from the top line; the rail keeps the headline baseline */
   .arg > .c{align-self:start}
   .two .ledger div{grid-template-columns:1fr auto}
@@ -239,10 +237,10 @@
   .pair .pwas{font:400 14px/20px var(--mono);color:var(--muted);position:relative}
   .pair .pwas::after{content:"";position:absolute;left:-1px;right:-1px;top:48%;height:1px;background:#9A9588}
   .pair .pnow{font-family:var(--display);font-variation-settings:"opsz" 72;font-weight:400;
-              font-feature-settings:"lnum" 1,"tnum" 1;font-size:clamp(2.4rem,5.4vw,4.9rem);
+              font-feature-settings:"lnum" 1,"tnum" 1;font-size:clamp(2.6rem,6.9vw,6.2rem);
               line-height:.95;letter-spacing:-.03em;color:var(--ink);margin:6px -2px 0 0}
   .pair .pdel{font-family:var(--display);font-variation-settings:"opsz" 36;
-              font-feature-settings:"lnum" 1;font-size:26px;line-height:32px;
+              font-feature-settings:"lnum" 1;font-size:32px;line-height:38px;
               color:var(--red);margin-top:6px}
   /* 03: hours out of stock, drawn as bars on one scale */
   .bars{border-top:1px solid var(--r2);margin:2px 0 0}
@@ -325,13 +323,13 @@
   /* ---------- the register ---------- */
   .reg{margin:0;border-top:1px solid var(--r2)}
   .reg > .row{padding:13px 0;border-bottom:1px solid var(--r2)}
-  .reg > .row:last-child{border-bottom:0}
-  .reg{padding-bottom:40px}
+  .reg > .row:last-child{border-bottom:1px solid var(--r1)}
+  .reg{padding-bottom:64px}
   .reg > .row.hdr{padding:18px 0 9px;border-bottom:1px solid var(--r1)}
   .reg .hc{margin:0;font:italic 400 15px/22px var(--text);color:var(--muted)}
-  .reg .hc.hr{text-align:right}
+  .reg .hc.hr{text-align:left}
   .reg dd{margin:0;font-size:17px;line-height:27px;color:var(--ink-soft);max-width:var(--measure)}
-  .reg .ex{display:grid;grid-template-columns:104px auto 104px;justify-content:end;gap:0 10px;
+  .reg .ex{display:grid;grid-template-columns:104px auto 104px;justify-content:start;gap:0 10px;
            font-family:var(--mono);font-size:12.5px;line-height:27px;
            color:var(--ink);white-space:nowrap;max-width:none}
   .reg .ex .was{text-align:right;color:var(--muted)}
@@ -340,13 +338,13 @@
 
 
   /* ---------- the ask: cream, the form its only mass ---------- */
-  .close{padding:52px 0 64px}
+  .close{padding:84px 0 88px}
   .close h2{
-    font-family:var(--display);font-size:clamp(1.7rem,3.78vw,3.4rem);
+    font-family:var(--display);font-size:clamp(2.1rem,6.2vw,5.6rem);
     font-variation-settings:"opsz" 72;font-weight:400;
-    line-height:1;letter-spacing:-.026em;max-width:none;margin:0 0 0 -1px;
+    line-height:.96;letter-spacing:-.025em;word-spacing:-.05em;max-width:none;margin:0 0 0 -3px;
   }
-  .close form.snap{margin-top:38px;max-width:var(--measure)}
+  .close form.snap{margin-top:44px;max-width:720px}
   .close .field{flex:1 1 auto}
 
 
@@ -414,7 +412,7 @@
 <div class="wrap">
 
   <header class="mast">
-    <a class="wordmark" href="/">Price<i>Drift</i></a>
+    <a class="wordmark" href="/">PriceDrift</a>
     <div class="links">
       <a href="#alert">Sample alert</a>
       <a href="#tracked">All changes</a>
@@ -431,16 +429,13 @@
       <span class="l o">six hours after it happens.</span>
     </h1>
   </section>
-  <hr class="r1">
 
   <div class="ruled">
   <section class="band hero" id="alert">
-    <div class="a">
-      <p class="rail">Sample alert</p>
-    </div>
+    <div class="a"></div>
     <div class="b">
       <p class="deck">Paste any Shopify store URL and get the whole catalogue in seconds: prices, discounts, what’s sold out. Then an email every time any of it moves.</p>
-      <p class="body">We read only what any shopper can see.</p>
+      <p class="body">We read only what any shopper can see. The first snapshot is free; alerts are $9 a month.</p>
       <!-- wire action/name to your snapshot endpoint -->
       <form class="snap" action="/snapshot" method="get">
         <label class="field">
@@ -449,7 +444,6 @@
         </label>
         <button class="cta" type="submit">Get a snapshot</button>
       </form>
-      <p class="price-line"><span class="n"><span class="cur">$</span>9</span><span class="u">a month, after a free first snapshot</span></p>
 
     </div>
     <div class="c">
@@ -483,8 +477,6 @@
   </div>
   <hr class="r1">
 
-  <div class="ruled">
-  </div>
 </div>
 
 <div class="wrap">
@@ -506,43 +498,12 @@
   </div>
   <hr class="r1">
 
-  <div class="band arg two">
-    <div class="a"><p class="rail">New product</p></div>
-    <div class="b">
-      <h3>Four new variants, live before the launch post.</h3>
-      <p>Fieldwork listed the Canvas Tote at 11:08. Their launch email went out the next morning.</p>
-    </div>
-    <div class="c fig">
-      <div class="ledger four">
-        <div><span>Canvas Tote 12L</span><span class="t">11:08</span><span class="now">$64.00</span></div>
-        <div><span>Canvas Tote 18L</span><span class="t">11:08</span><span class="now">$78.00</span></div>
-        <div><span>Canvas Tote 24L</span><span class="t">11:09</span><span class="now">$92.00</span></div>
-        <div><span>Canvas Tote 30L</span><span class="t">11:09</span><span class="now">$110.00</span></div>
-      </div>
-      <span class="cap">Listed, not yet announced</span>
-    </div>
-  </div>
-  <hr class="r1">
+  <section class="band sect spec-sect" id="tracked">
+    <div class="a"></div>
+    <div class="bc"><h2>Eight things we watch.</h2></div>
+  </section>
 
-  <div class="band arg three">
-    <div class="a"><p class="rail">Sold out</p></div>
-    <div class="b">
-      <h3>Sold out in every size.</h3>
-      <p>All three Deck Boot sizes are sold out at Harbour Goods. The first went 42 hours ago.</p>
-    </div>
-    <div class="c fig">
-      <div class="bars" role="list" aria-label="Hours out of stock, on a 48-hour scale">
-        <div role="listitem"><span class="bl">Deck Boot 8</span><span class="bt"><i style="width:87.5%"></i></span><span class="bv">42h</span></div>
-        <div role="listitem"><span class="bl">Deck Boot 9</span><span class="bt"><i style="width:50%"></i></span><span class="bv">24h</span></div>
-        <div role="listitem"><span class="bl">Deck Boot 10</span><span class="bt"><i style="width:37.5%"></i></span><span class="bv">18h</span></div>
-        <div class="axis" aria-hidden="true"><span></span><span class="ax"><span>0</span><span>24h</span><span>48h</span></span><span></span></div>
-      </div>
-      <span class="cap">Hours out of stock · Harbour Goods</span>
-    </div>
-  </div>
-  <hr class="r1">
-
-  <dl class="reg" id="tracked">
+  <dl class="reg">
     <div class="band row hdr" aria-hidden="true">
       <dt class="a"><p class="rail">Every change</p></dt>
       <dd class="b"><p class="hc">What triggers it</p></dd>
@@ -594,11 +555,9 @@
 
 <section class="inv">
 <div class="wrap">
-  <div class="ruled">
-  <section class="band close" id="start">
-    <div class="a"><p class="rail">Start</p></div>
-    <div class="bc">
-    <h2>Paste a URL.&nbsp;Read the whole catalogue.</h2>
+  <section class="close" id="start">
+    <div>
+    <h2>Paste a URL.<br>Read the whole catalogue.</h2>
     <form class="snap" action="/snapshot" method="get">
       <label class="field">
         <span class="sr">Competitor store URL</span>
@@ -609,12 +568,11 @@
     <p class="offer">Your first email arrives within six hours.</p>
     </div>
   </section>
-  </div>
   <hr class="r1">
 
   <footer>
     <div class="band sig">
-      <div class="a"><span class="wordmark">Price<i>Drift</i></span></div>
+      <div class="a"><span class="wordmark">PriceDrift</span></div>
       <div class="b"></div>
       <div class="c"><p class="meta"><a href="#privacy">Privacy</a><a href="#terms">Terms</a></p></div>
     </div>
