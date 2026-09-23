@@ -90,15 +90,15 @@
     font-size:25px;line-height:24px;letter-spacing:-.034em;text-decoration:none;white-space:nowrap;
     margin-left:-2px;
   }
-  .mast .links{grid-column:3;padding-left:var(--gut);display:flex;align-items:baseline;justify-content:space-between;gap:22px;
-    font:400 15px/24px var(--text);letter-spacing:0;color:var(--ink-soft)}
+  .mast .links{grid-column:3;padding-left:var(--gut);display:flex;align-items:baseline;justify-content:space-between;gap:18px;
+    font:400 12.5px/24px var(--mono);letter-spacing:0;color:var(--ink-soft)}
   .mast .links a{text-decoration:none}
   .mast .links a:hover{color:var(--red)}
   .mast .login{color:var(--ink-soft);text-decoration:none;white-space:nowrap}
   .mast .login:hover{text-decoration:underline;text-underline-offset:3px}
-  .mast .start{font:500 14px/22px var(--text);color:var(--cream);background:var(--ink);
-               padding:5px 13px 4px;text-decoration:none;white-space:nowrap}
-  .mast .start:hover{background:#000}
+  .mast .start{color:var(--ink);text-decoration:underline;text-decoration-thickness:1px;
+               text-underline-offset:4px;white-space:nowrap}
+  .mast .start:hover{text-decoration-thickness:2px}
 
   /* ---------- headline ---------- */
   .headline{padding:67px 0 59.5px;position:relative}
@@ -108,8 +108,8 @@
   .dateline span{display:block}
   h1{
     font-family:var(--display);font-weight:400;font-variation-settings:"opsz" 72;
-    font-size:clamp(2.4rem,7.556vw,6.8rem);
-    line-height:.98;letter-spacing:-.025em;word-spacing:-.06em;
+    font-size:clamp(2.4rem,7.431vw,6.6875rem);
+    line-height:.98;letter-spacing:-.025em;word-spacing:-.02em;
     margin:0 0 0 -2px;
   }
   h1 .l{display:block}
@@ -124,11 +124,11 @@
   h1 .o{margin-left:calc(-.028em - 4.5px)}
 
   /* ---------- hero ---------- */
-  .hero{padding:59px 0 64px}
+  .hero{padding:59px 0 60.5px}
   /* the card hangs from the deck's cap line; the form's bottom rule meets the card's */
   .hero .c{align-self:start;margin-top:5.5px}
   .hero .offer.lead{margin:22px 0 0;color:var(--ink-soft)}
-  @media (min-width:1200px){ .hero form.snap{margin-top:56.5px} }
+  @media (min-width:1200px){ .hero form.snap{margin-top:61.5px} }
   .deck{font-size:24px;line-height:34px;margin:0 0 18px;max-width:var(--measure)}
   .price-line{display:flex;align-items:baseline;gap:12px;margin:22px 0 0;
               padding-top:0;border-top:0}
@@ -184,6 +184,7 @@
 
   /* ---------- chapter head ---------- */
   .sect{padding:63.5px 0 62px}
+  .spec-sect{padding-bottom:26px}   /* the heading belongs to its table */
   .spec-sect h2{font-size:2.5rem;line-height:1.06;letter-spacing:-.028em}
   h2{
     font-family:var(--display);font-weight:400;font-variation-settings:"opsz" 72;
@@ -205,7 +206,10 @@
     font-size:2.5rem;line-height:1.06;letter-spacing:-.028em;
     margin:0 0 14px;text-indent:-.014em;text-wrap:balance;
   }
-  .arg p:not(.rail):not(.note):not(.grouphd){margin:0;color:var(--ink-soft);font-size:17px;line-height:27px;max-width:var(--measure)}
+  .arg p:not(.rail):not(.note):not(.grouphd):not(.gap):not(.conseq){margin:0;color:var(--ink-soft);font-size:17px;line-height:27px;max-width:var(--measure)}
+  .arg .b p.gap{font-family:var(--display);font-variation-settings:"opsz" 36;font-feature-settings:"lnum" 1,"tnum" 1;
+                font-size:24px;line-height:30px;color:var(--red);margin:0 0 12px}
+  .arg .b p.conseq{font:400 12.5px/20px var(--mono);color:var(--ink-soft);margin:14px 0 0}
 
   .arg{padding:44px 0 43.5px}
   .arg.one{padding:64px 0 60px}
@@ -251,9 +255,10 @@
        color:#57534A;margin-top:0;padding-top:9px;border-top:1px solid var(--r2);white-space:nowrap}
 
   /* 01: a price pair set large, the old price struck in the margin above it */
-  .pair{display:grid;justify-items:end;margin:4px 0 0}
+  .pair{display:grid;justify-items:end;margin:4px 0 16px}
+  .pair .was-row{display:flex;align-items:baseline;gap:18px;margin-bottom:6px}
   .pair .pwas{font:400 28px/34px var(--display);font-variation-settings:"opsz" 36;
-              font-feature-settings:"lnum" 1,"tnum" 1;color:var(--muted);position:relative;margin-bottom:12px}
+              font-feature-settings:"lnum" 1,"tnum" 1;color:var(--muted);position:relative}
   .pair .pwas::after{content:"";position:absolute;left:0;right:0;top:52%;height:1.5px;background:var(--red)}
   /* a newspaper price: reduced currency and cents, both hung from the cap height */
   .pair .pnow .cur,.pair .pnow .cts{font-size:.56em;vertical-align:.52em;letter-spacing:0}
@@ -271,7 +276,7 @@
               font-feature-settings:"lnum" 1,"tnum" 1;font-size:clamp(2.8rem,10.1vw,9.1rem);
               line-height:.95;letter-spacing:-.03em;color:var(--ink);margin:6px -2px 0 0}
   .pair .pdel{font-family:var(--display);font-variation-settings:"opsz" 36;
-              font-feature-settings:"lnum" 1;font-size:32px;line-height:38px;
+              font-feature-settings:"lnum" 1;font-size:28px;line-height:34px;
               color:var(--red);margin-top:6px}
   /* 03: hours out of stock, drawn as bars on one scale */
   .bars{border-top:1px solid var(--r2);margin:2px 0 0}
@@ -359,19 +364,19 @@
   .reg{padding-bottom:0}
   .tail{height:64px}
   .reg > .row.hdr{padding:18px 0 9px;border-bottom:1px solid var(--r1)}
-  .reg .hc{margin:0;font:400 13px/22px var(--text);color:var(--muted)}
+  .reg .hc{margin:0;font:400 11px/22px var(--mono);color:var(--muted)}
   .reg .hc.hr{text-align:left}
-  .reg .hdr .rail{color:var(--muted);font-size:13px}
+  .reg .hdr .rail{color:var(--muted);font:400 11px/22px var(--mono)}
   .reg dd{margin:0;font-size:17px;line-height:27px;color:var(--ink-soft);max-width:var(--measure)}
-  .reg .ex{display:grid;grid-template-columns:120px 28px auto;justify-content:start;gap:0;
+  .reg .ex{display:grid;grid-template-columns:138px minmax(0,1fr) auto;justify-content:stretch;gap:0;
            font-family:var(--mono);font-size:12.5px;line-height:27px;
            color:var(--ink);white-space:nowrap;max-width:none}
   .reg .ex .was{text-align:left;color:var(--muted)}
   .reg .ex .ar{color:var(--muted);font-family:var(--text);font-size:16px;position:relative;top:-.06em;text-align:center}
-  .reg .ex .is{text-align:left;color:var(--ink)}
+  .reg .ex .is{text-align:right;color:var(--ink)}
   .reg .ex .down,.reg .ex .is.down{color:var(--red)}
   .reg .ex s{text-decoration-color:currentColor;color:var(--muted)}
-  .reg .ex .ar{text-align:left}
+  .reg .ex .ar{text-align:right;padding-right:10px}
 
 
   /* ---------- the ask: cream, the form its only mass ---------- */
@@ -390,8 +395,7 @@
   /* ---------- footer ---------- */
   footer{padding:40px 0 56px}
   .sig .wordmark{font-size:22px;color:var(--ink)}
-  .sig .status{margin:0;font:400 10px/24px var(--mono);letter-spacing:.14em;
-               text-transform:uppercase;color:var(--d-soft)}
+  .sig .status{margin:0;font:400 12.5px/24px var(--mono);letter-spacing:0;color:var(--d-soft)}
   .sig .meta{margin:0;display:flex;gap:22px;justify-content:flex-end;
              font:400 15px/24px var(--text);letter-spacing:0;color:var(--ink-soft)}
   .sig .meta a{text-decoration:none}
@@ -455,9 +459,9 @@
     <a class="wordmark" href="/">Price<span class="wd">Drift</span></a>
     <nav class="links" aria-label="Sections">
       <a class="toc" href="#cases">Undercut</a>
-      <a class="toc" href="#tracked">All changes</a>
+      <a class="toc" href="#tracked">Changes</a>
       <a class="login" href="/dashboard.html">Log in</a>
-      <a class="start" href="#start">Start</a>
+      <a class="start" href="#start">Get a snapshot</a>
     </nav>
   </header>
   <hr class="r0">
@@ -473,10 +477,9 @@
 
   <div class="ruled">
   <section class="band hero" id="alert">
-    <div class="a"><p class="rail log"><span>09:14</span><span>kindred-beauty</span></p></div>
+    <div class="a"><p class="rail log"><span>03:14</span><span>kindred-beauty</span></p></div>
     <div class="b">
-      <p class="deck">Paste any Shopify store URL and get the whole catalogue in seconds: prices, discounts, what’s sold out. Then an email every time any of it moves.</p>
-      <p class="body">We read only what any shopper can see.</p>
+      <p class="deck">Paste any Shopify store URL and read its whole catalogue in seconds. Then get an email whenever a price, discount or stock level moves.</p>
       <!-- wire action/name to your snapshot endpoint -->
       <form class="snap" action="/snapshot" method="get">
         <label class="field">
@@ -485,20 +488,16 @@
         </label>
         <button class="cta" type="submit">Get a snapshot</button>
       </form>
+      <p class="offer terms">We read only what any shopper can see.</p>
     </div>
     <div class="c">
       <div class="spec" aria-label="Example alert email">
-        <div class="hd"><p class="meta">From PriceDrift · kindred-beauty.com · 09:14</p><p class="subj">3 changes at Kindred Beauty</p></div>
+        <div class="hd"><p class="meta">From PriceDrift · kindred-beauty.com · 03:14</p><p class="subj">2 changes at Kindred Beauty</p></div>
         <div class="body-rows">
         <div class="ev">
           <span class="k">Price cut</span>
           <span class="v">Matte Lip Kit · Rosewood</span>
           <span class="n"><span class="old">$29.00</span> <span class="ar">→</span> $22.00 &nbsp;<span class="d">−24.1%</span></span>
-        </div>
-        <div class="ev">
-          <span class="k">New product</span>
-          <span class="v">Winter Set</span>
-          <span class="n"><span class="old">none</span> <span class="ar">→</span> $48.00 &nbsp;4 variants</span>
         </div>
         <div class="ev">
           <span class="k">Price up</span>
@@ -517,31 +516,25 @@
 <div class="wrap">
   <div class="ruled">
   <div class="band arg one" id="cases">
-    <div class="a"><p class="rail log"><span>06:41</span><span>northbound</span></p></div>
+    <div class="a"><p class="rail log"><span>09:14</span><span>northbound</span></p></div>
     <div class="b">
       <h3>You’re being undercut.</h3>
+      <p class="gap">$18.00 under your price.</p>
       <p>Northbound took a quarter off the Merino Crew overnight. Your ads are still bidding against the old price.</p>
+      <p class="conseq">3 ads still bidding at $84.00</p>
     </div>
     <div class="c fig">
       <div class="pair">
-        <span class="pwas"><span class="sr">was </span>$88.00</span>
+        <span class="was-row"><span class="pwas"><span class="sr">was </span>$88.00</span><span class="pdel">−25%</span></span>
         <span class="pnow"><span class="sr">now </span><span class="cur">$</span>66<span class="cts">.00</span></span>
-        <span class="pdel">−25%</span>
       </div>
+      <span class="cap">Northbound · Merino Crew · seen 09:14</span>
     </div>
-    <div class="b row2">
-      <dl class="stats">
-        <div><dt>Your price</dt><dd>$84.00</dd></div>
-        <div><dt>Gap</dt><dd>$18.00</dd></div>
-        <div><dt>Your ads live</dt><dd>3</dd></div>
-      </dl>
-    </div>
-    <div class="c row2"><span class="cap">Northbound · Merino Crew · seen 06:41</span></div>
   </div>
   <hr class="r1">
 
   <section class="band sect spec-sect" id="tracked">
-    <div class="a"><p class="rail log"><span>Every sweep</span><span>8 kinds</span></p></div>
+    <div class="a"><p class="rail log"><span>15:14</span><span>every sweep</span></p></div>
     <div class="bc"><h2>Eight things we watch.</h2></div>
   </section>
 
@@ -579,12 +572,12 @@
     <div class="band row">
       <dt class="a"><p class="rail">Removed</p></dt>
       <dd class="b">A variant is delisted and its page returns a 404.</dd>
-      <dd class="c"><span class="ex"><span class="was">12 variants</span><span class="ar">→</span><span class="is down">11 variants</span></span></dd>
+      <dd class="c"><span class="ex"><span class="was">12 variants</span><span class="ar">→</span><span class="is">11 variants</span></span></dd>
     </div>
     <div class="band row">
       <dt class="a"><p class="rail">Sold out</p></dt>
       <dd class="b">A variant can no longer be bought.</dd>
-      <dd class="c"><span class="ex"><span class="was">3 of 3</span><span class="ar">→</span><span class="is down">0 of 3</span></span></dd>
+      <dd class="c"><span class="ex"><span class="was">3 of 3</span><span class="ar">→</span><span class="is">0 of 3</span></span></dd>
     </div>
     <div class="band row">
       <dt class="a"><p class="rail">Back in stock</p></dt>
@@ -600,7 +593,7 @@
 <div class="wrap">
   <div class="ruled">
   <section class="band close" id="start">
-    <div class="a"><p class="rail log"><span>15:14</span><span>yours next</span></p></div>
+    <div class="a"><p class="rail log"><span>21:14</span><span>yours next</span></p></div>
     <div class="bc">
     <h2>Paste a URL.<br>Read the whole catalogue.</h2>
     <form class="snap" action="/snapshot" method="get">
@@ -608,7 +601,7 @@
         <span class="sr">Competitor store URL</span>
         <input type="text" name="store" inputmode="url" autocomplete="off" spellcheck="false" placeholder="competitor-store.com">
       </label>
-      <button class="cta" type="submit">Read the catalogue</button>
+      <button class="cta" type="submit">Get a snapshot</button>
     </form>
     <p class="offer terms">First snapshot free · Alerts $9/mo · Cancel from any email</p>
     </div>
@@ -619,7 +612,7 @@
   <footer>
     <div class="band sig">
       <div class="a"><span class="wordmark">Price<span class="wd">Drift</span></span></div>
-      <div class="b"></div>
+      <div class="b"><p class="status">Last sweep 21:14 UTC</p></div>
       <div class="c"><p class="meta"><a href="#privacy">Privacy</a><a href="#terms">Terms</a></p></div>
     </div>
   </footer>
