@@ -84,7 +84,9 @@
             color:var(--ink);margin:0 0 9px}
 
 
-  .reg .hc,.reg .hx,.spec .k,.spec .hd span,.close .nl,.figs .who,.rail.log span + span{font:400 12px/16px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:#5C584C}
+  .reg .hc,.reg .hx,.spec .k,.spec .hd span,.close .nl{font:400 12px/16px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:#5C584C}
+  .rail.log span + span{font:400 12.5px/17px var(--mono);letter-spacing:0;color:#5C584C}
+  .figs .who{font:italic 400 17px/24px var(--text);color:var(--ink-soft)}
 
   #clock .clock-now{font:400 12px/16px var(--mono);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
   /* ---------- masthead ---------- */
@@ -316,11 +318,11 @@
   .ax .cut::after{content:"";position:absolute;right:0;top:0;width:1px;height:14px;background:var(--red)}
   /* the gap is a measurement, so it is drawn in ink */
   .ax .br{position:absolute;top:36px;height:9px;border:1px solid var(--ink);border-top:0}
-  .ax .br .dl{position:absolute;top:100%;left:50%;transform:translateX(-50%);padding-top:6px;font:400 13px/16px var(--mono);color:var(--ink);white-space:nowrap}
+  .ax .br .dl{position:absolute;top:100%;left:50%;transform:translateX(-50%);padding-top:8px;font:400 30px/34px var(--display);font-variation-settings:"opsz" 36;letter-spacing:-.01em;color:var(--ink);white-space:nowrap}
   .ax .pt{position:absolute;top:0;width:11px;height:11px;border-radius:50%;transform:translate(-50%,-50%);background:var(--ink)}
   .ax .pt.them{background:var(--red)}
   .ax .pt.was{width:9px;height:9px;background:var(--cream);box-shadow:inset 0 0 0 1.5px var(--red)}
-  .ax .pt.was i{position:absolute;bottom:26px;right:-4px;font:400 12px/16px var(--mono);font-style:normal;color:var(--muted);white-space:nowrap}
+  .ax .pt.was i{position:absolute;bottom:18px;right:16px;font:400 12px/16px var(--mono);font-style:normal;color:var(--muted);white-space:nowrap}
   .ax .pt.was em{font-style:normal;color:var(--red)}
   /* row two of the set piece: both rules on one y */
   .arg .row2{align-self:start;margin-top:28px}
@@ -428,7 +430,7 @@
   .reg > .row::after{background:#DAD6C9}
   .reg > .row.hdr::after,.reg > .row:last-child::after{background:var(--r1)}
   .reg > .row.grp:not(.hdr + .row)::before{content:"";position:absolute;left:calc(12.23629% + var(--gut));right:0;top:-1px;height:1px;background:var(--r1)}   /* ink between stores */
-  .reg .nm{grid-column:2;grid-row:1;padding-left:var(--gut);margin:0;font:400 12.5px/26px var(--mono);color:var(--ink)}
+  .reg .nm{grid-column:2;grid-row:1;padding-left:var(--gut);margin:0;font:400 12.5px/26px var(--mono);color:var(--muted)}
   .reg .ds .pr{display:inline-block;width:190px;color:var(--ink)}
   .reg .ds .ch{color:var(--ink-soft)}
   .reg .hc .pr{width:190px;display:inline-block}
@@ -454,9 +456,10 @@
   .reg .ex .was{text-align:right;color:var(--muted)}
   .reg .ex .ar{color:var(--muted);font-family:var(--text);font-size:16px;position:relative;top:-.06em;text-align:center}
   .reg .ex .is{text-align:right;color:var(--ink)}
-  .reg .ex .ar{font-style:normal;font-family:var(--text);color:var(--muted);text-align:center;position:relative;top:-.12em}
+  .reg .ex .ar{font-style:normal;font-family:var(--text);color:var(--muted);text-align:center;position:relative;top:0}
   .reg .ex .dt{text-align:right;color:var(--ink)}
   .reg .ex .dt.down{color:var(--red)}
+  .reg .ex .dt.dash{color:var(--muted)}
   .reg .ex.hx .dt{color:var(--muted)}
   .reg .ex .down,.reg .ex .is.down{color:var(--red)}
   .reg .ex .tag{font-size:10.5px;color:var(--muted);letter-spacing:.04em}
@@ -523,6 +526,7 @@
     .arg.one .top,.arg.one .plot{grid-row:auto}
     .arg.one .plot{margin-top:40px}
     .ax .tk.mi b,.ax .pt.was i{display:none}
+    .ax .br .dl{font-size:19px;line-height:24px}
     .hero > .b,.hero > .c{margin-top:24px}
     .close .nx{grid-row:auto;grid-column:auto;justify-self:start;text-align:left;margin-top:28px}
     .close > .b,.close > .bc{grid-row:auto}
@@ -579,14 +583,14 @@
     <nav class="links" aria-label="Sections">
       <a class="toc" href="#cases">Example sweep</a>
       <a class="login" href="/dashboard.html">Log in</a>
-      <a class="start" href="#start">Start free</a>
+      <a class="start" href="#start">Add a store</a>
     </nav>
   </header>
   <hr class="r0">
 
   <div class="ruled">
   <section class="band hero" id="alert">
-    <div class="a"><p class="rail log"><span>03:14</span><span>412 read</span></p></div>
+    <div class="a"><p class="rail log"><span>03:14</span><span>412 products</span></p></div>
     <div class="bc hl">
       <h1>
         <span class="l l1">Every price change</span>
@@ -602,9 +606,9 @@
           <span class="sr">Competitor store URL</span>
           <input type="text" name="store" inputmode="url" autocomplete="off" spellcheck="false" placeholder="competitor-store.com">
         </label>
-        <button class="cta" type="submit">Get a snapshot</button>
+        <button class="cta" type="submit">Add a store</button>
       </form>
-      <p class="offer fine">First snapshot free, then $9 a month.</p>
+      <p class="offer fine">First sweep free, then $9 a month per store.</p>
     </div>
     <div class="c">
       <div class="spec" aria-label="Example alert email">
@@ -637,8 +641,8 @@
     <div class="c top"><p class="stand">Northbound took a quarter off the Merino Crew overnight. Your ads still bid against the old price.</p></div>
     <div class="bc plot" role="img" aria-label="Northbound now $66.00, down from $88.00. Yours $84.00. You are $18.00 higher.">
       <div class="figs" aria-hidden="true">
-        <span class="fig them"><span class="who">Northbound · Merino Crew</span><span class="big"><span class="cur">$</span>66<span class="cts">00</span></span></span>
-        <span class="fig you"><span class="who">Yours</span><span class="big"><span class="cur">$</span>84<span class="cts">00</span></span></span>
+        <span class="fig them"><span class="who">Northbound, Merino Crew</span><span class="big"><span class="cur">$</span>66</span></span>
+        <span class="fig you"><span class="who">Yours</span><span class="big"><span class="cur">$</span>84</span></span>
       </div>
       <div class="ax" aria-hidden="true">
         <span class="tk" style="left:0"><b>$50</b></span>
@@ -647,7 +651,7 @@
         <span class="tk" style="left:75%"><b>80</b></span>
         <span class="tk" style="left:100%"><b>$90</b></span>
         <span class="cut" style="left:40%;width:55%"></span>
-        <span class="br" style="left:40%;width:45%"><span class="dl">$18.00 above them</span></span>
+        <span class="br" style="left:40%;width:45%"><span class="dl">You’re $18 above them</span></span>
         <span class="pt was" style="left:95%"><i>was $88.00 <em>−25%</em></i></span>
         <span class="pt them" style="left:40%"></span>
         <span class="pt you" style="left:85%"></span>
@@ -658,7 +662,7 @@
 
   <section class="band sect spec-sect" id="tracked">
     <div class="a"><p class="rail log"><span>15:14</span><span>9 changes</span></p></div>
-    <div class="bc"><h2>What one sweep caught.</h2></div>
+    <div class="bc"><h2>The 15:14 sweep</h2></div>
   </section>
 
   <dl class="reg">
@@ -669,23 +673,23 @@
     </div>
     <div class="band row grp">
       <dt class="nm">kindred-beauty.com</dt>
-      <dd class="ds"><span class="pr">Brow Pencil · Ash</span><span class="ch">Price up</span></dd>
-      <dd class="c"><span class="ex"><span class="was">$18.00</span><span class="ar">→</span><span class="is">$21.00</span><span class="dt">+16.7%</span></span></dd>
+      <dd class="ds"><span class="pr">Cheek Tint · Coral</span><span class="ch">Price up</span></dd>
+      <dd class="c"><span class="ex"><span class="was">$24.00</span><span class="ar">→</span><span class="is">$26.00</span><span class="dt">+8.3%</span></span></dd>
     </div>
     <div class="band row">
       <dt class="nm"><span class="sr">same store</span></dt>
       <dd class="ds"><span class="pr">Lip Oil</span><span class="ch">New product</span></dd>
-      <dd class="c"><span class="ex"><span class="was">none</span><span class="ar">→</span><span class="is">4 variants</span><span class="dt"></span></span></dd>
+      <dd class="c"><span class="ex"><span class="was">none</span><span class="ar">→</span><span class="is">4 variants</span><span class="dt dash">—</span></span></dd>
     </div>
     <div class="band row">
       <dt class="nm"><span class="sr">same store</span></dt>
       <dd class="ds"><span class="pr">Matte Lip Kit · Plum</span><span class="ch">Back in stock</span></dd>
-      <dd class="c"><span class="ex"><span class="was">0 of 3</span><span class="ar">→</span><span class="is">2 of 3</span><span class="dt"></span></span></dd>
+      <dd class="c"><span class="ex"><span class="was">0 of 3</span><span class="ar">→</span><span class="is">2 of 3</span><span class="dt dash">—</span></span></dd>
     </div>
     <div class="band row grp">
       <dt class="nm">northbound.co</dt>
-      <dd class="ds"><span class="pr">Merino Crew</span><span class="ch">Price cut</span></dd>
-      <dd class="c"><span class="ex"><span class="was">$88.00</span><span class="ar">→</span><span class="is down">$66.00</span><span class="dt down">−25.0%</span></span></dd>
+      <dd class="ds"><span class="pr">Wool Beanie</span><span class="ch">Price cut</span></dd>
+      <dd class="c"><span class="ex"><span class="was">$42.00</span><span class="ar">→</span><span class="is down">$36.00</span><span class="dt down">−14.3%</span></span></dd>
     </div>
     <div class="band row">
       <dt class="nm"><span class="sr">same store</span></dt>
@@ -700,7 +704,7 @@
     <div class="band row">
       <dt class="nm"><span class="sr">same store</span></dt>
       <dd class="ds"><span class="pr">Trail Sock · M</span><span class="ch">Sold out</span></dd>
-      <dd class="c"><span class="ex"><span class="was">3 of 3</span><span class="ar">→</span><span class="is">0 of 3</span><span class="dt"></span></span></dd>
+      <dd class="c"><span class="ex"><span class="was">3 of 3</span><span class="ar">→</span><span class="is">0 of 3</span><span class="dt dash">—</span></span></dd>
     </div>
     <div class="band row grp">
       <dt class="nm">oakandhide.co</dt>
@@ -710,10 +714,10 @@
     <div class="band row">
       <dt class="nm"><span class="sr">same store</span></dt>
       <dd class="ds"><span class="pr">Card Holder</span><span class="ch">Removed</span></dd>
-      <dd class="c"><span class="ex"><span class="was">listed</span><span class="ar">→</span><span class="is">removed</span><span class="dt"></span></span></dd>
+      <dd class="c"><span class="ex"><span class="was">listed</span><span class="ar">→</span><span class="is">removed</span><span class="dt dash">—</span></span></dd>
     </div>
   </dl>
-  <p class="band regkey"><span class="bc">Every sweep compares each variant’s price, sale price and stock with the sweep before.</span></p>
+  <p class="band regkey"><span class="bc">Nine changes the 15:14 sweep found that 09:14 hadn’t: each variant’s price, sale price and stock, compared with the sweep before.</span></p>
   <div class="tail"></div>
   </div>
 </div>
@@ -722,15 +726,15 @@
 <div class="wrap">
   <div class="ruled">
   <section class="band close" id="start">
-    <div class="a"><p class="rail log"><span>21:14</span><span>yours next</span></p></div>
-    <div class="bc"><h2>Put your competitor<br> in the next sweep.</h2></div>
+    <div class="a"><p class="rail log"><span>21:14</span><span>next</span></p></div>
+    <div class="bc"><h2>Put your competitor<br> in the next sweep</h2></div>
     <div class="b">
     <form class="snap" action="/snapshot" method="get">
       <label class="field">
         <span class="sr">Competitor store URL</span>
         <input type="text" name="store" inputmode="url" autocomplete="off" spellcheck="false" placeholder="northbound.co">
       </label>
-      <button class="cta" type="submit">Add to the next sweep</button>
+      <button class="cta" type="submit">Add a store</button>
     </form>
     <p class="offer fine">We read only what any shopper can see. Cancel from any email.</p>
     </div>
@@ -751,7 +755,6 @@
 
 <script>
 /* the page is one day's log, read at 18:40 UTC: three sweeps done, 21:14 still to come */
-var STORY_NOW=18*60+40;
 </script>
 
 <script>
@@ -767,19 +770,22 @@ var STORY_NOW=18*60+40;
     var inv=document.querySelector('section.inv').getBoundingClientRect().top+scrollY;
     var box=document.createElement('div'); box.id='clock'; box.setAttribute('aria-hidden','true');
     function el(css,cls){ var d=document.createElement('span'); d.className=cls||''; d.style.cssText='position:absolute;'+css; box.appendChild(d); return d; }
-    for(var i=0;i<4;i++) for(var k=0;k<6;k++){   /* the hours: 46 minutes after each sweep, then every 60 */
-      var y=ys[i]+(ys[i+1]-ys[i])*(46+60*k)/360;
-      el('left:'+(x-6)+'px;top:'+Math.round(y)+'px;width:6px;height:1px;background:'+(y>inv?'#6B685E':'#A9A596'));
-    }
-    var d=(STORY_NOW-194+1440)%1440, seg=Math.floor(d/360), f=(d%360)/360;
-    var yn=ys[seg]+(ys[seg+1]-ys[seg])*f, dark=yn>inv, ink=dark?'#E8E3D6':'#1A1A17';
+    var key=document.querySelector('.regkey').getBoundingClientRect().bottom+scrollY;
+    var yn=Math.round((key+inv)/2), mins=Math.round(914+(yn-ys[2])/(ys[3]-ys[2])*360), left=1274-mins;
+    var hh=('0'+Math.floor(mins/60)).slice(-2)+':'+('0'+mins%60).slice(-2), seg=2;
+    var cd=document.getElementById('next-sweep');
+    if(cd) cd.innerHTML=Math.floor(left/60)+'<span class="u">h</span> '+('0'+left%60).slice(-2)+'<span class="u">min</span>';
+    var dark=yn>inv, ink=dark?'#E8E3D6':'#1A1A17';
     /* elapsed: the spine drawn in ink from the first sweep down to now */
     el('left:'+(x-.5)+'px;top:'+Math.round(ys[0])+'px;width:2px;height:'+Math.round(yn-ys[0])+'px;background:'+ink);
     /* still to come: dashed to the next sweep */
     el('left:'+x+'px;top:'+Math.round(yn)+'px;width:0;height:'+Math.round(ys[seg+1]-yn)+'px;border-left:1px dashed '+(ys[seg+1]>inv?'#E8E3D6':'#1A1A17'));
     el('left:'+(x-9)+'px;top:'+Math.round(yn)+'px;width:19px;height:1px;background:'+ink);
+    /* now, drawn across the page: everything above it has happened */
+    var edge=document.querySelector('.reg').getBoundingClientRect().right+scrollX;
+    el('left:'+(x+10)+'px;top:'+Math.round(yn)+'px;width:'+Math.round(edge-x-10)+'px;height:0;border-top:1px dashed rgba(26,26,23,.35)');
     var t=el('right:'+(document.documentElement.clientWidth-x+16)+'px;top:'+Math.round(yn-8)+'px;color:'+(dark?'#A8A497':'#5C584C'),'clock-now');
-    t.textContent='now 18:40';
+    t.textContent='now '+hh;
     document.body.appendChild(box);
   }
   addEventListener('load',draw); addEventListener('resize',draw);
