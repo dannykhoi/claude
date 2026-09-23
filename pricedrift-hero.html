@@ -89,6 +89,8 @@
   .figs .who{font:400 17px/24px var(--text);color:var(--ink-soft)}
 
   #clock .clock-now{font:400 12.5px/17px var(--mono);letter-spacing:0;white-space:nowrap}
+  #clock .clock-now b{display:block;font-size:23px;line-height:30px;font-weight:500;letter-spacing:-.01em}
+  #clock .clock-now i{display:block;font-style:normal}
   /* ---------- masthead ---------- */
   /* the mark: each letter of Drift steps a little further off the baseline */
   .wordmark .wd span{position:relative;display:inline-block}
@@ -108,8 +110,8 @@
   .mast .login{color:var(--ink-soft);text-decoration:none;white-space:nowrap}
   .mast .login:hover{text-decoration:underline;text-underline-offset:3px}
   .mast .start{color:var(--ink);font-weight:500;text-decoration:none;white-space:nowrap;
-               background:transparent;color:var(--ink);border:1px solid var(--ink);padding:7px 15px 6px}
-  .mast .links a.start:hover{background:var(--ink);color:var(--cream)}
+               background:transparent;color:var(--ink);border:0;padding:0;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+  .mast .links a.start:hover{color:var(--red)}
 
   /* ---------- headline ---------- */
   .headline{padding:98px 0 92px;position:relative}
@@ -198,7 +200,7 @@
   .inv .spec .ft{border-top-color:var(--d-rule);color:#9D998B}
 
   /* ---------- chapter head ---------- */
-  .sect{padding:74px 0 62px}
+  .sect{padding:98px 0 62px}
   .spec-sect{padding-bottom:26px}   /* the heading belongs to its table */
   .spec-sect h2{font-size:clamp(2rem,3.9vw,3.5rem);line-height:1;letter-spacing:-.024em}
   h2{
@@ -318,7 +320,7 @@
   .ax .cut{position:absolute;top:44px;height:1px;background:var(--red)}
   .ax .cut::before{content:"";position:absolute;left:-1px;top:-3px;border:3.5px solid transparent;border-left:0;border-right:7px solid var(--red)}
   .ax .cut::after{content:"";position:absolute;right:0;bottom:0;width:1px;height:40px;background:var(--red)}
-  .ax .cut i{position:absolute;left:14px;top:7px;font:400 12.5px/16px var(--mono);font-style:normal;color:var(--red);white-space:nowrap}
+  .ax .cut i{position:absolute;right:0;top:7px;font:400 12.5px/16px var(--mono);font-style:normal;color:var(--red);white-space:nowrap}
   /* the gap is a measurement, so it is drawn in ink */
   .ax .br{position:absolute;top:-18px;height:9px;border:1px solid var(--ink);border-bottom:0}
   .ax .br .dl{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);padding-bottom:4px;font:400 20px/24px var(--mono);letter-spacing:-.01em;color:var(--red);white-space:nowrap}
@@ -432,15 +434,16 @@
   .reg > .row.hdr::after,.reg > .row:last-child::after{background:var(--r1)}
   .reg > .row.grp:not(.hdr + .row)::before{content:"";position:absolute;left:calc(12.23629% + var(--gut));right:0;top:-1px;height:1px;background:var(--r1)}   /* ink between stores */
   .reg .nm{grid-column:2;grid-row:1;padding-left:var(--gut);margin:0;font:400 12.5px/26px var(--mono);color:var(--muted)}
-  .reg .ds .pr{display:inline-block;width:220px;color:var(--ink)}
+  .reg .ds .pr{display:inline-block;width:210px;color:var(--ink)}
+  .reg .ds .ch{display:inline-block;width:124px}
   .reg .ds .ch{color:var(--ink-soft)}
-  .reg .hc .pr{width:220px;display:inline-block}
+  .reg .hc .pr{width:210px;display:inline-block}
   .reg .ds{grid-column:2;grid-row:1;padding-left:calc(var(--gut) + 162px);margin:0;
            font:400 15px/26px var(--text);color:var(--ink-soft)}
-  .reg dd.c{grid-column:3;grid-row:1}
+  .reg dd.c{grid-column:2/-1;grid-row:1;padding-left:calc(var(--gut) + 162px + 210px + 124px)}
   .reg .ds code{font:400 12px/26px var(--mono);color:var(--ink-soft)}
   .reg{padding-bottom:0}
-  .tail{height:72px}
+  .tail{height:40px}
   .regkey{margin:12px 0 0}
   .regkey .bc{font:400 14px/21px var(--text);color:var(--muted)}
   .reg .ds .st{display:inline-block;width:160px;font:400 12.5px/26px var(--mono);color:var(--ink-soft)}
@@ -451,7 +454,7 @@
     .reg .ex.hx .was,.reg .ex.hx .is{color:var(--muted)}
   .reg .hdr .rail{color:var(--muted);font:400 11px/22px var(--mono)}
   .reg dd{margin:0;max-width:none}
-  .reg .ex{display:grid;grid-template-columns:84px 104px minmax(0,1fr);gap:0;
+  .reg .ex{display:grid;grid-template-columns:76px 100px 88px;justify-content:start;gap:0;
            font-family:var(--mono);font-size:12.5px;line-height:27px;
            color:var(--ink);white-space:nowrap;max-width:none}
   .reg .ex .was{text-align:right;color:var(--muted)}
@@ -484,8 +487,7 @@
   .close .nl{margin:0;line-height:20px}
   .inv .close .nl{color:var(--d-soft)}
   .close .nl .t{font:400 13px/24px var(--mono)}
-  .close .nc{margin:0;font-family:var(--display);font-variation-settings:"opsz" 72;font-feature-settings:"lnum" 1,"tnum" 1;
-            font-size:44px;line-height:1;letter-spacing:-.02em}
+  .close .nc{margin:0;font:500 44px/1 var(--mono);letter-spacing:-.03em}
   .inv .close .nc{color:#F6F2E8}
   .close .nc .u{font-size:.42em;letter-spacing:0;margin:0 0 0 .05em;color:#C6C1B3}
   .inv .rail.log span + span,.inv .close .nl{color:#A8A497}
@@ -513,6 +515,10 @@
      hand-measured padding, so it survives any reflow. */
 
   @media (max-width:1180px){
+    .reg .ds{padding-left:calc(var(--gut) + 146px)}
+    .reg .ds .pr,.reg .hc .pr{width:168px} .reg .ds .ch{width:108px}
+    .reg dd.c{padding-left:calc(var(--gut) + 146px + 168px + 108px)}
+    .reg .ex{grid-template-columns:70px 92px 76px}
     .mast .links{grid-column:2/-1;justify-content:flex-end;gap:28px}
   }
   @media (max-width:1080px){
@@ -551,14 +557,17 @@
     .reg .nm,.reg .ds,.reg dd.c{grid-column:auto;grid-row:auto;padding-left:0}
     .reg > .row::after{left:0}
     .reg > .row.hdr{display:none}
-    .reg > .row.grp::before{left:0}
+    .reg .ds .pr,.reg .ds .ch{display:inline;width:auto}
+    .reg .ds .ch::before{content:" · "}
+    .reg dd.c{padding-left:0}
+    .reg > .row.grp:not(.hdr + .row)::before{left:0}
     .reg .ex{max-width:280px}
   }
   @media (max-width:620px){
     .wrap{padding:0 22px}
     .mast{padding:26px 0 18px}
     .mast .toc{display:none}
-    .mast .start{padding:6px 12px 5px}
+    .figs .who .mc{display:none}
     .headline{padding:32px 0 26px}
     .hero,.arg.one,.close{padding:52px 0}
     .sect{padding-top:52px}
@@ -585,14 +594,14 @@
     <nav class="links" aria-label="Sections">
       <a class="toc" href="#cases">Example sweep</a>
       <a class="login" href="/dashboard.html">Log in</a>
-      <a class="start" href="#start">Add a store</a>
+      <a class="start" href="#start">Add a store →</a>
     </nav>
   </header>
   <hr class="r0">
 
   <div class="ruled">
   <section class="band hero" id="alert">
-    <div class="a"><p class="rail log"><span>03:14</span><span>412 products</span></p></div>
+    <div class="a"><p class="rail log"><span>03:14</span><span>412 variants</span></p></div>
     <div class="bc hl">
       <h1>
         <span class="l l1">Every price change</span>
@@ -606,7 +615,7 @@
       <form class="snap" action="/snapshot" method="get">
         <label class="field">
           <span class="sr">Competitor store URL</span>
-          <input type="text" name="store" inputmode="url" autocomplete="off" spellcheck="false" placeholder="competitor-store.com">
+          <input type="text" name="store" inputmode="url" autocomplete="off" spellcheck="false" placeholder="e.g. kindred-beauty.com">
         </label>
         <button class="cta" type="submit">Add a store</button>
       </form>
@@ -638,20 +647,20 @@
 <div class="wrap">
   <div class="ruled">
   <div class="band arg one" id="cases">
-    <div class="a"><p class="rail log"><span>09:14</span><span>1 undercut</span></p></div>
+    <div class="a"><p class="rail log"><span>09:14</span><span>1,196 variants</span></p></div>
     <div class="b top"><h3>You’re $18 above them.</h3></div>
     <div class="c top"><p class="stand">Northbound took a quarter off the Merino Crew overnight. Your ads still bid against the old price.</p></div>
     <div class="bc plot" role="img" aria-label="Northbound now $66.00, down from $88.00. Yours $84.00. You are $18.00 higher.">
       <div class="figs" aria-hidden="true">
         <span class="fig them"><span class="who">Northbound, Merino Crew</span><span class="big"><span class="cur">$</span>66</span></span>
-        <span class="fig you"><span class="who">Yours</span><span class="big"><span class="cur">$</span>84</span></span>
+        <span class="fig you"><span class="who">Yours<span class="mc">, Merino Crew</span></span><span class="big"><span class="cur">$</span>84</span></span>
       </div>
       <div class="ax" aria-hidden="true">
         <span class="tk" style="left:0"><b>$60</b></span>
-        <span class="tk" style="left:33.3333%"><b>70</b></span>
-        <span class="tk" style="left:66.6667%"><b>80</b></span>
+        <span class="tk" style="left:33.3333%"><b>$70</b></span>
+        <span class="tk" style="left:66.6667%"><b>$80</b></span>
         <span class="tk" style="left:100%"><b>$90</b></span>
-        <span class="br" style="left:20%;width:60%"><span class="dl">$18</span></span>
+        <span class="br" style="left:20%;width:60%"></span>
         <span class="cut" style="left:20%;width:73.3333%"><i>was $88.00, −25% overnight</i></span>
         <span class="pt was" style="left:93.3333%"></span>
         <span class="pt them" style="left:20%"></span>
@@ -739,7 +748,7 @@
     </form>
     <p class="offer fine">We read only what any shopper can see. Cancel from any email.</p>
     </div>
-    <div class="c nx"><p class="nl">Next sweep in</p><p class="nc" id="next-sweep">1<span class="u">h</span>&thinsp;40<span class="u">min</span></p></div>
+    <div class="c nx"><p class="nl">Next sweep in, h:min</p><p class="nc" id="next-sweep">01:20</p></div>
   </section>
   </div>
   <hr class="r1">
@@ -775,15 +784,17 @@
     var yn=Math.round(inv), mins=Math.round(914+(yn-ys[2])/(ys[3]-ys[2])*360), left=1274-mins;
     var hh=('0'+Math.floor(mins/60)).slice(-2)+':'+('0'+mins%60).slice(-2), seg=2;
     var cd=document.getElementById('next-sweep');
-    if(cd) cd.innerHTML=Math.floor(left/60)+'<span class="u">h</span>\u2009'+('0'+left%60).slice(-2)+'<span class="u">min</span>';
+    if(cd) cd.textContent=('0'+Math.floor(left/60)).slice(-2)+':'+('0'+left%60).slice(-2);
     var dark=yn>inv, ink=dark?'#E8E3D6':'#1A1A17';
     /* elapsed: the spine drawn in ink from the first sweep down to now */
     el('left:'+(x-.5)+'px;top:'+Math.round(ys[0])+'px;width:2px;height:'+Math.round(yn-ys[0])+'px;background:'+ink);
     /* still to come: dashed to the next sweep */
     el('left:'+x+'px;top:'+Math.round(yn)+'px;width:0;height:'+Math.round(ys[seg+1]-yn)+'px;border-left:1px dashed '+(ys[seg+1]>inv?'#E8E3D6':'#1A1A17'));
-    el('left:'+(x-9)+'px;top:'+Math.round(yn)+'px;width:19px;height:1px;background:'+ink);
-    var t=el('right:'+(document.documentElement.clientWidth-x+20)+'px;top:'+Math.round(yn-20)+'px;color:'+(dark?'#A8A497':'#5C584C'),'clock-now');
-    t.textContent='now '+hh;
+    /* node: ink with a cream ring, so it reads on both grounds */
+    el('left:'+(x-5)+'px;top:'+(Math.round(yn)-5)+'px;width:11px;height:11px;border-radius:50%;background:#1A1A17;box-shadow:0 0 0 2px #F4F0E6');
+    /* the entry, set like the sweeps, hanging from the edge into the future */
+    var e=el('right:'+(document.documentElement.clientWidth-x+20)+'px;top:'+(Math.round(yn)-3)+'px;text-align:right','clock-now');
+    e.innerHTML='<b style="color:#F6F2E8">'+hh+'</b><i style="color:#A8A497">now</i>';
     document.body.appendChild(box);
   }
   addEventListener('load',draw); addEventListener('resize',draw);
