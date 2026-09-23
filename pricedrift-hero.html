@@ -70,29 +70,33 @@
   .rail{font:italic 400 15px/22px var(--text);font-variation-settings:"opsz" 16;
         letter-spacing:0;text-transform:none;color:var(--ink-soft);margin:0}
   .rail.grp{color:var(--muted);margin-bottom:22px}
+  .rail .no{font:400 11px/22px var(--mono);font-style:normal;letter-spacing:.02em;
+            color:var(--muted);margin-right:9px}
   .rail .i{display:block;font-size:23px;line-height:23px;letter-spacing:.01em;
             color:var(--ink);margin:0 0 9px}
 
 
   /* ---------- masthead ---------- */
-  .mast{display:flex;align-items:baseline;gap:34px;padding:34px 0 22px}
+  .mast{display:grid;align-items:baseline;padding:34px 0 22px;
+        grid-template-columns:minmax(0,var(--zA)) minmax(0,var(--zB)) minmax(0,var(--zC))}
   .wordmark i{font-style:italic;font-weight:500;letter-spacing:-.01em}
   .wordmark{
     font-family:var(--display);font-weight:600;font-variation-settings:"opsz" 22;
     font-size:25px;line-height:24px;letter-spacing:-.022em;text-decoration:none;white-space:nowrap;
     margin-left:-2px;
   }
-  .mast .links{display:flex;gap:28px;margin-left:auto;
+  .mast .links{grid-column:3;padding-left:var(--gut);display:flex;align-items:baseline;gap:22px;
     font:400 15px/24px var(--text);letter-spacing:0;color:var(--ink-soft)}
   .mast .links a{text-decoration:none}
   .mast .links a:hover{color:var(--red)}
-  .login{font:400 15px/24px var(--text);letter-spacing:0;
-         color:var(--ink);text-decoration:none;white-space:nowrap;
-         margin-left:60px;padding:2px 12px 1px;border:1px solid var(--ink)}
-  .login:hover{background:var(--ink);color:var(--cream)}
+  .mast .login{margin-left:auto;color:var(--ink-soft);text-decoration:none;white-space:nowrap}
+  .mast .login:hover{text-decoration:underline;text-underline-offset:3px}
+  .mast .start{font:500 14px/22px var(--text);color:var(--cream);background:var(--ink);
+               padding:5px 13px 4px;text-decoration:none;white-space:nowrap}
+  .mast .start:hover{background:#000}
 
   /* ---------- headline ---------- */
-  .headline{padding:84px 0 34px;position:relative}
+  .headline{padding:84px 0 80px;position:relative}
   .dateline{position:absolute;right:0;top:145px;margin:0;text-align:right;
             font:400 10px/19px var(--mono);letter-spacing:.14em;text-transform:uppercase;
             color:var(--muted);margin-right:-.14em}
@@ -100,7 +104,7 @@
   h1{
     font-family:var(--display);font-weight:400;font-variation-settings:"opsz" 72;
     font-size:clamp(2.4rem,7.41vw,6.67rem);
-    line-height:.955;letter-spacing:-.025em;word-spacing:-.06em;
+    line-height:.98;letter-spacing:-.025em;word-spacing:-.06em;
     margin:0 0 0 -2px;
   }
   h1 .l{display:block}
@@ -112,7 +116,11 @@
   h1 .o{margin-left:calc(-.028em - 4.5px)}
 
   /* ---------- hero ---------- */
-  .hero{padding:10px 0 52px}
+  .hero{padding:38.5px 0 44px}
+  /* the card hangs from the deck's cap line; the form's bottom rule meets the card's */
+  .hero .c{align-self:start;margin-top:5.5px}
+  .hero .offer.lead{margin:22px 0 0;color:var(--ink-soft)}
+  @media (min-width:1200px){ .hero form.snap{margin-top:42.5px} }
   .deck{font-size:20px;line-height:31px;margin:0 0 18px;max-width:var(--measure)}
   .price-line{display:flex;align-items:baseline;gap:12px;margin:22px 0 0;
               padding-top:0;border-top:0}
@@ -126,10 +134,10 @@
   .price-line s{text-decoration:none;color:var(--muted)}
   .body{font-size:17px;line-height:27px;color:var(--ink-soft);margin:6px 0 0;max-width:var(--measure)}
 
-  form.snap{display:flex;align-items:stretch;gap:0;margin:20px 0 0;width:100%}
+  form.snap{display:flex;align-items:stretch;gap:0;margin:20px 0 0;width:100%;max-width:var(--measure)}
   .field{position:relative;flex:1 1 auto;min-width:0}
   .field input{
-    width:100%;font:400 15px/22px var(--mono);height:56px;padding:0 14px;color:var(--ink);
+    width:100%;font:400 14px/22px var(--mono);height:56px;padding:0 14px;color:var(--ink);
     background:transparent;border:1px solid var(--ink);border-right:0;border-radius:0;
   }
   .field input::placeholder{color:var(--muted)}
@@ -149,9 +157,9 @@
   /* ---------- the specimen ---------- */
   /* the alert, set as a typographic specimen rather than a UI mockup */
   .spec{font-family:var(--mono);border:1px solid var(--ink)}
-  .spec .hd{margin:0;padding:11px 14px 10px;font:400 10px/17px var(--mono);
-            letter-spacing:.02em;color:var(--muted);border-bottom:1px solid var(--ink)}
-  .spec .hd b{display:block;font-weight:600;color:var(--ink);letter-spacing:0;margin-top:2px}
+  .spec .hd{padding:11px 14px 11px;border-bottom:1px solid var(--ink)}
+  .spec .hd .meta{margin:0;font:400 10.5px/17px var(--mono);letter-spacing:.02em;color:var(--muted)}
+  .spec .hd .subj{margin:3px 0 0;font:400 18px/24px var(--text);color:var(--ink)}
   .spec .body-rows{padding:0}
   .spec .ev{padding:9px 14px;border-top:1px solid var(--r2)}
   .spec .ev:first-child{border-top:0;padding-top:12px}
@@ -233,9 +241,16 @@
        color:#57534A;margin-top:0;padding-top:9px;border-top:1px solid var(--r2);white-space:nowrap}
 
   /* 01: a price pair set large, the old price struck in the margin above it */
-  .pair{display:grid;justify-items:end;margin:4px 0 20px}
-  .pair .pwas{font:400 14px/20px var(--mono);color:var(--muted);position:relative}
-  .pair .pwas::after{content:"";position:absolute;left:-1px;right:-1px;top:48%;height:1px;background:#9A9588}
+  .pair{display:grid;justify-items:end;margin:4px 0 12px}
+  .pair .pwas{font:400 28px/34px var(--display);font-variation-settings:"opsz" 36;
+              font-feature-settings:"lnum" 1,"tnum" 1;color:var(--muted);position:relative;margin-bottom:12px}
+  .pair .pwas::after{content:"";position:absolute;left:-2px;right:-2px;top:52%;height:1.5px;background:var(--red)}
+  /* a newspaper price: reduced currency and cents, both hung from the cap height */
+  .pair .pnow .cur,.pair .pnow .cts{font-size:.56em;vertical-align:.52em;letter-spacing:0}
+  .pair .pnow .cur{margin-right:.04em}
+  .pair .pnow .cts{vertical-align:.592em}   /* measured: the cents sat 4px under the cap line */
+  .arg .b .conseq{display:flex;flex-wrap:wrap;gap:6px 22px;margin:22px 0 0;padding-top:12px;
+                  border-top:1px solid var(--r2);font:400 12.5px/20px var(--mono);color:var(--ink-soft)}
   .pair .pnow{font-family:var(--display);font-variation-settings:"opsz" 72;font-weight:400;
               font-feature-settings:"lnum" 1,"tnum" 1;font-size:clamp(2.6rem,6.9vw,6.2rem);
               line-height:.95;letter-spacing:-.03em;color:var(--ink);margin:6px -2px 0 0}
@@ -278,8 +293,9 @@
   .ledger.four div{grid-template-columns:minmax(0,1fr) 52px 72px}
   .ledger.four .t{color:var(--muted);text-align:right}
   .ledger.four .now{text-align:right}
-  .inv .ruled{background-image:linear-gradient(to right,var(--d-rule),var(--d-rule))}
+  .inv .ruled{background-image:linear-gradient(to right,#4A473F,#4A473F)}
   .inv .rail{color:var(--d-text)}
+  .inv .rail .no{color:#8E8A7C}
   .inv .rail .i{color:var(--d-soft)}
   .inv h3,.inv h2{color:#F6F2E8}
   .inv .lede,.inv .cap{color:#A8A497}
@@ -327,24 +343,25 @@
   .reg{padding-bottom:64px}
   .reg > .row.hdr{padding:18px 0 9px;border-bottom:1px solid var(--r1)}
   .reg .hc{margin:0;font:italic 400 15px/22px var(--text);color:var(--muted)}
-  .reg .hc.hr{text-align:left}
+  .reg .hc.hr{text-align:right}
+  .reg .hdr .rail{color:var(--muted)}
   .reg dd{margin:0;font-size:17px;line-height:27px;color:var(--ink-soft);max-width:var(--measure)}
-  .reg .ex{display:grid;grid-template-columns:104px auto 104px;justify-content:start;gap:0 10px;
+  .reg .ex{display:grid;grid-template-columns:104px 26px 104px;justify-content:end;gap:0;
            font-family:var(--mono);font-size:12.5px;line-height:27px;
            color:var(--ink);white-space:nowrap;max-width:none}
   .reg .ex .was{text-align:right;color:var(--muted)}
-  .reg .ex .ar{color:var(--muted);font-family:var(--text);font-size:16px;position:relative;top:-.06em}
+  .reg .ex .ar{color:var(--muted);font-family:var(--text);font-size:16px;position:relative;top:-.06em;text-align:center}
   .reg .ex .is{text-align:right;color:var(--ink)}
 
 
   /* ---------- the ask: cream, the form its only mass ---------- */
   .close{padding:84px 0 88px}
   .close h2{
-    font-family:var(--display);font-size:clamp(2.1rem,6.2vw,5.6rem);
+    font-family:var(--display);font-size:clamp(2.1rem,5.9vw,5.3rem);
     font-variation-settings:"opsz" 72;font-weight:400;
-    line-height:.96;letter-spacing:-.025em;word-spacing:-.05em;max-width:none;margin:0 0 0 -3px;
+    line-height:.98;letter-spacing:-.025em;word-spacing:-.05em;max-width:none;margin:0 0 0 -2px;
   }
-  .close form.snap{margin-top:44px;max-width:720px}
+  .close form.snap{margin-top:40px}
   .close .field{flex:1 1 auto}
 
 
@@ -381,6 +398,8 @@
     .ledger.wide div span:last-child{display:none}
     .chead{display:block}
     .key{white-space:normal;display:block;margin-top:12px}
+    .mast{display:flex}
+    .mast .links{margin-left:auto;padding-left:0}
     .band{grid-template-columns:1fr}
     .band > .a{padding:0 0 16px!important}
     .band > .b,.band > .c,.band > .bc{grid-column:auto;padding:0;border-left:0}
@@ -390,9 +409,8 @@
   }
   @media (max-width:620px){
     .wrap{padding:0 22px}
-    .mast{gap:14px;padding:26px 0 18px}
-    .mast .links{display:none}
-    .login{margin-left:auto;padding-left:0;border-left:0}
+    .mast{padding:26px 0 18px}
+    .mast .toc{display:none}
     .headline{padding:32px 0 26px}
     h1{font-size:clamp(2.1rem,9.2vw,2.75rem);line-height:1;letter-spacing:-.018em;word-spacing:normal}
     .deck{font-size:18px;line-height:28px}
@@ -413,12 +431,12 @@
 
   <header class="mast">
     <a class="wordmark" href="/">PriceDrift</a>
-    <div class="links">
-      <a href="#alert">Sample alert</a>
-      <a href="#tracked">All changes</a>
-      <a href="#start">Start</a>
-    </div>
-    <a class="login" href="/dashboard.html">Log in</a>
+    <nav class="links" aria-label="Sections">
+      <a class="toc" href="#cases">Undercut</a>
+      <a class="toc" href="#tracked">All changes</a>
+      <a class="login" href="/dashboard.html">Log in</a>
+      <a class="start" href="#start">Start</a>
+    </nav>
   </header>
   <hr class="r0">
 
@@ -429,14 +447,16 @@
       <span class="l o">six hours after it happens.</span>
     </h1>
   </section>
+  <hr class="r1">
 
   <div class="ruled">
   <section class="band hero" id="alert">
-    <div class="a"></div>
+    <div class="a"><p class="rail"><span class="no">01</span>Overview</p></div>
     <div class="b">
       <p class="deck">Paste any Shopify store URL and get the whole catalogue in seconds: prices, discounts, what’s sold out. Then an email every time any of it moves.</p>
       <p class="body">We read only what any shopper can see. The first snapshot is free; alerts are $9 a month.</p>
       <!-- wire action/name to your snapshot endpoint -->
+      <p class="offer lead">Snapshot now. First alert within six hours.</p>
       <form class="snap" action="/snapshot" method="get">
         <label class="field">
           <span class="sr">Competitor store URL</span>
@@ -444,11 +464,10 @@
         </label>
         <button class="cta" type="submit">Get a snapshot</button>
       </form>
-
     </div>
     <div class="c">
       <div class="spec" aria-label="Example alert email">
-        <p class="hd">From PriceDrift · kindred-beauty.com · 09:14<b>4 changes at Kindred Beauty</b></p>
+        <div class="hd"><p class="meta">From PriceDrift · kindred-beauty.com · 09:14</p><p class="subj">3 changes at Kindred Beauty</p></div>
         <div class="body-rows">
         <div class="ev">
           <span class="k">Price cut</span>
@@ -458,17 +477,12 @@
         <div class="ev">
           <span class="k">New product</span>
           <span class="v">Winter Set</span>
-          <span class="n">listed at $48.00, 4 variants</span>
+          <span class="n"><span class="old">none →</span> $48.00 &nbsp;4 variants</span>
         </div>
         <div class="ev">
           <span class="k">Price up</span>
           <span class="v">Brow Pencil · Ash</span>
           <span class="n"><span class="old">$18.00 →</span> $21.00 &nbsp;<span class="u">+16.7%</span></span>
-        </div>
-        <div class="ev">
-          <span class="k">Sold out</span>
-          <span class="v">Eyeliner Jet</span>
-          <span class="n">0 of 3 variants</span>
         </div>
         </div>
       </div>
@@ -482,15 +496,16 @@
 <div class="wrap">
   <div class="ruled">
   <div class="band arg one" id="cases">
-    <div class="a"><p class="rail">Price cut</p></div>
+    <div class="a"><p class="rail"><span class="no">02</span>Undercut</p></div>
     <div class="b">
       <h3>You’re being undercut.</h3>
       <p>Northbound took a quarter off the Merino Crew overnight. Your ads are still bidding against the old price.</p>
+      <div class="conseq"><span>Your price $84.00</span><span>Gap $18.00</span><span>Your ads live: 3</span></div>
     </div>
     <div class="c fig">
       <div class="pair">
         <span class="pwas"><span class="sr">was </span>$88.00</span>
-        <span class="pnow"><span class="sr">now </span>$66.00</span>
+        <span class="pnow"><span class="sr">now </span><span class="cur">$</span>66<span class="cts">.00</span></span>
         <span class="pdel">−25%</span>
       </div>
       <span class="cap">Northbound · Merino Crew, seen 06:41</span>
@@ -499,13 +514,13 @@
   <hr class="r1">
 
   <section class="band sect spec-sect" id="tracked">
-    <div class="a"></div>
+    <div class="a"><p class="rail"><span class="no">03</span>All changes</p></div>
     <div class="bc"><h2>Eight things we watch.</h2></div>
   </section>
 
   <dl class="reg">
     <div class="band row hdr" aria-hidden="true">
-      <dt class="a"><p class="rail">Every change</p></dt>
+      <dt class="a"><p class="rail">Change</p></dt>
       <dd class="b"><p class="hc">What triggers it</p></dd>
       <dd class="c"><p class="hc hr">Example</p></dd>
     </div>
@@ -555,8 +570,10 @@
 
 <section class="inv">
 <div class="wrap">
-  <section class="close" id="start">
-    <div>
+  <div class="ruled">
+  <section class="band close" id="start">
+    <div class="a"><p class="rail"><span class="no">04</span>Start</p></div>
+    <div class="bc">
     <h2>Paste a URL.<br>Read the whole catalogue.</h2>
     <form class="snap" action="/snapshot" method="get">
       <label class="field">
@@ -565,9 +582,10 @@
       </label>
       <button class="cta" type="submit">Get a snapshot</button>
     </form>
-    <p class="offer">Your first email arrives within six hours.</p>
+    <p class="offer">Snapshot now. First alert within six hours.</p>
     </div>
   </section>
+  </div>
   <hr class="r1">
 
   <footer>
