@@ -73,7 +73,7 @@
   .rail.log{font:400 12.5px/19px var(--mono);letter-spacing:0;color:var(--ink-soft);position:relative;text-align:right}
   .band > .a{padding-right:20px}
   .rail.log span{display:block;white-space:nowrap}
-  .rail.log span:first-child{font-size:28px;line-height:32px;letter-spacing:-.02em;color:var(--ink);
+  .rail.log span:first-child{font-size:23px;line-height:30px;font-weight:500;letter-spacing:-.01em;color:var(--ink);
                              font-feature-settings:"tnum" 1}
   /* each sweep is a dot on the vertical rule, level with its time */
   .rail.log::after{content:"";position:absolute;top:11.5px;right:-24.5px;width:9px;height:9px;border-radius:50%;background:var(--ink)}
@@ -84,9 +84,14 @@
             color:var(--ink);margin:0 0 9px}
 
 
-  .reg .hc,.reg .hx,.spec .k,.spec .hd span,.close .nl,.figs .who,.rail.log span + span{font:400 11px/16px var(--mono);letter-spacing:.05em;text-transform:uppercase;color:#5C584C}
+  .reg .hc,.reg .hx,.spec .k,.spec .hd span,.close .nl,.figs .who,.rail.log span + span{font:400 12px/16px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:#5C584C}
 
+  #clock .clock-now{font:400 12px/16px var(--mono);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
   /* ---------- masthead ---------- */
+  /* the mark: each letter of Drift steps a little further off the baseline */
+  .wordmark .wd span{position:relative;display:inline-block}
+  .wordmark .wd span:nth-child(2){top:.025em} .wordmark .wd span:nth-child(3){top:.05em}
+  .wordmark .wd span:nth-child(4){top:.075em} .wordmark .wd span:nth-child(5){top:.1em}
   .mast{display:grid;align-items:baseline;padding:34px 0 22px;
         grid-template-columns:minmax(0,var(--zA)) minmax(0,var(--zB)) minmax(0,var(--zC))}
   .wordmark{
@@ -101,8 +106,8 @@
   .mast .login{color:var(--ink-soft);text-decoration:none;white-space:nowrap}
   .mast .login:hover{text-decoration:underline;text-underline-offset:3px}
   .mast .start{color:var(--ink);font-weight:500;text-decoration:none;white-space:nowrap;
-               background:var(--ink);color:var(--cream);padding:8px 16px 7px}
-  .mast .links a.start:hover{background:#000;color:var(--cream)}
+               background:transparent;color:var(--ink);border:1px solid var(--ink);padding:7px 15px 6px}
+  .mast .links a.start:hover{background:var(--ink);color:var(--cream)}
 
   /* ---------- headline ---------- */
   .headline{padding:98px 0 92px;position:relative}
@@ -170,9 +175,9 @@
   /* the alert, set as a typographic specimen rather than a UI mockup */
   .spec{font-family:var(--mono);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
   .spec .hd{padding:12px 0 12px;border-bottom:1px solid var(--r2)}
-  .spec .hd .meta{margin:0;font:400 15px/19px var(--text);letter-spacing:0;color:var(--ink-soft)}
+  .spec .hd .meta{margin:0;font:400 17px/22px var(--text);letter-spacing:0;color:var(--ink-soft)}
   .spec .hd span{display:inline-block;width:84px}
-  .spec .hd .subj{margin:6px 0 0;font:400 21px/27px var(--text);color:var(--ink)}
+  .spec .hd .subj{margin:8px 0 0;font:400 17px/22px var(--text);color:var(--ink)}
   .spec .body-rows{padding:0}
   .spec .ev{padding:10px 0 10px;border-top:1px solid var(--r2)}
   .spec .ev:first-child{border-top:0}
@@ -182,6 +187,7 @@
   .spec .v{font-family:var(--text);font-size:17px;line-height:22px;color:var(--ink);display:block}
   .spec .n{display:block;font-size:16px;line-height:22px;color:var(--ink);margin-top:0}
   .spec .n .d{color:var(--red)}
+  .spec .n .up{color:var(--muted)}
   .spec .old{color:var(--muted)}
   s{text-decoration-thickness:1px}
   .spec .ar{font-family:var(--text);font-size:16px;color:var(--muted);position:relative;top:-.06em}
@@ -289,31 +295,31 @@
   /* the plot: $50 to $90. Each price sits on its own point; the ink span between them is the $18 */
   .arg.one .plot{grid-row:2;align-self:start;margin-top:40px}
   .figs{display:grid;align-items:last baseline}
-  /* each figure carries its own label, flush to its $; the pair shares one baseline */
-  .figs .fig{grid-area:1/1;justify-self:start;display:flex;flex-direction:column;align-items:flex-start;transform:translateX(-50%)}
-  .figs .fig.them{margin-left:40%}
-  .figs .fig.you{margin-left:85%}
-  .figs .fig.them .big{font-size:clamp(3.4rem,15.28vw,13.75rem)}
+  /* the figures sit on the page's two content lines; the dots carry the value */
+  .figs .fig{grid-area:1/1;justify-self:start;display:flex;flex-direction:column;align-items:flex-start}
+  .figs .fig.them{margin-left:-.02em}
+  .figs .fig.you{margin-left:calc((100% + var(--gut)) * 6 / 10.4)}
+  .figs .fig.them .big{font-size:clamp(3.4rem,15.28vw,13.75rem);color:var(--red)}   /* the competitor's new price is the one red figure */
   .figs .fig.you .big{font-size:clamp(2.2rem,6.67vw,6rem)}
   .figs .big{margin:0}
   .figs .who{white-space:nowrap;margin-bottom:4px}
-  .figs .fig.them .who{margin-bottom:calc(clamp(3.4rem,15.28vw,13.75rem) * .11)}   /* clear of the 6's ascending bowl */
-  /* the axis runs 24px under the shared baseline */
-  .ax{position:relative;height:1px;background:var(--ink);margin:calc(30px - clamp(3.4rem,15.28vw,13.75rem) * .218) 0 70px}
+  .figs .fig.them .who{margin-bottom:calc(clamp(3.4rem,15.28vw,13.75rem) * .11)}
+  /* the axis runs 48px under the shared baseline */
+  .ax{position:relative;height:1px;background:var(--ink);margin:calc(48px - clamp(3.4rem,15.28vw,13.75rem) * .218) 0 40px}
   .ax .tk{position:absolute;top:0;width:1px;height:8px;margin-left:-.5px;background:var(--ink)}
   .ax .tk b{position:absolute;top:13px;left:0;transform:translateX(-50%);font:400 12px/16px var(--mono);color:var(--muted)}
   .ax .tk:first-child b{transform:none}
   .ax .tk:nth-child(5) b{transform:translateX(-100%)}
-  .ax .gap{position:absolute;top:-1px;height:3px;background:var(--red)}
-  .ax .gap .dl{position:absolute;bottom:9px;left:50%;transform:translateX(-50%);font:400 14px/16px var(--mono);color:var(--red);white-space:nowrap}
-  .ax .pt.was{width:7px;height:7px;background:var(--cream);box-shadow:inset 0 0 0 1px var(--muted)}
-  /* the drift: $88 down to $66, under the scale */
-  .ax .mv{position:absolute;top:40px;height:1px;background:var(--red)}
-  .ax .mv::before{content:"";position:absolute;left:-1px;top:-3px;border:3.5px solid transparent;border-left:0;border-right:6px solid var(--red)}
-  .ax .mv::after{content:"";position:absolute;right:0;bottom:0;width:1px;height:36px;background:var(--red)}
-  .ax .mv i{position:absolute;right:0;top:6px;font:400 12px/16px var(--mono);font-style:normal;color:var(--red);white-space:nowrap}
+  /* red is the cut and only the cut: $88 down to $66 */
+  .ax .cut{position:absolute;top:-1px;height:3px;background:var(--red)}
+  /* the gap is a measurement, so it is drawn in ink */
+  .ax .br{position:absolute;top:-17px;height:9px;border:1px solid var(--ink);border-bottom:0}
+  .ax .br .dl{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);padding-bottom:5px;font:400 13px/16px var(--mono);color:var(--ink);white-space:nowrap}
   .ax .pt{position:absolute;top:0;width:11px;height:11px;border-radius:50%;transform:translate(-50%,-50%);background:var(--ink)}
   .ax .pt.them{background:var(--red)}
+  .ax .pt.was{width:9px;height:9px;background:var(--cream);box-shadow:inset 0 0 0 1.5px var(--red)}
+  .ax .pt.was i{position:absolute;bottom:15px;right:-4px;font:400 12px/16px var(--mono);font-style:normal;color:var(--muted);white-space:nowrap}
+  .ax .pt.was em{font-style:normal;color:var(--red)}
   /* row two of the set piece: both rules on one y */
   .arg .row2{align-self:start;margin-top:28px}
   .arg .row2.b{grid-column:2}
@@ -413,11 +419,15 @@
   /* ---------- the register ---------- */
   .reg{margin:0}
   /* rules start at the spine, so the rail keeps meaning time */
-  .reg > .row{padding:5px 0 4px;position:relative}
+  .reg > .row{padding:2px 0 1px;position:relative}
+  .reg > .row.grp{padding-top:9px}   /* a new store opens a little air */
   .reg > .row::after{content:"";position:absolute;left:calc(12.23629% + var(--gut));right:0;bottom:0;height:1px;background:var(--r2)}
   .reg > .row:last-child::after,.reg > .row.hdr::after{background:var(--r1)}
-  .reg .nm{grid-column:2;grid-row:1;padding-left:var(--gut);margin:0;font:400 17px/26px var(--text);color:var(--ink)}
-  .reg .ds{grid-column:2;grid-row:1;padding-left:calc(var(--gut) + 146px);margin:0;
+  .reg .nm{grid-column:2;grid-row:1;padding-left:var(--gut);margin:0;font:400 12.5px/26px var(--mono);color:var(--ink)}
+  .reg .ds .pr{display:inline-block;width:190px;color:var(--ink)}
+  .reg .ds .ch{color:var(--ink-soft)}
+  .reg .hc .pr{width:190px;display:inline-block}
+  .reg .ds{grid-column:2;grid-row:1;padding-left:calc(var(--gut) + 162px);margin:0;
            font:400 15px/26px var(--text);color:var(--ink-soft)}
   .reg dd.c{grid-column:3;grid-row:1}
   .reg .ds code{font:400 12px/26px var(--mono);color:var(--ink-soft)}
@@ -433,12 +443,13 @@
     .reg .ex.hx .was,.reg .ex.hx .is{color:var(--muted)}
   .reg .hdr .rail{color:var(--muted);font:400 11px/22px var(--mono)}
   .reg dd{margin:0;max-width:none}
-  .reg .ex{display:grid;grid-template-columns:80px 40px minmax(0,1fr) 64px;gap:0;
+  .reg .ex{display:grid;grid-template-columns:96px minmax(0,1fr) 64px;gap:0;
            font-family:var(--mono);font-size:12.5px;line-height:27px;
            color:var(--ink);white-space:nowrap;max-width:none}
   .reg .ex .was{text-align:left;color:var(--muted)}
   .reg .ex .ar{color:var(--muted);font-family:var(--text);font-size:16px;position:relative;top:-.06em;text-align:center}
   .reg .ex .is{text-align:left;color:var(--ink)}
+  .reg .ex .is i{font-style:normal;font-family:var(--text);color:var(--muted);margin-right:10px}
   .reg .ex .dt{text-align:right;color:var(--ink)}
   .reg .ex .dt.down{color:var(--red)}
   .reg .ex.hx .dt{color:var(--muted)}
@@ -466,6 +477,7 @@
   .close .nc{margin:0;font-family:var(--display);font-variation-settings:"opsz" 72;font-feature-settings:"lnum" 1,"tnum" 1;
             font-size:clamp(2.2rem,5vw,4.5rem);line-height:.98;letter-spacing:-.025em}
   .inv .close .nc{color:#F6F2E8}
+  .close .nc .u{font:400 20px/1 var(--mono);letter-spacing:.02em;margin-left:.12em;color:#A8A497}
   .inv .rail.log span + span,.inv .close .nl{color:#A8A497}
   .close .field{flex:1 1 auto}
 
@@ -505,7 +517,7 @@
     .rail.log{text-align:left}
     .arg.one .top,.arg.one .plot{grid-row:auto}
     .arg.one .plot{margin-top:40px}
-    .ax .tk.mi b{display:none}
+    .ax .tk.mi b,.ax .pt.was i{display:none}
     .hero > .b,.hero > .c{margin-top:24px}
     .close .nx{grid-row:auto;grid-column:auto;justify-self:start;text-align:left;margin-top:28px}
     .close > .b,.close > .bc{grid-row:auto}
@@ -556,7 +568,7 @@
 <div class="wrap">
 
   <header class="mast">
-    <a class="wordmark" href="/">PriceDrift</a>
+    <a class="wordmark" href="/">Price<span class="wd"><span>D</span><span>r</span><span>i</span><span>f</span><span>t</span></span></a>
     <nav class="links" aria-label="Sections">
       <a class="toc" href="#cases">Example sweep</a>
       <a class="login" href="/dashboard.html">Log in</a>
@@ -599,7 +611,7 @@
         <div class="ev">
           <span class="k">Price up</span>
           <span class="v">Brow Pencil · Ash</span>
-          <span class="n"><s class="old">$18.00</s> <span class="ar">→</span> $21.00 &nbsp;<span class="u">+16.7%</span></span>
+          <span class="n"><s class="old">$18.00</s> <span class="ar">→</span> $21.00 &nbsp;<span class="up">+16.7%</span></span>
         </div>
         </div>
       </div>
@@ -627,9 +639,9 @@
         <span class="tk" style="left:50%"><b>70</b></span>
         <span class="tk" style="left:75%"><b>80</b></span>
         <span class="tk" style="left:100%"><b>$90</b></span>
-        <span class="gap" style="left:40%;width:45%"><span class="dl">−$18.00</span></span>
-        <span class="mv" style="left:40%;width:55%"><i>was $88.00, −25%</i></span>
-        <span class="pt was" style="left:95%"></span>
+        <span class="cut" style="left:40%;width:55%"></span>
+        <span class="br" style="left:40%;width:45%"><span class="dl">$18.00 above them</span></span>
+        <span class="pt was" style="left:95%"><i>was $88.00 <em>−25%</em></i></span>
         <span class="pt them" style="left:40%"></span>
         <span class="pt you" style="left:85%"></span>
       </div>
@@ -638,55 +650,60 @@
   <hr class="r1">
 
   <section class="band sect spec-sect" id="tracked">
-    <div class="a"><p class="rail log"><span>15:14</span><span>8 changes</span></p></div>
+    <div class="a"><p class="rail log"><span>15:14</span><span>9 changes</span></p></div>
     <div class="bc"><h2>What one sweep caught.</h2></div>
   </section>
 
   <dl class="reg">
     <div class="band row hdr" aria-hidden="true">
-      <dt class="nm"><p class="hc">Change</p></dt>
-      <dd class="ds"><p class="hc"><span class="st">Store</span>Product</p></dd>
-      <dd class="c"><span class="ex hx"><span class="was">Before</span><span class="ar"></span><span class="is">After</span><span class="dt">Move</span></span></dd>
+      <dt class="nm"><p class="hc">Store</p></dt>
+      <dd class="ds"><p class="hc"><span class="pr">Product</span>Change</p></dd>
+      <dd class="c"><span class="ex hx"><span class="was">Before</span><span class="is">After</span><span class="dt">Move</span></span></dd>
+    </div>
+    <div class="band row grp">
+      <dt class="nm">kindred-beauty.com</dt>
+      <dd class="ds"><span class="pr">Brow Pencil · Ash</span><span class="ch">Price up</span></dd>
+      <dd class="c"><span class="ex"><span class="was">$18.00</span><span class="is"><i>→</i>$21.00</span><span class="dt">+16.7%</span></span></dd>
     </div>
     <div class="band row">
-      <dt class="nm">Price cut</dt>
-      <dd class="ds"><span class="st">northbound.co</span>Merino Crew</dd>
-      <dd class="c"><span class="ex"><span class="was"><s>$88.00</s></span><span class="ar">→</span><span class="is down">$66.00</span><span class="dt down">−25.0%</span></span></dd>
+      <dt class="nm"><span class="sr">same store</span></dt>
+      <dd class="ds"><span class="pr">Lip Oil</span><span class="ch">New product</span></dd>
+      <dd class="c"><span class="ex"><span class="was">none</span><span class="is"><i>→</i>4 variants</span><span class="dt"></span></span></dd>
     </div>
     <div class="band row">
-      <dt class="nm">Price up</dt>
-      <dd class="ds"><span class="st">kindred-beauty.com</span>Brow Pencil · Ash</dd>
-      <dd class="c"><span class="ex"><span class="was"><s>$18.00</s></span><span class="ar">→</span><span class="is">$21.00</span><span class="dt">+16.7%</span></span></dd>
+      <dt class="nm"><span class="sr">same store</span></dt>
+      <dd class="ds"><span class="pr">Matte Lip Kit · Plum</span><span class="ch">Back in stock</span></dd>
+      <dd class="c"><span class="ex"><span class="was">0 of 3</span><span class="is"><i>→</i>2 of 3</span><span class="dt"></span></span></dd>
+    </div>
+    <div class="band row grp">
+      <dt class="nm">northbound.co</dt>
+      <dd class="ds"><span class="pr">Merino Crew</span><span class="ch">Price cut</span></dd>
+      <dd class="c"><span class="ex"><span class="was">$88.00</span><span class="is down"><i>→</i>$66.00</span><span class="dt down">−25.0%</span></span></dd>
     </div>
     <div class="band row">
-      <dt class="nm">Sale started</dt>
-      <dd class="ds"><span class="st">oakandhide.co</span>Weekender</dd>
-      <dd class="c"><span class="ex"><span class="was"><s>$240.00</s></span><span class="ar">→</span><span class="is down">$204.00</span><span class="dt down">−15.0%</span></span></dd>
+      <dt class="nm"><span class="sr">same store</span></dt>
+      <dd class="ds"><span class="pr">Rain Shell</span><span class="ch">Sale ended</span></dd>
+      <dd class="c"><span class="ex"><span class="was">$119.00</span><span class="is"><i>→</i>$148.00</span><span class="dt">+24.4%</span></span></dd>
     </div>
     <div class="band row">
-      <dt class="nm">Sale ended</dt>
-      <dd class="ds"><span class="st">northbound.co</span>Rain Shell</dd>
-      <dd class="c"><span class="ex"><span class="was"><s>$119.00</s></span><span class="ar">→</span><span class="is">$148.00</span><span class="dt">+24.4%</span></span></dd>
+      <dt class="nm"><span class="sr">same store</span></dt>
+      <dd class="ds"><span class="pr">Field Cap</span><span class="ch">Price up</span></dd>
+      <dd class="c"><span class="ex"><span class="was">$34.00</span><span class="is"><i>→</i>$34.70</span><span class="dt">+2.1%</span></span></dd>
     </div>
     <div class="band row">
-      <dt class="nm">New product</dt>
-      <dd class="ds"><span class="st">kindred-beauty.com</span>Lip Oil</dd>
-      <dd class="c"><span class="ex"><span class="was">none</span><span class="ar">→</span><span class="is">4 variants</span><span class="dt">—</span></span></dd>
+      <dt class="nm"><span class="sr">same store</span></dt>
+      <dd class="ds"><span class="pr">Trail Sock · M</span><span class="ch">Sold out</span></dd>
+      <dd class="c"><span class="ex"><span class="was">3 of 3</span><span class="is"><i>→</i>0 of 3</span><span class="dt"></span></span></dd>
+    </div>
+    <div class="band row grp">
+      <dt class="nm">oakandhide.co</dt>
+      <dd class="ds"><span class="pr">Weekender</span><span class="ch">Sale started</span></dd>
+      <dd class="c"><span class="ex"><span class="was">$240.00</span><span class="is down"><i>→</i>$204.00</span><span class="dt down">−15.0%</span></span></dd>
     </div>
     <div class="band row">
-      <dt class="nm">Removed</dt>
-      <dd class="ds"><span class="st">oakandhide.co</span>Card Holder</dd>
-      <dd class="c"><span class="ex"><span class="was">listed</span><span class="ar">→</span><span class="is">removed</span><span class="dt">—</span></span></dd>
-    </div>
-    <div class="band row">
-      <dt class="nm">Sold out</dt>
-      <dd class="ds"><span class="st">northbound.co</span>Trail Sock · M</dd>
-      <dd class="c"><span class="ex"><span class="was">3 of 3</span><span class="ar">→</span><span class="is">0 of 3</span><span class="dt">—</span></span></dd>
-    </div>
-    <div class="band row">
-      <dt class="nm">Back in stock</dt>
-      <dd class="ds"><span class="st">kindred-beauty.com</span>Matte Lip Kit · Plum</dd>
-      <dd class="c"><span class="ex"><span class="was">0 of 3</span><span class="ar">→</span><span class="is">2 of 3</span><span class="dt">—</span></span></dd>
+      <dt class="nm"><span class="sr">same store</span></dt>
+      <dd class="ds"><span class="pr">Card Holder</span><span class="ch">Removed</span></dd>
+      <dd class="c"><span class="ex"><span class="was">listed</span><span class="is"><i>→</i>removed</span><span class="dt"></span></span></dd>
     </div>
   </dl>
   <p class="band regkey"><span class="bc">Every sweep compares each variant’s price, sale price and stock with the sweep before.</span></p>
@@ -717,7 +734,7 @@
 
   <footer>
     <div class="band sig">
-      <div class="a"><span class="wordmark">PriceDrift</span></div>
+      <div class="a"><span class="wordmark">Price<span class="wd"><span>D</span><span>r</span><span>i</span><span>f</span><span>t</span></span></span></div>
       <div class="b"><p class="status">Sweeps at <span class="t">03:14</span>, <span class="t">09:14</span>, <span class="t">15:14</span> and <span class="t">21:14</span> UTC</p></div>
       <div class="c"><p class="meta"><a href="#privacy">Privacy</a><a href="#terms">Terms</a></p></div>
     </div>
@@ -733,12 +750,42 @@
     var now=new Date(), m=now.getUTCHours()*60+now.getUTCMinutes(), best=null, when=null;
     [194,554,914,1274].forEach(function(t){ var d=(t-m+1440)%1440 || 1440; if(best===null||d<best){ best=d; when=t; } });
     var h=Math.floor(best/60), mn=best%60;
-    el.textContent=h ? h+' h '+('0'+mn).slice(-2)+' min' : mn+' min';
+    el.innerHTML=h ? h+'<span class="u">h</span> '+('0'+mn).slice(-2)+'<span class="u">min</span>' : mn+'<span class="u">min</span>';
     if(at) at.textContent=('0'+Math.floor(when/60)).slice(-2)+':'+('0'+when%60).slice(-2);
   }
   tick(); setInterval(tick,30000);
 })();
 </script>
 
+<script>
+/* the spine as a clock: six hour ticks between sweeps, and a live "now" on the line with the wait to the next sweep drawn in */
+(function(){
+  function draw(){
+    var old=document.getElementById('clock'); if(old) old.remove();
+    if(innerWidth<=900) return;
+    var rails=[].slice.call(document.querySelectorAll('.rail.log')); if(rails.length<4) return;
+    var col=rails[0].parentNode.getBoundingClientRect(), x=col.right+scrollX;
+    var ys=rails.map(function(r){ var b=r.getBoundingClientRect(); return b.top+scrollY+16; });
+    var end=document.querySelector('.inv hr.r1'); ys.push(end.getBoundingClientRect().top+scrollY);
+    var inv=document.querySelector('section.inv').getBoundingClientRect().top+scrollY;
+    var box=document.createElement('div'); box.id='clock'; box.setAttribute('aria-hidden','true');
+    function el(css,cls){ var d=document.createElement('span'); d.className=cls||''; d.style.cssText='position:absolute;'+css; box.appendChild(d); return d; }
+    for(var i=0;i<4;i++) for(var k=1;k<6;k++){
+      var y=ys[i]+(ys[i+1]-ys[i])*k/6;
+      el('left:'+(x-5)+'px;top:'+Math.round(y)+'px;width:5px;height:1px;background:'+(y>inv?'#6B685E':'#A9A596'));
+    }
+    var now=new Date(), m=now.getUTCHours()*60+now.getUTCMinutes(), d=(m-194+1440)%1440, seg=Math.floor(d/360), f=(d%360)/360;
+    var yn=ys[seg]+(ys[seg+1]-ys[seg])*f, dark=yn>inv, ink=dark?'#E8E3D6':'#1A1A17';
+    el('left:'+(x-1)+'px;top:'+Math.round(yn)+'px;width:3px;height:'+Math.max(0,Math.round(ys[seg+1]-yn))+'px;background:'+ink);
+    el('left:'+(x-9)+'px;top:'+Math.round(yn)+'px;width:18px;height:1px;background:'+ink);
+    var t=el('right:'+(document.documentElement.clientWidth-x+16)+'px;top:'+Math.round(yn-8)+'px;color:'+(dark?'#A8A497':'#5C584C'),'clock-now');
+    t.textContent='now '+('0'+now.getUTCHours()).slice(-2)+':'+('0'+now.getUTCMinutes()).slice(-2);
+    document.body.appendChild(box);
+  }
+  addEventListener('load',draw); addEventListener('resize',draw);
+  if(document.fonts) document.fonts.ready.then(draw);
+  setInterval(draw,30000);
+})();
+</script>
 </body>
 </html>
