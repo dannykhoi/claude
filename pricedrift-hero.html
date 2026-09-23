@@ -86,9 +86,9 @@
 
   .reg .hc,.reg .hx,.spec .k,.spec .hd span,.close .nl{font:400 12px/16px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:#5C584C}
   .rail.log span + span{font:400 12.5px/17px var(--mono);letter-spacing:0;color:#5C584C}
-  .figs .who{font:italic 400 17px/24px var(--text);color:var(--ink-soft)}
+  .figs .who{font:400 17px/24px var(--text);color:var(--ink-soft)}
 
-  #clock .clock-now{font:400 12px/16px var(--mono);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+  #clock .clock-now{font:400 12.5px/17px var(--mono);letter-spacing:0;white-space:nowrap}
   /* ---------- masthead ---------- */
   /* the mark: each letter of Drift steps a little further off the baseline */
   .wordmark .wd span{position:relative;display:inline-block}
@@ -119,11 +119,12 @@
   .dateline span{display:block}
   h1{
     font-family:var(--display);font-weight:400;font-variation-settings:"opsz" 72;
-    font-size:clamp(2.4rem,7.0069vw,6.3063rem);
+    font-size:clamp(2.4rem,7.1806vw,6.4625rem);
     line-height:.98;letter-spacing:-.025em;word-spacing:-.02em;
     margin:0 0 0 -2px;
   }
   h1 .l{display:block}
+  @media (min-width:1081px){ h1 .l{white-space:nowrap} h1 .hang{margin-right:-.25em} }   /* the comma hangs past the margin */
   .hb{display:none}
   @media (min-width:1081px){.hb{display:inline}}
   /* measured per line: flat stems on the margin, round forms overhanging */
@@ -132,7 +133,7 @@
   h1 .o{margin-left:-3px}
 
   /* ---------- hero ---------- */
-  .hero{padding:98px 0 84px}
+  .hero{padding:98px 0 64px}
   .hero > .b{margin-top:46px}
   .hero > .c{margin-top:55px}
   /* the card hangs from the deck's cap line; the form's bottom rule meets the card's */
@@ -176,16 +177,15 @@
   /* ---------- the specimen ---------- */
   /* the alert, set as a typographic specimen rather than a UI mockup */
   .spec{font-family:var(--mono);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
-  .spec .hd{padding:12px 0 12px;border-bottom:1px solid var(--r2)}
+  .spec .hd{padding:12px 0 13px;border-bottom:1px solid var(--ink)}
   .spec .hd .meta{margin:0;font:400 17px/22px var(--text);letter-spacing:0;color:var(--ink-soft)}
   .spec .hd span{display:inline-block;width:84px}
-  .spec .hd .subj{margin:12px 0 0;font:400 17px/22px var(--text);color:var(--ink)}
+  .spec .hd .subj{margin:6px 0 0;font:400 17px/22px var(--text);color:var(--ink)}
   .spec .body-rows{padding:0}
-  .spec .ev{padding:10px 0 10px;border-top:1px solid var(--r2)}
+  .spec .ev{padding:12px 0 13px;border-top:1px solid var(--r2)}
   .spec .ev:first-child{border-top:0}
-  .spec .ev{display:grid;grid-template-columns:84px minmax(0,1fr);align-items:baseline}
-  .spec .k{grid-column:1}
-  .spec .v,.spec .n{grid-column:2}
+  .spec .k{display:block;margin-bottom:3px;color:var(--muted)}
+  .spec .k.cut{color:var(--red)}
   .spec .v{font-family:var(--text);font-size:17px;line-height:22px;color:var(--ink);display:block}
   .spec .n{display:block;font-size:16px;line-height:22px;color:var(--ink);margin-top:0}
   .spec .n .d{color:var(--red)}
@@ -227,7 +227,7 @@
   .arg p.conseq{font:400 12.5px/20px var(--mono);color:var(--ink-soft);margin:14px 0 0}
 
   .arg{padding:44px 0 43.5px}
-  .arg.one{padding:97.5px 0 87.5px}
+  .arg.one{padding:101.5px 0 90.5px}
   /* the evidence column hangs from the top line; the rail keeps the headline baseline */
   .arg > .c{align-self:start}
   .two .ledger div{grid-template-columns:1fr auto}
@@ -298,32 +298,33 @@
   .arg.one .plot{grid-row:2;align-self:start;margin-top:40px}
   .figs{display:grid;align-items:last baseline}
   /* the figures sit on the page's two content lines; the dots carry the value */
-  .figs .fig{grid-area:1/1;justify-self:start;display:flex;flex-direction:column;align-items:flex-start}
-  .figs .fig.them{margin-left:-.02em}
-  .figs .fig.you{margin-left:calc((100% + var(--gut)) * 6 / 10.4)}
+  /* each figure's $ stands on its own dot */
+  .figs .fig{grid-area:1/1;justify-self:start;display:flex;flex-direction:column;align-items:flex-start;margin-left:0}
+  .figs .fig .big{margin-left:-.03em}
+  .figs .fig.them{margin-left:20%}
+  .figs .fig.you{margin-left:80%}
   .figs .fig.them .big{font-size:clamp(3.4rem,15.28vw,13.75rem);color:var(--red)}   /* the competitor's new price is the one red figure */
   .figs .fig.you .big{font-size:clamp(2.2rem,6.67vw,6rem)}
   .figs .big{margin:0}
   .figs .who{white-space:nowrap;margin-bottom:4px}
   .figs .fig.them .who{margin-bottom:calc(clamp(3.4rem,15.28vw,13.75rem) * .11)}
   /* the axis runs 48px under the shared baseline */
-  .ax{position:relative;height:1px;background:var(--ink);margin:calc(56px - clamp(3.4rem,15.28vw,13.75rem) * .218) 0 78px}
+  .ax{position:relative;height:1px;background:var(--ink);margin:calc(64px - clamp(3.4rem,15.28vw,13.75rem) * .218) 0 72px}
   .ax .tk{position:absolute;top:0;width:1px;height:8px;margin-left:-.5px;background:var(--ink)}
   .ax .tk b{position:absolute;top:13px;left:0;transform:translateX(-50%);font:400 12px/16px var(--mono);color:var(--muted)}
   .ax .tk:first-child b{transform:none}
   .ax .tk:nth-child(5) b{transform:translateX(-100%)}
   /* red is the cut and only the cut: $88 down to $66 */
-  .ax .cut{position:absolute;top:-14px;height:1px;background:var(--red)}
-  .ax .cut::before{content:"";position:absolute;left:0;top:-3px;border:3.5px solid transparent;border-left:0;border-right:7px solid var(--red)}
-  .ax .cut::after{content:"";position:absolute;right:0;top:0;width:1px;height:14px;background:var(--red)}
+  .ax .cut{position:absolute;top:44px;height:1px;background:var(--red)}
+  .ax .cut::before{content:"";position:absolute;left:-1px;top:-3px;border:3.5px solid transparent;border-left:0;border-right:7px solid var(--red)}
+  .ax .cut::after{content:"";position:absolute;right:0;bottom:0;width:1px;height:40px;background:var(--red)}
+  .ax .cut i{position:absolute;left:14px;top:7px;font:400 12.5px/16px var(--mono);font-style:normal;color:var(--red);white-space:nowrap}
   /* the gap is a measurement, so it is drawn in ink */
-  .ax .br{position:absolute;top:36px;height:9px;border:1px solid var(--ink);border-top:0}
-  .ax .br .dl{position:absolute;top:100%;left:50%;transform:translateX(-50%);padding-top:8px;font:400 30px/34px var(--display);font-variation-settings:"opsz" 36;letter-spacing:-.01em;color:var(--ink);white-space:nowrap}
+  .ax .br{position:absolute;top:-18px;height:9px;border:1px solid var(--ink);border-bottom:0}
+  .ax .br .dl{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);padding-bottom:4px;font:400 20px/24px var(--mono);letter-spacing:-.01em;color:var(--red);white-space:nowrap}
   .ax .pt{position:absolute;top:0;width:11px;height:11px;border-radius:50%;transform:translate(-50%,-50%);background:var(--ink)}
   .ax .pt.them{background:var(--red)}
   .ax .pt.was{width:9px;height:9px;background:var(--cream);box-shadow:inset 0 0 0 1.5px var(--red)}
-  .ax .pt.was i{position:absolute;bottom:18px;right:16px;font:400 12px/16px var(--mono);font-style:normal;color:var(--muted);white-space:nowrap}
-  .ax .pt.was em{font-style:normal;color:var(--red)}
   /* row two of the set piece: both rules on one y */
   .arg .row2{align-self:start;margin-top:28px}
   .arg .row2.b{grid-column:2}
@@ -374,7 +375,7 @@
   .ledger.four div{grid-template-columns:minmax(0,1fr) 52px 72px}
   .ledger.four .t{color:var(--muted);text-align:right}
   .ledger.four .now{text-align:right}
-  .inv .ruled{background-image:linear-gradient(to right,#4A473F,#4A473F)}
+  .inv .ruled{background-image:none}   /* in the future the spine is only the dashed wait to 21:14 */
   .inv .rail{color:var(--d-text)}
   .inv .rail.log{color:#8E8A7C}
   .inv .rail.log span:first-child{color:var(--d-text)}
@@ -411,7 +412,7 @@
   .inv .note{color:#8E8A7C}
   /* the ask inverts with its ground: the field becomes the light mass */
   .inv .field input{background:transparent;border-color:rgba(232,227,214,.6);color:var(--d-text)}
-  .inv .field input::placeholder{color:#B4AFA2}
+  .inv .field input::placeholder{color:#8E8A7C}
   .inv button.cta{background:#FBF8F1;border-color:#FBF8F1;color:var(--d-bg)}
   .inv button.cta:hover{background:#FFFDF6;border-color:#FFFDF6}
   .inv .offer{color:var(--d-soft)}
@@ -431,9 +432,9 @@
   .reg > .row.hdr::after,.reg > .row:last-child::after{background:var(--r1)}
   .reg > .row.grp:not(.hdr + .row)::before{content:"";position:absolute;left:calc(12.23629% + var(--gut));right:0;top:-1px;height:1px;background:var(--r1)}   /* ink between stores */
   .reg .nm{grid-column:2;grid-row:1;padding-left:var(--gut);margin:0;font:400 12.5px/26px var(--mono);color:var(--muted)}
-  .reg .ds .pr{display:inline-block;width:190px;color:var(--ink)}
+  .reg .ds .pr{display:inline-block;width:220px;color:var(--ink)}
   .reg .ds .ch{color:var(--ink-soft)}
-  .reg .hc .pr{width:190px;display:inline-block}
+  .reg .hc .pr{width:220px;display:inline-block}
   .reg .ds{grid-column:2;grid-row:1;padding-left:calc(var(--gut) + 162px);margin:0;
            font:400 15px/26px var(--text);color:var(--ink-soft)}
   .reg dd.c{grid-column:3;grid-row:1}
@@ -450,7 +451,7 @@
     .reg .ex.hx .was,.reg .ex.hx .is{color:var(--muted)}
   .reg .hdr .rail{color:var(--muted);font:400 11px/22px var(--mono)}
   .reg dd{margin:0;max-width:none}
-  .reg .ex{display:grid;grid-template-columns:minmax(0,1fr) 36px 96px minmax(0,1fr);gap:0;
+  .reg .ex{display:grid;grid-template-columns:84px 104px minmax(0,1fr);gap:0;
            font-family:var(--mono);font-size:12.5px;line-height:27px;
            color:var(--ink);white-space:nowrap;max-width:none}
   .reg .ex .was{text-align:right;color:var(--muted)}
@@ -478,14 +479,15 @@
   .close > .b{grid-row:2;margin-top:36px}
   .close form.snap{margin-top:0}
   /* the countdown sits on the headline's last line, flush to the content edge */
-  .close .nx{grid-row:2;grid-column:3;align-self:start;justify-self:start;text-align:left;padding-left:var(--gut);margin-top:14px}
-  .close .nl{margin:0 0 4px;line-height:20px}
+  /* one line: the label and the wait share the input's text baseline */
+  .close .nx{grid-row:2;grid-column:3;align-self:start;justify-self:start;padding-left:var(--gut);margin-top:36px;display:flex;align-items:baseline;gap:14px;height:56px}
+  .close .nl{margin:0;line-height:20px}
   .inv .close .nl{color:var(--d-soft)}
   .close .nl .t{font:400 13px/24px var(--mono)}
   .close .nc{margin:0;font-family:var(--display);font-variation-settings:"opsz" 72;font-feature-settings:"lnum" 1,"tnum" 1;
-            font-size:clamp(2.2rem,5vw,4.5rem);line-height:.98;letter-spacing:-.025em}
+            font-size:44px;line-height:1;letter-spacing:-.02em}
   .inv .close .nc{color:#F6F2E8}
-  .close .nc .u{font-size:.4em;letter-spacing:0;margin:0 .1em 0 .06em;color:#C6C1B3}
+  .close .nc .u{font-size:.42em;letter-spacing:0;margin:0 0 0 .05em;color:#C6C1B3}
   .inv .rail.log span + span,.inv .close .nl{color:#A8A497}
   .close .field{flex:1 1 auto}
 
@@ -594,7 +596,7 @@
     <div class="bc hl">
       <h1>
         <span class="l l1">Every price change</span>
-        <span class="l l2">in a competitor’s store,</span>
+        <span class="l l2">in a competitor’s store<span class="hang">,</span></span>
         <span class="l o">within six hours.</span>
       </h1>
     </div>
@@ -615,7 +617,7 @@
         <div class="hd"><p class="meta"><span>From</span>PriceDrift, 03:14 UTC</p><p class="subj"><span>Subject</span>2 changes at kindred-beauty.com</p></div>
         <div class="body-rows">
         <div class="ev">
-          <span class="k">Price cut</span>
+          <span class="k cut">Price cut</span>
           <span class="v">Matte Lip Kit · Rosewood</span>
           <span class="n"><s class="old">$29.00</s> <span class="ar">→</span> $22.00 &nbsp;<span class="d">−24.1%</span></span>
         </div>
@@ -637,7 +639,7 @@
   <div class="ruled">
   <div class="band arg one" id="cases">
     <div class="a"><p class="rail log"><span>09:14</span><span>1 undercut</span></p></div>
-    <div class="b top"><h3>You’re being undercut.</h3></div>
+    <div class="b top"><h3>You’re $18 above them.</h3></div>
     <div class="c top"><p class="stand">Northbound took a quarter off the Merino Crew overnight. Your ads still bid against the old price.</p></div>
     <div class="bc plot" role="img" aria-label="Northbound now $66.00, down from $88.00. Yours $84.00. You are $18.00 higher.">
       <div class="figs" aria-hidden="true">
@@ -645,79 +647,78 @@
         <span class="fig you"><span class="who">Yours</span><span class="big"><span class="cur">$</span>84</span></span>
       </div>
       <div class="ax" aria-hidden="true">
-        <span class="tk" style="left:0"><b>$50</b></span>
-        <span class="tk" style="left:25%"><b>60</b></span>
-        <span class="tk" style="left:50%"><b>70</b></span>
-        <span class="tk" style="left:75%"><b>80</b></span>
+        <span class="tk" style="left:0"><b>$60</b></span>
+        <span class="tk" style="left:33.3333%"><b>70</b></span>
+        <span class="tk" style="left:66.6667%"><b>80</b></span>
         <span class="tk" style="left:100%"><b>$90</b></span>
-        <span class="cut" style="left:40%;width:55%"></span>
-        <span class="br" style="left:40%;width:45%"><span class="dl">You’re $18 above them</span></span>
-        <span class="pt was" style="left:95%"><i>was $88.00 <em>−25%</em></i></span>
-        <span class="pt them" style="left:40%"></span>
-        <span class="pt you" style="left:85%"></span>
+        <span class="br" style="left:20%;width:60%"><span class="dl">$18</span></span>
+        <span class="cut" style="left:20%;width:73.3333%"><i>was $88.00, −25% overnight</i></span>
+        <span class="pt was" style="left:93.3333%"></span>
+        <span class="pt them" style="left:20%"></span>
+        <span class="pt you" style="left:80%"></span>
       </div>
     </div>
   </div>
   <hr class="r1">
 
   <section class="band sect spec-sect" id="tracked">
-    <div class="a"><p class="rail log"><span>15:14</span><span>9 changes</span></p></div>
-    <div class="bc"><h2>The 15:14 sweep</h2></div>
+    <div class="a"><p class="rail log"><span>15:14</span><span>1,208 variants</span></p></div>
+    <div class="bc"><h2>Nine changes at three stores.</h2></div>
   </section>
 
   <dl class="reg">
     <div class="band row hdr" aria-hidden="true">
       <dt class="nm"><p class="hc">Store</p></dt>
       <dd class="ds"><p class="hc"><span class="pr">Product</span>Change</p></dd>
-      <dd class="c"><span class="ex hx"><span class="was">Before</span><span class="ar"></span><span class="is">After</span><span class="dt">Move</span></span></dd>
+      <dd class="c"><span class="ex hx"><span class="was">Before</span><span class="is">After</span><span class="dt">Move</span></span></dd>
     </div>
     <div class="band row grp">
       <dt class="nm">kindred-beauty.com</dt>
       <dd class="ds"><span class="pr">Cheek Tint · Coral</span><span class="ch">Price up</span></dd>
-      <dd class="c"><span class="ex"><span class="was">$24.00</span><span class="ar">→</span><span class="is">$26.00</span><span class="dt">+8.3%</span></span></dd>
+      <dd class="c"><span class="ex"><span class="was">$24.00</span><span class="is">$26.00</span><span class="dt">+8.3%</span></span></dd>
     </div>
     <div class="band row">
       <dt class="nm"><span class="sr">same store</span></dt>
       <dd class="ds"><span class="pr">Lip Oil</span><span class="ch">New product</span></dd>
-      <dd class="c"><span class="ex"><span class="was">none</span><span class="ar">→</span><span class="is">4 variants</span><span class="dt dash">—</span></span></dd>
+      <dd class="c"><span class="ex"><span class="was">none</span><span class="is">4 variants</span><span class="dt dash">—</span></span></dd>
     </div>
     <div class="band row">
       <dt class="nm"><span class="sr">same store</span></dt>
       <dd class="ds"><span class="pr">Matte Lip Kit · Plum</span><span class="ch">Back in stock</span></dd>
-      <dd class="c"><span class="ex"><span class="was">0 of 3</span><span class="ar">→</span><span class="is">2 of 3</span><span class="dt dash">—</span></span></dd>
+      <dd class="c"><span class="ex"><span class="was">0 of 3</span><span class="is">2 of 3</span><span class="dt dash">—</span></span></dd>
     </div>
     <div class="band row grp">
       <dt class="nm">northbound.co</dt>
       <dd class="ds"><span class="pr">Wool Beanie</span><span class="ch">Price cut</span></dd>
-      <dd class="c"><span class="ex"><span class="was">$42.00</span><span class="ar">→</span><span class="is down">$36.00</span><span class="dt down">−14.3%</span></span></dd>
+      <dd class="c"><span class="ex"><span class="was">$42.00</span><span class="is">$36.00</span><span class="dt down">−14.3%</span></span></dd>
     </div>
     <div class="band row">
       <dt class="nm"><span class="sr">same store</span></dt>
       <dd class="ds"><span class="pr">Rain Shell</span><span class="ch">Sale ended</span></dd>
-      <dd class="c"><span class="ex"><span class="was">$119.00</span><span class="ar">→</span><span class="is">$148.00</span><span class="dt">+24.4%</span></span></dd>
+      <dd class="c"><span class="ex"><span class="was">$119.00</span><span class="is">$148.00</span><span class="dt">+24.4%</span></span></dd>
     </div>
     <div class="band row">
       <dt class="nm"><span class="sr">same store</span></dt>
       <dd class="ds"><span class="pr">Field Cap</span><span class="ch">Price up</span></dd>
-      <dd class="c"><span class="ex"><span class="was">$34.00</span><span class="ar">→</span><span class="is">$34.70</span><span class="dt">+2.1%</span></span></dd>
+      <dd class="c"><span class="ex"><span class="was">$34.00</span><span class="is">$34.70</span><span class="dt">+2.1%</span></span></dd>
     </div>
     <div class="band row">
       <dt class="nm"><span class="sr">same store</span></dt>
       <dd class="ds"><span class="pr">Trail Sock · M</span><span class="ch">Sold out</span></dd>
-      <dd class="c"><span class="ex"><span class="was">3 of 3</span><span class="ar">→</span><span class="is">0 of 3</span><span class="dt dash">—</span></span></dd>
+      <dd class="c"><span class="ex"><span class="was">3 of 3</span><span class="is">0 of 3</span><span class="dt dash">—</span></span></dd>
     </div>
     <div class="band row grp">
       <dt class="nm">oakandhide.co</dt>
       <dd class="ds"><span class="pr">Weekender</span><span class="ch">Sale started</span></dd>
-      <dd class="c"><span class="ex"><span class="was">$240.00</span><span class="ar">→</span><span class="is down">$204.00</span><span class="dt down">−15.0%</span></span></dd>
+      <dd class="c"><span class="ex"><span class="was">$240.00</span><span class="is">$204.00</span><span class="dt down">−15.0%</span></span></dd>
     </div>
     <div class="band row">
       <dt class="nm"><span class="sr">same store</span></dt>
       <dd class="ds"><span class="pr">Card Holder</span><span class="ch">Removed</span></dd>
-      <dd class="c"><span class="ex"><span class="was">listed</span><span class="ar">→</span><span class="is">removed</span><span class="dt dash">—</span></span></dd>
+      <dd class="c"><span class="ex"><span class="was">listed</span><span class="is">removed</span><span class="dt dash">—</span></span></dd>
     </div>
   </dl>
-  <p class="band regkey"><span class="bc">Nine changes the 15:14 sweep found that 09:14 hadn’t: each variant’s price, sale price and stock, compared with the sweep before.</span></p>
+  <p class="band regkey"><span class="bc">Each variant’s price, sale price and stock, compared with the 09:14 sweep.</span></p>
   <div class="tail"></div>
   </div>
 </div>
@@ -727,18 +728,18 @@
   <div class="ruled">
   <section class="band close" id="start">
     <div class="a"><p class="rail log"><span>21:14</span><span>next</span></p></div>
-    <div class="bc"><h2>Put your competitor<br> in the next sweep</h2></div>
+    <div class="bc"><h2>Put your competitor<br> in the next sweep.</h2></div>
     <div class="b">
     <form class="snap" action="/snapshot" method="get">
       <label class="field">
         <span class="sr">Competitor store URL</span>
-        <input type="text" name="store" inputmode="url" autocomplete="off" spellcheck="false" placeholder="northbound.co">
+        <input type="text" name="store" inputmode="url" autocomplete="off" spellcheck="false" placeholder="e.g. northbound.co">
       </label>
-      <button class="cta" type="submit">Add a store</button>
+      <button class="cta" type="submit">Watch this store</button>
     </form>
     <p class="offer fine">We read only what any shopper can see. Cancel from any email.</p>
     </div>
-    <div class="c nx"><p class="nl">Next sweep in</p><p class="nc" id="next-sweep">2<span class="u">h</span> 34<span class="u">min</span></p></div>
+    <div class="c nx"><p class="nl">Next sweep in</p><p class="nc" id="next-sweep">1<span class="u">h</span>&thinsp;40<span class="u">min</span></p></div>
   </section>
   </div>
   <hr class="r1">
@@ -771,20 +772,17 @@
     var box=document.createElement('div'); box.id='clock'; box.setAttribute('aria-hidden','true');
     function el(css,cls){ var d=document.createElement('span'); d.className=cls||''; d.style.cssText='position:absolute;'+css; box.appendChild(d); return d; }
     var key=document.querySelector('.regkey').getBoundingClientRect().bottom+scrollY;
-    var yn=Math.round((key+inv)/2), mins=Math.round(914+(yn-ys[2])/(ys[3]-ys[2])*360), left=1274-mins;
+    var yn=Math.round(inv), mins=Math.round(914+(yn-ys[2])/(ys[3]-ys[2])*360), left=1274-mins;
     var hh=('0'+Math.floor(mins/60)).slice(-2)+':'+('0'+mins%60).slice(-2), seg=2;
     var cd=document.getElementById('next-sweep');
-    if(cd) cd.innerHTML=Math.floor(left/60)+'<span class="u">h</span> '+('0'+left%60).slice(-2)+'<span class="u">min</span>';
+    if(cd) cd.innerHTML=Math.floor(left/60)+'<span class="u">h</span>\u2009'+('0'+left%60).slice(-2)+'<span class="u">min</span>';
     var dark=yn>inv, ink=dark?'#E8E3D6':'#1A1A17';
     /* elapsed: the spine drawn in ink from the first sweep down to now */
     el('left:'+(x-.5)+'px;top:'+Math.round(ys[0])+'px;width:2px;height:'+Math.round(yn-ys[0])+'px;background:'+ink);
     /* still to come: dashed to the next sweep */
     el('left:'+x+'px;top:'+Math.round(yn)+'px;width:0;height:'+Math.round(ys[seg+1]-yn)+'px;border-left:1px dashed '+(ys[seg+1]>inv?'#E8E3D6':'#1A1A17'));
     el('left:'+(x-9)+'px;top:'+Math.round(yn)+'px;width:19px;height:1px;background:'+ink);
-    /* now, drawn across the page: everything above it has happened */
-    var edge=document.querySelector('.reg').getBoundingClientRect().right+scrollX;
-    el('left:'+(x+10)+'px;top:'+Math.round(yn)+'px;width:'+Math.round(edge-x-10)+'px;height:0;border-top:1px dashed rgba(26,26,23,.35)');
-    var t=el('right:'+(document.documentElement.clientWidth-x+16)+'px;top:'+Math.round(yn-8)+'px;color:'+(dark?'#A8A497':'#5C584C'),'clock-now');
+    var t=el('right:'+(document.documentElement.clientWidth-x+20)+'px;top:'+Math.round(yn-20)+'px;color:'+(dark?'#A8A497':'#5C584C'),'clock-now');
     t.textContent='now '+hh;
     document.body.appendChild(box);
   }
