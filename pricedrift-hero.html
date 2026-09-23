@@ -84,7 +84,7 @@
             color:var(--ink);margin:0 0 9px}
 
 
-  .reg .hc,.reg .hx,.spec .k,.spec .hd span,.close .nl,.figs .who,.rail.log span + span{font:400 11px/16px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .reg .hc,.reg .hx,.spec .k,.spec .hd span,.close .nl,.figs .who,.rail.log span + span{font:400 11px/16px var(--mono);letter-spacing:.05em;text-transform:uppercase;color:#5C584C}
 
   /* ---------- masthead ---------- */
   .mast{display:grid;align-items:baseline;padding:34px 0 22px;
@@ -169,12 +169,12 @@
   /* ---------- the specimen ---------- */
   /* the alert, set as a typographic specimen rather than a UI mockup */
   .spec{font-family:var(--mono);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
-  .spec .hd{padding:11px 0 11px;border-bottom:1px solid var(--r2)}
-  .spec .hd .meta{margin:0;font:400 12.5px/19px var(--mono);letter-spacing:0;color:var(--ink-soft)}
+  .spec .hd{padding:12px 0 12px;border-bottom:1px solid var(--r2)}
+  .spec .hd .meta{margin:0;font:400 15px/19px var(--text);letter-spacing:0;color:var(--ink-soft)}
   .spec .hd span{display:inline-block;width:84px}
   .spec .hd .subj{margin:6px 0 0;font:400 21px/27px var(--text);color:var(--ink)}
   .spec .body-rows{padding:0}
-  .spec .ev{padding:10px 0 11px;border-top:1px solid var(--r2)}
+  .spec .ev{padding:10px 0 10px;border-top:1px solid var(--r2)}
   .spec .ev:first-child{border-top:0}
   .spec .ev{display:grid;grid-template-columns:84px minmax(0,1fr);align-items:baseline}
   .spec .k{grid-column:1}
@@ -191,7 +191,7 @@
   /* ---------- chapter head ---------- */
   .sect{padding:98px 0 62px}
   .spec-sect{padding-bottom:26px}   /* the heading belongs to its table */
-  .spec-sect h2{font-size:clamp(2.2rem,5vw,4.5rem);line-height:.98;letter-spacing:-.025em}
+  .spec-sect h2{font-size:clamp(2rem,3.9vw,3.5rem);line-height:1;letter-spacing:-.024em}
   h2{
     font-family:var(--display);font-weight:400;font-variation-settings:"opsz" 72;
     font-size:clamp(1.75rem,3.78vw,3.4rem);line-height:1.04;letter-spacing:-.026em;
@@ -209,7 +209,7 @@
   /* ---------- the three arguments: one lockup, one language ---------- */
   h3{
     font-family:var(--display);font-weight:400;font-variation-settings:"opsz" 72;
-    font-size:clamp(2.2rem,5vw,4.5rem);line-height:.98;letter-spacing:-.025em;
+    font-size:clamp(2rem,3.9vw,3.5rem);line-height:1;letter-spacing:-.024em;
     margin:0 0 14px;text-indent:-.014em;text-wrap:balance;
   }
   .arg p:not(.rail):not(.note):not(.grouphd):not(.gap):not(.conseq):not(.deck):not(.stand){margin:0;color:var(--ink-soft);font-size:17px;line-height:27px;max-width:var(--measure)}
@@ -273,14 +273,14 @@
   /* the undercut: theirs against yours, on the page's two content axes */
   .arg.one .top{grid-row:1}
   .arg.one .top h3{margin:0}
-  .arg p.stand{font-size:17px;line-height:27px;color:var(--ink-soft);margin:0}
+  .arg p.stand{font-size:24px;line-height:34px;color:var(--ink);margin:24px 0 0;max-width:var(--measure)}
   .arg.one .caprow{grid-row:3;align-self:start;margin-top:22px}
   .figs .big{font-family:var(--display);font-variation-settings:"opsz" 72;font-weight:400;
              font-feature-settings:"lnum" 1,"tnum" 1;font-size:clamp(3rem,11.1vw,10rem);
              line-height:.9;letter-spacing:-.035em;color:var(--ink);margin:10px 0 0 -.04em;white-space:nowrap}
   .figs .big .cur,.figs .big .cts{font-size:.5em;vertical-align:.62em;letter-spacing:0}
   /* price-tag cents: raised and underlined, no floating decimal point */
-  .figs .big .cts{text-decoration:underline;text-decoration-thickness:.07em;text-underline-offset:.1em;margin-left:.13em}   /* clear of the 4's crossbar */
+  .figs .big .cts{margin-left:.06em}
   .figs .big .cur{margin-right:-.05em}
   /* the plot: $50 to $90. Each price sits on its own point; the ink span between them is the $18 */
   .arg.one .plot{grid-row:2;align-self:start;margin-top:40px}
@@ -289,7 +289,6 @@
   .figs .big{grid-row:2;margin-top:0}
   .figs .big.them{margin-left:40%;font-size:clamp(3.4rem,15.28vw,13.75rem)}
   .figs .big.you{margin-left:85%;font-size:clamp(2.2rem,6.67vw,6rem)}
-  .figs .dx{grid-row:2;margin-left:69.3%;font:400 16px/20px var(--mono);color:var(--ink);white-space:nowrap}
   .figs .who{white-space:nowrap;margin-bottom:26px}
   .figs .who em{font-style:normal;color:var(--red)}
   .figs .who.them{margin-left:40%}
@@ -301,6 +300,7 @@
   .ax .tk:first-child b{transform:none}
   .ax .tk:nth-child(5) b{transform:translateX(-100%)}
   .ax .gap{position:absolute;top:-1px;height:3px;background:var(--ink)}
+  .ax .gap .dl{position:absolute;top:14px;left:50%;transform:translateX(-50%);font:400 14px/16px var(--mono);color:var(--red);white-space:nowrap}
   .ax .pt{position:absolute;top:0;width:11px;height:11px;border-radius:50%;transform:translate(-50%,-50%);background:var(--ink)}
   .ax .pt.them{background:var(--red)}
   /* row two of the set piece: both rules on one y */
@@ -414,20 +414,23 @@
   .tail{height:96px}
   .regkey{margin:12px 0 0}
   .regkey .bc{font:400 14px/21px var(--text);color:var(--muted)}
-  .regkey code{font:400 12px/21px var(--mono)}
   .reg .ds .st{display:inline-block;width:160px;font:400 12.5px/26px var(--mono);color:var(--ink-soft)}
+  .reg .hc .st{font:inherit;color:inherit;letter-spacing:inherit}
   .reg > .row.hdr{padding:0 0 7px}
   .reg .hc{margin:0}
   .reg .hc,.reg .hx{line-height:22px}
     .reg .ex.hx .was,.reg .ex.hx .is{color:var(--muted)}
   .reg .hdr .rail{color:var(--muted);font:400 11px/22px var(--mono)}
   .reg dd{margin:0;max-width:none}
-  .reg .ex{display:grid;grid-template-columns:80px 40px auto;justify-content:start;gap:0;
+  .reg .ex{display:grid;grid-template-columns:80px 40px minmax(0,1fr) 64px;gap:0;
            font-family:var(--mono);font-size:12.5px;line-height:27px;
            color:var(--ink);white-space:nowrap;max-width:none}
   .reg .ex .was{text-align:right;color:var(--muted)}
   .reg .ex .ar{color:var(--muted);font-family:var(--text);font-size:16px;position:relative;top:-.06em;text-align:center}
   .reg .ex .is{text-align:left;color:var(--ink)}
+  .reg .ex .dt{text-align:right;color:var(--ink)}
+  .reg .ex .dt.down{color:var(--red)}
+  .reg .ex.hx .dt{color:var(--muted)}
   .reg .ex .down,.reg .ex .is.down{color:var(--red)}
   .reg .ex .tag{font-size:10.5px;color:var(--muted);letter-spacing:.04em}
   .reg .ex .ar{text-align:center;padding:0}
@@ -445,12 +448,12 @@
   .close > .b{grid-row:2;margin-top:36px}
   .close form.snap{margin-top:0}
   /* the countdown sits on the headline's last line, flush to the content edge */
-  .close .nx{grid-row:1;grid-column:3;align-self:last baseline;justify-self:end;text-align:right}
+  .close .nx{grid-row:1;grid-column:3;align-self:last baseline;justify-self:end;text-align:left}
   .close .nl{margin:0 0 4px;line-height:20px}
   .inv .close .nl{color:var(--d-soft)}
   .close .nl .t{font:400 13px/24px var(--mono)}
   .close .nc{margin:0;font-family:var(--display);font-variation-settings:"opsz" 72;font-feature-settings:"lnum" 1,"tnum" 1;
-            font-size:clamp(2.2rem,5vw,4.5rem);line-height:.98;letter-spacing:-.025em}
+            font-size:clamp(2rem,3.9vw,3.5rem);line-height:1;letter-spacing:-.024em}
   .inv .close .nc{color:#F6F2E8}
   .inv .rail.log span + span,.inv .close .nl{color:#A8A497}
   .close .field{flex:1 1 auto}
@@ -546,8 +549,7 @@
   <header class="mast">
     <a class="wordmark" href="/">PriceDrift</a>
     <nav class="links" aria-label="Sections">
-      <a class="toc" href="#cases">Undercut</a>
-      <a class="toc" href="#tracked">Sweep log</a>
+      <a class="toc" href="#cases">Example sweep</a>
       <a class="login" href="/dashboard.html">Log in</a>
       <a class="start" href="#start">Get a snapshot</a>
     </nav>
@@ -609,7 +611,6 @@
         <span class="who them">Northbound · was $88.00 <em>−25%</em></span>
         <span class="who you">Yours</span>
         <span class="big them"><span class="cur">$</span>66<span class="cts">00</span></span>
-        <span class="dx">−$18.00</span>
         <span class="big you"><span class="cur">$</span>84<span class="cts">00</span></span>
       </div>
       <div class="ax" aria-hidden="true">
@@ -618,7 +619,7 @@
         <span class="tk" style="left:50%"><b>70</b></span>
         <span class="tk" style="left:75%"><b>80</b></span>
         <span class="tk" style="left:100%"><b>$90</b></span>
-        <span class="gap" style="left:40%;width:45%"></span>
+        <span class="gap" style="left:40%;width:45%"><span class="dl">−$18.00</span></span>
         <span class="pt them" style="left:40%"></span>
         <span class="pt you" style="left:85%"></span>
       </div>
@@ -628,57 +629,57 @@
 
   <section class="band sect spec-sect" id="tracked">
     <div class="a"><p class="rail log"><span>15:14</span><span>sweep 3/4</span></p></div>
-    <div class="bc"><h2>What the 15:14 sweep caught</h2></div>
+    <div class="bc"><h2>What one sweep caught</h2></div>
   </section>
 
   <dl class="reg">
     <div class="band row hdr" aria-hidden="true">
       <dt class="nm"><p class="hc">Change</p></dt>
-      <dd class="ds"><p class="hc">Store and product</p></dd>
-      <dd class="c"><span class="ex hx"><span class="was">Before</span><span class="ar"></span><span class="is">After</span></span></dd>
+      <dd class="ds"><p class="hc"><span class="st">Store</span>Product</p></dd>
+      <dd class="c"><span class="ex hx"><span class="was">Before</span><span class="ar"></span><span class="is">After</span><span class="dt">Move</span></span></dd>
     </div>
     <div class="band row">
       <dt class="nm">Price cut</dt>
       <dd class="ds"><span class="st">northbound.co</span>Merino Crew</dd>
-      <dd class="c"><span class="ex"><span class="was">$88.00</span><span class="ar">→</span><span class="is down">$66.00</span></span></dd>
+      <dd class="c"><span class="ex"><span class="was">$88.00</span><span class="ar">→</span><span class="is down">$66.00</span><span class="dt down">−25.0%</span></span></dd>
     </div>
     <div class="band row">
       <dt class="nm">Price up</dt>
       <dd class="ds"><span class="st">kindred-beauty.com</span>Brow Pencil, Ash</dd>
-      <dd class="c"><span class="ex"><span class="was">$18.00</span><span class="ar">→</span><span class="is">$21.00</span></span></dd>
+      <dd class="c"><span class="ex"><span class="was">$18.00</span><span class="ar">→</span><span class="is">$21.00</span><span class="dt">+16.7%</span></span></dd>
     </div>
     <div class="band row">
       <dt class="nm">Sale started</dt>
       <dd class="ds"><span class="st">oakandhide.co</span>Weekender</dd>
-      <dd class="c"><span class="ex"><span class="was">$240.00</span><span class="ar">→</span><span class="is down">$204.00</span></span></dd>
+      <dd class="c"><span class="ex"><span class="was">$240.00</span><span class="ar">→</span><span class="is down">$204.00</span><span class="dt down">−15.0%</span></span></dd>
     </div>
     <div class="band row">
       <dt class="nm">Sale ended</dt>
       <dd class="ds"><span class="st">northbound.co</span>Rain Shell</dd>
-      <dd class="c"><span class="ex"><span class="was">$119.00</span><span class="ar">→</span><span class="is">$148.00</span></span></dd>
+      <dd class="c"><span class="ex"><span class="was">$119.00</span><span class="ar">→</span><span class="is">$148.00</span><span class="dt">+24.4%</span></span></dd>
     </div>
     <div class="band row">
       <dt class="nm">New product</dt>
       <dd class="ds"><span class="st">kindred-beauty.com</span>Lip Oil</dd>
-      <dd class="c"><span class="ex"><span class="was">none</span><span class="ar">→</span><span class="is">4 variants</span></span></dd>
+      <dd class="c"><span class="ex"><span class="was">none</span><span class="ar">→</span><span class="is">4 variants</span><span class="dt">new</span></span></dd>
     </div>
     <div class="band row">
       <dt class="nm">Removed</dt>
       <dd class="ds"><span class="st">oakandhide.co</span>Card Holder</dd>
-      <dd class="c"><span class="ex"><span class="was">listed</span><span class="ar">→</span><span class="is">404</span></span></dd>
+      <dd class="c"><span class="ex"><span class="was">listed</span><span class="ar">→</span><span class="is">removed</span><span class="dt">gone</span></span></dd>
     </div>
     <div class="band row">
       <dt class="nm">Sold out</dt>
       <dd class="ds"><span class="st">northbound.co</span>Trail Sock, M</dd>
-      <dd class="c"><span class="ex"><span class="was">3 of 3</span><span class="ar">→</span><span class="is">0 of 3</span></span></dd>
+      <dd class="c"><span class="ex"><span class="was">3 of 3</span><span class="ar">→</span><span class="is">0 of 3</span><span class="dt">−3</span></span></dd>
     </div>
     <div class="band row">
       <dt class="nm">Back in stock</dt>
       <dd class="ds"><span class="st">kindred-beauty.com</span>Matte Lip Kit, Plum</dd>
-      <dd class="c"><span class="ex"><span class="was">0 of 3</span><span class="ar">→</span><span class="is">2 of 3</span></span></dd>
+      <dd class="c"><span class="ex"><span class="was">0 of 3</span><span class="ar">→</span><span class="is">2 of 3</span><span class="dt">+2</span></span></dd>
     </div>
   </dl>
-  <p class="band regkey"><span class="bc">Every sweep compares each variant’s price, <code>compare_at_price</code> and inventory with the sweep before. Red marks a price that went down.</span></p>
+  <p class="band regkey"><span class="bc">Every sweep compares each variant’s price, sale price and stock with the sweep before. Red marks a price that went down.</span></p>
   <div class="tail"></div>
   </div>
 </div>
